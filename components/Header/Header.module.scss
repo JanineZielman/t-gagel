@@ -111,9 +111,21 @@
 				width: 200px;
 				.winkel{
 					margin-top: -40px;
+					.imgMask{
+						height: 55px;
+					}
 				}
 				.menuItems{
-					margin-top: 24px;
+					margin-top: 40px;
+				}
+				.imgMask{
+					height: 30px;
+				}
+				.children{
+					padding-bottom: 24px;
+					.imgMask{
+						height: 30px;
+					}
 				}
 			}
 	}
