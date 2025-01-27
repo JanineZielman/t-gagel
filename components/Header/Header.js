@@ -20,7 +20,7 @@ export default function Header({
         {hierarchicalMenuItems.slice(0,1).map((item, i) => {
           return(
             <Link href={item.path} key={i}> 
-              <div className={styles.imgMask} style={{maskImage:`url(/${item.label}.svg)`}}></div>
+              <div className={styles.imgMask} style={{maskImage:`url(/${item.label.toLowerCase()}.svg)`}}></div>
               <div className={styles.label}>{item.label}</div>
             </Link>
           )
@@ -31,7 +31,7 @@ export default function Header({
           return(
             <div>
               <Link href={item.path} key={i}> 
-                <div className={styles.imgMask} style={{maskImage:`url(/${item.label}.svg)`}}></div>
+                <div className={styles.imgMask} style={{maskImage:`url(/${item.label.toLowerCase()}.svg)`}}></div>
                 <div className={styles.label}>{item.label}</div>
               </Link>
               <div className={styles.children}>
@@ -39,7 +39,7 @@ export default function Header({
                   return(
                     <div className={styles.child}>
                       <Link href={child.path} key={i}> 
-                        <div className={styles.imgMask} style={{maskImage:`url(/${child.label}.svg)`}}></div>
+                        <div className={styles.imgMask} style={{maskImage:`url(/${child.label.toLowerCase()}.svg)`}}></div>
                         <div className={styles.label}>{child.label}</div>
                       </Link>
                     </div>
