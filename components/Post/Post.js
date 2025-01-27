@@ -11,6 +11,7 @@ export default function Post({
   uri,
   featuredImage,
 }) {
+
   return (
     <article className={styles.component}>
       {featuredImage && (

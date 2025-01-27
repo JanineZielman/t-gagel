@@ -10,32 +10,27 @@ export default function Header({
   menuItems
 }) {
   const [isNavShown, setIsNavShown] = useState(false);
-  console.log(menuItems)
 
   return (
-    <header className={styles.header}>
-      <div className={styles.arrow}></div>
+    <header className={`${styles.header} ${isNavShown ? styles.show : ''}`}>
+      <div className={styles.arrow} onClick={() => setIsNavShown(!isNavShown)}></div>
       <div className={styles.winkel}>
         {menuItems.slice(0,1).map((item, i) => {
           return(
-            <div key={i}>
-              <Link href={item.path}> 
-                {/* {item.label}  */}
-                <div className={styles.imgMask} style={{maskImage:`url(/${item.label}.svg)`}}></div>
-              </Link>
-            </div>
+            <Link href={item.path} key={i}> 
+              <div className={styles.imgMask} style={{maskImage:`url(/${item.label}.svg)`}}></div>
+              <div className={styles.label}>{item.label}</div>
+            </Link>
           )
         })}
       </div>
       <div className={styles.menuItems}>
         {menuItems.slice(1).map((item, i) => {
           return(
-            <div key={i}>
-              <Link href={item.path}> 
-                {/* {item.label}  */}
-                <div className={styles.imgMask} style={{maskImage:`url(/${item.label}.svg)`}}></div>
-              </Link>
-            </div>
+            <Link href={item.path} key={i}> 
+              <div className={styles.imgMask} style={{maskImage:`url(/${item.label}.svg)`}}></div>
+              <div className={styles.label}>{item.label}</div>
+            </Link>
           )
         })}
       </div>

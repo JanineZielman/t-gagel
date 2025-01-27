@@ -7,3 +7,18 @@
 @import 'base';
 @import 'blocks';
 @import 'utilities';
+
+body{
+  background-color: var(--lime);
+}
+
+iframe{
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 9/16;
+  border: none;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  mix-blend-mode: multiply;
+  filter: grayscale(1);
+}

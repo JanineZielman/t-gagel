@@ -69,32 +69,11 @@ export default function Component(props) {
   const footerMenu = footerMenuItems?.nodes ?? [];
   const { title, content, featuredImage, date, author } = post ?? {};
 
+  console.log(props)
+
   return (
     <>
-      <SEO
-        title={siteTitle}
-        description={siteDescription}
-        imageUrl={featuredImage?.node?.sourceUrl}
-      />
-      <Header
-        title={siteTitle}
-        description={siteDescription}
-        menuItems={primaryMenu}
-      />
-      <Main>
-        <>
-          <EntryHeader
-            title={title}
-            image={featuredImage?.node}
-            date={date}
-            author={author?.node?.name}
-          />
-          <Container>
-            <ContentWrapper content={content} />
-          </Container>
-        </>
-      </Main>
-      <Footer title={siteTitle} menuItems={footerMenu} />
+      <iframe src="https://www.landdelen.org/Pages/External/StatusInvestInfoDocs?fundingRoundID=7"/>
     </>
   );
 }
