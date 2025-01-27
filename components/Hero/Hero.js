@@ -1,17 +1,16 @@
 import React from 'react';
-import className from 'classnames/bind';
-import { Heading } from '../../components';
 import styles from './Hero.module.scss';
 
-let cx = className.bind(styles);
-
-export default function Hero({ title, level = 'h2', children, className }) {
+export default function Hero({ gallery}) {
   return (
-    <div className={cx(['component', className])}>
-      <Heading level={level}>
-        <span className={cx('title')}>{title}</span>
-      </Heading>
-      {children}
+    <div className={styles.galleryWrapper}>
+      <div className={styles.gallery}>
+        <img src={gallery.left.edges[0].node.mediaItemUrl}/>
+        <img src={gallery.right.edges[0].node.mediaItemUrl}/>
+      </div>
+      <div className={styles.logo}>
+        <div className={styles.maskImg}></div>
+      </div>
     </div>
   );
 }

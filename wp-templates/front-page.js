@@ -21,6 +21,8 @@ export default function Component() {
   const primaryMenu = data?.headerMenuItems?.nodes ?? [];
   const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
+  console.log(data)
+
   return (
     <>
       <SEO title={siteTitle} description={siteDescription} />
@@ -31,11 +33,7 @@ export default function Component() {
       />
       <Main>
         <Container>
-          <Hero title={'Front Page'} />
-          <div className="text-center">
-            <p>This page is utilizing the "front-page" WordPress template.</p>
-            <code>wp-templates/front-page.js</code>
-          </div>
+          <Hero gallery={data.page.homepageGallery} />
         </Container>
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />
@@ -56,6 +54,25 @@ Component.query = gql`
     headerMenuItems: menuItems(where: { location: $headerLocation }) {
       nodes {
         ...NavigationMenuItemFragment
+      }
+    }
+    page(id: "/boerderij-t-gagel/", idType: URI) {
+      id
+      homepageGallery {
+        right {
+          edges {
+            node {
+              mediaItemUrl
+            }
+          }
+        }
+        left{
+          edges {
+            node {
+              mediaItemUrl
+            }
+          }
+        }
       }
     }
     footerMenuItems: menuItems(where: { location: $footerLocation }) {

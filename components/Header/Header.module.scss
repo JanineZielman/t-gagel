@@ -1,72 +1,46 @@
 @import 'styles/breakpoints';
 
-.component {
-	color: var(--wpe--header--color);
-	background-color: var(--wpe--header--background-color);
-	position: relative;
-	z-index: 2; // Pull dropdown menus to the foreground to sit above <Main />.
-}
-
-.navbar {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	padding: 3rem 0;
-	gap: 1rem;
-}
-
-.brand {
-	font-weight: var(--wpe--font-weight--bold);
-	font-size: 1.6rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.title {
-	text-decoration: none;
-}
-
-.description {
-	margin: .3rem 0 0 0;
-	font-size: 0.8rem;
-	opacity: 0.9;
-}
-
-.nav-toggle {
-	align-items: center;
-	background-color: transparent;
-	border: 0.1rem solid var(--wpe--color--white);
-	color: var(--wpe--color--black);
-	cursor: pointer;
-	display: flex;
-	margin: 0;
-	padding: 0.5rem 1rem;
-	transition: all 0.2s ease-in;
-	user-select: none;
-	font-size: 2rem;
-
-	&:hover,
-	&:focus {
-		background-color: var(--wpe--color--white);
-		color: var(--wpe--color--black);
+.header{
+	width: 75px;
+	height: 100vh;
+	position: fixed;
+	right: 0;
+	top: 0;
+	background-color: var(--lime);
+	color: var(--green);
+	z-index: 9;
+	.arrow{
+		top: 24px;
+		mask-image: url(/arrow.svg);
+		background-color: var(--green);
+		width: 100%;
+		height: fit-content;
+		aspect-ratio: 1/1;
+		mask-repeat: no-repeat;
+		mask-size: 60% 60%;
+		mask-position: center;
 	}
+	.menuItems{
+		display: flex;
+		flex-direction: column;
+		height: fit-content;
+		margin-top: 10vh;
 
-	@media (min-width: $breakpoint-small) {
-		display: none !important;
+	}
+	.imgMask{
+		background-color: var(--green);
+		width: 100%;
+		height: 100%;
+		aspect-ratio: 1/1;
+		mask-repeat: no-repeat;
+		mask-size: 80% 80%;
+		mask-position: center;
 	}
 }
 
-.primary-navigation {
-	display: none;
-	width: 100%;
 
-	&.show {
-		display: block;
-	}
 
-	@media (min-width: $breakpoint-small) {
-		display: block;
-		width: auto;
-	}
-}
+// @media (min-width: $breakpoint-small) {
+// 	display: block;
+// 	width: auto;
+// }

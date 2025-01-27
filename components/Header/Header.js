@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import classNames from 'classnames/bind';
 import Link from 'next/link';
 import { Container, NavigationMenu, SkipNavigationLink } from '../../components';
 import styles from './Header.module.scss';
 
-let cx = classNames.bind(styles);
 
 export default function Header({
   title = 'Headless by WP Engine',
@@ -12,10 +10,37 @@ export default function Header({
   menuItems
 }) {
   const [isNavShown, setIsNavShown] = useState(false);
+  console.log(menuItems)
 
   return (
-    <header className={cx('component')}>
-      <SkipNavigationLink />
+    <header className={styles.header}>
+      <div className={styles.arrow}></div>
+      <div className={styles.winkel}>
+        {menuItems.slice(0,1).map((item, i) => {
+          return(
+            <div key={i}>
+              <Link href={item.path}> 
+                {/* {item.label}  */}
+                <div className={styles.imgMask} style={{maskImage:`url(/${item.label}.svg)`}}></div>
+              </Link>
+            </div>
+          )
+        })}
+      </div>
+      <div className={styles.menuItems}>
+        {menuItems.slice(1).map((item, i) => {
+          return(
+            <div key={i}>
+              <Link href={item.path}> 
+                {/* {item.label}  */}
+                <div className={styles.imgMask} style={{maskImage:`url(/${item.label}.svg)`}}></div>
+              </Link>
+            </div>
+          )
+        })}
+      </div>
+
+      {/* <SkipNavigationLink />
         <Container>
           <div className={cx('navbar')}>
             <div className={cx('brand')}>
@@ -39,7 +64,7 @@ export default function Header({
               menuItems={menuItems}
             />
         </div>
-      </Container>
+      </Container> */}
     </header>
   );
 }
