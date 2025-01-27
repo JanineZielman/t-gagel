@@ -14,24 +14,36 @@
 		text-decoration: none;
 	}
 	&.show{
-		width: 30vw;
+		width: 250px;
 		.arrow{
 			transform: rotate(180deg);
 		}
 		.menuItems{
-			margin-top: 0;
+			margin-top: 80px;
 		}
 		.imgMask{
-			height: 100px;
+			height: 75px;
 			width: 100px;
 			margin-left: 50%;
 			transform: translateX(-50%);
 		}
 		.winkel{
 			margin-top: 0 ;
+			.imgMask{
+				height: 90px;
+			}
 		}
 		.label{
 			display: block;
+		}
+		.children{
+			display: flex;
+			.imgMask{
+				height: 50px;
+				width: 40px;
+				margin-left: 50%;
+				transform: translateX(-50%);
+			}
 		}
 	}
 	.arrow{
@@ -39,8 +51,7 @@
 		mask-image: url(/arrow.svg);
 		background-color: var(--green);
 		width: 75px;
-		height: fit-content;
-		aspect-ratio: 1/1;
+		height: 40px;
 		mask-repeat: no-repeat;
 		mask-size: 60% 60%;
 		mask-position: center;
@@ -48,12 +59,16 @@
 	.menuItems{
 		width: 90%;
 		margin: auto;
-		margin-top: 10vh;
+		margin-top: 20vh;
 		transition: none;
 	}
 	.winkel{
 		width: 90%;
 		margin: auto;
+		.imgMask{
+			margin-top: 14px;
+			height: 60px;
+		}
 	}
 	.label{
 		text-align: center;
@@ -66,18 +81,40 @@
 	}
 	.imgMask{
 		background-color: var(--green);
-		width: 100%;
+		width: 90%;
+		margin: 24px 5% 0 5%;
 		height: 50px;
 		mask-repeat: no-repeat;
 		mask-size: contain;
 		mask-position: center bottom;
-		margin-top: 24px;
+	}
+	.children{
+		display: none;
+		justify-content: space-between;
+		.child{
+			width: 50%;
+		}
+		.label{
+			border: none;
+		}
+		.imgMask{
+			margin-top: 14px;
+		}
+	}
+	@media (max-width: $breakpoint-small) {
+			margin-right: -75px;
+			.arrow{
+				margin-left: -75px;
+			}
+			&.show{
+				margin-right: 0;
+				width: 200px;
+				.winkel{
+					margin-top: -40px;
+				}
+				.menuItems{
+					margin-top: 24px;
+				}
+			}
 	}
 }
-
-
-
-// @media (min-width: $breakpoint-small) {
-// 	display: block;
-// 	width: auto;
-// }

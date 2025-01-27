@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { Container, NavigationMenu, SkipNavigationLink } from '../../components';
 import styles from './Header.module.scss';
+import { flatListToHierarchical } from '@faustwp/core';
 
 
 export default function Header({
@@ -10,12 +10,14 @@ export default function Header({
   menuItems
 }) {
   const [isNavShown, setIsNavShown] = useState(false);
+  const hierarchicalMenuItems = flatListToHierarchical(menuItems);
+
 
   return (
     <header className={`${styles.header} ${isNavShown ? styles.show : ''}`}>
       <div className={styles.arrow} onClick={() => setIsNavShown(!isNavShown)}></div>
       <div className={styles.winkel}>
-        {menuItems.slice(0,1).map((item, i) => {
+        {hierarchicalMenuItems.slice(0,1).map((item, i) => {
           return(
             <Link href={item.path} key={i}> 
               <div className={styles.imgMask} style={{maskImage:`url(/${item.label}.svg)`}}></div>
@@ -25,41 +27,30 @@ export default function Header({
         })}
       </div>
       <div className={styles.menuItems}>
-        {menuItems.slice(1).map((item, i) => {
+        {hierarchicalMenuItems.slice(1).map((item, i) => {
           return(
-            <Link href={item.path} key={i}> 
-              <div className={styles.imgMask} style={{maskImage:`url(/${item.label}.svg)`}}></div>
-              <div className={styles.label}>{item.label}</div>
-            </Link>
+            <div>
+              <Link href={item.path} key={i}> 
+                <div className={styles.imgMask} style={{maskImage:`url(/${item.label}.svg)`}}></div>
+                <div className={styles.label}>{item.label}</div>
+              </Link>
+              <div className={styles.children}>
+                {item.children.map((child, i) => {
+                  return(
+                    <div className={styles.child}>
+                      <Link href={child.path} key={i}> 
+                        <div className={styles.imgMask} style={{maskImage:`url(/${child.label}.svg)`}}></div>
+                        <div className={styles.label}>{child.label}</div>
+                      </Link>
+                    </div>
+                  )
+                })}
+              </div>
+              
+            </div>
           )
         })}
       </div>
-
-      {/* <SkipNavigationLink />
-        <Container>
-          <div className={cx('navbar')}>
-            <div className={cx('brand')}>
-              <Link legacyBehavior href="/">
-                <a className={cx('title')}>{title}</a>
-              </Link>
-              {description && <p className={cx('description')}>{description}</p>}
-            </div>
-            <button
-              type="button"
-              className={cx('nav-toggle')}
-              onClick={() => setIsNavShown(!isNavShown)}
-              aria-label="Toggle navigation"
-              aria-controls={cx('primary-navigation')}
-              aria-expanded={isNavShown}
-            >
-              ☰
-            </button>
-            <NavigationMenu
-              className={cx(['primary-navigation', isNavShown ? 'show' : undefined])}
-              menuItems={menuItems}
-            />
-        </div>
-      </Container> */}
     </header>
   );
 }

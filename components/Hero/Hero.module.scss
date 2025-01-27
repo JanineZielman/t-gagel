@@ -35,4 +35,18 @@
 			mask-repeat: no-repeat;
 		}
 	}
+	@media (max-width: $breakpoint-small) {
+		width: 100vw;
+		.gallery{
+			flex-direction: column;
+			img{
+				width: 100%;
+				height: 50%;
+			}
+		}
+		.logo{
+			width: 50vw;
+			height: 50vw;
+		}
+	}
 }
