@@ -1,132 +1,132 @@
-@import 'styles/breakpoints';
+@import "styles/breakpoints";
 
-.header{
-	width: 75px;
-	height: 100vh;
-	position: fixed;
-	right: 0;
-	top: 0;
-	background-color: var(--lime);
-	color: var(--green);
-	z-index: 9;
-	transition: width 0.5s ease;
-	a {
-		text-decoration: none;
-	}
-	&.show{
-		width: 250px;
-		.arrow{
-			transform: rotate(180deg);
-		}
-		.menuItems{
-			margin-top: 80px;
-		}
-		.imgMask{
-			height: 75px;
-			width: 100px;
-			margin-left: 50%;
-			transform: translateX(-50%);
-		}
-		.winkel{
-			margin-top: 0 ;
-			.imgMask{
-				height: 90px;
-			}
-		}
-		.label{
-			display: block;
-		}
-		.children{
-			display: flex;
-			.imgMask{
-				height: 50px;
-				width: 40px;
-				margin-left: 50%;
-				transform: translateX(-50%);
-			}
-		}
-	}
-	.arrow{
-		top: 24px;
-		mask-image: url(/arrow.svg);
-		background-color: var(--green);
-		width: 75px;
-		height: 40px;
-		mask-repeat: no-repeat;
-		mask-size: 60% 60%;
-		mask-position: center;
-	}
-	.menuItems{
-		width: 90%;
-		margin: auto;
-		margin-top: 20vh;
-		transition: none;
-	}
-	.winkel{
-		width: 90%;
-		margin: auto;
-		.imgMask{
-			margin-top: 14px;
-			height: 60px;
-		}
-	}
-	.label{
-		text-align: center;
-		width: 100%;
-		border-bottom: 1px solid var(--green);
-		display: block;
-		margin-top: 14px;
-		padding-bottom: 5px;
-		display: none;
-	}
-	.imgMask{
-		background-color: var(--green);
-		width: 90%;
-		margin: 24px 5% 0 5%;
-		height: 50px;
-		mask-repeat: no-repeat;
-		mask-size: contain;
-		mask-position: center bottom;
-	}
-	.children{
-		display: none;
-		justify-content: space-between;
-		.child{
-			width: 50%;
-		}
-		.label{
-			border: none;
-		}
-		.imgMask{
-			margin-top: 14px;
-		}
-	}
-	@media (max-width: $breakpoint-small) {
-			margin-right: -75px;
-			.arrow{
-				margin-left: -75px;
-			}
-			&.show{
-				margin-right: 0;
-				width: 200px;
-				.winkel{
-					margin-top: -40px;
-					.imgMask{
-						height: 55px;
-					}
-				}
-				.menuItems{
-					margin-top: 40px;
-				}
-				.imgMask{
-					height: 30px;
-				}
-				.children{
-					padding-bottom: 24px;
-					.imgMask{
-						height: 30px;
-					}
-				}
-			}
-	}
+.header {
+  width: 75px;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: var(--color-9);
+  color: var(--light-green);
+  z-index: 9;
+  transition: width 0.5s ease;
+  a {
+    text-decoration: none;
+  }
+  &.show {
+    width: 250px;
+    .arrow {
+      transform: rotate(180deg);
+    }
+    .menuItems {
+      margin-top: 80px;
+    }
+    .imgMask {
+      height: 75px;
+      width: 100px;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    .winkel {
+      margin-top: 0;
+      .imgMask {
+        height: 90px;
+      }
+    }
+    .label {
+      display: block;
+    }
+    .children {
+      display: flex;
+      .imgMask {
+        height: 50px;
+        width: 40px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  .arrow {
+    top: 24px;
+    mask-image: url(/arrow.svg);
+    background-color: var(--light-green);
+    width: 75px;
+    height: 40px;
+    mask-repeat: no-repeat;
+    mask-size: 60% 60%;
+    mask-position: center;
+  }
+  .menuItems {
+    width: 90%;
+    margin: auto;
+    margin-top: 20vh;
+    transition: none;
+  }
+  .winkel {
+    width: 90%;
+    margin: auto;
+    .imgMask {
+      margin-top: 14px;
+      height: 60px;
+    }
+  }
+  .label {
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid var(--light-green);
+    display: block;
+    margin-top: 14px;
+    padding-bottom: 5px;
+    display: none;
+  }
+  .imgMask {
+    background-color: var(--light-green);
+    width: 90%;
+    margin: 24px 5% 0 5%;
+    height: 50px;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center bottom;
+  }
+  .children {
+    display: none;
+    justify-content: space-between;
+    .child {
+      width: 50%;
+    }
+    .label {
+      border: none;
+    }
+    .imgMask {
+      margin-top: 14px;
+    }
+  }
+  @media (max-width: $breakpoint-small) {
+    margin-right: -75px;
+    .arrow {
+      margin-left: -75px;
+    }
+    &.show {
+      margin-right: 0;
+      width: 200px;
+      .winkel {
+        margin-top: -40px;
+        .imgMask {
+          height: 55px;
+        }
+      }
+      .menuItems {
+        margin-top: 40px;
+      }
+      .imgMask {
+        height: 30px;
+      }
+      .children {
+        padding-bottom: 24px;
+        .imgMask {
+          height: 30px;
+        }
+      }
+    }
+  }
 }

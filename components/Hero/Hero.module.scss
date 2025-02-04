@@ -1,52 +1,52 @@
 @import "styles/breakpoints";
 
-.galleryWrapper{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: calc(100vw - 75px);
-	height: 100vh;
-	.gallery{
-		display: flex;
-		width: 100%;
-		height: 100%;
-		img{
-			height: 100%;
-			width: 50%;
-			object-fit: cover;
-		}
-	}
-	.logo{
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 25vw;
-		height: 25vw;
-		background-color: var(--green);
-		border-radius: 50%;
-		padding: 2vw;
-		.maskImg{
-			width: 100%;
-			height: 100%;
-			background-color: var(--lime);
-			mask-image: url(/gagel-logo.svg);
-			mask-size: contain;
-			mask-repeat: no-repeat;
-		}
-	}
-	@media (max-width: $breakpoint-small) {
-		width: 100vw;
-		.gallery{
-			flex-direction: column;
-			img{
-				width: 100%;
-				height: 50%;
-			}
-		}
-		.logo{
-			width: 50vw;
-			height: 50vw;
-		}
-	}
+.galleryWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100vw - 75px);
+  height: 100vh;
+  .gallery {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    img {
+      height: 100%;
+      width: 50%;
+      object-fit: cover;
+    }
+  }
+  .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25vw;
+    height: 25vw;
+    background-color: var(--light-green);
+    border-radius: 50%;
+    padding: 2vw;
+    .maskImg {
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-9);
+      mask-image: url(/gagel-logo.svg);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+    }
+  }
+  @media (max-width: $breakpoint-small) {
+    width: 100vw;
+    .gallery {
+      flex-direction: column;
+      img {
+        width: 100%;
+        height: 50%;
+      }
+    }
+    .logo {
+      width: 50vw;
+      height: 50vw;
+    }
+  }
 }
