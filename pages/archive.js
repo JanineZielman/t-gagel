@@ -1,27 +1,29 @@
-import { useQuery, gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import * as MENUS from '../constants/menus';
 import { BlogInfoFragment } from '../fragments/GeneralSettings';
 import {
   Header,
+  Hero,
   Footer,
   Main,
   Container,
   NavigationMenu,
-  Hero,
   SEO,
 } from '../components';
+import { getNextStaticProps } from '@faustwp/core';
 
-export default function Component() {
-  const { data } = useQuery(Component.query, {
-    variables: Component.variables(),
+export default function Page(props) {
+  const { data } = useQuery(Page.query, {
+    variables: Page.variables(),
   });
+  const title = props.title;
 
-  const { title: siteTitle, description: siteDescription } =
-    data?.generalSettings;
+  const { title: siteTitle, description: siteDescription } = data?.generalSettings;
   const primaryMenu = data?.headerMenuItems?.nodes ?? [];
   const footerMenu = data?.footerMenuItems?.nodes ?? [];
+  const posts = props?.data.posts?.edges ?? [];
 
-  console.log(data)
+  console.log(posts)
 
   return (
     <>
@@ -33,9 +35,16 @@ export default function Component() {
       />
       <Main>
         <Container>
-          <Hero gallery={data.page.homepageGallery} />
-          <div>
-            <p>More sections can go here...</p>
+          <h1>Archief</h1>
+          <div className='post-grid'>
+            {posts.map((item, i) => {
+              return(
+                <a className='post-item' href={`/posts/${item.node.slug}`}>
+                  <img src={item.node.featuredImage?.node.sourceUrl}/>
+                  <h2>{item.node.title}</h2>
+                </a>
+              )
+            })}
           </div>
         </Container>
       </Main>
@@ -44,7 +53,7 @@ export default function Component() {
   );
 }
 
-Component.query = gql`
+Page.query = gql`
   ${BlogInfoFragment}
   ${NavigationMenu.fragments.entry}
   query GetPageData(
@@ -59,36 +68,34 @@ Component.query = gql`
         ...NavigationMenuItemFragment
       }
     }
-    page(id: "/boerderij-t-gagel/", idType: URI) {
-      id
-      homepageGallery {
-        right {
-          edges {
-            node {
-              mediaItemUrl
-            }
-          }
-        }
-        left{
-          edges {
-            node {
-              mediaItemUrl
-            }
-          }
-        }
-      }
-    }
     footerMenuItems: menuItems(where: { location: $footerLocation }) {
       nodes {
         ...NavigationMenuItemFragment
       }
     }
+    posts {
+    edges {
+      node {
+        title
+        slug
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+      }
+    }
+  }
   }
 `;
 
-Component.variables = () => {
+Page.variables = () => {
   return {
     headerLocation: MENUS.PRIMARY_LOCATION,
-    footerLocation: MENUS.FOOTER_LOCATION,
+    footerLocation: MENUS.FOOTER_LOCATION
   };
 };
+
+export function getStaticProps(ctx) {
+  return getNextStaticProps(ctx, {Page, props: {title: 'File Page Example'}});
+}

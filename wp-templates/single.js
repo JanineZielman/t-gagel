@@ -69,12 +69,21 @@ export default function Component(props) {
   const footerMenu = footerMenuItems?.nodes ?? [];
   const { title, content, featuredImage, date, author } = post ?? {};
 
-  console.log(props)
+  console.log(post)
 
   return (
-    <>
-      <iframe src="https://www.landdelen.org/Pages/External/StatusInvestInfoDocs?fundingRoundID=7"/>
-    </>
+    <div className='post'>
+      <Header
+        title={siteTitle}
+        description={siteDescription}
+        menuItems={primaryMenu}
+      />
+      <div className='content-wrapper'>
+        <h1>{title}</h1>
+        <h2>{author.node.name}</h2>
+        <p className='content' dangerouslySetInnerHTML={{ __html: content }}></p>
+      </div>
+    </div>
   );
 }
 
