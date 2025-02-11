@@ -2,31 +2,30 @@
 // These styles are available on all pages.
 // If a component has it's own styles, they can be found within the component's respective directory.
 
-@import 'breakpoints';
-@import 'css-variables';
-@import 'blocks';
-@import 'utilities';
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import "breakpoints";
+@import "css-variables";
+@import "blocks";
+@import "utilities";
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
 
 @font-face {
-  font-family: 'cabinet';
+  font-family: "cabinet";
   src: url(./fonts/CabinetGrotesk-Medium.woff2);
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
-body{
+body {
   background-color: var(--grey);
-  font-family: 'Archivo';
+  font-family: "Archivo";
   margin: 0;
 }
 
-h1{
+h1 {
   text-transform: uppercase;
-  font-family: 'cabinet';
+  font-family: "cabinet";
   font-size: 72px;
   text-align: center;
   line-height: 1;
@@ -34,35 +33,35 @@ h1{
   padding: 24px 0;
 }
 
-h2{
+h2 {
   font-size: 36px;
-  font-family: 'cabinet';
+  font-family: "cabinet";
   text-align: center;
   margin: 0;
 }
 
-p{
+p {
   font-size: 24px;
   line-height: 1.3;
 }
 
-a{
+a {
   color: inherit;
   text-decoration: none;
 }
 
-.post{
+.post {
   background-color: var(--color-6);
   color: var(--dark-red);
-  &.interview{
+  &.interview {
     background-color: var(--color-7);
     color: var(--pink);
   }
-  &.artikelen{
+  &.artikelen {
     background-color: var(--dark-red);
     color: var(--color-6);
   }
-  &.podcast{
+  &.podcast {
     background-color: var(--light-green);
     color: var(--color-9);
   }
@@ -70,80 +69,83 @@ a{
   padding-bottom: 100px;
 }
 
-.content-wrapper{
+.content-wrapper {
   max-width: 800px;
   margin: auto;
   position: relative;
-  h2{
+  h2 {
     margin-top: 60px;
   }
-  .content{
+  .content {
     margin-top: 100px;
     margin-bottom: 0;
-    p:last-of-type{
+    p:last-of-type {
       margin-bottom: 0;
     }
   }
 }
 
-.wp-video{
-  width: 100%!important;
+.wp-video {
+  width: 100% !important;
   padding: 24px 0;
 }
 
-iframe, video{
+iframe,
+video {
   width: 100%;
   height: 100%;
   aspect-ratio: 16/9;
 }
 
-.post-grid{
-  max-width: calc(100vw - 75px);
+.post-grid {
+  max-width: calc(100vw - 275px );
+  position: relative;
+  left: 200px;
   padding: 0 14px;
   display: flex;
   flex-wrap: wrap;
-  .post-item{
+  .post-item {
     width: 31%;
     margin: 1%;
     padding: 14px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    &.interview{
+    &.interview {
       background-color: var(--color-7);
       color: var(--pink);
-      & .img-wrapper{
+      & .img-wrapper {
         background-color: var(--color-7);
-        &:before{
-          background-color:  var(--pink);
+        &:before {
+          background-color: var(--pink);
         }
       }
     }
-    &.artikelen{
+    &.artikelen {
       background-color: var(--dark-red);
       color: var(--color-6);
-      & .img-wrapper{
+      & .img-wrapper {
         background-color: var(--dark-red);
-        &:before{
-          background-color:  var(--color-6);
+        &:before {
+          background-color: var(--color-6);
         }
       }
     }
-    &.podcast{
+    &.podcast {
       background-color: var(--light-green);
       color: var(--color-9);
-      & .img-wrapper{
+      & .img-wrapper {
         background-color: var(--light-green);
-        &:before{
-          background-color:  var(--color-9);
+        &:before {
+          background-color: var(--color-9);
         }
       }
     }
-    
-    .img-wrapper{
+
+    .img-wrapper {
       position: relative;
     }
-    .img-wrapper img{
+    .img-wrapper img {
       filter: grayscale(100%) contrast(1);
       height: 100%;
       max-width: 100%;
@@ -152,9 +154,9 @@ iframe, video{
       position: relative;
       width: 100%;
     }
-    .img-wrapper:before{
+    .img-wrapper:before {
       bottom: 0;
-      content: '';
+      content: "";
       height: 100%;
       left: 0;
       mix-blend-mode: multiply;
@@ -165,13 +167,13 @@ iframe, video{
       z-index: 1;
       opacity: 0.75;
     }
-    p{
+    p {
       font-size: 18px;
     }
-    span{
+    span {
       font-size: 20px;
     }
-    h2{
+    h2 {
       text-align: left;
       margin-bottom: 24px;
       line-height: 1;
