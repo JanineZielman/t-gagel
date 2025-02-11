@@ -97,11 +97,11 @@ iframe, video{
     justify-content: space-between;
     &.interview{
       background-color: var(--color-7);
-      color: var(--grey);
+      color: var(--pink);
       & .img-wrapper{
         background-color: var(--color-7);
         &:before{
-          background-color:  var(--grey);
+          background-color:  var(--pink);
         }
       }
     }
