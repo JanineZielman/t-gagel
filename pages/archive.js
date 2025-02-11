@@ -1,7 +1,8 @@
-import { gql, useQuery } from '@apollo/client';
-import * as MENUS from '../constants/menus';
-import { BlogInfoFragment } from '../fragments/GeneralSettings';
+import { gql, useQuery } from "@apollo/client"
+import * as MENUS from "../constants/menus"
+import { BlogInfoFragment } from "../fragments/GeneralSettings"
 import {
+  ArchiveMenu,
   Header,
   Hero,
   Footer,
@@ -9,19 +10,20 @@ import {
   Container,
   NavigationMenu,
   SEO,
-} from '../components';
-import { getNextStaticProps } from '@faustwp/core';
+} from "../components"
+import { getNextStaticProps } from "@faustwp/core"
 
 export default function Page(props) {
   const { data } = useQuery(Page.query, {
     variables: Page.variables(),
-  });
-  const title = props.title;
+  })
+  const title = props.title
 
-  const { title: siteTitle, description: siteDescription } = data?.generalSettings;
-  const primaryMenu = data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = data?.footerMenuItems?.nodes ?? [];
-  const posts = props?.data.posts?.edges ?? [];
+  const { title: siteTitle, description: siteDescription } =
+    data?.generalSettings
+  const primaryMenu = data?.headerMenuItems?.nodes ?? []
+  const footerMenu = data?.footerMenuItems?.nodes ?? []
+  const posts = props?.data.posts?.edges ?? []
 
   console.log(posts)
 
@@ -35,12 +37,13 @@ export default function Page(props) {
       />
       <Main>
         <Container>
+          <ArchiveMenu />
           <h1>Archief</h1>
-          <div className='post-grid'>
+          <div className="post-grid">
             {posts.map((item, i) => {
-              return(
-                <a className='post-item' href={`/posts/${item.node.slug}`}>
-                  <img src={item.node.featuredImage?.node.sourceUrl}/>
+              return (
+                <a className="post-item" href={`/posts/${item.node.slug}`}>
+                  <img src={item.node.featuredImage?.node.sourceUrl} />
                   <h2>{item.node.title}</h2>
                 </a>
               )
@@ -50,7 +53,7 @@ export default function Page(props) {
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />
     </>
-  );
+  )
 }
 
 Page.query = gql`
@@ -87,15 +90,18 @@ Page.query = gql`
       }
     }
   }
-`;
+`
 
 Page.variables = () => {
   return {
     headerLocation: MENUS.PRIMARY_LOCATION,
-    footerLocation: MENUS.FOOTER_LOCATION
-  };
-};
+    footerLocation: MENUS.FOOTER_LOCATION,
+  }
+}
 
 export function getStaticProps(ctx) {
-  return getNextStaticProps(ctx, {Page, props: {title: 'File Page Example'}});
+  return getNextStaticProps(ctx, {
+    Page,
+    props: { title: "File Page Example" },
+  })
 }
