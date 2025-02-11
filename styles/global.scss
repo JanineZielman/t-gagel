@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'cabinet';
-  src: url(./fonts/CabinetGrotesk-Bold.woff2);
+  src: url(./fonts/CabinetGrotesk-Medium.woff2);
 }
 
 *{
@@ -85,15 +85,86 @@ iframe, video{
 
 .post-grid{
   max-width: calc(100vw - 75px);
-  padding: 24px 14px;
+  padding: 0 14px;
   display: flex;
   flex-wrap: wrap;
   .post-item{
     width: 31%;
     margin: 1%;
-    img{
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &.interview{
+      background-color: var(--color-7);
+      color: var(--grey);
+      & .img-wrapper{
+        background-color: var(--color-7);
+        &:before{
+          background-color:  var(--grey);
+        }
+      }
+    }
+    &.artikelen{
+      background-color: var(--dark-red);
+      color: var(--color-6);
+      & .img-wrapper{
+        background-color: var(--dark-red);
+        &:before{
+          background-color:  var(--color-6);
+        }
+      }
+    }
+    &.podcast{
+      background-color: var(--light-green);
+      color: var(--color-9);
+      & .img-wrapper{
+        background-color: var(--light-green);
+        &:before{
+          background-color:  var(--color-9);
+        }
+      }
+    }
+    
+    .img-wrapper{
+      position: relative;
+    }
+    .img-wrapper img{
+      filter: grayscale(100%) contrast(1);
+      height: 100%;
+      max-width: 100%;
+      mix-blend-mode: lighten;
+      object-fit: cover;
+      position: relative;
       width: 100%;
-      height: auto;
+    }
+    .img-wrapper:before{
+      bottom: 0;
+      content: '';
+      height: 100%;
+      left: 0;
+      mix-blend-mode: multiply;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+      opacity: 0.75;
+    }
+    p{
+      font-size: 18px;
+    }
+    span{
+      font-size: 20px;
+    }
+    h2{
+      text-align: left;
+      margin-bottom: 24px;
+      line-height: 1;
+      margin-top: 14px;
+      text-transform: uppercase;
+      font-weight: 300;
+      font-size: 48px;
     }
   }
 }

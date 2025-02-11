@@ -39,9 +39,17 @@ export default function Component() {
           <div className='post-grid'>
             {posts.slice(0,3).map((item, i) => {
               return(
-                <a className='post-item' href={`/posts/${item.node.slug}`}>
-                  <img src={item.node.featuredImage?.node.sourceUrl}/>
-                  <h2>{item.node.title}</h2>
+                <a className={`post-item ${item.node.categories.edges[0].node.name.toLowerCase()}`} href={`/posts/${item.node.slug}`}>
+                  <div>
+                    <span className='category'>{item.node.categories.edges[0].node.name}</span>
+                    <h2>{item.node.title}</h2>
+                  </div>
+                  <div>
+                    <p>{item.node.author.node.name}</p>
+                    <div className='img-wrapper'>
+                      <img src={item.node.featuredImage?.node.sourceUrl}/>
+                    </div>
+                  </div>
                 </a>
               )
             })}
@@ -95,6 +103,18 @@ Component.query = gql`
           featuredImage {
             node {
               sourceUrl
+            }
+          }
+          author {
+            node {
+              name
+            }
+          }
+          categories {
+            edges {
+              node {
+                name
+              }
             }
           }
         }
