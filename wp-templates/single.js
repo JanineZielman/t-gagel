@@ -49,6 +49,13 @@ const GET_POST_QUERY = gql`
           name
         }
       }
+      categories {
+        edges {
+          node {
+            name
+          }
+        }
+      }
       ...FeaturedImageFragment
     }
   }
@@ -72,7 +79,7 @@ export default function Component(props) {
   console.log(post)
 
   return (
-    <div className='post'>
+    <div className={`post ${post.categories.edges[0].node.name.toLowerCase()}`}>
       <Header
         title={siteTitle}
         description={siteDescription}

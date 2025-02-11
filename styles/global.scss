@@ -54,6 +54,18 @@ a{
 .post{
   background-color: var(--color-6);
   color: var(--dark-red);
+  &.interview{
+    background-color: var(--color-7);
+    color: var(--pink);
+  }
+  &.artikelen{
+    background-color: var(--dark-red);
+    color: var(--color-6);
+  }
+  &.podcast{
+    background-color: var(--light-green);
+    color: var(--color-9);
+  }
 }
 
 .content-wrapper{
