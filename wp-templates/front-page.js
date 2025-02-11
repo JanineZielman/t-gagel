@@ -20,6 +20,7 @@ export default function Component() {
     data?.generalSettings;
   const primaryMenu = data?.headerMenuItems?.nodes ?? [];
   const footerMenu = data?.footerMenuItems?.nodes ?? [];
+  const posts = data.posts?.edges ?? [];
 
   console.log(data)
 
@@ -34,8 +35,16 @@ export default function Component() {
       <Main>
         <Container>
           <Hero gallery={data.page.homepageGallery} />
-          <div>
-            <p>More sections can go here...</p>
+          <h1>Recent</h1>
+          <div className='post-grid'>
+            {posts.slice(0,3).map((item, i) => {
+              return(
+                <a className='post-item' href={`/posts/${item.node.slug}`}>
+                  <img src={item.node.featuredImage?.node.sourceUrl}/>
+                  <h2>{item.node.title}</h2>
+                </a>
+              )
+            })}
           </div>
         </Container>
       </Main>
@@ -73,6 +82,19 @@ Component.query = gql`
           edges {
             node {
               mediaItemUrl
+            }
+          }
+        }
+      }
+    }
+    posts {
+      edges {
+        node {
+          title
+          slug
+          featuredImage {
+            node {
+              sourceUrl
             }
           }
         }

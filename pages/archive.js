@@ -74,18 +74,18 @@ Page.query = gql`
       }
     }
     posts {
-    edges {
-      node {
-        title
-        slug
-        featuredImage {
-          node {
-            sourceUrl
+      edges {
+        node {
+          title
+          slug
+          featuredImage {
+            node {
+              sourceUrl
+            }
           }
         }
       }
     }
-  }
   }
 `;
 
