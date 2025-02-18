@@ -1,2 +1,31 @@
 .menu {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 40px;
+  display: flex
+;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  position: fixed;
+  background-color: var(--color-9);
+  z-index: 10;
+  /* width: 25vw; */
+  width: 200px;
+
+}
+
+.sumMenu {
+}
+
+.subMenuTitle {
+  font-weight: bold;
+  font-size: 22px;
+  color: var(--dark-green);
+}
+
+.toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

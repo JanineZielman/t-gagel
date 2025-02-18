@@ -6,15 +6,29 @@ export default function ArchiveMenu({}) {
   return (
     <div className={styles.menu}>
       <div>logo</div>
-      <div>
-        <div>Categorien</div>
-
-        {/* <label class="switch">
-          <input type="checkbox" />
-          <span class="slider"></span>
-        </label> */}
-
-        <Toggle />
+      <div className={styles.sumMenu}>
+        <div className={styles.subMenuTitle}>Categorien</div>
+        <div className={styles.toggles}>
+          <Toggle />
+          <Toggle />
+          <Toggle />
+          <Toggle />
+          <Toggle />
+          <Toggle />
+          <Toggle />
+        </div>
+      </div>
+      <div className={styles.sumMenu}>
+        <div className={styles.subMenuTitle}>andere dingen</div>
+        <div className={styles.toggles}>
+          <Toggle />
+          <Toggle />
+          <Toggle />
+          <Toggle />
+          <Toggle />
+          <Toggle />
+          <Toggle />
+        </div>
       </div>
     </div>
   )

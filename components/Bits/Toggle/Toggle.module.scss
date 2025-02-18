@@ -1,15 +1,27 @@
-.switch {
+.labelText {
   position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 27px;
-  margin: 30px;
+  left: 72px;
+  color: rgba(0, 0, 0, 0.40);
 }
 
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+.switch {
+  display: flex;
+  position: relative;
+
+  width: 60px;
+  height: 27px;
+  align-items: center;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    // Target .labelText when input is checked
+    &:checked ~ .labelText {
+      color: black;
+    }
+  }
 }
 
 .slider {
@@ -19,10 +31,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
   border: 1px solid var(--dark-green);
 }
+
 .slider:before {
   position: absolute;
   content: "";
@@ -31,23 +43,14 @@
   left: -13px;
   background-color: var(--dark-green);
   border-radius: 50%;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
+// Change slider background and move handle when checked
 input:checked + .slider {
   // background-color: var(--dark-green);
 }
-input:checked + .dark {
-  background-color: var(--dark-green);
-}
-
-input:focus + .slider {
-  // box-shadow: 0 0 1px #2196f3;
-}
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(60px);
-  -ms-transform: translateX(60px);
   transform: translateX(60px);
 }
