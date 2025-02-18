@@ -16,22 +16,12 @@ export default function Header({
   return (
     <header className={`${styles.header} ${isNavShown ? styles.show : ''}`}>
       <div className={styles.arrow} onClick={() => setIsNavShown(!isNavShown)}></div>
-      <div className={styles.winkel}>
-        {hierarchicalMenuItems.slice(0,1).map((item, i) => {
-          return(
-            <Link href={item.path} key={i}> 
-              <div className={styles.imgMask} style={{maskImage:`url(/${item.label.toLowerCase()}.svg)`}}></div>
-              <div className={styles.label}>{item.label}</div>
-            </Link>
-          )
-        })}
-      </div>
       <div className={styles.menuItems}>
-        {hierarchicalMenuItems.slice(1).map((item, i) => {
+        {hierarchicalMenuItems.map((item, i) => {
           return(
             <div>
               <Link href={item.path} key={i}> 
-                <div className={styles.imgMask} style={{maskImage:`url(/${item.label.toLowerCase()}.svg)`}}></div>
+                <div className={styles.imgMask} style={{maskImage:`url(/${item.label.toLowerCase().replaceAll(' ', '-')}.svg)`}}></div>
                 <div className={styles.label}>{item.label}</div>
               </Link>
               <div className={styles.children}>
@@ -39,7 +29,7 @@ export default function Header({
                   return(
                     <div className={styles.child}>
                       <Link href={child.path} key={i}> 
-                        <div className={styles.imgMask} style={{maskImage:`url(/${child.label.toLowerCase()}.svg)`}}></div>
+                        {/* <div className={styles.imgMask} style={{maskImage:`url(/${child.label.toLowerCase()}.svg)`}}></div> */}
                         <div className={styles.label}>{child.label}</div>
                       </Link>
                     </div>

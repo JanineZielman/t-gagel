@@ -87,12 +87,16 @@
     mask-repeat: no-repeat;
     mask-size: contain;
     mask-position: center bottom;
+    display: block;
   }
   .children {
     display: none;
-    justify-content: space-between;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+    flex-direction: column;
     .child {
-      width: 50%;
+      width: 100%;
     }
     .label {
       border: none;

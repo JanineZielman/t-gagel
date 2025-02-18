@@ -82,7 +82,7 @@ Component.query = gql`
         ...NavigationMenuItemFragment
       }
     }
-    headerMenuItems: menuItems(where: { location: $headerLocation }) {
+    headerMenuItems: menuItems(where: { location: $headerLocation } first: 50) {
       nodes {
         ...NavigationMenuItemFragment
       }
