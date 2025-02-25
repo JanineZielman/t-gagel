@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
-import * as MENUS from '../constants/menus';
-import { BlogInfoFragment } from '../fragments/GeneralSettings';
+import { gql } from "@apollo/client"
+import * as MENUS from "../constants/menus"
+import { BlogInfoFragment } from "../fragments/GeneralSettings"
 import {
   Header,
   Footer,
@@ -11,19 +11,21 @@ import {
   NavigationMenu,
   FeaturedImage,
   SEO,
-} from '../components';
+} from "../components"
 
 export default function Component(props) {
   // Loading state for previews
   if (props.loading) {
-    return <>Loading...</>;
+    return <>Loading...</>
   }
 
   const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings;
-  const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { title, content, featuredImage } = props?.data?.page ?? { title: '' };
+    props?.data?.generalSettings
+  const primaryMenu = props?.data?.headerMenuItems?.nodes ?? []
+  const footerMenu = props?.data?.footerMenuItems?.nodes ?? []
+  const { title, content, featuredImage } = props?.data?.page ?? { title: "" }
+
+  const cleanedContent = content ? content.replace(/\s?align(left|right|center)/g, "") : ""
 
   return (
     <>
@@ -41,13 +43,13 @@ export default function Component(props) {
         <>
           <EntryHeader title={title} image={featuredImage?.node} />
           <Container>
-            <ContentWrapper content={content} />
+            <ContentWrapper content={cleanedContent} />
           </Container>
         </>
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />
     </>
-  );
+  )
 }
 
 Component.variables = ({ databaseId }, ctx) => {
@@ -56,8 +58,8 @@ Component.variables = ({ databaseId }, ctx) => {
     headerLocation: MENUS.PRIMARY_LOCATION,
     footerLocation: MENUS.FOOTER_LOCATION,
     asPreview: ctx?.asPreview,
-  };
-};
+  }
+}
 
 Component.query = gql`
   ${BlogInfoFragment}
@@ -82,10 +84,13 @@ Component.query = gql`
         ...NavigationMenuItemFragment
       }
     }
-    headerMenuItems: menuItems(where: { location: $headerLocation } first: 50) {
+    headerMenuItems: menuItems(
+      where: { location: $headerLocation }
+      first: 50
+    ) {
       nodes {
         ...NavigationMenuItemFragment
       }
     }
   }
-`;
+`

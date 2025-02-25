@@ -97,8 +97,13 @@ video {
   aspect-ratio: 16/9;
 }
 
+img {
+  min-width: 100%;
+  height: auto;
+}
+
 .post-grid {
-  max-width: calc(100vw - 275px );
+  max-width: calc(100vw - 275px);
   position: relative;
   left: 200px;
   padding: 0 14px;
@@ -183,4 +188,8 @@ video {
       font-size: 48px;
     }
   }
+}
+
+.site {
+  // display: flex;
 }
