@@ -35,28 +35,42 @@ export default function Component() {
       <Main>
         <Container>
           <Hero gallery={data.page.homepageGallery} />
-          <h1>Recent</h1>
-          <div className='post-grid'>
-            {posts.slice(0,3).map((item, i) => {
-              return(
-                <a className={`post-item ${item.node.categories.edges[0].node.name.toLowerCase()}`} href={`/posts/${item.node.slug}`}>
-                  <div>
-                    <span className='category'>{item.node.categories.edges[0].node.name}</span>
-                    <h2>{item.node.title}</h2>
-                  </div>
-                  <div>
-                    <p>{item.node.author.node.name}</p>
-                    <div className='img-wrapper'>
-                      <img src={item.node.featuredImage?.node.sourceUrl}/>
+          <div className='home'>
+            <div
+              className={'introText'}
+              dangerouslySetInnerHTML={{ __html: data.page.content }}
+            />
+            <div className='post-grid'>
+              {posts.slice(0,3).map((item, i) => {
+                return(
+                  <a className={`post-item ${item.node.categories.edges[0].node.name.toLowerCase()}`} href={`/posts/${item.node.slug}`}>
+                    <div>
+                      <span className='category'>{item.node.categories.edges[0].node.name}</span>
+                      <h2>{item.node.title}</h2>
                     </div>
+                    <div>
+                      <p>{item.node.author.node.name}</p>
+                      <div className='img-wrapper'>
+                        <img src={item.node.featuredImage?.node.sourceUrl}/>
+                      </div>
+                    </div>
+                  </a>
+                )
+              })}
+            </div>
+            <div className='sections'>
+              {data.page.textSection.sections.map((item,i) => {
+                return(
+                  <div  className={'textSection'}>
+                    <div dangerouslySetInnerHTML={{ __html: item.textSection }}/>
                   </div>
-                </a>
-              )
-            })}
+                )
+              })}
+            </div>
           </div>
         </Container>
       </Main>
-      <Footer title={siteTitle} menuItems={footerMenu} />
+      <Footer title={siteTitle} menuItems={footerMenu} footer={data.menu.footer.footer} />
     </>
   );
 }
@@ -78,20 +92,19 @@ Component.query = gql`
     }
     page(id: "/boerderij-t-gagel/", idType: URI) {
       id
+      content
       homepageGallery {
-        right {
+        gallery {
           edges {
             node {
               mediaItemUrl
             }
           }
         }
-        left{
-          edges {
-            node {
-              mediaItemUrl
-            }
-          }
+      }
+      textSection {
+        sections {
+          textSection
         }
       }
     }
@@ -118,6 +131,12 @@ Component.query = gql`
             }
           }
         }
+      }
+    }
+    menu(id: "footer", idType: LOCATION) {
+      id
+      footer {
+        footer
       }
     }
     footerMenuItems: menuItems(where: { location: $footerLocation }) {

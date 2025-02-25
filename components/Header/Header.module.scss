@@ -6,8 +6,8 @@
   position: fixed;
   right: 0;
   top: 0;
-  background-color: var(--color-9);
-  color: var(--light-green);
+  background-color: var(--light-green);
+  color: var(--green);
   z-index: 9;
   transition: width 0.5s ease;
   a {
@@ -49,7 +49,7 @@
   .arrow {
     top: 24px;
     mask-image: url(/arrow.svg);
-    background-color: var(--light-green);
+    background-color: var(--green);
     width: 75px;
     height: 40px;
     mask-repeat: no-repeat;
@@ -73,14 +73,14 @@
   .label {
     text-align: center;
     width: 100%;
-    border-bottom: 1px solid var(--light-green);
+    border-bottom: 1px solid var(--green);
     display: block;
     margin-top: 14px;
     padding-bottom: 5px;
     display: none;
   }
   .imgMask {
-    background-color: var(--light-green);
+    background-color: var(--green);
     width: 90%;
     margin: 24px 5% 0 5%;
     height: 50px;

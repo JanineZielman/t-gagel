@@ -1,52 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Hero.module.scss';
 
 export default function Hero({ gallery = {} }) {
-  // Provide fallback for gallery.left.edges and gallery.right.edges
-  const leftImages = gallery?.left?.edges || [];
-  const rightImages = gallery?.right?.edges || [];
-
-  // Set initial state only if there are images
-  const [currentImages, setCurrentImages] = useState({
-    left: leftImages[0]?.node?.mediaItemUrl || '',
-    right: rightImages[0]?.node?.mediaItemUrl || '',
-  });
+  const mediaItems = gallery?.gallery?.edges || [];
+  const [currentMedia, setCurrentMedia] = useState(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    if (leftImages.length === 0 || rightImages.length === 0) {
-      console.warn('Gallery does not have the required structure or is empty.');
+    if (mediaItems.length === 0) {
+      console.warn('Gallery is empty or does not have the expected structure.');
       return;
     }
 
+    const getRandomMedia = () => mediaItems[Math.floor(Math.random() * mediaItems.length)]?.node?.mediaItemUrl || '';
+
+    const setNextMedia = () => {
+      setCurrentMedia(getRandomMedia());
+    };
+
+    setNextMedia(); // Set initial media
+
     const interval = setInterval(() => {
-      // Randomize a new combination of images
-      const randomLeftIndex = Math.floor(Math.random() * leftImages.length);
-      const randomRightIndex = Math.floor(Math.random() * rightImages.length);
+      setNextMedia();
+    }, 5000); // Change every 5 seconds (for images)
 
-      setCurrentImages({
-        left: leftImages[randomLeftIndex]?.node?.mediaItemUrl || '',
-        right: rightImages[randomRightIndex]?.node?.mediaItemUrl || '',
-      });
-    }, 5000); // Update every 5 seconds
+    return () => clearInterval(interval);
+  }, [mediaItems]);
 
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, [leftImages, rightImages]);
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.onended = () => {
+        setCurrentMedia(mediaItems[Math.floor(Math.random() * mediaItems.length)]?.node?.mediaItemUrl || '');
+      };
+    }
+  }, [currentMedia, mediaItems]);
 
-  // Early return if no images are available
-  if (leftImages.length === 0 || rightImages.length === 0) {
-    return (
-      <div className={styles.galleryWrapper}>
-        <p>No images available to display.</p>
-      </div>
-    );
+  if (!currentMedia) {
+    return <div className={styles.galleryWrapper}><p>No media available to display.</p></div>;
   }
 
   return (
     <div className={styles.galleryWrapper}>
       <div className={styles.gallery}>
-        <img src={currentImages.left} alt="Randomized left" />
-        <img src={currentImages.right} alt="Randomized right" />
+        {currentMedia.endsWith('.mp4') ? (
+          <video 
+            ref={videoRef} 
+            src={currentMedia} 
+            autoPlay 
+            playsInline 
+            muted
+            loop
+            className={styles.media} 
+            onEnded={() => setCurrentMedia(mediaItems[Math.floor(Math.random() * mediaItems.length)]?.node?.mediaItemUrl || '')}
+          />
+        ) : (
+          <img src={currentMedia} alt="Gallery item" className={styles.media} />
+        )}
       </div>
+      {/* Keeping your logo here */}
       <div className={styles.logo}>
         <div className={styles.maskImg}></div>
       </div>

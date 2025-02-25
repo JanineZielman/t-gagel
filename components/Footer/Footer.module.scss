@@ -1,11 +1,17 @@
 .component {
-	color: var(--wpe--footer--color);
-	background: var(--wpe--footer--background-color);
-	padding-top: var(--wpe--section--padding-y);
-	padding-bottom: var(--wpe--section--padding-y);
+	color: var(--light-green);
+	background: var(--green);
+	padding-top: 24px;
+	padding-bottom: 24px;
 }
 
 .copyright {
 	margin: 2rem 0;
 	text-align: center;
+}
+.footerText{
+	text-align: center;
+	p{
+		font-size: 18px;
+	}
 }

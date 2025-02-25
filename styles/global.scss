@@ -34,7 +34,7 @@ h1 {
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 34px;
   font-family: "cabinet";
   text-align: center;
   margin: 0;
@@ -51,26 +51,24 @@ a {
 }
 
 .post {
-  background-color: var(--color-6);
-  color: var(--dark-red);
   &.interview {
-    background-color: var(--color-7);
-    color: var(--pink);
+    background-color: var(--green);
+    color: var(--light-green);
   }
   &.artikelen {
-    background-color: var(--dark-red);
-    color: var(--color-6);
+    background-color: var(--ontvangen-brown);
+    color: var(--ontvangen-blue);
   }
   &.podcast {
-    background-color: var(--light-green);
-    color: var(--color-9);
+    background-color: var(--brown);
+    color: var(--pink);
   }
   padding-top: 24px;
   padding-bottom: 100px;
 }
 
 .content-wrapper {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   position: relative;
   h2 {
@@ -82,6 +80,13 @@ a {
     p:last-of-type {
       margin-bottom: 0;
     }
+  }
+  figure{
+    width: 100%!important;
+    height: auto;
+  }
+  figcaption{
+    font-size: 75%;
   }
 }
 
@@ -112,37 +117,37 @@ img {
   .post-item {
     width: 31%;
     margin: 1%;
-    padding: 14px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     &.interview {
-      background-color: var(--color-7);
-      color: var(--pink);
+      background-color: var(--green);
+      color: var(--light-green);
       & .img-wrapper {
-        background-color: var(--color-7);
+        background-color: var(--green);
         &:before {
-          background-color: var(--pink);
+          background-color: var(--light-green);
         }
       }
     }
     &.artikelen {
-      background-color: var(--dark-red);
-      color: var(--color-6);
+      background-color: var(--ontvangen-brown);
+      color: var(--ontvangen-blue);
       & .img-wrapper {
-        background-color: var(--dark-red);
+        background-color: var(--ontvangen-brown);
         &:before {
-          background-color: var(--color-6);
+          background-color: var(--ontvangen-blue);
         }
       }
     }
     &.podcast {
-      background-color: var(--light-green);
-      color: var(--color-9);
+      background-color: var(--brown);
+      color: var(--pink);
       & .img-wrapper {
-        background-color: var(--light-green);
+        background-color: var(--brown);
         &:before {
-          background-color: var(--color-9);
+          background-color: var(--pink);
         }
       }
     }
@@ -185,11 +190,56 @@ img {
       margin-top: 14px;
       text-transform: uppercase;
       font-weight: 300;
-      font-size: 48px;
     }
   }
 }
 
-.site {
-  // display: flex;
+.home {
+  blockquote p{
+    i{
+      font-size: 30px;
+    }
+    font-size: 18px;
+    padding: 24px 0;
+    &:nth-child(2){
+      text-align: right;
+    }
+  }
+  .post-grid{
+    left: 0;
+    max-width: 100%;
+    padding-bottom: 48px;
+  }
+}
+
+
+.introText{
+  max-width: 900px;
+  margin: auto;
+  padding-top: 48px;
+}
+
+.sections{
+  .textSection{
+    padding: 48px 0 92px 0;
+    &:nth-child(1){
+      background-color: var(--boeren-green);
+    }
+    &:nth-child(2){
+      background-color: var(--ontvangen-blue);
+    }
+    div{
+      max-width: 900px;
+      margin: auto;
+    }
+  }
+}
+
+main{
+  min-height: 100vh;
+}
+
+blockquote p{
+  font-size: 48px;
+  padding: 36px 0;
 }

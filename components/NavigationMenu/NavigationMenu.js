@@ -59,7 +59,11 @@ NavigationMenu.fragments = {
       menu {
         node {
           name
+          footer {
+            footer
+          }
         }
+          
       }
     }
   `,

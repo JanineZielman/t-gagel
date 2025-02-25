@@ -4,12 +4,16 @@ import styles from './Footer.module.scss';
 
 let cx = classNames.bind(styles);
 
-export default function Footer({ title, menuItems }) {
+export default function Footer({ title, menuItems, footer }) {
   const year = new Date().getFullYear();
 
   return (
     <footer className={cx('component')}>
       <Container>
+        <div
+          className={styles.footerText}
+          dangerouslySetInnerHTML={{ __html: footer }}
+        />
         <NavigationMenu menuItems={menuItems} />
         {/* <p className={cx('copyright')}>{`${title} © ${year}. Powered by WordPress.`}</p> */}
       </Container>
