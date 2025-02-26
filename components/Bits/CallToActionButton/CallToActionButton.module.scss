@@ -11,10 +11,10 @@
 .text {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 45%;
   transform: translate(-50%, -50%);
-  color: var(--color-9); // Adjust the color as needed
+  color: var(--light-green); // Adjust the color as needed
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 2.5rem;
   width: 500px;
 }

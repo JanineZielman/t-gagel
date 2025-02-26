@@ -4,6 +4,7 @@ import Link from "next/link"
 
 const CallToActionButton = ({ children, link }) => {
   return (
+    <div>
     <Link href={link} className={styles.callToActionButton}>
       <svg
         width="415"
@@ -20,6 +21,7 @@ const CallToActionButton = ({ children, link }) => {
       </svg>
       <div className={styles.text}>{children}</div>
     </Link>
+    </div>
   )
 }
 

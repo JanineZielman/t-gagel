@@ -118,6 +118,12 @@ img {
   height: auto;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .post-grid {
   max-width: calc(100vw - 275px);
   position: relative;
@@ -206,6 +212,10 @@ img {
 }
 
 .home {
+
+  display: flex;
+  flex-direction: column;
+
   blockquote p{
     i{
       font-size: 30px;
