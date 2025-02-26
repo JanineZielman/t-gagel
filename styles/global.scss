@@ -84,6 +84,7 @@ a {
 }
 
 .content-wrapper {
+  padding: 0 14px;
   max-width: 900px;
   margin: auto;
   position: relative;
@@ -303,7 +304,7 @@ blockquote p{
 
 @media (max-width: 768px) {
   h1{
-    font-size: 48px;
+    font-size: 40px;
   }
   p{
     font-size: 18px;
@@ -322,6 +323,15 @@ blockquote p{
     .card{
       width: 40%;
       margin-bottom: 48px;
+    }
+  }
+  blockquote {
+    width: 905;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    p{
+      font-size: 36px;
+      width: 100%;
     }
   }
 }
