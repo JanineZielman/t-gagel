@@ -6,12 +6,13 @@
 .svg {
   display: block;
   width: 500px;
+  margin-left: 50px;
 }
 
 .text {
   position: absolute;
   top: 50%;
-  left: 45%;
+  left: 50%;
   transform: translate(-50%, -50%);
   color: var(--light-green); // Adjust the color as needed
   text-align: center;

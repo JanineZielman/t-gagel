@@ -227,6 +227,7 @@ img {
     }
   }
   .post-grid{
+    justify-content: center;
     left: 0;
     max-width: 100%;
     padding-bottom: 48px;
@@ -244,14 +245,20 @@ img {
   .textSection{
     padding: 48px 0 92px 0;
     &:nth-child(1){
-      background-color: var(--boeren-green);
+      background-color: var(--green);
     }
     &:nth-child(2){
-      background-color: var(--ontvangen-blue);
+      background-color: var(--light-green);
     }
     div{
       max-width: 900px;
       margin: auto;
+    }
+    .center{
+      margin: auto;
+      display: block;
+      margin-top: 48px;
+      text-align: center;
     }
     .cards{
       display: flex;

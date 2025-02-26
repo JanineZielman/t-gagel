@@ -63,19 +63,37 @@ export default function Component() {
                   </a>
                 )
               })}
+              <CallToActionButton className="center" link="/archive">
+                Archief
+              </CallToActionButton>
             </div>
 
-            <CallToActionButton className="center" link="/archive">
-              Archief
-            </CallToActionButton>
 
-            <div className="sections">
-              {data.page.textSection.sections.map((item, i) => {
-                return (
-                  <div className={"textSection"}>
-                    <div
-                      dangerouslySetInnerHTML={{ __html: item.textSection }}
-                    />
+
+            <div className='sections'>
+              {data.page.textSection.sections.map((item,i) => {
+                return(
+                  <div  className={'textSection'}>
+                    <div dangerouslySetInnerHTML={{ __html: item.textSection }}/>
+                    {item.card &&
+                      <div className='cards'>
+                        {item.card.map((cardItem, j) => {
+                          return(
+                            <div className='card'>
+                              <img src={cardItem.image.node.mediaItemUrl}/>
+                              <h2>{cardItem.title}</h2>
+                            </div>
+                          )
+                        })}
+                      </div>
+                    }
+                    {item.linkpage &&
+                      <div className="center">
+                        <CallToActionButton link={item.linkpage.url.replace('https://gagel.janinezielman.com', '')}>
+                          Lees meer
+                        </CallToActionButton>
+                      </div>
+                    }
                   </div>
                 )
               })}
@@ -124,7 +142,20 @@ Component.query = gql`
       }
       textSection {
         sections {
-          textSection
+        textSection
+          linkpage {
+            target
+            title
+            url
+          }
+          card {
+            title
+            image {
+              node {
+                mediaItemUrl
+              }
+            }
+          }
         }
       }
     }
