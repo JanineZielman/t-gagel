@@ -12,6 +12,7 @@ import {
   FeaturedImage,
   SEO,
 } from "../components"
+import { HomeButton } from "../components/Bits/HomeButton"
 
 export default function Component(props) {
   // Loading state for previews
@@ -25,7 +26,9 @@ export default function Component(props) {
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? []
   const { title, content, featuredImage } = props?.data?.page ?? { title: "" }
 
-  const cleanedContent = content ? content.replace(/\s?align(left|right|center)/g, "") : ""
+  const cleanedContent = content
+    ? content.replace(/\s?align(left|right|center)/g, "")
+    : ""
 
   return (
     <>
@@ -41,6 +44,7 @@ export default function Component(props) {
       />
       <Main>
         <>
+          <HomeButton />
           <EntryHeader title={title} image={featuredImage?.node} />
           <Container>
             <ContentWrapper content={cleanedContent} />
