@@ -28,6 +28,11 @@
   box-sizing: border-box;
 }
 
+html,body{
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--grey);
   font-family: "Archivo";
@@ -294,4 +299,29 @@ main{
 blockquote p{
   font-size: 48px;
   padding: 36px 0;
+}
+
+@media (max-width: 768px) {
+  h1{
+    font-size: 48px;
+  }
+  p{
+    font-size: 18px;
+  }
+  h2{
+    font-size: 28px;
+  }
+  .introText{
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .textSection p{
+    padding: 0 14px;
+  }
+  .sections .textSection .cards{
+    .card{
+      width: 40%;
+      margin-bottom: 48px;
+    }
+  }
 }

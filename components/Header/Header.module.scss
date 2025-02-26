@@ -85,7 +85,7 @@
   .imgMask {
     background-color: var(--green);
     width: 90%;
-    margin: 24px 5% 0 5%;
+    margin: 14px 5% 0 5%;
     height: 4vh;
     mask-repeat: no-repeat;
     mask-size: contain;
@@ -104,9 +104,6 @@
     .label {
       border: none;
     }
-    .imgMask {
-      margin-top: 14px;
-    }
   }
   @media (max-width: $breakpoint-small) {
     margin-right: -75px;
@@ -123,7 +120,7 @@
         }
       }
       .menuItems {
-        margin-top: 40px;
+        margin-top: -20px;
       }
       .imgMask {
         height: 30px;
