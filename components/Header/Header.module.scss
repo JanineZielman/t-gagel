@@ -10,6 +10,9 @@
   color: var(--green);
   z-index: 9;
   transition: width 0.5s ease;
+  -webkit-box-shadow: -1px 1px 17px -6px rgba(0,0,0,1);
+  -moz-box-shadow: -1px 1px 17px -6px rgba(0,0,0,1);
+  box-shadow: -1px 1px 17px -6px rgba(0,0,0,1);
   a {
     text-decoration: none;
   }
@@ -19,10 +22,10 @@
       transform: rotate(180deg);
     }
     .menuItems {
-      margin-top: 80px;
+      margin-top: -20px;
     }
     .imgMask {
-      height: 75px;
+      height: 4vh;
       width: 100px;
       margin-left: 50%;
       transform: translateX(-50%);
@@ -75,15 +78,15 @@
     width: 100%;
     border-bottom: 1px solid var(--green);
     display: block;
-    margin-top: 14px;
-    padding-bottom: 5px;
+    margin-top: 10px;
+    padding-bottom: 0;
     display: none;
   }
   .imgMask {
     background-color: var(--green);
     width: 90%;
     margin: 24px 5% 0 5%;
-    height: 50px;
+    height: 4vh;
     mask-repeat: no-repeat;
     mask-size: contain;
     mask-position: center bottom;
