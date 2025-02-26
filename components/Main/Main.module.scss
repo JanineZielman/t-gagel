@@ -3,4 +3,9 @@
   background-color: var(--wpe--main--background-color);
   margin-right: 75px;
   // margin-left: 75px;
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    // margin-left: 0;
+  }
 }
