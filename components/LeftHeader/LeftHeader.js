@@ -3,13 +3,8 @@ import Link from "next/link"
 import styles from "./LeftHeader.module.scss"
 import { flatListToHierarchical } from "@faustwp/core"
 
-export default function Header({
-  title = "Headless by WP Engine",
-  description,
-  menuItems,
-}) {
+export default function LeftHeader({ children }) {
   const [isNavShown, setIsNavShown] = useState(false)
-  const hierarchicalMenuItems = flatListToHierarchical(menuItems)
 
   return (
     <header className={`${styles.header} ${isNavShown ? styles.show : ""}`}>
@@ -17,7 +12,8 @@ export default function Header({
         className={styles.arrow}
         onClick={() => setIsNavShown(!isNavShown)}
       ></div>
-      <div className={styles.menuItems}></div>
+      {/* <div className={styles.menuItems}></div> */}
+      {children}
     </header>
   )
 }
