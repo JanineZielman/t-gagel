@@ -19,7 +19,7 @@ export default function Header({
       <div className={styles.menuItems}>
         {hierarchicalMenuItems.map((item, i) => {
           return(
-            <div>
+            <div className={styles.menuItem}>
               <Link href={item.path} key={i}> 
                 <div className={styles.imgMask} style={{maskImage:`url(/${item.label.toLowerCase().replaceAll(' ', '-')}.svg)`}}></div>
                 <div className={styles.label}>{item.label}</div>

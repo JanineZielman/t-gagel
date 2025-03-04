@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './Hero.module.scss';
+import { CallToActionButton } from '../Bits/CallToActionButton';
 
 export default function Hero({ gallery = {} }) {
   const mediaItems = gallery?.gallery?.edges || [];
@@ -60,6 +61,16 @@ export default function Hero({ gallery = {} }) {
       {/* Keeping your logo here */}
       <div className={styles.logo}>
         <div className={styles.maskImg}></div>
+      </div>
+      <div className={styles.lenteland}>
+        <div className={styles.maskImg}></div>
+      </div>
+      <div className={styles.homeCTA}>
+        <CallToActionButton
+          link={'#'}
+        >
+          Word mede-eigenaar! 
+        </CallToActionButton>
       </div>
     </div>
   );

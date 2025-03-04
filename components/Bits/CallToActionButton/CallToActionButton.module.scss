@@ -1,25 +1,25 @@
 .callToActionButton {
   position: relative;
-  display: inline-block;
+  display: block;
+  mask-image: url('/button.png');
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 40px;
+  background-color: var(--light-green);
+  margin: auto;
+  margin-top: 48px;
 }
 
-.svg {
-  display: block;
-  width: 500px;
-  margin-left: 50px;
-  max-width: 80%;
-}
 
 .text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--light-green); // Adjust the color as needed
+  color: var(--green); // Adjust the color as needed
   text-align: center;
-  font-size: 2.5rem;
-  width: 500px;
-  max-width: 80%;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "cabinet";
 }
 
 @media (max-width: 768px) {
