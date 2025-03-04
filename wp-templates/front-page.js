@@ -9,8 +9,10 @@ import {
   NavigationMenu,
   Hero,
   SEO,
+  LeftHeader,
 } from "../components"
 import { CallToActionButton } from "../components/Bits/CallToActionButton"
+import Image from "next/image"
 
 export default function Component() {
   const { data } = useQuery(Component.query, {
@@ -29,6 +31,11 @@ export default function Component() {
     <>
       <SEO title={siteTitle} description={siteDescription} />
       <Header
+        title={siteTitle}
+        description={siteDescription}
+        menuItems={primaryMenu}
+      />
+      <LeftHeader
         title={siteTitle}
         description={siteDescription}
         menuItems={primaryMenu}
@@ -57,7 +64,13 @@ export default function Component() {
                     <div>
                       <p>{item.node.author.node.name}</p>
                       <div className="img-wrapper">
-                        <img src={item.node.featuredImage?.node.sourceUrl} />
+                        <Image
+                          src={item.node.featuredImage?.node.sourceUrl}
+                          alt={item.node.title}
+                          width={500}
+                          height={300}
+                          loading="lazy"
+                        />
                       </div>
                     </div>
                   </a>
@@ -68,32 +81,43 @@ export default function Component() {
               </CallToActionButton>
             </div>
 
-
-
-            <div className='sections'>
-              {data.page.textSection.sections.map((item,i) => {
-                return(
-                  <div  className={'textSection'}>
-                    <div dangerouslySetInnerHTML={{ __html: item.textSection }}/>
-                    {item.card &&
-                      <div className='cards'>
+            <div className="sections">
+              {data.page.textSection.sections.map((item, i) => {
+                return (
+                  <div className={"textSection"}>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: item.textSection }}
+                    />
+                    {item.card && (
+                      <div className="cards">
                         {item.card.map((cardItem, j) => {
-                          return(
-                            <div className='card'>
-                              <img src={cardItem.image.node.mediaItemUrl}/>
+                          return (
+                            <div className="card">
+                              <Image
+                                src={cardItem.image.node.mediaItemUrl}
+                                alt={cardItem.title}
+                                width={500}
+                                height={300}
+                                loading="lazy"
+                              />
                               <h2>{cardItem.title}</h2>
                             </div>
                           )
                         })}
                       </div>
-                    }
-                    {item.linkpage &&
+                    )}
+                    {item.linkpage && (
                       <div className="center">
-                        <CallToActionButton link={item.linkpage.url.replace('https://gagel.janinezielman.com', '')}>
+                        <CallToActionButton
+                          link={item.linkpage.url.replace(
+                            "https://gagel.janinezielman.com",
+                            ""
+                          )}
+                        >
                           Lees meer
                         </CallToActionButton>
                       </div>
-                    }
+                    )}
                   </div>
                 )
               })}
@@ -142,7 +166,7 @@ Component.query = gql`
       }
       textSection {
         sections {
-        textSection
+          textSection
           linkpage {
             target
             title

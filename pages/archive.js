@@ -14,7 +14,6 @@ import {
 import { getNextStaticProps } from "@faustwp/core"
 import { HomeButton } from "../components/Bits/HomeButton"
 
-
 export default function Page(props) {
   const { data } = useQuery(Page.query, {
     variables: Page.variables(),

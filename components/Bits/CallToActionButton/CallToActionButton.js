@@ -5,7 +5,7 @@ import Link from "next/link"
 const CallToActionButton = ({ children, link }) => {
   return (
     <div>
-    <Link href={link} className={styles.callToActionButton}>
+    <Link prefetch={true} href={link} className={styles.callToActionButton}>
       <svg
         width="415"
         height="119"
