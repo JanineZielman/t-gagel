@@ -1,7 +1,7 @@
 .labelText {
   position: relative;
   left: 72px;
-  color: rgba(0, 0, 0, 0.40);
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .switch {
@@ -32,7 +32,8 @@
   right: 0;
   bottom: 0;
   transition: 0.4s;
-  border: 1px solid var(--dark-green);
+  // background-color: greenyellow;
+  border: 1px solid var(--green);
 }
 
 .slider:before {
@@ -41,14 +42,14 @@
   height: 26px;
   width: 26px;
   left: -13px;
-  background-color: var(--dark-green);
+  background-color: var(--green);
   border-radius: 50%;
   transition: 0.4s;
 }
 
 // Change slider background and move handle when checked
 input:checked + .slider {
-  // background-color: var(--dark-green);
+  background-color: var(--dark-green);
 }
 
 input:checked + .slider:before {

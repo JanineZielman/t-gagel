@@ -39,7 +39,7 @@ export default function Page(props) {
       <Main>
         <Container>
           <HomeButton />
-          {/* <ArchiveMenu /> */}
+          <ArchiveMenu />
           <h1>Archief</h1>
           <div className="post-grid">
             {posts.map((item, i) => {
