@@ -278,6 +278,7 @@ img {
       max-width: 100%;
       justify-content: center;
       padding: 24px 0;
+      margin-bottom: 100px;
       .card{
         width: 20%;
         position: relative;
@@ -287,6 +288,18 @@ img {
           height: 100%;
           aspect-ratio: 3/4;
           object-fit: cover;
+        }
+
+        .functionAtFarm{
+          // background-color:green;
+          text-align: center;
+        }
+        .contactWithFarmer{
+          // background-color: red;
+          text-align: center;
+          a{
+            text-decoration: underline;
+          }
         }
       }
     }

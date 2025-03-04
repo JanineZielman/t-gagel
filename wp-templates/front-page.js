@@ -15,15 +15,18 @@ import { CallToActionButton } from "../components/Bits/CallToActionButton"
 import Image from "next/image"
 
 export default function Component() {
-  const { data } = useQuery(Component.query, {
+  const { data, loading, error } = useQuery(Component.query, {
     variables: Component.variables(),
   })
 
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error: {error.message}</p>
+
   const { title: siteTitle, description: siteDescription } =
-    data?.generalSettings
+    data?.generalSettings || {}
   const primaryMenu = data?.headerMenuItems?.nodes ?? []
   const footerMenu = data?.footerMenuItems?.nodes ?? []
-  const posts = data.posts?.edges ?? []
+  const posts = data?.posts?.edges ?? []
 
   console.log(data)
 
@@ -42,16 +45,17 @@ export default function Component() {
       />
       <Main>
         <Container>
-          <Hero gallery={data.page.homepageGallery} />
+          <Hero gallery={data?.page?.homepageGallery} />
           <div className="home">
             <div
               className={"introText"}
-              dangerouslySetInnerHTML={{ __html: data.page.content }}
+              dangerouslySetInnerHTML={{ __html: data?.page?.content }}
             />
             <div className="post-grid">
               {posts.slice(0, 3).map((item, i) => {
                 return (
                   <a
+                    key={i}
                     className={`post-item ${item.node.categories.edges[0].node.name.toLowerCase()}`}
                     href={`/posts/${item.node.slug}`}
                   >
@@ -82,17 +86,18 @@ export default function Component() {
             </div>
 
             <div className="sections">
-              {data.page.textSection.sections.map((item, i) => {
+              {data?.page?.textSection?.sections.map((item, i) => {
                 return (
-                  <div className={"textSection"}>
+                  <div key={i} className={"textSection"}>
                     <div
                       dangerouslySetInnerHTML={{ __html: item.textSection }}
                     />
                     {item.card && (
                       <div className="cards">
                         {item.card.map((cardItem, j) => {
-                          return (
-                            <div className="card">
+                            return (
+                            <div key={j} className="card">
+                              {cardItem.image?.node?.mediaItemUrl && (
                               <Image
                                 src={cardItem.image.node.mediaItemUrl}
                                 alt={cardItem.title}
@@ -100,9 +105,23 @@ export default function Component() {
                                 height={300}
                                 loading="lazy"
                               />
-                              <h2>{cardItem.title}</h2>
+                              )}
+                              <h2>
+                              {cardItem.firstname} {cardItem.lastname}
+                              </h2>
+                              <div className="functionAtFarm">
+                              {cardItem.title}
+                              </div>
+                              {cardItem.email && (
+                              <div className="contactWithFarmer">
+                                contact met{" "}
+                                <a href={`mailto:${cardItem.email}`}>
+                                {cardItem.firstname}
+                                </a>
+                              </div>
+                              )}
                             </div>
-                          )
+                            )
                         })}
                       </div>
                     )}
@@ -128,7 +147,7 @@ export default function Component() {
       <Footer
         title={siteTitle}
         menuItems={footerMenu}
-        footer={data.menu.footer.footer}
+        footer={data?.menu?.footer?.footer}
       />
     </>
   )
@@ -174,6 +193,9 @@ Component.query = gql`
           }
           card {
             title
+            firstname
+            lastname
+            email
             image {
               node {
                 mediaItemUrl
