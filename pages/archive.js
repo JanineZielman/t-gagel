@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { gql, useQuery } from "@apollo/client"
 import * as MENUS from "../constants/menus"
 import { BlogInfoFragment } from "../fragments/GeneralSettings"
@@ -26,7 +27,29 @@ export default function Page(props) {
   const footerMenu = data?.footerMenuItems?.nodes ?? []
   const posts = props?.data.posts?.edges ?? []
 
-  console.log(posts)
+  const categories = [
+    ...new Set(
+      posts.map((item) => item.node.categories.edges[0].node.name.toLowerCase())
+    ),
+  ]
+
+  const [selectedCategories, setSelectedCategories] = useState([])
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategories((prevSelected) =>
+      prevSelected.includes(category)
+        ? prevSelected.filter((c) => c !== category)
+        : [...prevSelected, category]
+    )
+  }
+
+  const filteredPosts = posts.filter((item) =>
+    selectedCategories.length === 0
+      ? true
+      : selectedCategories.includes(
+          item.node.categories.edges[0].node.name.toLowerCase()
+        )
+  )
 
   return (
     <>
@@ -39,12 +62,18 @@ export default function Page(props) {
       <Main>
         <Container>
           <HomeButton />
-          <ArchiveMenu />
+          <ArchiveMenu
+            categories={categories}
+            selectedCategories={selectedCategories}
+            handleCategoryChange={handleCategoryChange}
+          />
           <h1>Archief</h1>
+
           <div className="post-grid">
-            {posts.map((item, i) => {
-              return (
+            {filteredPosts.length > 0 ? (
+              filteredPosts.map((item, i) => (
                 <a
+                  key={i}
                   className={`post-item ${item.node.categories.edges[0].node.name.toLowerCase()}`}
                   href={`/posts/${item.node.slug}`}
                 >
@@ -61,8 +90,10 @@ export default function Page(props) {
                     </div>
                   </div>
                 </a>
-              )
-            })}
+              ))
+            ) : (
+              <p>No posts to show, try adjusting your selection.</p>
+            )}
           </div>
         </Container>
       </Main>
