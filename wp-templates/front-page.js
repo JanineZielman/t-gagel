@@ -38,11 +38,6 @@ export default function Component() {
         description={siteDescription}
         menuItems={primaryMenu}
       />
-      {/* <LeftHeader
-        title={siteTitle}
-        description={siteDescription}
-        menuItems={primaryMenu}
-      /> */}
       <Main>
         <Container>
           <Hero gallery={data?.page?.homepageGallery} />

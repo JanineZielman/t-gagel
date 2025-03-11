@@ -72,6 +72,9 @@ export default function Hero({ gallery = {} }) {
           Word mede-eigenaar! 
         </CallToActionButton>
       </div>
+      <div className={styles.archiveButton}>
+        Levend <br></br>Archief
+      </div>
     </div>
   );
 }
