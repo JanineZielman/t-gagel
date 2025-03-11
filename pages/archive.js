@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { gql, useQuery } from "@apollo/client"
 import * as MENUS from "../constants/menus"
 import { BlogInfoFragment } from "../fragments/GeneralSettings"
@@ -16,49 +18,62 @@ import { getNextStaticProps } from "@faustwp/core"
 import { HomeButton } from "../components/Bits/HomeButton"
 
 export default function Page(props) {
+  const router = useRouter();
+  const { categories: queryCategories } = router.query; // Get categories from URL
   const { data } = useQuery(Page.query, {
     variables: Page.variables(),
-  })
-  const title = props.title
+  });
 
-  const { title: siteTitle, description: siteDescription } =
-    data?.generalSettings
-  const primaryMenu = data?.headerMenuItems?.nodes ?? []
-  const footerMenu = data?.footerMenuItems?.nodes ?? []
-  const posts = props?.data.posts?.edges ?? []
+  const title = props.title;
+  const { title: siteTitle, description: siteDescription } = data?.generalSettings;
+  const primaryMenu = data?.headerMenuItems?.nodes ?? [];
+  const footerMenu = data?.footerMenuItems?.nodes ?? [];
+  const posts = props?.data.posts?.edges ?? [];
 
   const categories = [
     ...new Set(
       posts.map((item) => item.node.categories.edges[0].node.name.toLowerCase())
     ),
-  ]
+  ];
 
-  const [selectedCategories, setSelectedCategories] = useState([])
+  // Initialize selectedCategories from query or default to empty array
+  const [selectedCategories, setSelectedCategories] = useState(
+    queryCategories ? queryCategories.split(',') : []
+  );
+
+  useEffect(() => {
+    if (queryCategories) {
+      setSelectedCategories(queryCategories.split(','));
+    }
+  }, [queryCategories]);
 
   const handleCategoryChange = (category) => {
-    setSelectedCategories((prevSelected) =>
-      prevSelected.includes(category)
-        ? prevSelected.filter((c) => c !== category)
-        : [...prevSelected, category]
-    )
-  }
+    const url = new URL(window.location.href);
+    let selected = selectedCategories.includes(category)
+      ? selectedCategories.filter((c) => c !== category)
+      : [...selectedCategories, category];
+  
+    setSelectedCategories(selected);
+  
+    if (selected.length > 0) {
+      url.searchParams.set('categories', selected.join(','));
+    } else {
+      url.searchParams.delete('categories');
+    }
+  
+    history.pushState(null, '', `/archive${selected.length > 0 ? `?${url.searchParams.toString()}` : ''}`);
+  };
 
   const filteredPosts = posts.filter((item) =>
     selectedCategories.length === 0
       ? true
-      : selectedCategories.includes(
-          item.node.categories.edges[0].node.name.toLowerCase()
-        )
-  )
+      : selectedCategories.includes(item.node.categories.edges[0].node.name.toLowerCase())
+  );
 
   return (
     <>
       <SEO title={siteTitle} description={siteDescription} />
-      <Header
-        title={siteTitle}
-        description={siteDescription}
-        menuItems={primaryMenu}
-      />
+      <Header title={siteTitle} description={siteDescription} menuItems={primaryMenu} />
       <Main>
         <Container>
           <HomeButton />
@@ -72,15 +87,16 @@ export default function Page(props) {
           <div className="post-grid">
             {filteredPosts.length > 0 ? (
               filteredPosts.map((item, i) => (
-                <a
+                <Link
                   key={i}
                   className={`post-item ${item.node.categories.edges[0].node.name.toLowerCase()}`}
-                  href={`/posts/${item.node.slug}`}
+                  href={{
+                    pathname: `/posts/${item.node.slug}`,
+                    query: selectedCategories.length > 0 ? { categories: selectedCategories.join(',') } : {},
+                  }}
                 >
                   <div>
-                    <span className="category">
-                      {item.node.categories.edges[0].node.name}
-                    </span>
+                    <span className="category">{item.node.categories.edges[0].node.name}</span>
                     <h2>{item.node.title}</h2>
                   </div>
                   <div>
@@ -89,7 +105,7 @@ export default function Page(props) {
                       <img src={item.node.featuredImage?.node.sourceUrl} />
                     </div>
                   </div>
-                </a>
+                </Link>
               ))
             ) : (
               <p>No posts to show, try adjusting your selection.</p>
@@ -99,7 +115,7 @@ export default function Page(props) {
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />
     </>
-  )
+  );
 }
 
 Page.query = gql`

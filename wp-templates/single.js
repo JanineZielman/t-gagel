@@ -1,9 +1,9 @@
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { gql } from '@apollo/client';
 import { useFaustQuery } from '@faustwp/core';
 import {
-  Container,
-  ContentWrapper,
-  EntryHeader,
+  ArchiveMenu,
   FeaturedImage,
   Footer,
   Header,
@@ -58,16 +58,23 @@ const GET_POST_QUERY = gql`
       }
       ...FeaturedImageFragment
     }
+    categories(where: {exclude: "dGVybTox"}) {
+      nodes {
+        name
+      }
+    }
   }
 `;
 
 export default function Component(props) {
-  // Loading state for previews
+  const router = useRouter();
+  const { categories: queryCategories } = router.query;
+
   if (props.loading) {
     return <>Loading...</>;
   }
 
-  const { post } = useFaustQuery(GET_POST_QUERY);
+  const { post, categories } = useFaustQuery(GET_POST_QUERY);
   const { generalSettings, headerMenuItems, footerMenuItems } =
     useFaustQuery(GET_LAYOUT_QUERY);
 
@@ -75,21 +82,60 @@ export default function Component(props) {
   const primaryMenu = headerMenuItems?.nodes ?? [];
   const footerMenu = footerMenuItems?.nodes ?? [];
   const { title, content, featuredImage, date, author } = post ?? {};
+  const categoriesList = [
+    ...new Set(categories.nodes.map((item) => item.name.toLowerCase())),
+  ];
 
-  console.log(post)
+  // Read selected categories from URL or default to post category
+  const [selectedCategories, setSelectedCategories] = useState(
+    queryCategories ? queryCategories.split(',') : [post.categories.edges[0].node.name.toLowerCase()]
+  );
 
+  useEffect(() => {
+    if (queryCategories) {
+      setSelectedCategories(queryCategories.split(','));
+    }
+  }, [queryCategories]);
+
+  const handleCategoryChange = (category) => {
+    const updatedCategories = selectedCategories.includes(category)
+      ? selectedCategories.filter((c) => c !== category)
+      : [...selectedCategories, category];
+  
+    setSelectedCategories(updatedCategories);
+  
+    // Redirect to `/archive` with updated categories
+    router.push({
+      pathname: '/archive',
+      query: updatedCategories.length > 0 ? { categories: updatedCategories.join(',') } : {},
+    });
+  };
+  
   return (
     <div className={`post ${post.categories.edges[0].node.name.toLowerCase()}`}>
-      <Header
-        title={siteTitle}
-        description={siteDescription}
-        menuItems={primaryMenu}
+      <Header title={siteTitle} description={siteDescription} menuItems={primaryMenu} />
+      <ArchiveMenu
+        categories={categoriesList}
+        selectedCategories={selectedCategories}
+        handleCategoryChange={handleCategoryChange}
       />
       <div className='content-wrapper'>
         <h1>{title}</h1>
         <h2>{author.node.name}</h2>
         <p className='content' dangerouslySetInnerHTML={{ __html: content }}></p>
       </div>
+
+      {/* Back to Archive button with category filters */}
+      <button
+        onClick={() =>
+          router.push({
+            pathname: '/archive',
+            query: selectedCategories.length > 0 ? { categories: selectedCategories.join(',') } : {},
+          })
+        }
+      >
+        Back to Archive
+      </button>
     </div>
   );
 }
