@@ -87,13 +87,10 @@ export default function Page(props) {
           <div className="post-grid">
             {filteredPosts.length > 0 ? (
               filteredPosts.map((item, i) => (
-                <Link
+                <a
                   key={i}
                   className={`post-item ${item.node.categories.edges[0].node.name.toLowerCase()}`}
-                  href={{
-                    pathname: `/posts/${item.node.slug}`,
-                    query: selectedCategories.length > 0 ? { categories: selectedCategories.join(',') } : {},
-                  }}
+                  href={`/posts/${item.node.slug}?categories=${selectedCategories.length > 0 ? { categories: selectedCategories.join(',') } : item.node.categories.edges[0].node.name.toLowerCase()}`}
                 >
                   <div>
                     <span className="category">{item.node.categories.edges[0].node.name}</span>
@@ -105,7 +102,7 @@ export default function Page(props) {
                       <img src={item.node.featuredImage?.node.sourceUrl} />
                     </div>
                   </div>
-                </Link>
+                </a>
               ))
             ) : (
               <p>No posts to show, try adjusting your selection.</p>
