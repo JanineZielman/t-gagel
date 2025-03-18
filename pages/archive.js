@@ -1,21 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { gql, useQuery } from "@apollo/client"
 import * as MENUS from "../constants/menus"
 import { BlogInfoFragment } from "../fragments/GeneralSettings"
 import {
   ArchiveMenu,
   Header,
-  Hero,
   Footer,
   Main,
   Container,
   NavigationMenu,
   SEO,
+  PostGrid
 } from "../components"
 import { getNextStaticProps } from "@faustwp/core"
-import { HomeButton } from "../components/Bits/HomeButton"
 
 export default function Page(props) {
   const router = useRouter();
@@ -76,37 +74,14 @@ export default function Page(props) {
       <Header title={siteTitle} description={siteDescription} menuItems={primaryMenu} />
       <Main>
         <Container>
-          <HomeButton />
           <ArchiveMenu
             categories={categories}
             selectedCategories={selectedCategories}
             handleCategoryChange={handleCategoryChange}
           />
-          <h1>Archief</h1>
-
-          <div className="post-grid">
-            {filteredPosts.length > 0 ? (
-              filteredPosts.map((item, i) => (
-                <a
-                  key={i}
-                  className={`post-item ${item.node.categories.edges[0].node.name.toLowerCase()}`}
-                  href={`/posts/${item.node.slug}?categories=${selectedCategories.length > 0 ? { categories: selectedCategories.join(',') } : item.node.categories.edges[0].node.name.toLowerCase()}`}
-                >
-                  <div>
-                    <span className="category">{item.node.categories.edges[0].node.name}</span>
-                    <h2>{item.node.title}</h2>
-                  </div>
-                  <div>
-                    <p>{item.node.author.node.name}</p>
-                    <div className="img-wrapper">
-                      <img src={item.node.featuredImage?.node.sourceUrl} />
-                    </div>
-                  </div>
-                </a>
-              ))
-            ) : (
-              <p>No posts to show, try adjusting your selection.</p>
-            )}
+          <div className='content-wrapper'>
+            <h1>Archief</h1>
+            <PostGrid filteredPosts={filteredPosts} selectedCategories={selectedCategories}/>
           </div>
         </Container>
       </Main>

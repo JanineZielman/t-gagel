@@ -9,7 +9,7 @@ export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   return (
-    <FaustProvider pageProps={pageProps}>
+    <FaustProvider pageProps={pageProps} >
       <Component {...pageProps} key={router.asPath} />
     </FaustProvider>
   );

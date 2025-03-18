@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { gql } from '@apollo/client';
 import { useFaustQuery } from '@faustwp/core';
 import {
-  ArchiveMenu,
   FeaturedImage,
   Footer,
   Header,
@@ -82,9 +81,6 @@ export default function Component(props) {
   const primaryMenu = headerMenuItems?.nodes ?? [];
   const footerMenu = footerMenuItems?.nodes ?? [];
   const { title, content, featuredImage, date, author } = post ?? {};
-  const categoriesList = [
-    ...new Set(categories.nodes.map((item) => item.name.toLowerCase())),
-  ];
 
   // Read selected categories from URL or default to post category
   const [selectedCategories, setSelectedCategories] = useState(
@@ -97,46 +93,32 @@ export default function Component(props) {
     }
   }, [queryCategories]);
 
-  const handleCategoryChange = (category) => {
-    const updatedCategories = selectedCategories.includes(category)
-      ? selectedCategories.filter((c) => c !== category)
-      : [...selectedCategories, category];
-  
-    setSelectedCategories(updatedCategories);
-  
-    // Redirect to `/archive` with updated categories
-    router.push({
-      pathname: '/archive',
-      query: updatedCategories.length > 0 ? { categories: updatedCategories.join(',') } : {},
-    });
-  };
   
   return (
-    <div className={`post ${post.categories.edges[0].node.name.toLowerCase()}`}>
-      <Header title={siteTitle} description={siteDescription} menuItems={primaryMenu} />
-      <ArchiveMenu
-        categories={categoriesList}
-        selectedCategories={selectedCategories}
-        handleCategoryChange={handleCategoryChange}
-      />
-      <div className='content-wrapper'>
-        <h1>{title}</h1>
-        <h2>{author.node.name}</h2>
-        <p className='content' dangerouslySetInnerHTML={{ __html: content }}></p>
-      </div>
+    <>
+    <Header title={siteTitle} description={siteDescription} menuItems={primaryMenu} />
+    <Main>
+      <div className={`post ${post.categories.edges[0].node.name.toLowerCase()}`}>
+        <div className='post-wrapper'>
+          <h1>{title}</h1>
+          <h2>{author.node.name}</h2>
+          <div className='content' dangerouslySetInnerHTML={{ __html: content }}></div>
+        </div>
 
-      {/* Back to Archive button with category filters */}
-      <button
-        onClick={() =>
-          router.push({
-            pathname: '/archive',
-            query: selectedCategories.length > 0 ? { categories: selectedCategories.join(',') } : {},
-          })
-        }
-      >
-        Back to Archive
-      </button>
-    </div>
+        {/* Back to Archive button with category filters */}
+        <button
+          onClick={() =>
+            router.push({
+              pathname: '/archive',
+              query: selectedCategories.length > 0 ? { categories: selectedCategories.join(',') } : {},
+            })
+          }
+        >
+          Back to Archive
+        </button>
+      </div>
+    </Main>
+    </>
   );
 }
 

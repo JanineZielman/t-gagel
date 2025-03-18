@@ -9,7 +9,6 @@ import {
   NavigationMenu,
   Hero,
   SEO,
-  LeftHeader,
 } from "../components"
 import { CallToActionButton } from "../components/Bits/CallToActionButton"
 import Image from "next/image"
