@@ -4,7 +4,6 @@ import { CallToActionButton } from "../Bits/CallToActionButton"
 import { useRouter } from "next/router"
 import { ArchiveButton } from "../Bits/ArchiveButton"
 
-
 export default function Hero({ gallery = {} }) {
   const mediaItems = gallery?.gallery?.edges || []
   const [currentMedia, setCurrentMedia] = useState(null)
