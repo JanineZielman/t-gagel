@@ -15,7 +15,7 @@ export default function Header({
 
   return (
     <header className={`${styles.header} ${isNavShown ? styles.show : ''}`}>
-      <div className={styles.arrow} onClick={() => setIsNavShown(!isNavShown)}></div>
+      <div className={styles.arrow} onClick={() => setIsNavShown(!isNavShown)}>☰</div>
       <div className={styles.menuItems}>
         {hierarchicalMenuItems.map((item, i) => {
           return(
