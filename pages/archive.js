@@ -80,7 +80,7 @@ export default function Page(props) {
             handleCategoryChange={handleCategoryChange}
           />
           <div className='content-wrapper'>
-            <h1>Archief</h1>
+            <h1>Levend Archief</h1>
             <PostGrid posts={filteredPosts} selectedCategories={selectedCategories}/>
           </div>
         </Container>
