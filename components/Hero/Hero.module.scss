@@ -11,13 +11,14 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    img, video {
+    img,
+    video {
       height: 100%;
       width: 100%;
       object-fit: cover;
     }
   }
-  .homeCTA{
+  .homeCTA {
     position: absolute;
     bottom: 30vh;
     left: 50%;
@@ -44,7 +45,7 @@
       mask-repeat: no-repeat;
     }
   }
-  .lenteland{
+  .lenteland {
     position: absolute;
     bottom: 24px;
     right: 60px;
@@ -60,7 +61,7 @@
       mask-repeat: no-repeat;
     }
   }
-  .archiveButton{
+  .archiveButton {
     position: absolute;
     bottom: -20px;
     left: -20px;
@@ -74,6 +75,43 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    z-index: 100;
+
+    &:hover {
+      transform: scale(1.25);
+    }
+
+    &.animate {
+      transform: scale(20);
+      border-radius: 0;
+      bottom: 50vh;
+      left: 50vw;
+
+      // Fade out the text
+      > * {
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      .archiveText {
+        transform: scale(0.05); // 1/20 om de parent scale te compenseren
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out, transform 0.5s ease-in-out;
+      }
+    }
+
+    // Add transition for text opacity
+    > * {
+      opacity: 1;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    .archiveText {
+      display: inline-block;
+      transform-origin: center;
+    }
   }
   @media (max-width: $breakpoint-small) {
     width: 100vw;
@@ -88,5 +126,14 @@
       width: 50vw;
       height: 50vw;
     }
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
