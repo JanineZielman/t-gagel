@@ -1,18 +1,27 @@
+@import 'styles/breakpoints';
+
+
 .component {
-	color: var(--light-green);
-	background: var(--green);
-	padding-top: 24px;
-	padding-bottom: 24px;
-	width: calc(100vw - 75px);
+  color: var(--light-green);
+  background: var(--green);
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: calc(100vw - 75px);
+
+  @media (max-width: $breakpoint-small) {
+    width: 100%;
+  }
 }
 
 .copyright {
-	margin: 2rem 0;
-	text-align: center;
+  margin: 2rem 0;
+  text-align: center;
 }
-.footerText{
-	text-align: center;
-	p{
-		font-size: 18px;
-	}
+
+.footerText {
+  text-align: center;
+
+  p {
+    font-size: 18px;
+  }
 }
