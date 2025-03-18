@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { gql } from '@apollo/client';
-import { useFaustQuery } from '@faustwp/core';
+import { useState, useEffect } from "react"
+import { useRouter } from "next/router"
+import { gql } from "@apollo/client"
+import { useFaustQuery } from "@faustwp/core"
 import {
   FeaturedImage,
   Footer,
@@ -9,9 +9,10 @@ import {
   Main,
   NavigationMenu,
   SEO,
-} from '../components';
-import * as MENUS from '../constants/menus';
-import { BlogInfoFragment } from '../fragments/GeneralSettings';
+} from "../components"
+import * as MENUS from "../constants/menus"
+import { BlogInfoFragment } from "../fragments/GeneralSettings"
+import { ArchiveButton } from "../components/Bits/ArchiveButton"
 
 const GET_LAYOUT_QUERY = gql`
   ${BlogInfoFragment}
@@ -23,7 +24,10 @@ const GET_LAYOUT_QUERY = gql`
     generalSettings {
       ...BlogInfoFragment
     }
-    headerMenuItems: menuItems(where: { location: $headerLocation } first: 50) {
+    headerMenuItems: menuItems(
+      where: { location: $headerLocation }
+      first: 50
+    ) {
       nodes {
         ...NavigationMenuItemFragment
       }
@@ -34,7 +38,7 @@ const GET_LAYOUT_QUERY = gql`
       }
     }
   }
-`;
+`
 
 const GET_POST_QUERY = gql`
   ${FeaturedImage.fragments.entry}
@@ -57,56 +61,66 @@ const GET_POST_QUERY = gql`
       }
       ...FeaturedImageFragment
     }
-    categories(where: {exclude: "dGVybTox"}) {
+    categories(where: { exclude: "dGVybTox" }) {
       nodes {
         name
       }
     }
   }
-`;
+`
 
 export default function Component(props) {
-  const router = useRouter();
-  const { categories: queryCategories } = router.query;
+  const router = useRouter()
+  const { categories: queryCategories } = router.query
 
   if (props.loading) {
-    return <>Loading...</>;
+    return <>Loading...</>
   }
 
-  const { post, categories } = useFaustQuery(GET_POST_QUERY);
+  const { post, categories } = useFaustQuery(GET_POST_QUERY)
   const { generalSettings, headerMenuItems, footerMenuItems } =
-    useFaustQuery(GET_LAYOUT_QUERY);
+    useFaustQuery(GET_LAYOUT_QUERY)
 
-  const { title: siteTitle, description: siteDescription } = generalSettings;
-  const primaryMenu = headerMenuItems?.nodes ?? [];
-  const footerMenu = footerMenuItems?.nodes ?? [];
-  const { title, content, featuredImage, date, author } = post ?? {};
+  const { title: siteTitle, description: siteDescription } = generalSettings
+  const primaryMenu = headerMenuItems?.nodes ?? []
+  const footerMenu = footerMenuItems?.nodes ?? []
+  const { title, content, featuredImage, date, author } = post ?? {}
 
   // Read selected categories from URL or default to post category
   const [selectedCategories, setSelectedCategories] = useState(
-    queryCategories ? queryCategories.split(',') : [post.categories.edges[0].node.name.toLowerCase()]
-  );
+    queryCategories
+      ? queryCategories.split(",")
+      : [post.categories.edges[0].node.name.toLowerCase()]
+  )
 
   useEffect(() => {
     if (queryCategories) {
-      setSelectedCategories(queryCategories.split(','));
+      setSelectedCategories(queryCategories.split(","))
     }
-  }, [queryCategories]);
+  }, [queryCategories])
 
-  
   return (
     <>
-    <Header title={siteTitle} description={siteDescription} menuItems={primaryMenu} />
-    <Main>
-      <div className={`post ${post.categories.edges[0].node.name.toLowerCase()}`}>
-        <div className='post-wrapper'>
-          <h1>{title}</h1>
-          <h2>{author.node.name}</h2>
-          <div className='content' dangerouslySetInnerHTML={{ __html: content }}></div>
-        </div>
+      <Header
+        title={siteTitle}
+        description={siteDescription}
+        menuItems={primaryMenu}
+      />
+      <Main>
+        <div
+          className={`post ${post.categories.edges[0].node.name.toLowerCase()}`}
+        >
+          <div className="post-wrapper">
+            <h1>{title}</h1>
+            <h2>{author.node.name}</h2>
+            <div
+              className="content"
+              dangerouslySetInnerHTML={{ __html: content }}
+            ></div>
+          </div>
 
-        {/* Back to Archive button with category filters */}
-        <button
+          {/* Back to Archive button with category filters */}
+          {/* <button
           onClick={() =>
             router.push({
               pathname: '/archive',
@@ -115,11 +129,12 @@ export default function Component(props) {
           }
         >
           Back to Archive
-        </button>
-      </div>
-    </Main>
+        </button> */}
+          <ArchiveButton />
+        </div>
+      </Main>
     </>
-  );
+  )
 }
 
 Component.queries = [
@@ -137,4 +152,4 @@ Component.queries = [
       asPreview: ctx?.asPreview,
     }),
   },
-];
+]

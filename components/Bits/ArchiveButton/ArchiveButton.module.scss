@@ -22,6 +22,10 @@
 
   &.animate {
     transform: scale(20);
+
+    @media (min-width: 1200px) {
+      transform: scale(100);
+    }
     border-radius: 0;
     bottom: 50vh;
     left: 50vw;
