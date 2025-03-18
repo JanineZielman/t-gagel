@@ -1,14 +1,14 @@
 import styles from "./PostGrid.module.scss"
 
-export default function PostGrid({ filteredPosts, selectedCategories }) {
+export default function PostGrid({ posts, selectedCategories }) {
   return (
     <div className={styles.postGrid}>
-      {filteredPosts.length > 0 ? (
-        filteredPosts.map((item, i) => (
+      {posts.length > 0 ? (
+        posts.map((item, i) => (
           <a
             key={i}
             className={`${styles.postItem} post-item ${item.node.categories.edges[0].node.name.toLowerCase()}`}
-            href={`/posts/${item.node.slug}?categories=${selectedCategories.length > 0 ? { categories: selectedCategories.join(',') } : item.node.categories.edges[0].node.name.toLowerCase()}`}
+            href={`/posts/${item.node.slug}?categories=${selectedCategories?.length > 0 ? { categories: selectedCategories.join(',') } : item.node.categories.edges[0].node.name.toLowerCase()}`}
           >
             <div>
               <span className={styles.category}>{item.node.categories.edges[0].node.name}</span>

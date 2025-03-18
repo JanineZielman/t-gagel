@@ -81,7 +81,7 @@ export default function Page(props) {
           />
           <div className='content-wrapper'>
             <h1>Archief</h1>
-            <PostGrid filteredPosts={filteredPosts} selectedCategories={selectedCategories}/>
+            <PostGrid posts={filteredPosts} selectedCategories={selectedCategories}/>
           </div>
         </Container>
       </Main>

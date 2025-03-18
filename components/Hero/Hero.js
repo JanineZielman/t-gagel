@@ -87,9 +87,6 @@ export default function Hero({ gallery = {} }) {
       <div className={styles.logo}>
         <div className={styles.maskImg}></div>
       </div>
-      <div className={styles.lenteland}>
-        <div className={styles.maskImg}></div>
-      </div>
       <div className={styles.homeCTA}>
         <CallToActionButton link={"#"}>Word mede-eigenaar!</CallToActionButton>
       </div>
