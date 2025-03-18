@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react"
 import styles from "./Hero.module.scss"
 import { CallToActionButton } from "../Bits/CallToActionButton"
 import { useRouter } from "next/router"
+import { ArchiveButton } from "../Bits/ArchiveButton"
+
 
 export default function Hero({ gallery = {} }) {
   const mediaItems = gallery?.gallery?.edges || []
@@ -92,7 +94,7 @@ export default function Hero({ gallery = {} }) {
       <div className={styles.homeCTA}>
         <CallToActionButton link={"#"}>Word mede-eigenaar!</CallToActionButton>
       </div>
-      <div
+      {/* <div
         className={`${styles.archiveButton} ${
           isAnimating ? styles.animate : ""
         }`}
@@ -103,7 +105,10 @@ export default function Hero({ gallery = {} }) {
         <span className={styles.archiveText}>
           Levend <br></br>Archief
         </span>
-      </div>
+      </div> */}
+
+<ArchiveButton />
+
     </div>
   )
 }

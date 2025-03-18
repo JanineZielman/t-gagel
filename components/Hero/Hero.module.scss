@@ -61,58 +61,7 @@
       mask-repeat: no-repeat;
     }
   }
-  .archiveButton {
-    position: fixed;
-    bottom: -20px;
-    left: -20px;
-    padding: 30px;
-    background-color: var(--light-green);
-    font-size: 20px;
-    color: var(--green);
-    text-align: center;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.5s ease-in-out;
-    z-index: 100;
 
-    &:hover {
-      transform: scale(1.25);
-    }
-
-    &.animate {
-      transform: scale(20);
-      border-radius: 0;
-      bottom: 50vh;
-      left: 50vw;
-
-      // Fade out the text
-      > * {
-        opacity: 0;
-        transition: opacity 0.2s ease-in-out;
-      }
-
-      .archiveText {
-        transform: scale(0.05); // 1/20 om de parent scale te compenseren
-        opacity: 0;
-        transition: opacity 0.2s ease-in-out, transform 0.5s ease-in-out;
-      }
-    }
-
-    // Add transition for text opacity
-    > * {
-      opacity: 1;
-      transition: opacity 0.2s ease-in-out;
-    }
-
-    .archiveText {
-      display: inline-block;
-      transform-origin: center;
-    }
-  }
   @media (max-width: $breakpoint-small) {
     width: 100vw;
     .gallery {
