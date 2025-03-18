@@ -9,6 +9,7 @@ import {
   NavigationMenu,
   Hero,
   SEO,
+  PostGrid
 } from "../components"
 import { CallToActionButton } from "../components/Bits/CallToActionButton"
 import Image from "next/image"
@@ -45,39 +46,7 @@ export default function Component() {
               className={"introText"}
               dangerouslySetInnerHTML={{ __html: data?.page?.content }}
             />
-            <div className="post-grid">
-              {posts.slice(0, 3).map((item, i) => {
-                return (
-                  <a
-                    key={i}
-                    className={`post-item ${item.node.categories.edges[0].node.name.toLowerCase()}`}
-                    href={`/posts/${item.node.slug}`}
-                  >
-                    <div>
-                      <span className="category">
-                        {item.node.categories.edges[0].node.name}
-                      </span>
-                      <h2>{item.node.title}</h2>
-                    </div>
-                    <div>
-                      <p>{item.node.author.node.name}</p>
-                      <div className="img-wrapper">
-                        <Image
-                          src={item.node.featuredImage?.node.sourceUrl}
-                          alt={item.node.title}
-                          width={500}
-                          height={300}
-                          loading="lazy"
-                        />
-                      </div>
-                    </div>
-                  </a>
-                )
-              })}
-              <CallToActionButton className="center" link="/archive">
-                Archief
-              </CallToActionButton>
-            </div>
+           <PostGrid posts={posts.slice(0, 3)} selectedCategories={''}/>
 
             <div className="sections">
               {data?.page?.textSection?.sections.map((item, i) => {

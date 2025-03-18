@@ -15,6 +15,9 @@ export default function Footer({ title, menuItems, footer }) {
           dangerouslySetInnerHTML={{ __html: footer }}
         />
         <NavigationMenu menuItems={menuItems} />
+        <div className={styles.lenteland}>
+          <div className={styles.maskImg}></div>
+        </div>
         {/* <p className={cx('copyright')}>{`${title} © ${year}. Powered by WordPress.`}</p> */}
       </Container>
     </footer>
