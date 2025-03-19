@@ -1,5 +1,4 @@
-@import 'styles/breakpoints';
-
+@import "styles/breakpoints";
 
 .component {
   color: var(--light-green);
@@ -8,6 +7,17 @@
   padding-bottom: 24px;
   width: calc(100vw - 150px);
   position: relative;
+  
+  display: flex;
+  padding-left: 10%;
+  padding-right: 10%;
+
+  @media (max-width: $breakpoint-small) {
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-direction: column;
+    padding-bottom: 100px;
+  }
 
   @media (max-width: $breakpoint-small) {
     width: 100%;
@@ -20,7 +30,7 @@
 }
 
 .footerText {
-  text-align: center;
+  text-align: left;
 
   p {
     font-size: 18px;
@@ -42,4 +52,36 @@
     mask-size: contain;
     mask-repeat: no-repeat;
   }
+}
+
+.menuItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
+}
+
+.menuItem {
+  font-weight: bold;
+  flex: 0 0 calc(50% - 12px); // Takes up half the width minus gap
+  max-width: calc(50% - 12px);
+
+  // If there are 4 or fewer items, let them take natural width
+  &:first-child:nth-last-child(-n + 4),
+  &:first-child:nth-last-child(-n + 4) ~ .menuItem {
+    flex: 0 1 auto;
+    max-width: none;
+  }
+}
+
+.children {
+  margin-top: 8px;
+}
+
+.child {
+  margin-top: 4px;
+}
+
+.subMenuItem {
+  font-weight: normal;
 }

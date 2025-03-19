@@ -111,6 +111,7 @@ export default function Component() {
       <Footer
         title={siteTitle}
         menuItems={footerMenu}
+        primaryMenu={primaryMenu}
         footer={data?.menu?.footer?.footer}
       />
     </>

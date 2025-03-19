@@ -13,6 +13,7 @@ export default function Header({
   const hierarchicalMenuItems = flatListToHierarchical(menuItems);
 
 
+
   return (
     <header className={`${styles.header} ${isNavShown ? styles.show : ''}`}>
       <div className={styles.arrow} onClick={() => setIsNavShown(!isNavShown)}></div>
