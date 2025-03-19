@@ -2,6 +2,11 @@
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
+<<<<<<< HEAD
+  gap: 20px;
+  
+}
+=======
   max-width: calc(100vw - 150px);
   padding: 24px 0 24px 24px;
   .shopItem{
@@ -27,3 +32,4 @@
     }
   }
 }
+>>>>>>> 69a3b2853d947ca312ffbfe460f0d0a0db404040
