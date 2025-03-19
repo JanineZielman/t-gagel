@@ -9,7 +9,6 @@ import SingleProduct from "../../../components/Shop/single-product"
 /**
  * External Dependencies.
  */
-import axios from "axios"
 import { useRouter } from "next/router"
 
 export default function Product({ headerFooter, product }) {
@@ -30,7 +29,6 @@ export default function Product({ headerFooter, product }) {
 
 export async function getStaticProps({ params }) {
   const { slug } = params || {}
-  // const { data: headerFooterData } = await axios.get(HEADER_FOOTER_ENDPOINT)
   const { data: product } = await getProductBySlug(slug)
 
   return {
