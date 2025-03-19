@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import Head from "next/head"
 
 /**
  * Provide SEO related meta tags to a page.
@@ -11,10 +11,20 @@ import Head from 'next/head';
  *
  * @returns {React.ReactElement} The SEO component
  */
+
+function decodeHtmlEntities(text) {
+  const textarea = document.createElement("textarea")
+  textarea.innerHTML = text
+  return textarea.value
+}
+
 export default function SEO({ title, description, imageUrl, url }) {
   if (!title && !description && !imageUrl && !url) {
-    return null;
+    return null
   }
+
+  const decodedTitle =
+    typeof window !== "undefined" ? decodeHtmlEntities(title) : title
 
   return (
     <>
@@ -22,12 +32,12 @@ export default function SEO({ title, description, imageUrl, url }) {
         <meta property="og:type" content="website" />
         <meta property="twitter:card" content="summary_large_image" />
 
-        {title && (
+        {decodedTitle && (
           <>
-            <title>{title}</title>
-            <meta name="title" content={title} />
-            <meta property="og:title" content={title} />
-            <meta property="twitter:title" content={title} />
+            <title>{decodedTitle}</title>
+            <meta name="title" content={decodedTitle} />
+            <meta property="og:title" content={decodedTitle} />
+            <meta property="twitter:title" content={decodedTitle} />
           </>
         )}
 
@@ -54,5 +64,5 @@ export default function SEO({ title, description, imageUrl, url }) {
         )}
       </Head>
     </>
-  );
+  )
 }
