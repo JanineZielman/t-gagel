@@ -6,24 +6,22 @@ import ExternalLink from "../products/external-link"
 
 const SingleProduct = ({ product }) => {
   return Object.keys(product).length ? (
-    <div className="single-product container mx-auto my-32 px-4 xl:px-0">
-      <div className="grid md:grid-cols-2 gap-4">
-        <div className="product-images"></div>
-        <div className="product-info">
-          <h4 className="products-main-title text-2xl uppercase">
-            {product.name}
-          </h4>
+    <div className="">
+      <div className="">
+        <div className=""></div>
+        <div className="">
+          <h4 className="">{product.name}</h4>
           <div
             dangerouslySetInnerHTML={{
               __html: product.description,
             }}
-            className="product-description mb-5"
+            className=""
           />
           <div
             dangerouslySetInnerHTML={{
               __html: product?.price_html ?? "",
             }}
-            className="product-price mb-5"
+            className=""
           />
           {"simple" === product?.type ? <AddToCart product={product} /> : null}
           {"external" === product?.type ? (
