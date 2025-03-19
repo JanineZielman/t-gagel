@@ -1,24 +1,16 @@
-/**
- * Internal Dependencies.
- */
 import Products from "../../components/Shop/products"
-
-/**
- * External Dependencies.
- */
 import { getProductsData } from "../../utils/products"
 
 import { useQuery, gql } from "@apollo/client"
 import * as MENUS from "../../constants/menus"
+import { BlogInfoFragment } from "../../fragments/GeneralSettings"
 import {
   Header,
   Footer,
   Main,
   Container,
   NavigationMenu,
-  Hero,
   SEO,
-  PostGrid,
 } from "../../components"
 
 export default function Component({ headerFooter, products }) {
@@ -44,7 +36,6 @@ export default function Component({ headerFooter, products }) {
     data?.generalSettings || {}
   const primaryMenu = data?.headerMenuItems?.nodes ?? []
   const footerMenu = data?.footerMenuItems?.nodes ?? []
-  const posts = data?.posts?.edges ?? []
 
   return (
     <>
@@ -55,6 +46,7 @@ export default function Component({ headerFooter, products }) {
       />
       <Main>
         <Container>
+          <h1>Bestellen</h1>
           <Products products={products} />
         </Container>
       </Main>
@@ -69,29 +61,32 @@ export default function Component({ headerFooter, products }) {
 
 // Add the GraphQL query
 Component.query = gql`
+  ${BlogInfoFragment}
+  ${NavigationMenu.fragments.entry}
   query GetShopPageData(
     $headerLocation: MenuLocationEnum
     $footerLocation: MenuLocationEnum
   ) {
     generalSettings {
-      title
-      description
+      ...BlogInfoFragment
     }
     headerMenuItems: menuItems(
       where: { location: $headerLocation }
       first: 50
     ) {
       nodes {
-        id
-        label
-        path
+        ...NavigationMenuItemFragment
+      }
+    }
+    menu(id: "footer", idType: LOCATION) {
+      id
+      footer {
+        footer
       }
     }
     footerMenuItems: menuItems(where: { location: $footerLocation }) {
       nodes {
-        id
-        label
-        path
+        ...NavigationMenuItemFragment
       }
     }
   }
