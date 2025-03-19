@@ -248,11 +248,12 @@ img {
       max-width: 100%;
       justify-content: center;
       padding: 24px 0;
-      margin-bottom: 100px;
+      margin-bottom: 24px;
       .card{
         width: 20%;
         position: relative;
         margin: 14px;
+        height: fit-content;
         img{
           width: 100%;
           height: 100%;
@@ -305,7 +306,6 @@ blockquote p{
   .sections .textSection .cards{
     .card{
       width: 40%;
-      margin-bottom: 48px;
     }
   }
   blockquote {
