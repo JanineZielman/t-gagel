@@ -47,6 +47,7 @@ export default function Component() {
               dangerouslySetInnerHTML={{ __html: data?.page?.content }}
             />
            <PostGrid posts={posts.slice(0, 3)} selectedCategories={''}/>
+           <br></br><br></br><br></br>
 
             <div className="sections">
               {data?.page?.textSection?.sections.map((item, i) => {

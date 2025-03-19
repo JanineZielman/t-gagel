@@ -15,7 +15,7 @@ export default function Header({
 
   return (
     <header className={`${styles.header} ${isNavShown ? styles.show : ''}`}>
-      <div className={styles.arrow} onClick={() => setIsNavShown(!isNavShown)}>☰</div>
+      <div className={styles.arrow} onClick={() => setIsNavShown(!isNavShown)}></div>
       <div className={styles.menuItems}>
         {hierarchicalMenuItems.map((item, i) => {
           return(
@@ -29,7 +29,6 @@ export default function Header({
                   return(
                     <div className={styles.child}>
                       <Link href={child.path} key={i}> 
-                        {/* <div className={styles.imgMask} style={{maskImage:`url(/${child.label.toLowerCase()}.svg)`}}></div> */}
                         <div className={styles.label}>{child.label}</div>
                       </Link>
                     </div>
