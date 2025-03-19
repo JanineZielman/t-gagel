@@ -23,13 +23,13 @@ const SingleProduct = ({ product }) => {
             }}
             className=""
           />
-          {/* {"simple" === product?.type ? <AddToCart product={product} /> : null}
+          {"simple" === product?.type ? <AddToCart product={product} /> : null}
           {"external" === product?.type ? (
             <ExternalLink
               url={product?.external_url ?? ""}
               text={product?.button_text ?? ""}
             />
-          ) : null} */}
+          ) : null}
         </div>
       </div>
     </div>

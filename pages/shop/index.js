@@ -1,24 +1,16 @@
-/**
- * Internal Dependencies.
- */
 import Products from "../../components/Shop/products"
-
-/**
- * External Dependencies.
- */
 import { getProductsData } from "../../utils/products"
 
 import { useQuery, gql } from "@apollo/client"
 import * as MENUS from "../../constants/menus"
+import { BlogInfoFragment } from "../../fragments/GeneralSettings"
 import {
   Header,
   Footer,
   Main,
   Container,
   NavigationMenu,
-  Hero,
   SEO,
-  PostGrid,
 } from "../../components"
 
 export default function Component({ headerFooter, products }) {
@@ -33,17 +25,78 @@ export default function Component({ headerFooter, products }) {
     },
   }
 
+  const { data, loading, error } = useQuery(Component.query, {
+    variables: Component.variables(),
+  })
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error: {error.message}</p>
+
+  const { title: siteTitle, description: siteDescription } =
+    data?.generalSettings || {}
+  const primaryMenu = data?.headerMenuItems?.nodes ?? []
+  const footerMenu = data?.footerMenuItems?.nodes ?? []
+
   return (
     <>
-
+      <Header
+        title={siteTitle}
+        description={siteDescription}
+        menuItems={primaryMenu}
+      />
       <Main>
         <Container>
           <Products products={products} />
         </Container>
       </Main>
-     
+      <Footer
+        title={siteTitle}
+        menuItems={footerMenu}
+        footer={data?.menu?.footer?.footer}
+      />
     </>
   )
+}
+
+// Add the GraphQL query
+Component.query = gql`
+  ${BlogInfoFragment}
+  ${NavigationMenu.fragments.entry}
+  query GetShopPageData(
+    $headerLocation: MenuLocationEnum
+    $footerLocation: MenuLocationEnum
+  ) {
+    generalSettings {
+      ...BlogInfoFragment
+    }
+    headerMenuItems: menuItems(
+      where: { location: $headerLocation }
+      first: 50
+    ) {
+      nodes {
+        ...NavigationMenuItemFragment
+      }
+    }
+    menu(id: "footer", idType: LOCATION) {
+      id
+      footer {
+        footer
+      }
+    }
+    footerMenuItems: menuItems(where: { location: $footerLocation }) {
+      nodes {
+        ...NavigationMenuItemFragment
+      }
+    }
+  }
+`
+
+// Add the variables function
+Component.variables = () => {
+  return {
+    headerLocation: MENUS.PRIMARY_LOCATION,
+    footerLocation: MENUS.FOOTER_LOCATION,
+  }
 }
 
 export async function getStaticProps() {
