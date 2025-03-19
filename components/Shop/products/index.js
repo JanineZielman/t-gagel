@@ -1,5 +1,6 @@
 import { isArray, isEmpty } from 'lodash';
 import Product from './product';
+import styles from "./products.module.scss"
 
 const Products = ({ products }) => {
 	
@@ -8,7 +9,7 @@ const Products = ({ products }) => {
 	}
 	
 	return (
-		<div className="flex flex-wrap -mx-3 overflow-hidden">
+		<div className={styles.products}>
 			
 			{ products.length ? products.map( product => {
 				return (

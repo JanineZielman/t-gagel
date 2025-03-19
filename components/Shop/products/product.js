@@ -16,7 +16,7 @@ const Product = ( { product } ) => {
 	
 	return (
 		<div className="mt-4 mb-8 px-3 w-full overflow-hidden sm:w-1/2 md:w-1/3 xl:w-1/4">
-			<Link href={ `/product/${ product?.slug }`} >
+			<Link href={ `/shop/product/${ product?.slug }`} >
 					<Image
 						sourceUrl={ img?.src ?? '' }
 						altText={ img?.alt ?? ''}
