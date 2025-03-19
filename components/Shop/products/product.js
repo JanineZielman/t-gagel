@@ -15,7 +15,7 @@ const Product = ({ product, styles }) => {
 
   return (
     <div className={styles.shopItem}>
-      <Link href={`/shop/product/${product?.slug}`}>
+      <Link href={`/bestellen/product/${product?.slug}`}>
         <Image
           sourceUrl={img?.src ?? ""}
           altText={img?.alt ?? ""}
