@@ -13,7 +13,7 @@ const Products = ({ products }) => {
 			
 			{ products.length ? products.map( product => {
 				return (
-					<Product key={ product?.id } product={product} />
+					<Product styles={styles} key={ product?.id } product={product} />
 				)
 			} ) : null }
 		

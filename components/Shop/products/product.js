@@ -5,7 +5,7 @@ import AddToCart from "../cart/add-to-cart"
 import { isEmpty } from "lodash"
 import ExternalLink from "./external-link"
 
-const Product = ({ product }) => {
+const Product = ({ product, styles }) => {
   if (isEmpty(product)) {
     return null
   }
@@ -14,7 +14,7 @@ const Product = ({ product }) => {
   const productType = product?.type ?? ""
 
   return (
-    <div className="">
+    <div className={styles.shopItem}>
       <Link href={`/shop/product/${product?.slug}`}>
         <Image
           sourceUrl={img?.src ?? ""}
@@ -23,7 +23,7 @@ const Product = ({ product }) => {
           width="380"
           height="380"
         />
-        <h6 className="">{product?.name ?? ""}</h6>
+        <h3 className="">{product?.name ?? ""}</h3>
         <div
           className=""
           dangerouslySetInnerHTML={{

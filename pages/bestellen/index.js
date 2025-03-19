@@ -46,6 +46,7 @@ export default function Component({ headerFooter, products }) {
       />
       <Main>
         <Container>
+          <h1>Bestellen</h1>
           <Products products={products} />
         </Container>
       </Main>
