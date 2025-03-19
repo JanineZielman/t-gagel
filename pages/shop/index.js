@@ -6,7 +6,6 @@ import Products from "../../components/Shop/products"
 /**
  * External Dependencies.
  */
-import axios from "axios"
 import { getProductsData } from "../../utils/products"
 
 import { useQuery, gql } from "@apollo/client"
@@ -49,7 +48,7 @@ export default function Component({ headerFooter, products }) {
 
   return (
     <>
-      <Header
+      {/* <Header
         title={siteTitle}
         description={siteDescription}
         menuItems={primaryMenu}
@@ -63,7 +62,7 @@ export default function Component({ headerFooter, products }) {
         title={siteTitle}
         menuItems={footerMenu}
         footer={data?.menu?.footer?.footer}
-      />
+      /> */}
     </>
   )
 }
