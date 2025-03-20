@@ -37,7 +37,7 @@ export default function Component({ headerFooter, products }) {
   const primaryMenu = data?.headerMenuItems?.nodes ?? []
   const footerMenu = data?.footerMenuItems?.nodes ?? []
 
-  return (
+  return (  
     <>
       <Header
         title={siteTitle}

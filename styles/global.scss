@@ -28,7 +28,8 @@
   box-sizing: border-box;
 }
 
-html,body{
+html,
+body {
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -84,7 +85,7 @@ a {
   padding-bottom: 100px;
 }
 
-.post-wrapper{
+.post-wrapper {
   padding: 0 14px 24px 14px;
   max-width: 900px;
   margin: auto;
@@ -100,11 +101,11 @@ a {
       margin-bottom: 0;
     }
   }
-  figure{
-    width: 100%!important;
+  figure {
+    width: 100% !important;
     height: auto;
   }
-  figcaption{
+  figcaption {
     font-size: 75%;
   }
 }
@@ -127,11 +128,11 @@ a {
       margin-bottom: 0;
     }
   }
-  figure{
-    width: 100%!important;
+  figure {
+    width: 100% !important;
     height: auto;
   }
-  figcaption{
+  figcaption {
     font-size: 75%;
   }
 }
@@ -159,7 +160,7 @@ img {
   align-items: center;
 }
 
-.post-item{
+.post-item {
   &.interview {
     background-color: var(--green);
     color: var(--light-green);
@@ -193,22 +194,21 @@ img {
 }
 
 .home {
-
   display: flex;
   flex-direction: column;
 
-  blockquote p{
-    i{
+  blockquote p {
+    i {
       font-size: 48px;
       line-height: 1.1;
     }
     font-size: 18px;
     padding: 24px 0;
-    &:nth-child(2){
+    &:nth-child(2) {
       text-align: right;
     }
   }
-  .post-grid{
+  .post-grid {
     justify-content: center;
     left: 0;
     max-width: 100%;
@@ -216,59 +216,58 @@ img {
   }
 }
 
-
-.introText{
+.introText {
   max-width: 900px;
   margin: auto;
   padding-top: 48px;
 }
 
-.sections{
-  .textSection{
+.sections {
+  .textSection {
     padding: 48px 0 92px 0;
-    &:nth-child(1){
+    &:nth-child(1) {
       background-color: var(--green);
     }
-    &:nth-child(2){
+    &:nth-child(2) {
       background-color: var(--grey);
     }
-    div{
+    div {
       max-width: 900px;
       margin: auto;
     }
-    .center{
+    .center {
       margin: auto;
       display: block;
       margin-top: 48px;
       text-align: center;
     }
-    .cards{
+    .cards {
       display: flex;
       flex-wrap: wrap;
       max-width: 100%;
       justify-content: center;
       padding: 24px 0;
       margin-bottom: 24px;
-      .card{
+      .card {
         width: 20%;
         position: relative;
         margin: 14px;
         height: fit-content;
-        img{
+        img {
           width: 100%;
           height: 100%;
           aspect-ratio: 3/4;
           object-fit: cover;
         }
 
-        .functionAtFarm{
+        .functionAtFarm {
           // background-color:green;
           text-align: center;
         }
-        .contactWithFarmer{
+        .contactWithFarmer {
           // background-color: red;
           text-align: center;
-          a{
+          a {
             text-decoration: underline;
           }
         }
@@ -277,34 +276,34 @@ img {
   }
 }
 
-main{
+main {
   min-height: 100vh;
 }
 
-blockquote p{
+blockquote p {
   font-size: 48px;
   padding: 36px 0;
 }
 
 @media (max-width: 768px) {
-  h1{
+  h1 {
     font-size: 40px;
   }
-  p{
+  p {
     font-size: 18px;
   }
-  h2{
+  h2 {
     font-size: 28px;
   }
-  .introText{
+  .introText {
     padding-left: 14px;
     padding-right: 14px;
   }
-  .textSection p{
+  .textSection p {
     padding: 0 14px;
   }
-  .sections .textSection .cards{
-    .card{
+  .sections .textSection .cards {
+    .card {
       width: 40%;
     }
   }
@@ -312,9 +311,48 @@ blockquote p{
     width: 905;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    p{
+    p {
       font-size: 36px;
       width: 100%;
     }
   }
 }
+
+// Styling tommy booking support
+
+body {
+  .tommy-zeb-wrapper .tommy-zeb-left {
+    background-color: var(--green);
+    color: var(--light-green);
+    border-radius: 0px;
+  }
+
+  .tommy-zeb-wrapper-mini button.tommy-zeb-btn {
+    background-color: var(--light-green);
+    color: var(--green);
+  }
+
+  .ng-scope {
+    // color: var(--light-green);
+  }
+
+  .tommy-zeb-wrapper .tommy-zeb-left h1 {
+    color: var(--light-green);
+  }
+
+  .tommy-zeb-wrapper * h2 {
+    color: var(--light-green);
+  }
+
+  .tommy-zeb-wrapper .tommy-zeb-result.ng-scope {
+    background-color: var(--green);
+  }
+
+  .tommy-zeb-wrapper .tommy-zeb-result-label.ng-binding {
+    color: var(--light-green);
+  }
+  .tommy-zeb-result-description{
+    color: var(--light-green);
+  }
+}
+// Styling tommy booking support
