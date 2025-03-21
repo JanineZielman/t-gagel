@@ -9,7 +9,8 @@ import {
   NavigationMenu,
   Hero,
   SEO,
-  PostGrid
+  PostGrid,
+  NewsGrid,
 } from "../components"
 import { CallToActionButton } from "../components/Bits/CallToActionButton"
 import Image from "next/image"
@@ -41,13 +42,17 @@ export default function Component() {
       <Main>
         <Container>
           <Hero gallery={data?.page?.homepageGallery} />
+          <NewsGrid posts={posts.slice(0, 4)} />
           <div className="home">
             <div
               className={"introText"}
               dangerouslySetInnerHTML={{ __html: data?.page?.content }}
             />
-           <PostGrid posts={posts.slice(0, 3)} selectedCategories={''}/>
-           <br></br><br></br><br></br>
+            <PostGrid posts={posts.slice(0, 3)} selectedCategories={""} />
+
+            <br></br>
+            <br></br>
+            <br></br>
 
             <div className="sections">
               {data?.page?.textSection?.sections.map((item, i) => {
@@ -59,33 +64,33 @@ export default function Component() {
                     {item.card && (
                       <div className="cards">
                         {item.card.map((cardItem, j) => {
-                            return (
+                          return (
                             <div key={j} className="card">
                               {cardItem.image?.node?.mediaItemUrl && (
-                              <Image
-                                src={cardItem.image.node.mediaItemUrl}
-                                alt={cardItem.title}
-                                width={500}
-                                height={300}
-                                loading="lazy"
-                              />
+                                <Image
+                                  src={cardItem.image.node.mediaItemUrl}
+                                  alt={cardItem.title}
+                                  width={500}
+                                  height={300}
+                                  loading="lazy"
+                                />
                               )}
                               <h2>
-                              {cardItem.firstname} {cardItem.lastname}
+                                {cardItem.firstname} {cardItem.lastname}
                               </h2>
                               <div className="functionAtFarm">
-                              {cardItem.title}
+                                {cardItem.title}
                               </div>
                               {cardItem.email && (
-                              <div className="contactWithFarmer">
-                                contact met{" "}
-                                <a href={`mailto:${cardItem.email}`}>
-                                {cardItem.firstname}
-                                </a>
-                              </div>
+                                <div className="contactWithFarmer">
+                                  contact met{" "}
+                                  <a href={`mailto:${cardItem.email}`}>
+                                    {cardItem.firstname}
+                                  </a>
+                                </div>
                               )}
                             </div>
-                            )
+                          )
                         })}
                       </div>
                     )}
