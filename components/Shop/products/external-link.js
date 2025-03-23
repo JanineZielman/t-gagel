@@ -7,9 +7,7 @@ const ExternalLink = ({ url, text }) => {
 
   return (
     <Link href={url}>
-      <a target="_blank" className="">
-        {text}
-      </a>
+      {text}
     </Link>
   )
 }

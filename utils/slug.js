@@ -14,7 +14,7 @@ export const isCustomPageUri = ( uri ) => {
 		'/',
 		'/blog/',
 		'/checkout/',
-		'/cart/',
+		'/bestellen/cart/',
 		'/thank-you/',
 	];
 	

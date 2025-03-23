@@ -158,6 +158,7 @@ const calculateCartQtyAndPrice = ( cartItems ) => {
 	const qtyAndPrice = {
 		totalQty: 0,
 		totalPrice: 0,
+		totalTax: 0,
 	}
 	
 	if ( !isArray(cartItems) || !cartItems?.length ) {
@@ -167,6 +168,7 @@ const calculateCartQtyAndPrice = ( cartItems ) => {
 	cartItems.forEach( (item, index) => {
 		qtyAndPrice.totalQty += item?.quantity ?? 0;
 		qtyAndPrice.totalPrice += item?.line_total ?? 0;
+		qtyAndPrice.totalTax += item?.line_tax ?? 0;
 	} )
 	
 	return qtyAndPrice;

@@ -29,7 +29,6 @@ export default function Component() {
   const footerMenu = data?.footerMenuItems?.nodes ?? []
   const posts = data?.posts?.edges ?? []
 
-  console.log(data)
 
   return (
     <>

@@ -111,14 +111,13 @@ const CartItem = ( {
 			<div className="col-span-2 cart-right-col">
 				<div className="flex justify-between flex-col h-full">
 					<div className="cart-product-title-wrap relative">
-						<h3 className="cart-product-title text-brand-orange">{ item?.data?.name }</h3>
-						{item?.data?.description ? <p>{item?.data?.description}</p> : ''}
+						<h3 className="cart-product-title">{ item?.data?.name }</h3>
 						<button className="cart-remove-item absolute right-0 top-0 px-4 py-2 flex items-center text-22px leading-22px bg-transparent border border-brand-bright-grey" onClick={ ( event ) => handleRemoveProductClick( event, item?.key ) }>&times;</button>
 					</div>
 					
 					<footer className="cart-product-footer flex justify-between p-4 border-t border-brand-bright-grey">
 						<div className="">
-							<span className="cart-total-price">{item?.currency}{item?.line_subtotal}</span>
+							<span className="cart-total-price">{item?.currency}{(item?.line_subtotal + item?.line_subtotal_tax).toFixed()}</span>
 						</div>
 						{ updatingProduct ? <img className="woo-next-cart-item-spinner" width="24" src="/cart-spinner.gif"  alt="spinner"/> : null }
 						{/*Qty*/}
