@@ -22,7 +22,7 @@ export default function Header({
           return(
             <div className={styles.menuItem}>
               <Link href={item.path} key={i}> 
-                <div className={styles.imgMask} style={{maskImage:`url(/${item.label.toLowerCase().replaceAll(' ', '-')}.svg)`}}></div>
+                <div className={styles.imgMask} style={{maskImage:`url(/api/imageProxy?url=${encodeURIComponent(item.connectedNode?.node.featuredImage?.node.mediaItemUrl)})`}}></div>
                 <div className={styles.label}>{item.label}</div>
               </Link>
               <div className={styles.children}>

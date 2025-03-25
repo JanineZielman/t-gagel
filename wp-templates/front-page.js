@@ -37,6 +37,8 @@ export default function Component() {
     ) ?? []
 
 
+  console.log(primaryMenu)
+
   return (
     <>
       <SEO title={siteTitle} description={siteDescription} />
