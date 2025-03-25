@@ -27,7 +27,14 @@ export default function Component() {
     data?.generalSettings || {}
   const primaryMenu = data?.headerMenuItems?.nodes ?? []
   const footerMenu = data?.footerMenuItems?.nodes ?? []
-  const posts = data?.posts?.edges ?? []
+  // const posts = data?.posts?.edges ?? []
+
+  const actueelPosts = data?.actueelPosts?.edges ?? []
+  const overigePosts =
+    data?.overigePosts?.edges.filter(
+      (post) =>
+        !post.node.categories.edges.some((cat) => cat.node.name === "Actueel")
+    ) ?? []
 
   console.log(data)
 
@@ -42,13 +49,16 @@ export default function Component() {
       <Main>
         <Container>
           <Hero gallery={data?.page?.homepageGallery} />
-          <NewsGrid posts={posts.slice(0, 4)} />
+          <NewsGrid posts={actueelPosts.slice(0, 4)} />
           <div className="home">
             <div
               className={"introText"}
               dangerouslySetInnerHTML={{ __html: data?.page?.content }}
             />
-            <PostGrid posts={posts.slice(0, 3)} selectedCategories={""} />
+            <PostGrid
+              posts={overigePosts.slice(0, 3)}
+              selectedCategories={""}
+            />
 
             <br></br>
             <br></br>
@@ -175,7 +185,34 @@ Component.query = gql`
         }
       }
     }
-    posts {
+    # Haal alleen artikelen met de categorie "Actueel" op
+    actueelPosts: posts(where: { categoryName: "Actueel" }) {
+      edges {
+        node {
+          title
+          slug
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+          author {
+            node {
+              name
+            }
+          }
+          categories {
+            edges {
+              node {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+    # Haal artikelen op ZONDER de categorie "Actueel"
+    overigePosts: posts {
       edges {
         node {
           title
