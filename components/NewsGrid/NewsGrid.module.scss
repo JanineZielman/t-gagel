@@ -1,4 +1,4 @@
-@import '../../styles/breakpoints';
+@import "../../styles/breakpoints";
 
 .newsGridContainer {
   background-color: var(--boeren-green);
@@ -23,9 +23,7 @@
   font-weight: 100;
 
   .newsItem {
-    width: calc(
-      25% - 2%
-    ); // Ensures exactly 4 items per row, accounting for margins
+    width: calc(25% - 2%); // 4 items per row on desktop
     margin: 1%;
     padding-bottom: 50px;
     display: flex;
@@ -88,26 +86,13 @@
 
   @media (max-width: $breakpoint-medium) {
     .newsItem {
-      width: calc(33.333% - 2%); // 3 items per row
+      width: calc(50% - 2%); // 2 items per row on tablet
     }
   }
 
   @media (max-width: $breakpoint-small) {
     .newsItem {
-      width: calc(50% - 2%); // 2 items per row
-    }
-  }
-
-  @media (max-width: $breakpoint-extra-small) {
-    .newsItem {
-      width: calc(100% - 2%); // 1 item per row
-    }
-  }
-
-  @media (max-width: 768px) {
-    .postItem {
-      width: 100%;
-      margin: 10px auto;
+      width: calc(100% - 2%); // 1 item per row on mobile
     }
   }
 }
