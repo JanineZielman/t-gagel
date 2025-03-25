@@ -1,20 +1,16 @@
-import classNames from 'classnames/bind';
-import { Container, NavigationMenu } from '../../components';
-import styles from './Footer.module.scss';
-import { flatListToHierarchical } from '@faustwp/core';
-import Link from 'next/link';
+import classNames from "classnames/bind"
+import styles from "./Footer.module.scss"
 
-let cx = classNames.bind(styles);
+let cx = classNames.bind(styles)
 
-export default function Footer({ title, menuItems,primaryMenu, footer }) {
-  const year = new Date().getFullYear();
-
-  const hierarchicalMenuItems = flatListToHierarchical(primaryMenu);
+export default function Footer({ title, menuItems, primaryMenu, footer }) {
+  // const year = new Date().getFullYear();
+  // const hierarchicalMenuItems = flatListToHierarchical(primaryMenu);
 
   return (
-    <footer className={cx('component')}>
+    <footer className={cx("component")}>
       {/* <Container> */}
-      <div className={styles.menuItems}>
+      {/* <div className={styles.menuItems}>
       {hierarchicalMenuItems.map((item, i) => {
           return(
             <div className={styles.menuItem}>
@@ -36,18 +32,17 @@ export default function Footer({ title, menuItems,primaryMenu, footer }) {
             </div>
           )
         })}
+      </div> */}
+      <div
+        className={styles.footerText}
+        dangerouslySetInnerHTML={{ __html: footer }}
+      />
+      {/* <NavigationMenu menuItems={menuItems} /> */}
+      <div className={styles.lenteland}>
+        <div className={styles.maskImg}></div>
       </div>
-        <div
-          className={styles.footerText}
-          dangerouslySetInnerHTML={{ __html: footer }}
-        />
-        {/* <NavigationMenu menuItems={menuItems} /> */}
-        <div className={styles.lenteland}>
-          <div className={styles.maskImg}></div>
-        </div>
-        {/* <p className={cx('copyright')}>{`${title} © ${year}. Powered by WordPress.`}</p> */}
+      {/* <p className={cx('copyright')}>{`${title} © ${year}. Powered by WordPress.`}</p> */}
       {/* </Container> */}
     </footer>
-  );
+  )
 }
-

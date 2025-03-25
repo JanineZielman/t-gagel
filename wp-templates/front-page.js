@@ -36,7 +36,6 @@ export default function Component() {
         !post.node.categories.edges.some((cat) => cat.node.name === "Actueel")
     ) ?? []
 
-
   console.log(primaryMenu)
 
   return (
@@ -187,7 +186,7 @@ Component.query = gql`
       }
     }
     # Haal alleen artikelen met de categorie "Actueel" op
-    actueelPosts: posts(where: { categoryName: "Actueel" }) {
+    actueelPosts: posts(where: { categoryNotIn: "Actueel" }) {
       edges {
         node {
           title
@@ -213,7 +212,7 @@ Component.query = gql`
       }
     }
     # Haal artikelen op ZONDER de categorie "Actueel"
-    overigePosts: posts {
+    overigePosts: posts(where: { categoryNotIn: ["Actueel"] }) {
       edges {
         node {
           title

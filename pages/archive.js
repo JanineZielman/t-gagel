@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router"
 import { gql, useQuery } from "@apollo/client"
 import * as MENUS from "../constants/menus"
 import { BlogInfoFragment } from "../fragments/GeneralSettings"
@@ -11,67 +11,86 @@ import {
   Container,
   NavigationMenu,
   SEO,
-  PostGrid
+  PostGrid,
 } from "../components"
 import { getNextStaticProps } from "@faustwp/core"
 
 export default function Page(props) {
-  const router = useRouter();
-  const { categories: queryCategories } = router.query; // Get categories from URL
+  const router = useRouter()
+  const { categories: queryCategories } = router.query // Get categories from URL
   const { data } = useQuery(Page.query, {
     variables: Page.variables(),
-  });
+  })
 
-  const title = props.title;
-  const { title: siteTitle, description: siteDescription } = data?.generalSettings;
-  const primaryMenu = data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = data?.footerMenuItems?.nodes ?? [];
-  const posts = props?.data.posts?.edges ?? [];
+  const title = props.title
+  const { title: siteTitle, description: siteDescription } =
+    data?.generalSettings
+  const primaryMenu = data?.headerMenuItems?.nodes ?? []
+  const footerMenu = data?.footerMenuItems?.nodes ?? []
+  // const posts = props?.data.posts?.edges ?? []
+
+  const posts =
+    data?.posts?.edges.filter(
+      (post) =>
+        !post.node.categories.edges.some((cat) => cat.node.name === "Actueel")
+    ) ?? []
 
   const categories = [
     ...new Set(
       posts.map((item) => item.node.categories.edges[0].node.name.toLowerCase())
     ),
-  ];
+  ]
 
   // Initialize selectedCategories from query or default to empty array
   const [selectedCategories, setSelectedCategories] = useState(
-    queryCategories ? queryCategories.split(',') : []
-  );
+    queryCategories ? queryCategories.split(",") : []
+  )
 
   useEffect(() => {
     if (queryCategories) {
-      setSelectedCategories(queryCategories.split(','));
+      setSelectedCategories(queryCategories.split(","))
     }
-  }, [queryCategories]);
+  }, [queryCategories])
 
   const handleCategoryChange = (category) => {
-    const url = new URL(window.location.href);
+    const url = new URL(window.location.href)
     let selected = selectedCategories.includes(category)
       ? selectedCategories.filter((c) => c !== category)
-      : [...selectedCategories, category];
-  
-    setSelectedCategories(selected);
-  
+      : [...selectedCategories, category]
+
+    setSelectedCategories(selected)
+
     if (selected.length > 0) {
-      url.searchParams.set('categories', selected.join(','));
+      url.searchParams.set("categories", selected.join(","))
     } else {
-      url.searchParams.delete('categories');
+      url.searchParams.delete("categories")
     }
-  
-    history.pushState(null, '', `/archive${selected.length > 0 ? `?${url.searchParams.toString()}` : ''}`);
-  };
+
+    history.pushState(
+      null,
+      "",
+      `/archive${selected.length > 0 ? `?${url.searchParams.toString()}` : ""}`
+    )
+  }
+
+  console.log(posts)
 
   const filteredPosts = posts.filter((item) =>
     selectedCategories.length === 0
       ? true
-      : selectedCategories.includes(item.node.categories.edges[0].node.name.toLowerCase())
-  );
+      : selectedCategories.includes(
+          item.node.categories.edges[0].node.name.toLowerCase()
+        )
+  )
 
   return (
     <>
       <SEO title={siteTitle} description={siteDescription} />
-      <Header title={siteTitle} description={siteDescription} menuItems={primaryMenu} />
+      <Header
+        title={siteTitle}
+        description={siteDescription}
+        menuItems={primaryMenu}
+      />
       <Main>
         <Container>
           <ArchiveMenu
@@ -79,15 +98,18 @@ export default function Page(props) {
             selectedCategories={selectedCategories}
             handleCategoryChange={handleCategoryChange}
           />
-          <div className='content-wrapper'>
+          <div className="content-wrapper">
             <h1>Levend Archief</h1>
-            <PostGrid posts={filteredPosts} selectedCategories={selectedCategories}/>
+            <PostGrid
+              posts={filteredPosts}
+              selectedCategories={selectedCategories}
+            />
           </div>
         </Container>
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />
     </>
-  );
+  )
 }
 
 Page.query = gql`
@@ -113,7 +135,7 @@ Page.query = gql`
         ...NavigationMenuItemFragment
       }
     }
-    posts {
+    posts(where: { categoryNotIn: "Actueel" }) {
       edges {
         node {
           title
