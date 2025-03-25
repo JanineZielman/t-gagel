@@ -41,7 +41,7 @@ body {
 }
 
 h1 {
-  text-transform: uppercase;
+  // text-transform: uppercase;
   font-family: "cabinet";
   font-size: 72px;
   text-align: center;
@@ -223,13 +223,14 @@ img {
 }
 
 .sections {
+  // background-color: var(--boeren-green);
   .textSection {
     padding: 48px 0 92px 0;
     &:nth-child(1) {
-      background-color: var(--green);
+      // background-color: var(--green);
     }
     &:nth-child(2) {
-      background-color: var(--grey);
+      // background-color: var(--grey);
     }
     div {
       max-width: 900px;
@@ -351,7 +352,7 @@ body {
   .tommy-zeb-wrapper .tommy-zeb-result-label.ng-binding {
     color: var(--light-green);
   }
-  .tommy-zeb-result-description{
+  .tommy-zeb-result-description {
     color: var(--light-green);
   }
 }
