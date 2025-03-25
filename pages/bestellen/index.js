@@ -1,8 +1,9 @@
 import Products from "../../components/Shop/products"
 import { getProductsData } from "../../utils/products"
-
+import Link from "next/link"
 import { useQuery, gql } from "@apollo/client"
 import * as MENUS from "../../constants/menus"
+import { BurgerIcon, Bag, SearchIcon } from '../../components/Shop/icons';
 import { BlogInfoFragment } from "../../fragments/GeneralSettings"
 import {
   Header,
@@ -12,8 +13,11 @@ import {
   NavigationMenu,
   SEO,
 } from "../../components"
+import { useContext, useState } from 'react';
+import { AppContext } from '../../components/Shop/context';
 
 export default function Component({ headerFooter, products }) {
+  const [ cart, setCart ] = useContext( AppContext );
   const seo = {
     title: "Next JS WooCommerce REST API",
     description: "Next JS WooCommerce Theme",
@@ -37,6 +41,8 @@ export default function Component({ headerFooter, products }) {
   const primaryMenu = data?.headerMenuItems?.nodes ?? []
   const footerMenu = data?.footerMenuItems?.nodes ?? []
 
+  console.log('cart', cart)
+
   return (  
     <>
       <Header
@@ -46,6 +52,16 @@ export default function Component({ headerFooter, products }) {
       />
       <Main>
         <Container>
+          <div>
+          <Link href="/bestellen/cart">
+              <span className="flex items-center">
+              <Bag className="mr-1 lg:mr-0"/>
+                <span
+                  className="ml-1">Bag{ cart?.totalQty ? `(${ cart?.totalQty })` : null }</span>
+              </span>
+  
+            </Link>
+          </div>
           <h1>Bestellen</h1>
           <Products products={products} />
         </Container>

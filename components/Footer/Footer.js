@@ -9,7 +9,6 @@ let cx = classNames.bind(styles);
 export default function Footer({ title, menuItems,primaryMenu, footer }) {
   const year = new Date().getFullYear();
 
-  console.log(menuItems,primaryMenu)
   const hierarchicalMenuItems = flatListToHierarchical(primaryMenu);
 
   return (

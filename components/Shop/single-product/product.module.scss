@@ -1,0 +1,12 @@
+.productPage{
+  max-width: 900px;
+  margin-left: calc((100vw - 900px - 150px)/2);
+  padding-top: 40px;
+  img{
+    width: 100%;
+    height: auto;
+  }
+  h2{
+    margin-top: 24px;
+  }
+}

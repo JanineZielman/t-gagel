@@ -36,7 +36,6 @@ export default function Component() {
         !post.node.categories.edges.some((cat) => cat.node.name === "Actueel")
     ) ?? []
 
-  console.log(data)
 
   return (
     <>
