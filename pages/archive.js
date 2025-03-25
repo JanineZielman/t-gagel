@@ -1,43 +1,46 @@
-import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
-import { gql, useQuery } from "@apollo/client"
-import * as MENUS from "../constants/menus"
-import { BlogInfoFragment } from "../fragments/GeneralSettings"
-import {
-  ArchiveMenu,
-  Header,
-  Footer,
-  Main,
-  Container,
-  NavigationMenu,
-  SEO,
-  PostGrid,
-} from "../components"
-import { getNextStaticProps } from "@faustwp/core"
+/**
+ * External Dependencies.
+ */
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
-export default function Page(props) {
-  const router = useRouter()
+/**
+ * Internal Dependencies.
+ */
+import Layout from '../src/components/layout';
+import { HEADER_FOOTER_ENDPOINT } from '../src/utils/constants/endpoints';
+import { getPosts } from '../src/utils/blog';
+import ArchiveMenu from '../src/components/ArchiveMenu';
+import { useRouter } from 'next/router';
+import PostGrid from '../src/components/PostGrid';
+
+/**
+ * Blog Component.
+ *
+ * @param {Object} headerFooter Header Footer Data.
+ * @param {Object} postsData Post Data.
+ */
+const Blog = ( { headerFooter, posts } ) => {
+	const seo = {
+		title: 'Archive Page',
+		description: 'Archive Page',
+		og_image: [],
+		og_site_name: 'React WooCommerce Theme',
+		robots: {
+			index: 'index',
+			follow: 'follow',
+		},
+	}
+
+	console.log(posts)
+
+	const router = useRouter()
   const { categories: queryCategories } = router.query // Get categories from URL
-  const { data } = useQuery(Page.query, {
-    variables: Page.variables(),
-  })
 
-  const title = props.title
-  const { title: siteTitle, description: siteDescription } =
-    data?.generalSettings
-  const primaryMenu = data?.headerMenuItems?.nodes ?? []
-  const footerMenu = data?.footerMenuItems?.nodes ?? []
-  // const posts = props?.data.posts?.edges ?? []
-
-  const posts =
-    data?.posts?.edges.filter(
-      (post) =>
-        !post.node.categories.edges.some((cat) => cat.node.name === "Actueel")
-    ) ?? []
 
   const categories = [
     ...new Set(
-      posts.map((item) => item.node.categories.edges[0].node.name.toLowerCase())
+      posts.map((item) => item.categories[0].name.toLowerCase())
     ),
   ]
 
@@ -79,100 +82,47 @@ export default function Page(props) {
     selectedCategories.length === 0
       ? true
       : selectedCategories.includes(
-          item.node.categories.edges[0].node.name.toLowerCase()
+          item.categories[0].name.toLowerCase()
         )
   )
+	
+	return (
+		<Layout headerFooter={ headerFooter || {} } seo={ seo }>
+			{/* <h1>Levend Archief</h1>
+			<Posts posts={ postsData?.posts_data ?? [] }/> */}
+			<ArchiveMenu
+				categories={categories}
+				selectedCategories={selectedCategories}
+				handleCategoryChange={handleCategoryChange}
+			/>
+			<div className="content-wrapper">
+				<h1>Levend Archief</h1>
+				<PostGrid
+					posts={filteredPosts}
+					selectedCategories={selectedCategories}
+				/>
+			</div>
+		</Layout>
+	);
+};
 
-  return (
-    <>
-      <SEO title={siteTitle} description={siteDescription} />
-      <Header
-        title={siteTitle}
-        description={siteDescription}
-        menuItems={primaryMenu}
-      />
-      <Main>
-        <Container>
-          <ArchiveMenu
-            categories={categories}
-            selectedCategories={selectedCategories}
-            handleCategoryChange={handleCategoryChange}
-          />
-          <div className="content-wrapper">
-            <h1>Levend Archief</h1>
-            <PostGrid
-              posts={filteredPosts}
-              selectedCategories={selectedCategories}
-            />
-          </div>
-        </Container>
-      </Main>
-      <Footer title={siteTitle} menuItems={footerMenu} />
-    </>
-  )
-}
+export default Blog;
 
-Page.query = gql`
-  ${BlogInfoFragment}
-  ${NavigationMenu.fragments.entry}
-  query GetPageData(
-    $headerLocation: MenuLocationEnum
-    $footerLocation: MenuLocationEnum
-  ) {
-    generalSettings {
-      ...BlogInfoFragment
-    }
-    headerMenuItems: menuItems(
-      where: { location: $headerLocation }
-      first: 50
-    ) {
-      nodes {
-        ...NavigationMenuItemFragment
-      }
-    }
-    footerMenuItems: menuItems(where: { location: $footerLocation }) {
-      nodes {
-        ...NavigationMenuItemFragment
-      }
-    }
-    posts(where: { categoryNotIn: "Actueel" }) {
-      edges {
-        node {
-          title
-          slug
-          featuredImage {
-            node {
-              sourceUrl
-            }
-          }
-          author {
-            node {
-              name
-            }
-          }
-          categories {
-            edges {
-              node {
-                name
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
-
-Page.variables = () => {
-  return {
-    headerLocation: MENUS.PRIMARY_LOCATION,
-    footerLocation: MENUS.FOOTER_LOCATION,
-  }
-}
-
-export function getStaticProps(ctx) {
-  return getNextStaticProps(ctx, {
-    Page,
-    props: { title: "File Page Example" },
-  })
+export async function getStaticProps() {
+	const { data: headerFooterData } = await axios.get( HEADER_FOOTER_ENDPOINT );
+	const { data: postsData } = await getPosts();
+	
+	return {
+		props: {
+			headerFooter: headerFooterData?.data ?? {},
+			posts: postsData.posts_data || {},
+		},
+		
+		/**
+		 * Revalidate means that if a new request comes to server, then every 1 sec it will check
+		 * if the data is changed, if it is changed then it will update the
+		 * static file inside .next folder with the new data, so that any 'SUBSEQUENT' requests should have updated data.
+		 */
+		revalidate: 1,
+	};
 }

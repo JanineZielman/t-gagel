@@ -1,39 +1,36 @@
 {
-  "name": "@faustwp/getting-started-example",
-  "private": true,
+  "name": "nextjs-woocommerce-restapi",
   "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "faust dev",
-    "build": "faust build",
-    "generate": "faust generatePossibleTypes",
-    "stylesheet": "faust generateGlobalStylesheet",
-    "start": "faust start"
+    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "build": "next build",
+    "start": "next start",
+    "svg": "svgr -d src/components/icons src/components/icons/svgs"
   },
   "dependencies": {
-    "@apollo/client": "^3.10.4",
-    "@faustwp/cli": "^3.1.1",
-    "@faustwp/core": "^3.1.0",
+    "@stripe/stripe-js": "^1.36.0",
+    "@svgr/cli": "^5.5.0",
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
-    "@wordpress/base-styles": "^5.10.0",
-    "@wordpress/block-library": "^9.10.0",
-    "axios": "^1.8.3",
-    "classnames": "^2.5.1",
-    "dompurify": "^3.2.4",
-    "graphql": "^16.8.1",
-    "html-react-parser": "^5.2.2",
+    "@wordpress/base-styles": "^4.21.0",
+    "@wordpress/block-library": "^8.7.0",
+    "axios": "^0.21.4",
+    "classnames": "^2.3.1",
+    "dompurify": "^2.4.0",
     "lodash": "^4.17.21",
-    "next": "^14.2.21",
-    "next-seo": "^6.6.0",
+    "micro": "^9.4.1",
+    "next": "^12.3.0",
+    "next-seo": "^5.15.0",
     "nprogress": "^0.2.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.77.3"
+    "react-image-gallery": "^1.2.11",
+    "sass": "^1.54.9",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
-    "next-secure-headers": "^2.2.0"
-  },
-  "engines": {
-    "node": ">=18",
-    "npm": ">=8"
+    "autoprefixer": "^10.4.8",
+    "precss": "^4.0.0"
   }
 }
