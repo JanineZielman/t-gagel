@@ -30,6 +30,8 @@ export default function Component() {
   const posts = data?.posts?.edges ?? []
 
 
+  console.log(primaryMenu)
+
   return (
     <>
       <SEO title={siteTitle} description={siteDescription} />

@@ -56,6 +56,18 @@ NavigationMenu.fragments = {
       label
       parentId
       cssClasses
+      connectedNode {
+          node {
+            ... on Page {
+              id
+              featuredImage {
+                node {
+                  mediaItemUrl
+                }
+              }
+            }
+          }
+        }
       menu {
         node {
           name
