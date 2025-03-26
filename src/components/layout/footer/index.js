@@ -5,9 +5,14 @@ import Link from 'next/link';
 let cx = classNames.bind(styles);
 
 export default function Footer({ title, menuItems,primaryMenu, footer }) {
+	console.log(footer)
   return (
     <footer className={cx('component')}>
-			 <div className={styles.menuItems}>
+			 <div
+          className={styles.footerText}
+          dangerouslySetInnerHTML={{ __html: footer.sidebarOne }}
+        />
+			 {/* <div className={styles.menuItems}>
 				{footer.footerMenuItems.map((item, i) => {
 						return(
 							<div className={styles.menuItem}>
@@ -29,11 +34,8 @@ export default function Footer({ title, menuItems,primaryMenu, footer }) {
 							</div>
 						)
 					})}
-				</div>
-        {/* <div
-          className={styles.footerText}
-          dangerouslySetInnerHTML={{ __html: footer }}
-        /> */}
+				</div> */}
+       
         <div className={styles.lenteland}>
           <div className={styles.maskImg}></div>
         </div>
