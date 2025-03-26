@@ -8,6 +8,7 @@ import NewsGrid from "../src/components/NewsGrid"
 import PostGrid from "../src/components/PostGrid"
 import Image from "../src/components/image"
 import CustomLine from "../src/components/CustomLine/CustomLine"
+import CallToActionButton from "../src/components/Bits/CallToActionButton"
 
 export default function Home({ headerFooter, page, posts }) {
   const seo = {
@@ -37,6 +38,7 @@ export default function Home({ headerFooter, page, posts }) {
         <br></br>
         <div className="sections">
           {page.acf.sections.map((item, i) => {
+            console.log(item)
             return (
               <div key={i} className={"textSection"}>
                 <div className="text-wrapper" dangerouslySetInnerHTML={{ __html: item.text_section }} />
@@ -70,15 +72,15 @@ export default function Home({ headerFooter, page, posts }) {
                     })}
                   </div>
                 )}
-                {item.linkpage && (
+                {item.linkPage && (
                   <div className="center">
                     <CallToActionButton
-                      link={item.linkpage.url.replace(
+                      link={item.linkPage.url.replace(
                         "https://gagel.janinezielman.com",
                         ""
                       )}
                     >
-                      Lees meer
+                      Lees meer ...
                     </CallToActionButton>
                   </div>
                 )}
