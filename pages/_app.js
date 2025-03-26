@@ -1,16 +1,15 @@
-import '../faust.config';
-import React from 'react';
-import { useRouter } from 'next/router';
-import { FaustProvider } from '@faustwp/core';
-import '@faustwp/core/dist/css/toolbar.css';
-import '../styles/global.scss';
+import '../src/styles/global.scss';
 
-export default function MyApp({ Component, pageProps }) {
-  const router = useRouter();
+import Router from 'next/router';
+import NProgress from 'nprogress';
 
-  return (
-    <FaustProvider pageProps={pageProps} >
-      <Component {...pageProps} key={router.asPath} />
-    </FaustProvider>
-  );
+NProgress.configure( { showSpinner: false } );
+Router.events.on( 'routeChangeStart', () => NProgress.start() );
+Router.events.on( 'routeChangeComplete', () => NProgress.done() );
+Router.events.on( 'routeChangeError', () => NProgress.done() );
+
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />
 }
+
+export default MyApp
