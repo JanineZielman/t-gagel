@@ -1,4 +1,5 @@
 import React, { useMemo, useEffect, useState } from "react"
+import styles from "./CustomLine.module.scss" // Import the CSS module
 
 const CustomLine = ({
   height = 37,
@@ -9,18 +10,11 @@ const CustomLine = ({
   const [pathData, setPathData] = useState("")
 
   useEffect(() => {
-    const updateWidth = () => {
-      const newWidth = window.innerWidth
-      if (Math.abs(newWidth - width) > 50) {
-        // Only update if width changes significantly
-        setWidth(newWidth)
-      }
-    }
-
+    const updateWidth = () => setWidth(window.innerWidth)
     updateWidth()
     window.addEventListener("resize", updateWidth)
     return () => window.removeEventListener("resize", updateWidth)
-  }, [width])
+  }, [])
 
   useEffect(() => {
     if (width > 0) {
@@ -32,6 +26,9 @@ const CustomLine = ({
         points.push([x, y])
         x += Math.random() * 300 // Step size for x-coordinate
       }
+
+      // Ensure the last point is at the maximum width
+      points.push([width, height / 2])
 
       // Generate smooth Bézier curves
       const newPathData = points.reduce((path, [x, y], i, arr) => {
@@ -48,21 +45,24 @@ const CustomLine = ({
   if (width === 0 || !pathData) return null // Avoid rendering until width and path data are ready
 
   return (
-    <svg
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d={pathData}
-        stroke={strokeColor}
-        strokeWidth={strokeWidth}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <div className={styles.container}>
+      <svg
+        width="100%"
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d={pathData}
+          stroke={strokeColor}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke" // Ensures stroke width doesn't scale
+        />
+      </svg>
+    </div>
   )
 }
 
