@@ -6,7 +6,6 @@ const NewsGrid = ({ posts }) => {
   return (
     <>
       <div className={styles.newsGridContainer}>
-        <h2>Actueel</h2>
         <div className={styles.newsGrid}>
           {posts.length > 0 ? (
             posts.map((post, i) => <NewsItem key={i} post={post} />)

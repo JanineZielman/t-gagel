@@ -2,7 +2,6 @@ import Img from "next/image"
 import { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import cx from "classnames"
-import { DEFAULT_IMG_URL } from "../../utils/constants/images"
 
 /**
  * Image Component.
@@ -25,7 +24,6 @@ const Image = (props) => {
     layout,
     objectFit,
     containerClassNames,
-    showDefault,
     customImageId,
     ...rest
   } = props
@@ -53,7 +51,7 @@ const Image = (props) => {
   }, [customImageId])
 
   const finalSourceUrl =
-    fetchedSourceUrl || sourceUrl || (showDefault ? DEFAULT_IMG_URL : "")
+    fetchedSourceUrl || sourceUrl
 
   if (!finalSourceUrl) {
     return null
@@ -99,7 +97,6 @@ Image.propTypes = {
   title: PropTypes.string,
   sourceUrl: PropTypes.string,
   layout: PropTypes.string,
-  showDefault: PropTypes.bool,
   containerClassName: PropTypes.string,
   className: PropTypes.string,
 }
@@ -108,7 +105,6 @@ Image.defaultProps = {
   altText: "",
   title: "",
   sourceUrl: "",
-  showDefault: true,
   containerClassNames: "",
   className: "product__image",
 }

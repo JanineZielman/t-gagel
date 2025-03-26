@@ -40,7 +40,7 @@ const Blog = ( { headerFooter, posts } ) => {
 
   const categories = [
     ...new Set(
-      posts.map((item) => item.categories[0].name.toLowerCase())
+      posts.slice(4,7).map((item) => item.categories[0].name.toLowerCase())
     ),
   ]
 
@@ -78,7 +78,7 @@ const Blog = ( { headerFooter, posts } ) => {
 
   console.log(posts)
 
-  const filteredPosts = posts.filter((item) =>
+  const filteredPosts = posts.slice(4,7).filter((item) =>
     selectedCategories.length === 0
       ? true
       : selectedCategories.includes(

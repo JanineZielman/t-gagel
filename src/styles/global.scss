@@ -81,6 +81,10 @@ a {
     background-color: var(--brown);
     color: var(--pink);
   }
+  &.actueel {
+    background-color: var(--ontvangen-blue);
+    color: var(--blue);
+  }
   padding-top: 24px;
   padding-bottom: 100px;
 }
@@ -114,9 +118,8 @@ a {
   padding: 0 14px 24px 14px;
   max-width: calc(100vw - 340px - 2vw);
   width: 100%;
-  margin: auto;
   position: relative;
-  margin-right: 1vw;
+  margin-right: calc(150px );
   margin-left: auto;
   h2 {
     margin-top: 60px;
@@ -197,17 +200,15 @@ img {
   margin-right: 150px;
   display: flex;
   flex-direction: column;
-
-  blockquote p {
-    i {
-      font-size: 48px;
-      line-height: 1.1;
-    }
-    font-size: 18px;
-    padding: 24px 0;
-    &:nth-child(2) {
-      text-align: right;
-    }
+  background-color: var(--boeren-green);
+  color: var(--ontvangen-blue);
+  padding-bottom: 100px;
+  blockquote p{
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    font-size: 52px;
+    font-weight: 300;
   }
   .post-grid {
     justify-content: center;
@@ -218,22 +219,24 @@ img {
 }
 
 .introText {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
-  padding-top: 48px;
+  padding-bottom: 48px;
 }
 
 .sections {
   // background-color: var(--boeren-green);
   .textSection {
-    padding: 48px 0 92px 0;
+    padding: 48px 0 0 0;
     font-size: 24px;
     line-height: 1.3;
-    &:nth-child(1) {
-      // background-color: var(--green);
+    color: var(--light-green);
+    font-weight: 100;
+    blockquote p{
+      font-size: 36px;
     }
-    &:nth-child(2) {
-      // background-color: var(--grey);
+    .text-wrapper{
+      padding-bottom: 48px;
     }
     div {
       max-width: 900px;
@@ -263,6 +266,11 @@ img {
           aspect-ratio: 3/4;
           object-fit: cover;
         }
+        h3{
+          margin: 5px 0;
+          text-align: center;
+          font-weight: 300;
+        }
 
         .functionAtFarm {
           // background-color:green;
@@ -284,12 +292,16 @@ main {
   min-height: 100vh;
 }
 
-blockquote p {
-  font-size: 48px;
-  padding: 36px 0;
-}
-
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-small) {
+  .home{
+    margin-right: 0;
+    blockquote {
+      margin: 0;
+      p{
+        font-size: 30px;
+      }
+    }
+  }
   h1 {
     font-size: 40px;
   }
@@ -302,22 +314,20 @@ blockquote p {
   .introText {
     padding-left: 14px;
     padding-right: 14px;
-  }
-  .textSection p {
-    padding: 0 14px;
+    max-width: 100%;
   }
   .sections .textSection .cards {
     .card {
-      width: 40%;
+      width: 100%;
     }
   }
-  blockquote {
-    width: 905;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    p {
-      font-size: 36px;
-      width: 100%;
+  .sections .textSection{
+    padding: 0 14px;
+    blockquote {
+      margin: 0;
+      p{
+        font-size: 30px;
+      }
     }
   }
 }

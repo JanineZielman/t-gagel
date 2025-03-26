@@ -30,7 +30,8 @@ export default function Home({ headerFooter, page, posts }) {
           className={"introText"}
           dangerouslySetInnerHTML={{ __html: page.content.rendered }}
         />
-        <PostGrid posts={posts.slice(4, 7)} selectedCategories={""} />
+        <CustomLine height={37} strokeColor="#DCFF90" strokeWidth={3} />
+        {/* <PostGrid posts={posts.slice(4, 7)} selectedCategories={""} /> */}
         <br></br>
         <br></br>
         <br></br>
@@ -38,38 +39,32 @@ export default function Home({ headerFooter, page, posts }) {
           {page.acf.sections.map((item, i) => {
             return (
               <div key={i} className={"textSection"}>
-                <div dangerouslySetInnerHTML={{ __html: item.text_section }} />
+                <div className="text-wrapper" dangerouslySetInnerHTML={{ __html: item.text_section }} />
                 {item.card && (
                   <div className="cards">
                     {item.card.map((cardItem, j) => {
                       return (
                         <div key={j} className="card">
-                          {/* {cardItem.image?.node?.mediaItemUrl && (
-                            <Image
-                              src={cardItem.image.node.mediaItemUrl}
-                              alt={cardItem.title}
-                              width={500}
-                              height={300}
-                              loading="lazy"
-                            />
-                          )} */}
+                          <h3>
+                            {cardItem.firstname} {cardItem.lastname}
+                          </h3>
                           <Image
                             width={500}
                             height={300}
                             customImageId={cardItem.image}
                           />
-                          <h2>
-                            {cardItem.firstname} {cardItem.lastname}
-                          </h2>
-                          <div className="functionAtFarm">{cardItem.title}</div>
-                          {cardItem.email && (
+                          <div className="text">{cardItem.text}</div>
+    
+                          {/* <div className="functionAtFarm">{cardItem.title}</div> */}
+
+                          {/* {cardItem.email && (
                             <div className="contactWithFarmer">
                               contact met{" "}
                               <a href={`mailto:${cardItem.email}`}>
                                 {cardItem.firstname}
                               </a>
                             </div>
-                          )}
+                          )} */}
                         </div>
                       )
                     })}

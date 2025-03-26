@@ -26,7 +26,6 @@ module.exports = {
       allowedImageWordPressDomain,
       "gagel.janinezielman.com",
       "http://localhost:3000",
-      "via.placeholder.com",
     ],
   },
 }
