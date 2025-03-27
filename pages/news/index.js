@@ -45,7 +45,7 @@ const Blog = ({ headerFooter, posts }) => {
           checked={isDarkMode}
           onChange={() => setIsDarkMode(!isDarkMode)}
         />
-        <NewsGrid posts={posts.slice(0, 4)} />
+        <NewsGrid posts={posts} />
       </div>
     </Layout>
   )
@@ -57,10 +57,11 @@ export async function getStaticProps() {
   const { data: headerFooterData } = await axios.get(HEADER_FOOTER_ENDPOINT)
   const { data: postsData } = await getPosts()
 
+
   return {
     props: {
       headerFooter: headerFooterData?.data ?? {},
-      posts: postsData.posts_data || {},
+      posts: postsData.posts_data.filter(post => post.categories[0].slug == 'actueel') || {},
     },
 
     /**

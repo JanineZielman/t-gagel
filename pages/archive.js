@@ -40,7 +40,7 @@ const Blog = ( { headerFooter, posts } ) => {
 
   const categories = [
     ...new Set(
-      posts.slice(4,7).map((item) => item.categories[0].name.toLowerCase())
+      posts.map((item) => item.categories[0].name.toLowerCase())
     ),
   ]
 
@@ -78,7 +78,7 @@ const Blog = ( { headerFooter, posts } ) => {
 
   console.log(posts)
 
-  const filteredPosts = posts.slice(4,7).filter((item) =>
+  const filteredPosts = posts.filter((item) =>
     selectedCategories.length === 0
       ? true
       : selectedCategories.includes(
@@ -115,7 +115,7 @@ export async function getStaticProps() {
 	return {
 		props: {
 			headerFooter: headerFooterData?.data ?? {},
-			posts: postsData.posts_data || {},
+			posts: postsData.posts_data.filter(post => post.categories[0].slug != 'actueel') || {},
 		},
 		
 		/**
