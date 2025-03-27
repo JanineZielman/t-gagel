@@ -1,15 +1,15 @@
 /**
  * Internal Dependencies.
  */
-import Products from '../src/components/products';
-import { HEADER_FOOTER_ENDPOINT } from '../src/utils/constants/endpoints';
+import Products from '../../src/components/products';
+import { HEADER_FOOTER_ENDPOINT } from '../../src/utils/constants/endpoints';
 
 /**
  * External Dependencies.
  */
 import axios from 'axios';
-import { getProductsData } from '../src/utils/products';
-import Layout from '../src/components/layout';
+import { getProductsData } from '../../src/utils/products';
+import Layout from '../../src/components/layout';
 
 export default function Home({ headerFooter, products }) {
 	const seo = {
@@ -24,6 +24,7 @@ export default function Home({ headerFooter, products }) {
 	}
 	return (
 		<Layout headerFooter={ headerFooter || {} } seo={ seo }>
+			<h1>Bestellen</h1>
 			<Products products={products}/>
 		</Layout>
 	)

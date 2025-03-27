@@ -1,12 +1,12 @@
-import Layout from '../src/components/layout';
-import { HEADER_FOOTER_ENDPOINT } from '../src/utils/constants/endpoints';
+import Layout from '../../src/components/layout';
+import { HEADER_FOOTER_ENDPOINT } from '../../src/utils/constants/endpoints';
 import axios from 'axios';
-import CartItemsContainer from '../src/components/cart/cart-items-container';
+import CartItemsContainer from '../../src/components/cart/cart-items-container';
 
 export default function Cart({ headerFooter }) {
 	return (
 		<Layout headerFooter={headerFooter || {}}>
-			<h1 className="uppercase tracking-0.5px">Cart</h1>
+			<h1>Cart</h1>
 			<CartItemsContainer/>
 		</Layout>
 	);

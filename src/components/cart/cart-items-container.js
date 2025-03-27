@@ -5,11 +5,14 @@ import CartItem from './cart-item';
 import Link from 'next/link';
 import { clearCart } from '../../utils/cart';
 import { useRouter } from 'next/router';
+import styles from './cart.module.scss'
+import CustomLine from "../CustomLine/CustomLine"
 
 const CartItemsContainer = () => {
 	const [ cart, setCart ] = useContext( AppContext );
 	const { cartItems, totalPrice, totalQty, totalTax } = cart || {};
 	const [ isClearCartProcessing, setClearCartProcessing ] = useState( false );
+
 
     const router = useRouter();
 
@@ -50,11 +53,11 @@ const CartItemsContainer = () => {
 
 
 	return (
-		<div className="content-wrap-cart">
+		<div className={styles.cartWrapper}>
 			{ cart ? (
-				<div className="woo-next-cart-table-row grid lg:grid-cols-3 gap-4">
+				<div className={styles.cartContent}>
 					{/* Cart Items */ }
-					<div className="woo-next-cart-table lg:col-span-2 mb-md-0 mb-5">
+					<div className={styles.cartItems}>
 						{ cartItems.length &&
 						cartItems.map( ( item ) => (
 							<CartItem
@@ -67,27 +70,26 @@ const CartItemsContainer = () => {
 					</div>
 					
 					{/* Cart Total */ }
-					<div className="woo-next-cart-total-container lg:col-span-1 p-5 pt-0">
+					<div className={styles.cartTotal}>
 						<h2>Cart Total</h2>
-						<div className="flex grid grid-cols-3 bg-gray-100 mb-4">
-							<p className="col-span-2 p-2 mb-0">Total({totalQty})</p>
-							<p className="col-span-1 p-2 mb-0">{cartItems?.[0]?.currency ?? ''}{ (totalPrice + totalTax).toFixed()}</p>
+						<div className={styles.cartPrice}>
+							<p>Total({totalQty})</p>
+							<p>{cartItems?.[0]?.currency ?? ''}{ (totalPrice).toFixed()}</p>
 						</div>
-						
-						<div className="flex justify-between">
+						<CustomLine height={37} strokeColor="#DCFF90" strokeWidth={3} />
+						<div className={styles.cartButtons}>
 							{/* Clear entire cart */}
-							<div className="clear-cart">
-								<button
-									className="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800"
-									onClick={(event) => handleClearCart(event)}
-									disabled={isClearCartProcessing}
-								>
-									<span className="woo-next-cart">{!isClearCartProcessing ? "Clear Cart" : "Clearing..."}</span>
-								</button>
-							</div>
+
+							<button
+								className={styles.clearButton}
+								onClick={(event) => handleClearCart(event)}
+								disabled={isClearCartProcessing}
+							>
+								<span>{!isClearCartProcessing ? "Clear Cart" : "Clearing..."}</span>
+							</button>
 							{/* Checkout */}
-							<button onClick={handleProceedToCart} className="text-white duration-500 bg-black hover:bg-brand-royal-blue focus:ring-4 focus:text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900">
-											<span className="woo-next-cart-checkout-txt">
+							<button onClick={handleProceedToCart} className={styles.cartButton}>
+											<span>
 												Proceed to Checkout
 											</span>
 								<i className="fas fa-long-arrow-alt-right"/>
