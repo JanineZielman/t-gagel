@@ -45,7 +45,7 @@ const Blog = ({ headerFooter, posts }) => {
           checked={isDarkMode}
           onChange={() => setIsDarkMode(!isDarkMode)}
         />
-        <NewsGrid posts={posts} />
+        <NewsGrid posts={posts.slice(0, 4)} />
       </div>
     </Layout>
   )
