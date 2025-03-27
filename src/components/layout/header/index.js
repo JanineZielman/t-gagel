@@ -1,20 +1,24 @@
-import Link from 'next/link';
-import { useContext, useState, useEffect } from 'react';
-import { Bag } from '../../icons';
-import { AppContext } from '../../context';
-import styles from './Header.module.scss';
+import Link from "next/link"
+import { useContext, useState, useEffect } from "react"
+import { Bag } from "../../icons"
+import { AppContext } from "../../context"
+import styles from "./Header.module.scss"
 
 const Header = ({ header }) => {
-  const [cart, setCart] = useContext(AppContext);
-  const { headerMenuItems, siteDescription, siteLogoUrl, siteTitle } = header || {};
-  const [isNavShown, setIsNavShown] = useState(false);
+  const [cart, setCart] = useContext(AppContext)
+  const { headerMenuItems, siteDescription, siteLogoUrl, siteTitle } =
+    header || {}
+  const [isNavShown, setIsNavShown] = useState(false)
 
   console.log(headerMenuItems)
 
   return (
     <>
-      <header className={`${styles.header} ${isNavShown ? styles.show : ''}`}>
-        <div className={styles.arrow} onClick={() => setIsNavShown(!isNavShown)}></div>
+      <header className={`${styles.header} ${isNavShown ? styles.show : ""}`}>
+        <div
+          className={styles.arrow}
+          onClick={() => setIsNavShown(!isNavShown)}
+        ></div>
         <div className={styles.menuItems}>
           {headerMenuItems.map((item, i) => {
             return (
@@ -24,8 +28,10 @@ const Header = ({ header }) => {
                     <div
                       className={styles.imgMask}
                       style={{
-                        maskImage: `url(/${item.pageSlug}.svg)`
-												// maskImage:`url(/api/imageProxy?url=${encodeURIComponent(menuImages[item.ID])})`
+                        // Only apply mask if not 'contact' page or other pages without SVG
+                        maskImage: ["contact"].includes(item.pageSlug)
+                          ? "none"
+                          : `url(/${item.pageSlug}.svg)`,
                       }}
                     ></div>
                     <div className={styles.label}>{item.title}</div>
@@ -41,7 +47,7 @@ const Header = ({ header }) => {
                   ))}
                 </div>
               </div>
-            );
+            )
           })}
         </div>
       </header>
@@ -57,7 +63,7 @@ const Header = ({ header }) => {
         </a>
       </Link> */}
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
