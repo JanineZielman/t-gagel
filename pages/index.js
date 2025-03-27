@@ -41,7 +41,10 @@ export default function Home({ headerFooter, page, posts }) {
             console.log(item)
             return (
               <div key={i} className={"textSection"}>
-                <div className="text-wrapper" dangerouslySetInnerHTML={{ __html: item.text_section }} />
+                <div
+                  className="text-wrapper"
+                  dangerouslySetInnerHTML={{ __html: item.text_section }}
+                />
                 {item.card && (
                   <div className="cards">
                     {item.card.map((cardItem, j) => {
@@ -56,7 +59,7 @@ export default function Home({ headerFooter, page, posts }) {
                             customImageId={cardItem.image}
                           />
                           <div className="text">{cardItem.text}</div>
-    
+
                           {/* <div className="functionAtFarm">{cardItem.title}</div> */}
 
                           {/* {cardItem.email && (

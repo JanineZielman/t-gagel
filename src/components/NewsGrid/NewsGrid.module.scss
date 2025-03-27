@@ -1,8 +1,8 @@
 @import "../../styles/breakpoints";
 
 .newsGridContainer {
-  background-color: var(--boeren-green);
-  color: var(--ontvangen-blue);
+  // background-color: var(--boeren-green);
+  // color: var(--ontvangen-blue);
   padding: 40px 0;
 
   h2 {
@@ -31,20 +31,23 @@
     gap: 15px;
     height: 100%;
     // border-bottom: 1px solid var(--ontvangen-blue);
-    color: var(--ontvangen-blue);
+    // color: var(--ontvangen-blue);
 
     .postHeader {
       display: flex;
       flex-direction: column;
       gap: 2px;
+      margin-bottom: 10px;
 
       .title {
-        text-transform: uppercase;
+        // text-transform: uppercase;
         font-size: 24px;
       }
 
       .date {
-        font-size: 18px;
+        font-size: 16px;
+        color: var(--gray);
+        margin-bottom: 15px;
       }
     }
 
@@ -81,6 +84,50 @@
 
     span {
       font-size: 20px;
+    }
+
+    .text {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+
+      p {
+        margin: 0 0 10px;
+      }
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      .tag {
+        border-radius: 3px;
+        font-size: 12px;
+        padding: 5px 10px;
+        background-color: var(--blue);
+        color: var(--ontvangen-blue);
+      }
+
+      .lightTags .tag {
+        background-color: var(--dark-gray);
+        color: var(--light-gray);
+      }
+
+      .darkTags .tag {
+        background-color: var(--light-gray);
+        color: var(--dark-gray);
+      }
+    }
+
+    .tags.lightTags .tag {
+      background-color: var(--dark-gray);
+      color: var(--light-gray);
+    }
+
+    .tags.darkTags .tag {
+      background-color: var(--light-gray);
+      color: var(--dark-gray);
     }
   }
 

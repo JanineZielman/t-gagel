@@ -2,7 +2,7 @@ import styles from "./NewsGrid.module.scss"
 import NewsItem from "./NewsItem"
 
 const NewsGrid = ({ posts }) => {
-  console.log(posts)
+
   return (
     <>
       <div className={styles.newsGridContainer}>

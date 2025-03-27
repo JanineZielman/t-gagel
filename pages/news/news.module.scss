@@ -1,0 +1,28 @@
+.news {
+  margin-right: 150px;
+
+  &.dark {
+    background-color: var(--blue);
+    color: var(--ontvangen-blue);
+  }
+
+  &.light {
+    background-color: var(--ontvangen-blue);
+    color: var(--blue);
+  }
+
+  @media (max-width: 768px) {
+    margin-right: 0px;
+  }
+  
+}
+
+// .lightTags .tag {
+//   background-color: var(--dark-gray);
+//   color: var(--light-gray);
+// }
+
+// .darkTags .tag {
+//   background-color: var(--light-gray);
+//   color: var(--dark-gray);
+// }
