@@ -28,12 +28,24 @@ export default function NewsItem({ post }) {
       </div>
 
       <div className={styles.tags}>
+        <span  className={styles.tag}>
+          tag één
+        </span>
+        <span  className={styles.tag}>
+          tag twee
+        </span>
+        <span  className={styles.tag}>
+          tag drie
+        </span>
+      </div>
+      {/* <div className={styles.tags}>
         {post.categories.map((category, index) => (
           <span key={index} className={styles.tag}>
             {category.name}
+            tag
           </span>
         ))}
-      </div>
+      </div> */}
     </a>
   )
 }
