@@ -51,7 +51,7 @@ const Blog = ({ headerFooter, posts }) => {
   )
 }
 
-export default Blog
+  export default Blog
 
 export async function getStaticProps() {
   const { data: headerFooterData } = await axios.get(HEADER_FOOTER_ENDPOINT)
