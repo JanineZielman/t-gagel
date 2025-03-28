@@ -2,9 +2,12 @@
   --form-padding: 2rem;
   --form-max-width: 600px;
   --input-height: 45px;
-  --primary-color: var(--green, #5f6a33);
-  --text-color: var(--green, #5f6a33);
-  --input-field-background-color: var(--light-green);
+  --primary-color: var(--form-text-color, var(--green, #5f6a33));
+  --text-color: var(--form-text-color, var(--green, #5f6a33));
+  --input-field-background-color: var(
+    --form-background-color,
+    var(--light-green)
+  );
   padding: var(--form-padding);
   max-width: var(--form-max-width);
   width: 100%;

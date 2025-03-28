@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styles from "./ContactForm.module.scss"
 
-const ContactForm = () => {
+const ContactForm = ({ backgroundColor, textColor }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,8 +42,14 @@ const ContactForm = () => {
     })
   }
 
+  // Custom style with CSS variables
+  const customStyle = {
+    "--form-background-color": backgroundColor || "var(--grey)",
+    "--form-text-color": textColor || "var(--text-color)",
+  }
+
   return (
-    <div className={styles.contactForm}>
+    <div className={styles.contactForm} style={customStyle}>
       <h3 className={styles.title}>Neem contact met ons op</h3>
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
