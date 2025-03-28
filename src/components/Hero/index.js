@@ -3,7 +3,7 @@ import styles from "./Hero.module.scss"
 import { useRouter } from "next/router"
 
 import CallToActionButton from "../Bits/CallToActionButton"
-import ArchiveButton  from "../Bits/ArchiveButton"
+import ArchiveButton from "../Bits/ArchiveButton"
 
 const Hero = ({ gallery = [] }) => {
   const [mediaItems, setMediaItems] = useState([])
@@ -23,7 +23,9 @@ const Hero = ({ gallery = [] }) => {
       try {
         const responses = await Promise.all(
           gallery.map(async (id) => {
-            const res = await fetch(`https://gagel.janinezielman.com/wp-json/wp/v2/media/${id}`) // Adjust this API endpoint
+            const res = await fetch(
+              `https://gagel.janinezielman.com/wp-json/wp/v2/media/${id}`
+            ) // Adjust this API endpoint
             return res.ok ? await res.json() : null
           })
         )
@@ -84,8 +86,19 @@ const Hero = ({ gallery = [] }) => {
 
   if (!currentMedia) {
     return (
-      <div className={styles.galleryWrapper}>
-        <p>Loading media...</p>
+      <div className={`${styles.galleryWrapper} ${styles.loading}`}>
+        <div className={styles.gallery}>
+          <div className={styles.loadingPlaceholder} />
+        </div>
+        <div className={styles.logo}>
+          <div className={styles.maskImg}></div>
+        </div>
+        <div className={styles.homeCTA}>
+          <CallToActionButton link={"#"}>
+            Word mede-eigenaar!
+          </CallToActionButton>
+        </div>
+        <ArchiveButton />
       </div>
     )
   }
