@@ -9,6 +9,7 @@ import PostGrid from "../src/components/PostGrid"
 import Image from "../src/components/image"
 import CustomLine from "../src/components/CustomLine/CustomLine"
 import CallToActionButton from "../src/components/Bits/CallToActionButton"
+import ContactForm from "../src/components/ContactForm"
 
 export default function Home({ headerFooter, page, posts }) {
   const seo = {
@@ -92,6 +93,10 @@ export default function Home({ headerFooter, page, posts }) {
             )
           })}
         </div>
+        <ContactForm />
+        <>
+        contact formulier staat nu tijdelijk hier. gaat straks naar de eigen pagina :) 
+        </>
       </div>
     </Layout>
   )

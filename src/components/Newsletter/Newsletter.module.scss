@@ -1,0 +1,64 @@
+.newsletter {
+  --newsletter-padding: 2rem;
+  --newsletter-max-width: 400px;
+  --input-height: 45px;
+  --primary-color: var(--green, #5f6a33);
+  --text-color: var(--green, #5f6a33);
+
+  // padding: var(--newsletter-padding);
+  max-width: var(--newsletter-max-width);
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 1rem;
+  color: var(--light-green);
+  font-family: "cabinet";
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (min-width: 480px) {
+    flex-direction: row;
+  }
+}
+
+.input {
+  height: var(--input-height);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--text-color);
+  background: var(--light-green);
+  flex: 1;
+  min-width: 200px;
+  color: var(--text-color);
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+  &::placeholder {
+    color: var(--text-color);
+  }
+}
+
+.button {
+  height: var(--input-height);
+  padding: 0 1.5rem;
+  border: none;
+  background: var(--light-green);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.success {
+  margin-top: 1rem;
+  color: var(--primary-color);
+}
