@@ -3,18 +3,21 @@ import { useContext, useState, useEffect } from "react"
 import { Bag } from "../../icons"
 import { AppContext } from "../../context"
 import styles from "./Header.module.scss"
+import { useRouter } from "next/router"
+
 
 const Header = ({ header }) => {
+  const router = useRouter();
   const [cart, setCart] = useContext(AppContext)
   const { headerMenuItems, siteDescription, siteLogoUrl, siteTitle } =
     header || {}
   const [isNavShown, setIsNavShown] = useState(false)
 
-  console.log(headerMenuItems)
+  console.log(router.asPath.includes('archive'))
 
   return (
     <>
-      <header className={`${styles.header} ${isNavShown ? styles.show : ""}`}>
+      <header className={`${styles.header} ${isNavShown ? styles.show : ""} ${router.asPath.includes('archive') && styles.isArchive}`}>
         <div
           className={styles.arrow}
           onClick={() => setIsNavShown(!isNavShown)}

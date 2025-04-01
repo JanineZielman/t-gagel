@@ -89,6 +89,29 @@
       padding-right: 5px;
     }
   }
+  &.isArchive{
+    margin-right: -150px;
+    .arrow {
+      margin-left: -50px;
+      display: block;
+    }
+    .menuItems{
+      margin-top: -40px;
+      .children{
+        display: none;
+      }
+      &:hover{
+        .children{
+          height: 0;
+          display: none;
+        }
+      }
+    }
+    &.show {
+      margin-right: 0;
+      width: 150px;
+    }
+  }
   @media (max-width: $breakpoint-small) {
     margin-right: -150px;
     .arrow {

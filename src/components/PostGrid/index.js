@@ -8,7 +8,7 @@ const PostGrid = ({ posts, selectedCategories }) => {
           <a
             key={i}
             className={`${styles.postItem} post-item ${item.categories[0].name.toLowerCase()}`}
-            href={`/posts/${item.slug}?categories=${selectedCategories?.length > 0 ? { categories: selectedCategories.join(',') } : item.categories[0].name.toLowerCase()}`}
+            href={`/archive/${item.slug}?categories=${selectedCategories?.length > 0 ? { categories: selectedCategories.join(',') } : item.categories[0].name.toLowerCase()}`}
           >
             <div>
               <span className={styles.category}>{item.categories[0].name}</span>

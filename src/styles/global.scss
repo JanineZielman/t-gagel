@@ -121,11 +121,11 @@ a {
 
 .content-wrapper {
   padding: 0 14px 24px 14px;
-  max-width: calc(100vw - 340px - 2vw);
+  max-width: calc(100vw - 220px - 50px);
   width: 100%;
   position: relative;
-  margin-right: calc(150px);
-  margin-left: auto;
+  margin-left: 220px;
+  margin-right: auto;
   h2 {
     margin-top: 60px;
   }
@@ -413,6 +413,7 @@ main {
     max-width: 100%;
     width: 100%;
     margin-right: 0;
+    margin-left: 0;
   }
   .cart-amount{
     right: 12vw;
