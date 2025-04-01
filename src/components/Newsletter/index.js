@@ -2,29 +2,31 @@ import React, { useState } from "react"
 import styles from "./Newsletter.module.scss"
 
 const Newsletter = ({ title = "Schrijf je in voor onze nieuwsbrief" }) => {
-  const [email, setEmail] = useState("")
   const [status, setStatus] = useState("")
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Placeholder for future Mailchimp integration
-    setStatus("success")
-    setEmail("")
-  }
 
   return (
     <div className={styles.newsletter}>
       <h3 className={styles.title}>{title}</h3>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form 
+        action={process.env.NEXT_PUBLIC_MAILCHIMP_URL}
+        method="post"
+        className={styles.form}
+        target="_self"
+      >
         <input
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="EMAIL"
+          className={`${styles.input} required email`}
           placeholder="Jouw emailadres"
-          className={styles.input}
           required
         />
-        <button type="submit" className={styles.button}>
+        <div hidden>
+          <input type="hidden" name="tags" value={process.env.NEXT_PUBLIC_MAILCHIMP_TAGS} />
+        </div>
+        <div aria-hidden="true" style={{ position: 'absolute', left: '-5000px' }}>
+          <input type="text" name="b_c8a4e653405eafb1be9b41933_29f8949238" tabIndex="-1" />
+        </div>
+        <button type="submit" name="subscribe" className={styles.button}>
           Aanmelden
         </button>
       </form>
