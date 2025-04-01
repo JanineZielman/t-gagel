@@ -16,6 +16,8 @@ import {
   sanitize,
 } from "../../utils/miscellaneous"
 
+import LanguageToggle from "../LanguageToggle"
+
 function decodeHtmlEntities(text) {
   if (typeof window === "undefined") {
     // Return the text as-is during SSR
@@ -51,10 +53,12 @@ const Layout = ({ children, headerFooter, seo, uri }) => {
             </title>
           )}
         </Head>
+          
         <Header header={header} />
         <main className="container mx-auto py-4 min-h-50vh">{children}</main>
         <Footer footer={footer} />
       </div>
+      <LanguageToggle/>
     </AppProvider>
   )
 }
