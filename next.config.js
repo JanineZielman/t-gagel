@@ -26,6 +26,7 @@ module.exports = {
       allowedImageWordPressDomain,
       "gagel.janinezielman.com",
       "http://localhost:3000",
+      "picsum.photos", // Add this line
     ],
   },
 }
