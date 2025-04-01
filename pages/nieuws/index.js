@@ -13,6 +13,7 @@ import { getPosts } from "../../src/utils/blog"
 import NewsGrid from "../../src/components/NewsGrid"
 import Toggle from "../../src/components/Bits/Toggle" // Import the Toggle component
 import styles from "./news.module.scss"
+import HomeButton from "../../src/components/Bits/HomeButton"
 
 /**
  * Blog Component.
@@ -36,6 +37,7 @@ const Blog = ({ headerFooter, posts }) => {
 
   return (
     <Layout headerFooter={headerFooter || {}} seo={seo}>
+      <HomeButton />
       <div
         className={`${styles.news} ${isDarkMode ? styles.dark : styles.light}`}
       >

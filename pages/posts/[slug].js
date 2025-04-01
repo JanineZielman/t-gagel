@@ -8,6 +8,7 @@ import { getFormattedDate, sanitize } from '../../src/utils/miscellaneous';
 import { HEADER_FOOTER_ENDPOINT } from '../../src/utils/constants/endpoints';
 import { getPost, getPosts } from '../../src/utils/blog';
 import ArchiveButton from '../../src/components/Bits/ArchiveButton';
+import HomeButton from '../../src/components/Bits/HomeButton';
 
 const Post = ( { headerFooter, postData, categories } ) => {
 	const router = useRouter();
@@ -18,6 +19,7 @@ const Post = ( { headerFooter, postData, categories } ) => {
 
 	return (
 		<Layout headerFooter={ headerFooter || {} } seo={ postData?.yoast_head_json ?? {} }>
+			<HomeButton />
 			<div className={`post ${categories[0].slug}`}>
 				<div className="post-wrapper">
 					<h1 dangerouslySetInnerHTML={{ __html: sanitize( postData?.title?.rendered ?? '' ) }} />

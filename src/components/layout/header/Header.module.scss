@@ -72,11 +72,12 @@
   }
   .arrow{
     font-size: 40px;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     display: none;
     text-align: right;
-    padding-right: 10px;
+    padding-right: 5px;
+    background-color: var(--light-green);
     &:after{
       content: '☰';
     }
@@ -85,12 +86,13 @@
     &:after{
       content: '✕';
       font-size: 30px;
+      padding-right: 5px;
     }
   }
   @media (max-width: $breakpoint-small) {
     margin-right: -150px;
     .arrow {
-      margin-left: -40px;
+      margin-left: -50px;
       display: block;
     }
     .menuItems{

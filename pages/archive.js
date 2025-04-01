@@ -13,6 +13,7 @@ import { getPosts } from '../src/utils/blog';
 import ArchiveMenu from '../src/components/ArchiveMenu';
 import { useRouter } from 'next/router';
 import PostGrid from '../src/components/PostGrid';
+import HomeButton from '../src/components/Bits/HomeButton';
 
 /**
  * Blog Component.
@@ -88,15 +89,14 @@ const Blog = ( { headerFooter, posts } ) => {
 	
 	return (
 		<Layout headerFooter={ headerFooter || {} } seo={ seo }>
-			{/* <h1>Levend Archief</h1>
-			<Posts posts={ postsData?.posts_data ?? [] }/> */}
+			<HomeButton/>
 			<ArchiveMenu
 				categories={categories}
 				selectedCategories={selectedCategories}
 				handleCategoryChange={handleCategoryChange}
 			/>
 			<div className="content-wrapper">
-				<h1>Levend Archief</h1>
+				{/* <h1>Levend Archief</h1> */}
 				<PostGrid
 					posts={filteredPosts}
 					selectedCategories={selectedCategories}

@@ -5,6 +5,7 @@ import styles from "./campingBoeken.module.scss"
 import axios from "axios"
 import { HEADER_FOOTER_ENDPOINT } from "../../src/utils/constants/endpoints"
 import { getPosts } from "../../src/utils/blog"
+import HomeButton from "../../src/components/Bits/HomeButton"
 
 /**
  * Blog Component.
@@ -67,6 +68,7 @@ const Component = ({ headerFooter, posts }) => {
 
   return (
     <Layout headerFooter={headerFooter || {}} seo={seo}>
+      <HomeButton />
       <div className={styles.container}>
         <h1>Camping Boeken</h1>
 

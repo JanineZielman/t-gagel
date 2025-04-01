@@ -2,10 +2,12 @@ import Layout from '../../src/components/layout';
 import { HEADER_FOOTER_ENDPOINT } from '../../src/utils/constants/endpoints';
 import axios from 'axios';
 import CartItemsContainer from '../../src/components/cart/cart-items-container';
+import HomeButton from '../../src/components/Bits/HomeButton';
 
 export default function Cart({ headerFooter }) {
 	return (
 		<Layout headerFooter={headerFooter || {}}>
+			<HomeButton />
 			<h1>Cart</h1>
 			<CartItemsContainer/>
 		</Layout>

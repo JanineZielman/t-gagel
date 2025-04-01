@@ -1,7 +1,7 @@
 .homeButton {
   position: fixed;
-  left: 75px;
-  top: 75px;
+  left: 50px;
+  top: 50px;
   z-index: 9;
   cursor: pointer;
 
@@ -12,7 +12,7 @@
     height: 100px;
     max-width: 300px;
     max-height: 300px;
-    background-color: var(--green);
+    // background-color: var(--green);
     border-radius: 50%;
     padding: 15px;
 
@@ -27,17 +27,16 @@
   }
 
   @media (max-width: 768px) {
-    left: 50%;
-    // top: 50%;
-    top: 30px;
-    transform: translate(-50%, -50%);
+    left: 5px;
+    top: 5px;
+    position: absolute;
     
     .logo {
-      width: 50px;
-      height: 50px;
-      max-width: 150px;
-      max-height: 150px;
+      transform: translate(0, 0);
+      width: 70px;
+      height: 70px;
       padding: 5px;
+      background-color: transparent;
     }
     
   }

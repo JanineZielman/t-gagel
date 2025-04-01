@@ -19,6 +19,7 @@ const Header = ({ header }) => {
           className={styles.arrow}
           onClick={() => setIsNavShown(!isNavShown)}
         ></div>
+         <Link href="/bestellen/cart"><a className="cart-amount"> {cart?.totalQty ? `(${cart?.totalQty})` : null}</a></Link>
         <div className={styles.menuItems}>
           {headerMenuItems.map((item, i) => {
             return (

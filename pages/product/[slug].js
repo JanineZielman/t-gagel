@@ -5,6 +5,7 @@ import { HEADER_FOOTER_ENDPOINT } from '../../src/utils/constants/endpoints';
 import { getProductsData, getProductBySlug } from '../../src/utils/products';
 import Layout from '../../src/components/layout';
 import SingleProduct from '../../src/components/single-product';
+import HomeButton from '../../src/components/Bits/HomeButton';
 
 /**
  * External Dependencies.
@@ -28,6 +29,7 @@ export default function Product( { headerFooter, product } ) {
 			seo={ product?.yoast_head_json ?? {} }
 			uri={ `/product/${ product?.slug ?? '' }` }
 		>
+			<HomeButton />
 			<SingleProduct product={ product }/>
 		</Layout>
 	);

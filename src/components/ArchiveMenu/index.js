@@ -10,13 +10,13 @@ const ArchiveMenu = ({
 }) => {
   return (
     <div className={styles.menu}>
-      <div className={styles.homeButton}>
+      {/* <div className={styles.homeButton}>
         <Link prefetch={true} href="/">
           <div className={styles.logo}>
             <div className={styles.maskImg}></div>
           </div>
         </Link>
-      </div>
+      </div> */}
       <div className={styles.subMenuTitle}>Categorien</div>
       <div className={styles.toggles}>
         {categories.map((category, index) => (

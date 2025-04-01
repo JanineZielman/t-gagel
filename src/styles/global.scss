@@ -233,10 +233,23 @@ img {
   padding-bottom: 48px;
 }
 
+.cart-amount{
+  position: absolute;
+  top: 7vh;
+  right: 1vw;
+  z-index: 999;
+}
+
 //beleven
 .parent-1602, .current-1602{
   background-color: var(--ontvangen-brown);
   color: var(--light-green)
+}
+
+//leren
+.partent-1353, .current-1353{
+  background-color: var(--brown);
+  color: var(--ontvangen-blue)
 }
 
 //bomen
@@ -367,6 +380,15 @@ main {
       }
     }
   }
+  .content-wrapper {
+    max-width: 100%;
+    width: 100%;
+    margin-right: 0;
+  }
+  .cart-amount{
+    right: 12vw;
+  }
+  
 }
 
 // Styling tommy booking support

@@ -5,6 +5,7 @@
   padding: 7px 20px;
   color: var(--boeren-green);
   font-size: 18px;
+  margin-right: 10px;
 }
 
 .clearButton{
@@ -44,8 +45,12 @@
 .cartItem{
   margin-bottom: 24px;
   display: flex;
+  align-items: center;
   figure{
     margin-right: 24px;
+    img{
+      object-fit: cover;
+    }
   }
   input{
     border: none;
@@ -76,6 +81,25 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
+    }
+  }
+}
+
+@media (max-width: 768px){
+  .cartWrapper{
+    max-width: 100%;
+    margin-left: 0;
+    padding: 14px 14px;
+    .cartContent{
+      flex-direction: column;
+      .cartItems{
+        width: 100%;
+      }
+      .cartTotal{
+        width: 100%;
+        margin-top: 24px;
+        padding-bottom: 24px;
+      }
     }
   }
 }

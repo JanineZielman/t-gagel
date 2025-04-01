@@ -1,7 +1,7 @@
 .menu {
   padding-left: 40px;
   padding-right: 40px;
-  padding-top: 14px;
+  padding-top: 120px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -41,5 +41,14 @@
       mask-size: contain;
       mask-repeat: no-repeat;
     }
+  }
+}
+
+@media (max-width: 768px){
+  .menu{
+    position: relative;
+    height: fit-content;
+    padding-top: 90px;
+    padding-bottom: 24px;
   }
 }
