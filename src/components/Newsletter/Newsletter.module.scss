@@ -60,5 +60,10 @@
 
 .success {
   margin-top: 1rem;
-  color: var(--primary-color);
+  color: var(--light-green);
+}
+
+.error {
+  margin-top: 1rem;
+  color: var(--verbinden-orange);
 }
