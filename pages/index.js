@@ -11,6 +11,7 @@ import CustomLine from "../src/components/CustomLine/CustomLine"
 import CallToActionButton from "../src/components/Bits/CallToActionButton"
 import ContactForm from "../src/components/ContactForm"
 
+
 export default function Home({ headerFooter, page, posts }) {
  
   const seo = {

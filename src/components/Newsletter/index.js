@@ -5,8 +5,7 @@ const Newsletter = ({ title = "Schrijf je in voor onze nieuwsbrief" }) => {
   const [status, setStatus] = useState("")
 
   const handleSubmit = async (event) => {
-    event.preventDefault() // Voorkom standaard formulierverzending
-
+    event.preventDefault()
     const formData = new FormData(event.target)
     const queryString = new URLSearchParams(formData).toString()
 
