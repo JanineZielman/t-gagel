@@ -10,6 +10,7 @@ import { getFormattedDate, getPathNameFromUrl, sanitize } from '../src/utils/mis
 import { getPage, getPages } from '../src/utils/blog';
 import axios from 'axios';
 import { HEADER_FOOTER_ENDPOINT } from '../src/utils/constants/endpoints';
+import ImageSlider from "../src/components/Bits/ImageSlider"
 
 const Page = ( { headerFooter, pageData } ) => {
 	const router = useRouter();
@@ -21,11 +22,16 @@ const Page = ( { headerFooter, pageData } ) => {
 	}
 	
 	return (
-		<Layout headerFooter={ headerFooter || {} } seo={ pageData?.yoast_head_json ?? {} }>
-			<HomeButton />
-			<EntryHeader title={pageData?.title?.rendered} />
-			<ContentWrapper content={pageData.content.rendered} />
-		</Layout>
+		<div className={`parent-${pageData.parent} current-${pageData.id}`}>
+			<Layout headerFooter={ headerFooter || {} } seo={ pageData?.yoast_head_json ?? {} }>
+				<HomeButton />
+				<EntryHeader title={pageData?.title?.rendered} />
+				<ContentWrapper content={pageData.content.rendered} />
+				{pageData.acf.image_slider?.length > 0 &&
+					<ImageSlider images={pageData.acf.image_slider}/>
+				}
+			</Layout>
+		</div>
 	);
 };
 

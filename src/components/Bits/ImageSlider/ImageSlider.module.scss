@@ -1,19 +1,24 @@
 .sliderContainer {
   position: relative;
-  // width: 100%;
   overflow: hidden;
-  max-width: 900px;
-  margin: 0 auto;
+  width: 140vw;
+  margin-bottom: 48px;
 }
 
 .slider {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  margin-left: -20px;
 }
 
 .slide {
-  flex: 0 0 100%;
-  // width: 100%;
+  // padding-bottom: 48px;
+  // height: 500px;
+  width: auto;
+  img, span{
+    width: 100%!important;
+    height: 100%!important;
+  }
 }
 
 .navigationButton {
@@ -31,11 +36,11 @@
   }
 
   &.prev {
-    left: 1rem;
+    left: 21vw;
   }
 
   &.next {
-    right: 1rem;
+    right: calc(150px + 21vw);
   }
 }
 
@@ -57,5 +62,22 @@
 
   &.active {
     background: white;
+  }
+}
+
+@media (max-width: 768px) {
+  .sliderContainer{
+    width: 200vw;
+    margin-left:  -50vw;
+  }
+  .navigationButton {
+
+    &.prev {
+      left: 51vw;
+    }
+  
+    &.next {
+      right: 51vw;
+    }
   }
 }
