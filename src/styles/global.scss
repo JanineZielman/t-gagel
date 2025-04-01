@@ -228,6 +228,34 @@ img {
   padding-bottom: 48px;
 }
 
+//beleven
+.parent-1602, .current-1602{
+  background-color: var(--ontvangen-brown);
+  color: var(--light-green)
+}
+
+//bomen
+.parent-1349, .current-1349{
+  background-color: var(--boeren-green);
+  color: var(--light-green)
+}
+
+//investeren
+.parent-1229, .current-1229{
+  background-color: var(--ontvangen-blue);
+  color: var(--ontvangen-brown)
+}
+
+//contact
+.partent-1510, .current-1510{
+  background-color: var(--pink);
+  color: var(--brown)
+}
+
+.text h1{
+  padding-top: 48px;
+}
+
 .sections {
   // background-color: var(--boeren-green);
   .textSection {

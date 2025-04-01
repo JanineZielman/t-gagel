@@ -29,9 +29,7 @@ const Header = ({ header }) => {
                       className={styles.imgMask}
                       style={{
                         // Only apply mask if not 'contact' page or other pages without SVG
-                        maskImage: ["contact"].includes(item.pageSlug)
-                          ? "none"
-                          : `url(/${item.pageSlug}.svg)`,
+                        maskImage: `url(/${item.pageSlug}.svg)`,
                       }}
                     ></div>
                     <div className={styles.label}>{item.title}</div>

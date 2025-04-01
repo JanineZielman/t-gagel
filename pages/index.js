@@ -10,43 +10,9 @@ import Image from "../src/components/image"
 import CustomLine from "../src/components/CustomLine/CustomLine"
 import CallToActionButton from "../src/components/Bits/CallToActionButton"
 import ContactForm from "../src/components/ContactForm"
-import ImageSlider from "../src/components/Bits/ImageSlider"
 
 export default function Home({ headerFooter, page, posts }) {
-  // Add this images array before the return statement
-  const images = [
-    {
-      url: "https://picsum.photos/1920/600",
-      alt: "Random image 1",
-      width: 1920,
-      height: 600,
-    },
-    {
-      url: "https://picsum.photos/600/600",
-      alt: "Random image 2",
-      width: 1920,
-      height: 600,
-    },
-    {
-      url: "https://picsum.photos/1920/600",
-      alt: "Random image 3",
-      width: 1920,
-      height: 600,
-    },
-    {
-      url: "https://picsum.photos/1920/600",
-      alt: "Random image 3",
-      width: 1920,
-      height: 600,
-    },
-    {
-      url: "https://picsum.photos/1920/600",
-      alt: "Random image 3",
-      width: 1920,
-      height: 600,
-    },
-  ]
-
+ 
   const seo = {
     title: `'t Gagel`,
     description: "Next JS WooCommerce Theme",
@@ -135,10 +101,6 @@ export default function Home({ headerFooter, page, posts }) {
         <>
           contact formulier staat nu tijdelijk hier. gaat straks naar de eigen
           pagina :)
-        </>
-
-        <>
-          <ImageSlider images={images} />
         </>
       </div>
     </Layout>
