@@ -1,6 +1,7 @@
 import styles from "./NewsGrid.module.scss"
 
 export default function NewsItem({ post }) {
+  console.log(post)
   return (
     <a
       className={styles.newsItem}
@@ -13,39 +14,20 @@ export default function NewsItem({ post }) {
       </div>
 
       <div className={styles.postHeader}>
-        <div className={styles.title}>{post.title}</div>
+        <div className={styles.title}  dangerouslySetInnerHTML={{ __html: post.title }}/>
       </div>
 
-      <div className={styles.date}>15.02.2025</div>
+      <div className={styles.date}>{post.date}</div>
 
-      <div className={styles.text}>
-        Wilderland staat als geen ander open voor de teelt van inheemse
-        meerjarige planten die in het landschap van ‘t Gagel thuishoren: zoals
-        moerasspirea en natuurlijk wilde gagel! Ze maken heerlijke thee en
-        andere producten van wat het landschap wil brengen. We kijken er enorm
-        naar uit samen nog veel meer mensen te laten genieten van de geuren en
-        smaken van ‘t Gagel!
-      </div>
+      <div className={styles.text} dangerouslySetInnerHTML={{ __html: post.excerpt }}/>
 
       <div className={styles.tags}>
-        <span  className={styles.tag}>
-          tag één
-        </span>
-        <span  className={styles.tag}>
-          tag twee
-        </span>
-        <span  className={styles.tag}>
-          tag drie
-        </span>
-      </div>
-      {/* <div className={styles.tags}>
-        {post.categories.map((category, index) => (
+        {post.tags.map((tag, index) => (
           <span key={index} className={styles.tag}>
-            {category.name}
-            tag
+            #{tag.name}
           </span>
         ))}
-      </div> */}
+      </div>
     </a>
   )
 }

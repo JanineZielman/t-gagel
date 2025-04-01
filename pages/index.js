@@ -29,6 +29,13 @@ export default function Home({ headerFooter, page, posts }) {
       <Hero gallery={page.acf.gallery} />
       <div className="home">
         <NewsGrid posts={posts.slice(0, 4)} />
+        <div className="center">
+          <CallToActionButton
+            link="/nieuws"
+          >
+            Lees meer ...
+          </CallToActionButton>
+        </div>
         <div
           className={"introText"}
           dangerouslySetInnerHTML={{ __html: page.content.rendered }}

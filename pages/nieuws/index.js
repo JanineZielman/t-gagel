@@ -39,12 +39,12 @@ const Blog = ({ headerFooter, posts }) => {
       <div
         className={`${styles.news} ${isDarkMode ? styles.dark : styles.light}`}
       >
-        <h1>News</h1>
-        <Toggle
+        <h1>Nieuws</h1>
+        {/* <Toggle
           label="Dark Mode"
           checked={isDarkMode}
           onChange={() => setIsDarkMode(!isDarkMode)}
-        />
+        /> */}
         <NewsGrid posts={posts} />
       </div>
     </Layout>
