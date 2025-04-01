@@ -9,6 +9,7 @@ import { HEADER_FOOTER_ENDPOINT } from '../../src/utils/constants/endpoints';
 import { getPost, getPosts } from '../../src/utils/blog';
 import ArchiveButton from '../../src/components/Bits/ArchiveButton';
 import HomeButton from '../../src/components/Bits/HomeButton';
+import ImageSlider from '../../src/components/Bits/ImageSlider';
 
 const Post = ( { headerFooter, postData, categories } ) => {
 	const router = useRouter();
@@ -26,6 +27,10 @@ const Post = ( { headerFooter, postData, categories } ) => {
 					<h2>{postData?._embedded?.author?.[0]?.name}</h2>
 					<div className="content" dangerouslySetInnerHTML={{ __html: postData?.content?.rendered }}></div>
 				</div>
+				<br/>
+				{postData.acf.image_slider?.length > 0 &&
+						<ImageSlider images={postData.acf.image_slider}/>
+					}
 				<ArchiveButton />
 			</div>
 		</Layout>

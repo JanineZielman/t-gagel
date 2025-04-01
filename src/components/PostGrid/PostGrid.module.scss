@@ -52,12 +52,16 @@
       margin-top: 14px;
       text-transform: uppercase;
       font-weight: 300;
+      font-size: 1.8vw;
     }
   }
   @media (max-width: 768px) {
     .postItem {
       width: 100%;
       margin: 10px auto;
+      h2{
+        font-size: 28px;
+      }
     }
   }
 }

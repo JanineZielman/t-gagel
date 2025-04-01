@@ -74,6 +74,7 @@ a {
 }
 
 .post {
+  min-height: 100vh;
   &.interview {
     background-color: var(--green);
     color: var(--light-green);
@@ -99,7 +100,7 @@ a {
   max-width: 900px;
   margin: auto;
   position: relative;
-  min-height: 100vh;
+  // min-height: 100vh;
   h2 {
     margin-top: 60px;
   }
@@ -353,6 +354,9 @@ main {
     z-index: 999;
     right: 164px;
   }
+}
+.post .slick-slider .slick-next{
+  right: 14px;
 }
 
 
