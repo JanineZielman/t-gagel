@@ -90,15 +90,16 @@ const Hero = ({ gallery = [] }) => {
         <div className={styles.gallery}>
           <div className={styles.loadingPlaceholder} />
         </div>
-        <div className={styles.logo}>
-          <div className={styles.maskImg}></div>
-        </div>
+        {/*
+          <div className={styles.logo}>
+            <div className={styles.maskImg}></div>
+          </div>
         <div className={styles.homeCTA}>
           <CallToActionButton link={"#"}>
             Word mede-eigenaar!
           </CallToActionButton>
         </div>
-        <ArchiveButton />
+        <ArchiveButton /> */}
       </div>
     )
   }
