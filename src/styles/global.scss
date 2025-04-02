@@ -49,12 +49,10 @@ h1 {
   margin: 0;
   padding: 24px 0;
   font-weight: 300;
-  b{
+  b {
     font-weight: normal;
   }
 }
-
-
 
 h2 {
   font-size: 34px;
@@ -234,7 +232,7 @@ img {
   padding-bottom: 48px;
 }
 
-.cart-amount{
+.cart-amount {
   position: absolute;
   top: 7vh;
   right: 1vw;
@@ -242,36 +240,41 @@ img {
 }
 
 //beleven
-.parent-1602, .current-1602{
+.parent-1602,
+.current-1602 {
   background-color: var(--ontvangen-brown);
-  color: var(--light-green)
+  color: var(--light-green);
 }
 
 //leren
-.partent-1353, .current-1353{
+.partent-1353,
+.current-1353 {
   background-color: var(--brown);
-  color: var(--ontvangen-blue)
+  color: var(--ontvangen-blue);
 }
 
 //bomen
-.parent-1349, .current-1349{
+.parent-1349,
+.current-1349 {
   background-color: var(--boeren-green);
-  color: var(--light-green)
+  color: var(--light-green);
 }
 
 //investeren
-.parent-1229, .current-1229{
+.parent-1229,
+.current-1229 {
   background-color: var(--ontvangen-blue);
-  color: var(--ontvangen-brown)
+  color: var(--ontvangen-brown);
 }
 
 //contact
-.partent-1510, .current-1510{
+.partent-1510,
+.current-1510 {
   background-color: var(--pink);
-  color: var(--brown)
+  color: var(--brown);
 }
 
-.text h1{
+.text h1 {
   padding-top: 48px;
 }
 
@@ -344,37 +347,35 @@ main {
 }
 
 //slick slider
-.slick-slider{
-  .slick-prev{
+.slick-slider {
+  .slick-prev {
     z-index: 999;
     left: 14px;
   }
 
-  .slick-next{
+  .slick-next {
     z-index: 999;
     right: 164px;
   }
 }
-.post .slick-slider .slick-next{
+.post .slick-slider .slick-next {
   right: 14px;
 }
 
-
 @media (max-width: $breakpoint-small) {
   //slick slider
-  .slick-slider{
+  .slick-slider {
     height: 45vh;
-    .slick-prev{
+    .slick-prev {
       z-index: 999;
       left: 14px;
     }
 
-    .slick-next{
+    .slick-next {
       z-index: 999;
       right: 14px;
     }
   }
-
 
   .home {
     margin-right: 0;
@@ -419,11 +420,11 @@ main {
     margin-right: 0;
     margin-left: 0;
   }
-  .cart-amount{
+  .cart-amount {
     right: 12vw;
   }
-  .post-wrapper{
-    h1{
+  .post-wrapper {
+    h1 {
       margin-top: 80px;
     }
   }
@@ -432,41 +433,46 @@ main {
 // Styling tommy booking support
 
 body {
-  .tommy-zeb-wrapper .tommy-zeb-left {
-    background-color: var(--green);
-    color: var(--light-green);
-    border-radius: 0px;
+  .tommy-zeb-wrapper {
+    .tommy-zeb-left {
+      background-color: var(--green);
+      color: var(--light-green);
+      border-radius: 0;
+      h1 {
+        color: var(--light-green);
+      }
+    }
+
+    .tommy-zeb-result.ng-scope {
+      background-color: var(--green);
+      border-radius: 0;
+      .tommy-zeb-result-label.ng-binding,
+      .tommy-zeb-result-description {
+        color: var(--light-green);
+      }
+      .tommy-zeb-result-details {
+        width: 100%;
+        padding: 0;
+      }
+      .tommy-zeb-result-image img {
+        border-radius: 0;
+      }
+    }
+
+    * h2 {
+      color: var(--light-green);
+    }
   }
 
-  .tommy-zeb-wrapper-mini button.tommy-zeb-btn {
-    background-color: var(--light-green);
-    color: var(--green);
+  .tommy-zeb-wrapper-mini {
+    button.tommy-zeb-btn {
+      background-color: var(--light-green);
+      color: var(--green);
+    }
   }
 
   .ng-scope {
     // color: var(--light-green);
   }
-
-  .tommy-zeb-wrapper .tommy-zeb-left h1 {
-    color: var(--light-green);
-  }
-
-  .tommy-zeb-wrapper * h2 {
-    color: var(--light-green);
-  }
-
-  .tommy-zeb-wrapper .tommy-zeb-result.ng-scope {
-    background-color: var(--green);
-  }
-
-  .tommy-zeb-wrapper .tommy-zeb-result-label.ng-binding {
-    color: var(--light-green);
-  }
-  .tommy-zeb-result-description {
-    color: var(--light-green);
-  }
 }
 // Styling tommy booking support
-
-
-
