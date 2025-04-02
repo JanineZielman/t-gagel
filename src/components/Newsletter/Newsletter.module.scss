@@ -1,13 +1,14 @@
 .newsletter {
   --newsletter-padding: 2rem;
-  --newsletter-max-width: 400px;
-  --input-height: 45px;
+  --newsletter-max-width: 300px;
+  --input-height: 35px;
   --primary-color: var(--green, #5f6a33);
   --text-color: var(--green, #5f6a33);
 
   // padding: var(--newsletter-padding);
   max-width: var(--newsletter-max-width);
   width: 100%;
+  font-size: 14px;
 }
 
 .title {

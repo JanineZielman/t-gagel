@@ -1,11 +1,10 @@
 import styles from "./NewsGrid.module.scss"
 
 export default function NewsItem({ post }) {
-  console.log(post)
   return (
     <a
       className={styles.newsItem}
-      href={`/posts/${
+      href={`/nieuws/${
         post.slug
       }?categories=${post.categories[0].name.toLowerCase()}`}
     >

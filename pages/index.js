@@ -124,7 +124,7 @@ export async function getStaticProps() {
     props: {
       headerFooter: headerFooterData?.data ?? {},
       page: pageData[0] ?? {},
-      posts: posts?.data.posts_data,
+      posts: posts?.data.posts_data.filter(post => post.categories[0].slug == 'actueel') || {},
     },
 
     /**
