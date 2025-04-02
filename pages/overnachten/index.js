@@ -103,14 +103,14 @@ const Component = ({ headerFooter, posts }) => {
             data-widget="mini"
             data-api-token="GagelLochem:6501dc199c514235a989b6e8c637137cc3a99211b139a3ce8c2d6229863507b7"
             data-language="nl"
-            data-base-redirect-url="http://localhost:3000/overnachten/reserveren"
+            data-base-redirect-url="/overnachten/reserveren"
           ></tommy-widget>
           {/* <tommy-widget
             data-widget="default"
             data-api-token="GagelLochem:6501dc199c514235a989b6e8c637137cc3a99211b139a3ce8c2d6229863507b7"
             data-language='nl'
             data-period='day'
-            data-booking-url='https://localhost:3000/overnachten/reserveren'>
+            data-booking-url='/overnachten/reserveren'>
         </tommy-widget> */}
         </>
       </div>
