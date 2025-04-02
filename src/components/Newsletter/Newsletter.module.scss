@@ -1,13 +1,17 @@
 .newsletter {
   --newsletter-padding: 2rem;
-  --newsletter-max-width: 400px;
-  --input-height: 45px;
+  --newsletter-max-width: 300px;
+  --input-height: 35px;
   --primary-color: var(--green, #5f6a33);
   --text-color: var(--green, #5f6a33);
 
   // padding: var(--newsletter-padding);
   max-width: var(--newsletter-max-width);
   width: 100%;
+  // font-size: 14px;
+  h3{
+    margin-bottom: 5px;
+  }
 }
 
 .title {
@@ -32,7 +36,7 @@
   border: 1px solid var(--text-color);
   background: var(--light-green);
   flex: 1;
-  min-width: 200px;
+  // min-width: 200px;
   color: var(--text-color);
 
   &:focus {
@@ -45,14 +49,13 @@
 }
 
 .button {
-  height: var(--input-height);
+  height: 33px;
   padding: 0 1.5rem;
   border: none;
   background: var(--light-green);
   color: var(--text-color);
   cursor: pointer;
   transition: opacity 0.2s ease;
-
   &:hover {
     opacity: 0.9;
   }
@@ -66,4 +69,13 @@
 .error {
   margin-top: 1rem;
   color: var(--verbinden-orange);
+}
+
+
+@media (max-width: 768px){
+  .form{
+    margin-top: 14px;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
