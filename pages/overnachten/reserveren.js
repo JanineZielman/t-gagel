@@ -26,31 +26,7 @@ const ReserverenPage = ({ headerFooter }) => {
     // script.async = true
     script.type = "text/javascript"
 
-    // const observer = new MutationObserver((mutations, obs) => {
-    //   const widgetContent = document.querySelector("#TommyBookingSupport div")
-    //   if (widgetContent) {
-    //     setIsWidgetLoading(false)
-    //     obs.disconnect()
-    //   }
-    // })
-
-    // script.onload = () => {
-    //   observer.observe(document.body, {
-    //     childList: true,
-    //     subtree: true,
-    //   })
-
-    //   setTimeout(() => setIsWidgetLoading(false), 10000)
-    // }
-
     document.body.appendChild(script)
-
-    return () => {
-      // observer.disconnect()
-      // if (document.body.contains(script)) {
-      //   document.body.removeChild(script)
-      // }
-    }
   }, [])
 
   return (
