@@ -76,21 +76,41 @@ a {
   &.interview {
     background-color: var(--green);
     color: var(--light-green);
+    .related{
+      background-color: var(--light-green);
+      color: var(--green);
+    }
   }
   &.artikelen {
     background-color: var(--ontvangen-brown);
     color: var(--ontvangen-blue);
+    .related{
+      background-color: var(--ontvangen-blue);
+      color: var(--ontvangen-brown);
+    }
   }
   &.podcast {
     background-color: var(--brown);
     color: var(--pink);
+    .related{
+      background-color: var(--pink);
+      color: var(--brown);
+    }
   }
   &.actueel {
     background-color: var(--ontvangen-blue);
     color: var(--blue);
+    .related{
+      background-color: var(--blue);
+      color: var(--ontvangen-blue);
+    }
   }
   padding-top: 24px;
-  padding-bottom: 100px;
+  // padding-bottom: 100px;
+}
+
+#archiveFooter{
+  width: 100%;
 }
 
 .post-wrapper {

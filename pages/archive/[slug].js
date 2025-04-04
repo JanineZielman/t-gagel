@@ -101,7 +101,7 @@ const Post = ({ headerFooter, postData, categories }) => {
         )}
 
         {/* Related Posts Section */}
-        <div className={styles.relatedPosts}>
+        <div className={`${styles.relatedPosts} related`}>
           <h2>Related Posts</h2>
           <div className={styles.relatedPostsGrid}>
             <PostPreview post={post} />

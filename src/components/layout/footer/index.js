@@ -2,12 +2,15 @@ import classNames from "classnames/bind"
 import styles from "./Footer.module.scss"
 import Link from "next/link"
 import Newsletter from "../../Newsletter"
+import { useRouter } from "next/router"
 
 let cx = classNames.bind(styles)
 
 export default function Footer({ title, menuItems, primaryMenu, footer }) {
+  const router = useRouter();
+  console.log(router.asPath.includes('archive'))
   return (
-    <footer className={cx("component")}>
+    <footer id={`${router.asPath.includes('archive') && 'archiveFooter'}`} className={cx("component")}>
       <div className={styles.footerContent}>
         <div
           className={styles.footerText}
