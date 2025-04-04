@@ -1,32 +1,23 @@
 import styles from "./PostGrid.module.scss"
+import PostPreview from "../PostPreview"
 
 const PostGrid = ({ posts, selectedCategories }) => {
+  console.log(posts)
   return (
     <div className={styles.postGrid}>
       {posts.length > 0 ? (
         posts.map((item, i) => (
-          <a
+          <PostPreview
             key={i}
-            className={`${styles.postItem} post-item ${item.categories[0].name.toLowerCase()}`}
-            href={`/archive/${item.slug}?categories=${selectedCategories?.length > 0 ? { categories: selectedCategories.join(',') } : item.categories[0].name.toLowerCase()}`}
-          >
-            <div>
-              <span className={styles.category}>{item.categories[0].name}</span>
-              <h2>{item.title}</h2>
-            </div>
-            <div>
-              <p>{item.meta.author_name}</p>
-              <div className={styles.imgWrapper}>
-                <img src={item.attachment_image?.img_src[0]} />
-              </div>
-            </div>
-          </a>
+            post={item}
+            selectedCategories={selectedCategories}
+          />
         ))
       ) : (
         <p>No posts to show, try adjusting your selection.</p>
       )}
-      </div>
-  );
+    </div>
+  )
 }
 
 export default PostGrid
