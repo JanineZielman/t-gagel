@@ -5,9 +5,8 @@ import { AppContext } from "../../context"
 import styles from "./Header.module.scss"
 import { useRouter } from "next/router"
 
-
 const Header = ({ header }) => {
-  const router = useRouter();
+  const router = useRouter()
   const [cart, setCart] = useContext(AppContext)
   const { headerMenuItems, siteDescription, siteLogoUrl, siteTitle } =
     header || {}
@@ -31,24 +30,57 @@ const Header = ({ header }) => {
     setShowSubmenu(false)
   }
 
-  console.log(router.asPath.includes('archive'))
+  const handleSubmenuItemClick = () => {
+    setIsNavShown(false)
+    setShowSubmenu(false)
+    setActiveItem(null)
+  }
+
+  console.log(router.asPath.includes("archive"))
 
   return (
     <>
-      <header className={`${styles.header} ${isNavShown ? styles.show : ""} ${router.asPath.includes('archive') && styles.isArchive}`}>
+      <header
+        className={`${styles.header} ${isNavShown ? styles.show : ""} ${
+          router.asPath.includes("archive") && styles.isArchive
+        }`}
+      >
         <div
           className={styles.arrow}
           onClick={() => setIsNavShown(!isNavShown)}
         ></div>
-         <Link href="/bestellen/cart"><a className="cart-amount"> {cart?.totalQty ? `(${cart?.totalQty})` : null}</a></Link>
-        <div className={`${styles.menuItems} ${showSubmenu ? styles.showSubmenu : ''}`}>
-          <div className={`${styles.backButton} ${showSubmenu ? styles.visible : ''}`} onClick={handleBackClick}>
+        <Link href="/bestellen/cart">
+          <a className="cart-amount">
+            {" "}
+            {cart?.totalQty ? `(${cart?.totalQty})` : null}
+          </a>
+        </Link>
+        <div
+          className={`${styles.menuItems} ${
+            showSubmenu ? styles.showSubmenu : ""
+          }`}
+        >
+          <div
+            className={`${styles.backButton} ${
+              showSubmenu ? styles.visible : ""
+            }`}
+            onClick={handleBackClick}
+          >
             ← Terug
           </div>
           {headerMenuItems.map((item, i) => {
             return (
-              <div className={`${styles.menuItem} ${activeItem === item ? styles.active : ''}`} key={i}>
-                <a className={styles.icon} href={`/${item.pageSlug}`} onClick={(e) => handleMenuItemClick(item, e)}>
+              <div
+                className={`${styles.menuItem} ${
+                  activeItem === item ? styles.active : ""
+                }`}
+                key={i}
+              >
+                <a
+                  className={styles.icon}
+                  href={`/${item.pageSlug}`}
+                  onClick={(e) => handleMenuItemClick(item, e)}
+                >
                   <>
                     <div
                       className={styles.imgMask}
@@ -64,7 +96,12 @@ const Header = ({ header }) => {
                   {item.children.map((child, j) => (
                     <div className={styles.child} key={j}>
                       <Link href={`/${child.pageSlug}`}>
-                        <div className={styles.label}>{child.title}</div>
+                        <div
+                          className={styles.label}
+                          onClick={handleSubmenuItemClick}
+                        >
+                          {child.title}
+                        </div>
                       </Link>
                     </div>
                   ))}
