@@ -383,11 +383,30 @@ main {
   .slick-prev {
     z-index: 999;
     left: 14px;
+    &:before{
+      content: '<';
+      color: var(--light-green);
+      opacity: 1;
+      font-size: 30px;
+      font-family: inherit;
+      background-color: var(--light-green);
+      color: var(--boeren-green);
+      padding: 5px 10px;
+    }
   }
 
   .slick-next {
     z-index: 999;
-    right: 164px;
+    right: 180px;
+    &:before{
+      content: '>';
+      color: var(--boeren-green);
+      opacity: 1;
+      font-size: 30px;
+      background-color: var(--light-green);
+      font-family: inherit;
+      padding: 5px 10px;
+    }
   }
 }
 .post .slick-slider .slick-next {
@@ -405,7 +424,7 @@ main {
 
     .slick-next {
       z-index: 999;
-      right: 14px;
+      right: 30px;
     }
   }
 
