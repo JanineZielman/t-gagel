@@ -27,48 +27,50 @@ const Component = ({ headerFooter, posts }) => {
   }
 
   return (
-    <Layout headerFooter={headerFooter || {}} seo={seo}>
-      <HomeButton />
-      <div className={styles.container}>
-        <h1>Camping Boeken</h1>
+    <div className={styles.pageWrapper}>
+      <Layout headerFooter={headerFooter || {}} seo={seo}>
+        <HomeButton />
+        <div className={styles.container}>
+          <h1>Camping Boeken</h1>
 
-        <div>
-          <p>
-            Je kunt op onze boerderij overnachten! Ervaar regeneratie van
-            binnenuit en dompel jezelf onder in een eetbaar landschap. Kies je
-            voor je eigen kampeermiddel of logeer je liever in onze luxe
-            ingerichte tenten? Vanuit de camping heb je toegang tot een
-            binnenruimte met spelletjes, een regeneratieve inspiratie-bieb, een
-            wasmachine en de boerderijwinkel vol verse oogst en biologische
-            basics.
-          </p>
-          <p>
-            We planten de komende jaren verschillende soorten fruitbomen,
-            bessenstruiken, notenbomen, kruiden en eetbare bloemen aan rondom de
-            kampeerplekken. Er ontstaan knusse habitats die stuk voor stuk een
-            klein paradijsje vormen voor mens en dier. Een bijzondere plek op de
-            boerderij, waar het weer wild mag zijn. Het weidse uitzicht zal
-            blijven, maar rondom de tenten wordt het smakelijk en beschut.
-          </p>
-          <p>
-            Er lopen mooie wandel- en fietsroutes langs onze boerderij en er is
-            een befaamde MTB baan op steenworp afstand. Ook zijn er in de nabije
-            omgeving prachtige landhuizen en kastelen, musea en de charmante
-            Hanzesteden Lochem en Zutphen..
-          </p>
+          <div>
+            <p>
+              Je kunt op onze boerderij overnachten! Ervaar regeneratie van
+              binnenuit en dompel jezelf onder in een eetbaar landschap. Kies je
+              voor je eigen kampeermiddel of logeer je liever in onze luxe
+              ingerichte tenten? Vanuit de camping heb je toegang tot een
+              binnenruimte met spelletjes, een regeneratieve inspiratie-bieb, een
+              wasmachine en de boerderijwinkel vol verse oogst en biologische
+              basics.
+            </p>
+            <p>
+              We planten de komende jaren verschillende soorten fruitbomen,
+              bessenstruiken, notenbomen, kruiden en eetbare bloemen aan rondom de
+              kampeerplekken. Er ontstaan knusse habitats die stuk voor stuk een
+              klein paradijsje vormen voor mens en dier. Een bijzondere plek op de
+              boerderij, waar het weer wild mag zijn. Het weidse uitzicht zal
+              blijven, maar rondom de tenten wordt het smakelijk en beschut.
+            </p>
+            <p>
+              Er lopen mooie wandel- en fietsroutes langs onze boerderij en er is
+              een befaamde MTB baan op steenworp afstand. Ook zijn er in de nabije
+              omgeving prachtige landhuizen en kastelen, musea en de charmante
+              Hanzesteden Lochem en Zutphen..
+            </p>
+          </div>
+
+          <>
+            <tommy-widget
+                data-widget="default"
+                data-api-token="GagelLochem:6501dc199c514235a989b6e8c637137cc3a99211b139a3ce8c2d6229863507b7"
+                data-language="nl"
+                data-period="day"
+                data-booking-url="/overnachten/reserveren"
+            ></tommy-widget>
+          </>
         </div>
-
-        <>
-          <tommy-widget
-              data-widget="default"
-              data-api-token="GagelLochem:6501dc199c514235a989b6e8c637137cc3a99211b139a3ce8c2d6229863507b7"
-              data-language="nl"
-              data-period="day"
-              data-booking-url="/overnachten/reserveren"
-          ></tommy-widget>
-        </>
-      </div>
-    </Layout>
+      </Layout>
+    </div>
   )
 }
 

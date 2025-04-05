@@ -99,8 +99,8 @@ const Header = ({ header }) => {
                         <div
                           className={styles.label}
                           onClick={handleSubmenuItemClick}
+                          dangerouslySetInnerHTML={{ __html: child.title }}
                         >
-                          {child.title}
                         </div>
                       </Link>
                     </div>

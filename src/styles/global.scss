@@ -262,15 +262,21 @@ img {
 //beleven
 .parent-1602,
 .current-1602 {
-  background-color: var(--ontvangen-brown);
+  background-color: var(--brown);
   color: var(--light-green);
 }
 
 //leren
 .partent-1353,
 .current-1353 {
-  background-color: var(--brown);
+  background-color: var(--green);
   color: var(--ontvangen-blue);
+}
+
+//huren
+.parent-0, .current-1351{
+  background-color: var(--ontvangen-blue);
+  color: var(--ontvangen-brown);
 }
 
 //bomen
@@ -284,7 +290,7 @@ img {
 .parent-1229,
 .current-1229 {
   background-color: var(--ontvangen-blue);
-  color: var(--ontvangen-brown);
+  color: var(--blue);
 }
 
 //contact
@@ -292,6 +298,12 @@ img {
 .current-1510 {
   background-color: var(--pink);
   color: var(--brown);
+}
+
+//overnachten
+.parent-1501, .current-1501{
+  background-color: var(--green);
+  color: var(--light-green);
 }
 
 .text h1 {
