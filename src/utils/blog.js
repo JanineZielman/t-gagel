@@ -11,6 +11,7 @@ import {
 	GET_PAGES_ENDPOINT,
 	GET_POST_ENDPOINT,
 	GET_POSTS_ENDPOINT,
+	GET_RELATED_ENDPOINT
 } from './constants/endpoints';
 
 /**
@@ -46,6 +47,21 @@ export const getPosts = async ( pageNo = 1 ) => {
  */
 export const getPost = async ( postSlug = '' ) => {
 	return await axios.get( `${ GET_POST_ENDPOINT }?slug=${ postSlug }&_embed` )
+		.then( res => {
+			if ( 200 === res.status ) {
+				return res.data;
+			} else {
+				return [];
+			}
+		} )
+		.catch( err => {
+			console.log( err.response.data.message )
+			return [];
+		} );
+};
+
+export const getRelated = async ( postSlug = '' ) => {
+	return await axios.get( `${ GET_RELATED_ENDPOINT }?post_slug=${ postSlug }&_embed` )
 		.then( res => {
 			if ( 200 === res.status ) {
 				return res.data;

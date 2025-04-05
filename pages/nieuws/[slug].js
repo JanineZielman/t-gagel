@@ -17,7 +17,6 @@ const Post = ( { headerFooter, postData, categories } ) => {
 	if ( router.isFallback ) {
 		return <div>Loading...</div>;
 	}
-  console.log(postData)
 
 	return (
 		<Layout headerFooter={ headerFooter || {} } seo={ postData?.yoast_head_json ?? {} }>

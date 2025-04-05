@@ -8,7 +8,6 @@ let cx = classNames.bind(styles)
 
 export default function Footer({ title, menuItems, primaryMenu, footer }) {
   const router = useRouter();
-  console.log(router.asPath.includes('archive'))
   return (
     <footer id={`${router.asPath.includes('archive') && 'archiveFooter'}`} className={cx("component")}>
       <div className={styles.footerContent}>

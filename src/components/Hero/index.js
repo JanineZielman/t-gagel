@@ -30,8 +30,6 @@ const Hero = ({ gallery = [] }) => {
           })
         )
 
-        console.log(responses)
-
         const filteredMedia = responses
           .filter((item) => item !== null)
           .map((item) => ({

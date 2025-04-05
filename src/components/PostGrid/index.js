@@ -2,7 +2,7 @@ import styles from "./PostGrid.module.scss"
 import PostPreview from "../PostPreview"
 
 const PostGrid = ({ posts, selectedCategories }) => {
-  console.log(posts)
+
   return (
     <div className={styles.postGrid}>
       {posts.length > 0 ? (

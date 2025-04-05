@@ -7,74 +7,20 @@ import Layout from "../../src/components/layout"
 import { FALLBACK, handleRedirectsAndReturnData } from "../../src/utils/slug"
 import { getFormattedDate, sanitize } from "../../src/utils/miscellaneous"
 import { HEADER_FOOTER_ENDPOINT } from "../../src/utils/constants/endpoints"
-import { getPost, getPosts } from "../../src/utils/blog"
+import { getPost, getPosts, getRelated } from "../../src/utils/blog"
 import ArchiveButton from "../../src/components/Bits/ArchiveButton"
 import HomeButton from "../../src/components/Bits/HomeButton"
 import ImageSlider from "../../src/components/Bits/ImageSlider"
 import PostPreview from "../../src/components/PostPreview"
 
-const Post = ({ headerFooter, postData, categories }) => {
+const Post = ({ headerFooter, postData, categories, relatedData }) => {
   const router = useRouter()
 
   if (router.isFallback) {
     return <div>Loading...</div>
   }
 
-  const post = {
-    id: 1690,
-    title: "Betula",
-    excerpt:
-      "Berk (Betula) is een geslacht van bomen uit de berkenfamilie (Betulaceae). De bomen van dit geslacht komen verspreid voor over het noordelijk halfrond: ze zijn uiterst winterhard. Enkele soorten zijn op Groenland en IJsland de enige bomen die er van nature voorkomen. Doordat berken ondiep wortelen zijn ze slecht bestand tegen droogte. Kenmerkend voor enkele berkensoorten is het in horizontale banden afbladderen van de bast op de stam. De nieuwe bast is soms wit, maar [&hellip;]",
-    date: "april 1, 2025",
-    slug: "betula",
-    permalink: "https://gagel.janinezielman.com/archive/betula/",
-    attach_id: 1245,
-    attachment_image: {
-      img_sizes: "(max-width: 300px) 100vw, 300px",
-      img_src: [
-        "https://gagel.janinezielman.com/wp-content/uploads/2025/01/DSC8822recepten-winter-spice-first-t-Gagel-@GHengeveld-scaled.jpg",
-        2560,
-        1703,
-        false,
-      ],
-      img_srcset:
-        "https://gagel.janinezielman.com/wp-content/uploads/2025/01/DSC8822recepten-winter-spice-first-t-Gagel-@GHengeveld-300x200.jpg 300w, https://gagel.janinezielman.com/wp-content/uploads/2025/01/DSC8822recepten-winter-spice-first-t-Gagel-@GHengeveld-scaled-600x399.jpg 600w, https://gagel.janinezielman.com/wp-content/uploads/2025/01/DSC8822recepten-winter-spice-first-t-Gagel-@GHengeveld-1024x681.jpg 1024w, https://gagel.janinezielman.com/wp-content/uploads/2025/01/DSC8822recepten-winter-spice-first-t-Gagel-@GHengeveld-768x511.jpg 768w, https://gagel.janinezielman.com/wp-content/uploads/2025/01/DSC8822recepten-winter-spice-first-t-Gagel-@GHengeveld-1536x1022.jpg 1536w, https://gagel.janinezielman.com/wp-content/uploads/2025/01/DSC8822recepten-winter-spice-first-t-Gagel-@GHengeveld-2048x1363.jpg 2048w",
-    },
-    categories: [
-      {
-        term_id: 3,
-        name: "Artikelen",
-        slug: "artikelen",
-        term_group: 0,
-        term_taxonomy_id: 3,
-        taxonomy: "category",
-        description: "",
-        parent: 0,
-        count: 2,
-        filter: "raw",
-        cat_ID: 3,
-        category_count: 2,
-        category_description: "",
-        cat_name: "Artikelen",
-        category_nicename: "artikelen",
-        category_parent: 0,
-      },
-    ],
-    tags: [
-      {
-        id: 51,
-        name: "kwekerij",
-        slug: "kwekerij",
-        link: "https://gagel.janinezielman.com/archive/tag/kwekerij/",
-      },
-    ],
-    meta: {
-      author_id: "1",
-      author_name: "admin",
-      author_url:
-        "https://gagel.janinezielman.com/archive/author/janinezielman/",
-    },
-  }
+  console.log(relatedData)
 
   return (
     <Layout
@@ -102,11 +48,13 @@ const Post = ({ headerFooter, postData, categories }) => {
 
         {/* Related Posts Section */}
         <div className={`${styles.relatedPosts} related`}>
-          <h2>Related Posts</h2>
+          <h2>Wil je meer horen of lezen?</h2>
           <div className={styles.relatedPostsGrid}>
-            <PostPreview post={post} />
-            <PostPreview post={post} />
-            <PostPreview post={post} />
+            {relatedData.related_posts.map((item, i) => {
+              return(
+                <PostPreview post={item} current={categories[0].slug}/>
+              )
+            })} 
           </div>
         </div>
         <ArchiveButton />
@@ -119,7 +67,8 @@ export default Post
 
 export async function getStaticProps({ params }) {
   const { data: headerFooterData } = await axios.get(HEADER_FOOTER_ENDPOINT)
-  const postData = await getPost(params?.slug ?? "")
+  const postData = await getPost(params.slug ?? "")
+  const relatedData = await getRelated(params?.slug ?? "")
 
   // Fetch categories based on the category IDs in postData.categories
   const categoryIds = postData?.[0]?.categories ?? []
@@ -135,6 +84,7 @@ export async function getStaticProps({ params }) {
       headerFooter: headerFooterData?.data ?? {},
       postData: postData?.[0] ?? {},
       categories: categories, // Pass categories data as a prop
+      relatedData: relatedData.post_data
     },
     revalidate: 1,
   }

@@ -24,7 +24,7 @@ export default function Home({ headerFooter, page, posts }) {
       follow: "follow",
     },
   }
-  console.log(page)
+
   return (
     <Layout headerFooter={headerFooter || {}} seo={seo}>
       <Hero gallery={page.acf.gallery} />
@@ -48,7 +48,6 @@ export default function Home({ headerFooter, page, posts }) {
         <br></br>
         <div className="sections">
           {page.acf.sections.map((item, i) => {
-            console.log(item)
             return (
               <div key={i} className={"textSection"}>
                 <div
