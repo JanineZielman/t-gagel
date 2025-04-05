@@ -12,6 +12,24 @@ const Header = ({ header }) => {
   const { headerMenuItems, siteDescription, siteLogoUrl, siteTitle } =
     header || {}
   const [isNavShown, setIsNavShown] = useState(false)
+  const [activeItem, setActiveItem] = useState(null)
+  const [showSubmenu, setShowSubmenu] = useState(false)
+
+  const handleMenuItemClick = (item, e) => {
+    if (window.innerWidth <= 768) {
+      if (!showSubmenu) {
+        e.preventDefault()
+        setActiveItem(item)
+        setShowSubmenu(true)
+      }
+      // When already in submenu view, let the click go through to navigate
+    }
+  }
+
+  const handleBackClick = () => {
+    setActiveItem(null)
+    setShowSubmenu(false)
+  }
 
   console.log(router.asPath.includes('archive'))
 
@@ -23,11 +41,14 @@ const Header = ({ header }) => {
           onClick={() => setIsNavShown(!isNavShown)}
         ></div>
          <Link href="/bestellen/cart"><a className="cart-amount"> {cart?.totalQty ? `(${cart?.totalQty})` : null}</a></Link>
-        <div className={styles.menuItems}>
+        <div className={`${styles.menuItems} ${showSubmenu ? styles.showSubmenu : ''}`}>
+          <div className={`${styles.backButton} ${showSubmenu ? styles.visible : ''}`} onClick={handleBackClick}>
+            ← Terug
+          </div>
           {headerMenuItems.map((item, i) => {
             return (
-              <div className={styles.menuItem} key={i}>
-                <a className={styles.icon} href={`/${item.pageSlug}`}>
+              <div className={`${styles.menuItem} ${activeItem === item ? styles.active : ''}`} key={i}>
+                <a className={styles.icon} href={`/${item.pageSlug}`} onClick={(e) => handleMenuItemClick(item, e)}>
                   <>
                     <div
                       className={styles.imgMask}
