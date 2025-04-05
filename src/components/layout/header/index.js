@@ -49,12 +49,6 @@ const Header = ({ header }) => {
           className={styles.arrow}
           onClick={() => setIsNavShown(!isNavShown)}
         ></div>
-        <Link href="/bestellen/cart">
-          <a className="cart-amount">
-            {" "}
-            {cart?.totalQty ? `(${cart?.totalQty})` : null}
-          </a>
-        </Link>
         <div
           className={`${styles.menuItems} ${
             showSubmenu ? styles.showSubmenu : ""
@@ -89,7 +83,9 @@ const Header = ({ header }) => {
                         maskImage: `url(/${item.pageSlug}.svg)`,
                       }}
                     ></div>
-                    <div className={styles.label}>{item.title}</div>
+                    <div className={styles.label}>
+                      {item.title}  {cart?.totalQty && item.title == 'Bestellen' ? `(${cart?.totalQty})` : null}
+                    </div>
                   </>
                 </a>
                 <div className={styles.children}>
@@ -111,17 +107,6 @@ const Header = ({ header }) => {
           })}
         </div>
       </header>
-
-      {/* <Link href="/cart">
-        <a className="flex mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-10">
-          <span className="flex flex-row items-center lg:flex-col">
-            <Bag className="mr-1 lg:mr-0" />
-            <span className="ml-1">
-              Bag{cart?.totalQty ? `(${cart?.totalQty})` : null}
-            </span>
-          </span>
-        </a>
-      </Link> */}
     </>
   )
 }

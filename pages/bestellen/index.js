@@ -11,6 +11,7 @@ import axios from 'axios';
 import { getProductsData } from '../../src/utils/products';
 import Layout from '../../src/components/layout';
 import HomeButton from '../../src/components/Bits/HomeButton';
+import CallToActionButton from '../../src/components/Bits/CallToActionButton';
 
 export default function Home({ headerFooter, products }) {
 	const seo = {
@@ -27,6 +28,11 @@ export default function Home({ headerFooter, products }) {
 		<Layout headerFooter={ headerFooter || {} } seo={ seo }>
 			<HomeButton />
 			<h1>Bestellen</h1>
+				<CallToActionButton
+					link="/bestellen/cart"
+				>
+					view cart
+				</CallToActionButton>
 			<Products products={products}/>
 		</Layout>
 	)
