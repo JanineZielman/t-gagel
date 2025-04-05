@@ -27,7 +27,7 @@ const Header = ({ header }) => {
           {headerMenuItems.map((item, i) => {
             return (
               <div className={styles.menuItem} key={i}>
-                <a href={`/${item.pageSlug}`}>
+                <a className={styles.icon} href={`/${item.pageSlug}`}>
                   <>
                     <div
                       className={styles.imgMask}
