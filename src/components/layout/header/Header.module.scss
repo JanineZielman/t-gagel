@@ -21,13 +21,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-bottom: 24px;
+    padding-bottom: 40px;
+    overflow-y: auto;
   }
-  .menuItem{
-    &:hover{
-      .children{
-        opacity: 1;
-        height: fit-content;
+  .menuItem {
+    @media (min-width: $breakpoint-small) {
+      &:hover {
+        .children {
+          opacity: 1;
+          height: fit-content;
+        }
       }
     }
   }
@@ -70,7 +73,7 @@
       margin-bottom: 5px;
     }
   }
-  .arrow{
+  .arrow {
     font-size: 40px;
     width: 50px;
     height: 50px;
@@ -78,30 +81,30 @@
     text-align: right;
     padding-right: 5px;
     background-color: var(--light-green);
-    &:after{
-      content: '☰';
+    &:after {
+      content: "☰";
     }
   }
-  &.show .arrow{
-    &:after{
-      content: '✕';
+  &.show .arrow {
+    &:after {
+      content: "✕";
       font-size: 30px;
       padding-right: 5px;
     }
   }
-  &.isArchive{
+  &.isArchive {
     margin-right: -150px;
     .arrow {
       margin-left: -50px;
       display: block;
     }
-    .menuItems{
+    .menuItems {
       margin-top: -40px;
-      .children{
+      .children {
         display: none;
       }
-      &:hover{
-        .children{
+      &:hover {
+        .children {
           height: 0;
           display: none;
         }
@@ -112,27 +115,94 @@
       width: 150px;
     }
   }
+  .backButton {
+    display: none; // Hide by default on all screens
+  }
   @media (max-width: $breakpoint-small) {
     margin-right: -150px;
     .arrow {
       margin-left: -50px;
       display: block;
     }
-    .menuItems{
+    .menuItems {
       margin-top: -40px;
-      .children{
-        display: none;
-      }
-      &:hover{
-        .children{
-          height: 0;
-          display: none;
+      position: relative;
+      transition: all 0.5s ease-in-out;
+      &.showSubmenu {
+        .menuItem:not(.active) {
+          transform: translateX(-100%);
+          opacity: 0;
+          pointer-events: none;
         }
+        .active {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translate(0, -50%);
+          width: 90%;
+          opacity: 1;
+          .imgMask {
+            height: 15vh;
+            margin-bottom: 15px;
+          }
+          .label {
+            font-size: 28px;
+          }
+          .children {
+            display: flex;
+            height: auto;
+            opacity: 1;
+            margin-top: 20px;
+            transform: translateX(0);
+            transition: all 0.5s ease-out 0.2s;
+            .label {
+              font-size: 22px;
+              margin-top: 12px;
+              margin-bottom: 12px;
+            }
+          }
+        }
+      }
+      .menuItem {
+        transition: all 0.5s ease-out;
+        transform: translateX(0);
+      }
+    }
+    .menuItem {
+      &:hover .children {
+        opacity: 0;
+        height: 0;
+      }
+      position: relative;
+      &.active .children {
+        position: relative;
+        background: var(--light-green);
+      }
+      .children {
+        transform: translateX(30px);
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+      }
+    }
+    .backButton {
+      display: none; // Initially hidden on mobile too
+      padding: 10px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+      &.visible {
+        display: block; // Only show on mobile when visible class is present
       }
     }
     &.show {
       margin-right: 0;
-      width: 50vw;
+      width: 70vw;
+      .menuItems {
+        height: 100vh;
+        overflow-y: auto;
+      }
     }
   }
 }
