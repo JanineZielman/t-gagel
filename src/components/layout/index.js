@@ -15,6 +15,7 @@ import {
   replaceBackendWithFrontendUrl,
   sanitize,
 } from "../../utils/miscellaneous"
+import { useEffect } from "react"
 
 import LanguageToggle from "../LanguageToggle"
 
@@ -33,6 +34,8 @@ const Layout = ({ children, headerFooter, seo, uri }) => {
   const yoastSchema = seo?.schema
     ? replaceBackendWithFrontendUrl(JSON.stringify(seo.schema))
     : null
+
+
 
   return (
     <AppProvider>
