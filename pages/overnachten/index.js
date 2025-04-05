@@ -15,8 +15,6 @@ import HomeButton from "../../src/components/Bits/HomeButton"
  */
 
 const Component = ({ headerFooter, posts }) => {
-  const [isWidgetLoading, setIsWidgetLoading] = useState(true) // Add loading state
-  const containerRef = useRef(null)
   const seo = {
     title: "campingBoeken page",
     description: "Archive Page",
@@ -27,44 +25,6 @@ const Component = ({ headerFooter, posts }) => {
       follow: "follow",
     },
   }
-  useEffect(() => {
-    // Load Tommy widget script
-    const script = document.createElement("script")
-    script.src =
-      "https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js"
-    script.async = true
-
-    // Create observer to watch for widget content
-    const observer = new MutationObserver((mutations, obs) => {
-      const widgetContent = document.querySelector("tommy-widget div")
-      if (widgetContent) {
-        setIsWidgetLoading(false)
-        obs.disconnect()
-      }
-    })
-
-    // Start observing once script is added
-    script.onload = () => {
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-      })
-
-      // Fallback: Set loading to false after 10 seconds
-      setTimeout(() => {
-        setIsWidgetLoading(false)
-      }, 10000)
-    }
-
-    document.body.appendChild(script)
-
-    return () => {
-      observer.disconnect()
-      if (document.body.contains(script)) {
-        document.body.removeChild(script)
-      }
-    }
-  }, [])
 
   return (
     <Layout headerFooter={headerFooter || {}} seo={seo}>
@@ -99,19 +59,13 @@ const Component = ({ headerFooter, posts }) => {
         </div>
 
         <>
-          {/* <tommy-widget
-            data-widget="mini"
-            data-api-token="GagelLochem:6501dc199c514235a989b6e8c637137cc3a99211b139a3ce8c2d6229863507b7"
-            data-language="nl"
-            data-base-redirect-url="/overnachten/reserveren"
-          ></tommy-widget> */}
           <tommy-widget
-            data-widget="default"
-            data-api-token="GagelLochem:6501dc199c514235a989b6e8c637137cc3a99211b139a3ce8c2d6229863507b7"
-            data-language='nl'
-            data-period='day'
-            data-booking-url='/overnachten/reserveren'>
-        </tommy-widget>
+              data-widget="default"
+              data-api-token="GagelLochem:6501dc199c514235a989b6e8c637137cc3a99211b139a3ce8c2d6229863507b7"
+              data-language="nl"
+              data-period="day"
+              data-booking-url="/overnachten/reserveren"
+          ></tommy-widget>
         </>
       </div>
     </Layout>

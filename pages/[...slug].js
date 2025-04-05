@@ -11,6 +11,7 @@ import { getPage, getPages } from '../src/utils/blog';
 import axios from 'axios';
 import { HEADER_FOOTER_ENDPOINT } from '../src/utils/constants/endpoints';
 import ImageSlider from "../src/components/Bits/ImageSlider"
+import { useEffect } from 'react';
 
 const Page = ( { headerFooter, pageData } ) => {
 	const router = useRouter();
@@ -20,6 +21,24 @@ const Page = ( { headerFooter, pageData } ) => {
 	if ( router.isFallback ) {
 		return <div>Loading...</div>;
 	}
+
+  useEffect(() => {
+    console.log("Loading Tommy widget script")
+    // Load Tommy widget script
+    const script = document.createElement("script")
+    script.src =
+      "https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js"
+    script.async = true
+
+    document.body.appendChild(script)
+
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script)
+      }
+    }
+  }, [pageData])
+
 	
 	return (
 		<div className={`parent-${pageData.parent} current-${pageData.id}`}>
