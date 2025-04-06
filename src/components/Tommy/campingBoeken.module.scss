@@ -1,18 +1,10 @@
-.pageWrapper{
-  background-color: var(--green);
-  color: var(--light-green);
-  h1{
-    padding-top: 48px;
-  }
-}
-
 .container {
   display: flex;
   flex-direction: column;
   gap: 40px;
   margin: 0 auto; /* Horizontaal centreren en bovenmarge behouden */
   max-width: 900px;
-  // padding-right: 150px; /* Minimaal 150px van de rechterkant */
+  padding-right: 150px; /* Minimaal 150px van de rechterkant */
   box-sizing: border-box; /* Zorgt ervoor dat padding wordt meegerekend in de breedte */
   background-color: var(--green);
 }

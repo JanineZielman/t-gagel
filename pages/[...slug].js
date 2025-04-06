@@ -12,6 +12,8 @@ import axios from 'axios';
 import { HEADER_FOOTER_ENDPOINT } from '../src/utils/constants/endpoints';
 import ImageSlider from "../src/components/Bits/ImageSlider"
 import { useEffect } from 'react';
+import ContactForm from '../src/components/ContactForm';
+import Tommy from '../src/components/Tommy';
 
 const Page = ( { headerFooter, pageData } ) => {
 	const router = useRouter();
@@ -39,6 +41,8 @@ const Page = ( { headerFooter, pageData } ) => {
     }
   }, [pageData])
 
+	console.log(pageData)
+
 	
 	return (
 		<div className={`parent-${pageData.parent} current-${pageData.id}`}>
@@ -48,6 +52,13 @@ const Page = ( { headerFooter, pageData } ) => {
 				<ContentWrapper content={pageData.content.rendered} />
 				{pageData.acf.image_slider?.length > 0 &&
 					<ImageSlider images={pageData.acf.image_slider}/>
+				}
+				{pageData.acf.contact_form &&
+					<ContactForm  backgroundColor="var(--brown)"
+          textColor="var(--pink)"/>
+				}
+				{pageData.acf.tommy_booking &&
+					<Tommy/>
 				}
 			</Layout>
 		</div>

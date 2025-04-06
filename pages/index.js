@@ -113,14 +113,6 @@ export default function Home({ headerFooter, page, posts }) {
             )
           })}
         </div>
-        <ContactForm
-          backgroundColor="var(--light-green)"
-          textColor="var(--green)"
-        />
-        <>
-          contact formulier staat nu tijdelijk hier. gaat straks naar de eigen
-          pagina :)
-        </>
       </div>
     </Layout>
   )
