@@ -10,6 +10,7 @@ import Image from "../src/components/image"
 import CustomLine from "../src/components/CustomLine/CustomLine"
 import CallToActionButton from "../src/components/Bits/CallToActionButton"
 import ContactForm from "../src/components/ContactForm"
+import ImageSlider from "../src/components/Bits/ImageSlider"
 
 
 export default function Home({ headerFooter, page, posts }) {
@@ -37,11 +38,22 @@ export default function Home({ headerFooter, page, posts }) {
             Lees meer ...
           </CallToActionButton>
         </div>
-        <div
-          className={"introText"}
-          dangerouslySetInnerHTML={{ __html: page.content.rendered }}
-        />
-        <CustomLine height={37} strokeColor="#DCFF90" strokeWidth={3} />
+        {page.content.rendered.length > 0 &&
+          <>
+            <div
+              className={"introText"}
+              dangerouslySetInnerHTML={{ __html: page.content.rendered }}
+            />
+            <CustomLine height={37} strokeColor="#DCFF90" strokeWidth={3} />
+          </>
+        }
+        {page.acf.image_slider?.length > 0 &&
+          <>
+            <ImageSlider images={page.acf.image_slider}/>
+            <CustomLine height={37} strokeColor="#DCFF90" strokeWidth={3} />
+          </>
+				}
+         
         {/* <PostGrid posts={posts.slice(4, 7)} selectedCategories={""} /> */}
         <br></br>
         <br></br>

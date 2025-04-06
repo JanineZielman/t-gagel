@@ -17,6 +17,8 @@ const ImageSlider = ({ images }) => {
     centerPadding: '60px',
   };
 
+  console.log(images)
+
   return (
     <div className={styles.sliderContainer}>
 
@@ -26,12 +28,17 @@ const ImageSlider = ({ images }) => {
               key={index}
               className={styles.slide}
             >
-              <Image
-                customImageId={image.image}
-                altText={image.alt || ""}
-                layout="fill"
-                objectFit="cover"
-              />
+              {image.image &&
+                <Image
+                  customImageId={image.image}
+                  altText={image.alt || ""}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              }
+              {image.text &&
+                <div className={styles.textWrap} dangerouslySetInnerHTML={{ __html: image.text }}></div>
+              }
             </div>
           ))}
           

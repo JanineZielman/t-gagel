@@ -16,6 +16,28 @@
     height: 65vh!important;
     padding: 0 10px;
   }
+  .textWrap{
+    position: relative;
+    width: 80vw;
+    overflow: hidden;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    min-height: 50vh;
+    font-weight: 300;
+  }
+  blockquote{
+    font-size: 50px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 300;
+    line-height: 1.4;
+    max-width: 900px;
+    padding-bottom: 48px;
+  }
 }
 
 
@@ -27,6 +49,14 @@
       height: 45vh!important;
       padding: 0 10px;
       object-fit: cover;
+    }
+    blockquote{
+      font-size: 30px;
+    }
+    .textWrap{
+      width: 100vw;
+      padding: 0 50px;
+      font-size: 18px;
     }
   }
 }

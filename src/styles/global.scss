@@ -227,6 +227,9 @@ img {
   background-color: var(--boeren-green);
   color: var(--ontvangen-blue); // Revert to specific color
   padding-bottom: 100px;
+  .slick-slider .slick-next{
+    right: 30px;
+  }
   blockquote p {
     text-transform: uppercase;
     text-align: center;
