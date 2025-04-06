@@ -39,7 +39,7 @@
     width: 100%;
     display: block;
     padding-bottom: 0;
-    font-size: 18px;
+    font-size: 2vh;
   }
   .imgMask {
     background-color: var(--green);
@@ -196,7 +196,7 @@
         display: block; // Only show on mobile when visible class is present
       }
     }
-    &.show {
+    &.show, &.isArchive.show {
       margin-right: 0;
       width: 70vw;
       .menuItems {
@@ -204,5 +204,6 @@
         overflow-y: auto;
       }
     }
+    
   }
 }
