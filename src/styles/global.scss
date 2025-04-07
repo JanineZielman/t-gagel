@@ -76,7 +76,7 @@ a {
   &.interview {
     background-color: var(--green);
     color: var(--light-green);
-    .related{
+    .related {
       background-color: var(--light-green);
       color: var(--green);
     }
@@ -84,7 +84,7 @@ a {
   &.artikelen {
     background-color: var(--ontvangen-brown);
     color: var(--ontvangen-blue);
-    .related{
+    .related {
       background-color: var(--ontvangen-blue);
       color: var(--ontvangen-brown);
     }
@@ -92,7 +92,7 @@ a {
   &.podcast {
     background-color: var(--brown);
     color: var(--pink);
-    .related{
+    .related {
       background-color: var(--pink);
       color: var(--brown);
     }
@@ -100,7 +100,7 @@ a {
   &.actueel {
     background-color: var(--ontvangen-blue);
     color: var(--blue);
-    .related{
+    .related {
       background-color: var(--blue);
       color: var(--ontvangen-blue);
     }
@@ -109,7 +109,7 @@ a {
   // padding-bottom: 100px;
 }
 
-#archiveFooter{
+#archiveFooter {
   width: 100%;
 }
 
@@ -227,7 +227,7 @@ img {
   background-color: var(--boeren-green);
   color: var(--ontvangen-blue); // Revert to specific color
   padding-bottom: 100px;
-  .slick-slider .slick-next{
+  .slick-slider .slick-next {
     right: 30px;
   }
   blockquote p {
@@ -277,7 +277,8 @@ img {
 }
 
 //huren
-.parent-0, .current-1351{
+.parent-0,
+.current-1351 {
   background-color: var(--ontvangen-blue);
   color: var(--ontvangen-brown);
 }
@@ -304,7 +305,8 @@ img {
 }
 
 //overnachten
-.parent-1501, .current-1501{
+.parent-1501,
+.current-1501 {
   background-color: var(--green);
   color: var(--light-green);
 }
@@ -386,8 +388,8 @@ main {
   .slick-prev {
     z-index: 999;
     left: 14px;
-    &:before{
-      content: '<';
+    &:before {
+      content: "<";
       color: var(--light-green);
       opacity: 1;
       font-size: 30px;
@@ -401,8 +403,8 @@ main {
   .slick-next {
     z-index: 999;
     right: 180px;
-    &:before{
-      content: '>';
+    &:before {
+      content: ">";
       color: var(--boeren-green);
       opacity: 1;
       font-size: 30px;
@@ -527,6 +529,15 @@ body {
 
   .ng-scope {
     // color: var(--light-green);
+  }
+
+  .tbs-legenda {
+    background-color: transparent;
+  }
+
+  .tbs-btn-success {
+    color: var(--light-green);
+    background-color: var(--verbinden-red);
   }
 }
 // Styling tommy booking support

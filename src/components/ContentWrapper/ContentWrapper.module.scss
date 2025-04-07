@@ -1,9 +1,18 @@
+@import "../../styles/breakpoints";
+
 .component {
+  width: calc(100% - 300px);
   max-width: 900px;
   margin: 0 auto;
   line-height: 1.6875;
   padding: 0 14px;
   padding-bottom: 24px;
+
+  @media screen and (max-width: $breakpoint-small) {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 14px;
+  }
 
   :global {
     // Scope WordPress block styles within ContentWrapper.
@@ -12,7 +21,6 @@
     * {
       max-width: 100%;
     }
-
 
     figure {
       margin-left: 0;
@@ -115,7 +123,7 @@
       }
     }
 
-    iframe.transparent{
+    iframe.transparent {
       mix-blend-mode: multiply;
       // filter: invert(1);
       border: none;

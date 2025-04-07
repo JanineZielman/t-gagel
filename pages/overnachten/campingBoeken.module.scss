@@ -1,25 +1,30 @@
-.pageWrapper{
+.pageWrapper {
   background-color: var(--green);
   color: var(--light-green);
-  h1{
+  h1 {
     padding-top: 48px;
   }
 }
 
 .container {
-  display: flex;
+  /* display: flex
+; */
   flex-direction: column;
   gap: 40px;
-  margin: 0 auto; /* Horizontaal centreren en bovenmarge behouden */
-  max-width: 900px;
-  // padding-right: 150px; /* Minimaal 150px van de rechterkant */
-  box-sizing: border-box; /* Zorgt ervoor dat padding wordt meegerekend in de breedte */
+  margin: 0 auto;
+  /* max-width: 900px; */
+  box-sizing: border-box;
   background-color: var(--green);
+  /* margin-left: 20%; */
+  /* margin-right: 20%; */
+  /* font-family: 'Archivo'; */
+  padding-left: 20%;
+  padding-right: 20%;
+  color: var(--light-green);
 }
 
-
-@media (max-width: 768px){
-  .container{
+@media (max-width: 768px) {
+  .container {
     padding-right: 0;
     padding: 0 14px;
   }

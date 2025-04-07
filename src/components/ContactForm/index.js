@@ -28,6 +28,8 @@ const ContactForm = ({ backgroundColor, textColor }) => {
     }))
   }
 
+  const mailChimp ="us4-c5688ad997-c79d500b22@inbound.mailchimpapp.net"
+
   const handleSubmit = (e) => {
     e.preventDefault()
     // Here you would typically send the form data to your backend
