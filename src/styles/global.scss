@@ -129,13 +129,20 @@ a {
       margin-bottom: 0;
     }
   }
-  figure {
-    width: 100% !important;
-    height: auto;
-  }
-  figcaption {
-    font-size: 75%;
-  }
+}
+
+figure {
+  width: 100% !important;
+  height: auto;
+  padding: 24px 0;
+}
+
+figcaption {
+  font-size: 75%;
+}
+
+strong{
+  font-weight: 400;
 }
 
 .content-wrapper {
@@ -262,6 +269,18 @@ img {
   z-index: 999;
 }
 
+//boeren boederij
+.parent-184{
+  background-color: var(--boeren-green);
+  color: var(--light-green);
+}
+
+.home{
+  .sections{
+    color: var(--light-green);
+  }
+}
+
 //beleven
 .parent-1602,
 .current-1602 {
@@ -321,7 +340,7 @@ img {
     padding: 48px 0 0 0;
     font-size: 24px;
     line-height: 1.3;
-    color: var(--light-green);
+    // color: var(--light-green);
     font-weight: 100;
     blockquote p {
       font-size: 36px;
@@ -386,6 +405,9 @@ main {
 //slick slider
 .slick-slider {
   max-height: 65vh;
+  .slick-slide{
+    height: 100% !important;  
+  }
   .slick-prev {
     z-index: 999;
     left: 14px;
@@ -422,8 +444,6 @@ main {
 @media (max-width: $breakpoint-small) {
   //slick slider
   .slick-slider {
-    max-height: 45vh;
-
     .slick-prev {
       z-index: 999;
       left: 14px;

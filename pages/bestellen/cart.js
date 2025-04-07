@@ -6,11 +6,13 @@ import HomeButton from '../../src/components/Bits/HomeButton';
 
 export default function Cart({ headerFooter }) {
 	return (
-		<Layout headerFooter={headerFooter || {}}>
-			<HomeButton />
-			<h1>Cart</h1>
-			<CartItemsContainer/>
-		</Layout>
+		<div className='parent-184'>
+			<Layout headerFooter={headerFooter || {}}>
+				<HomeButton />
+				<h1>Cart</h1>
+				<CartItemsContainer/>
+			</Layout>
+		</div>
 	);
 }
 

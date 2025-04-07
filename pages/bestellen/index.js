@@ -25,16 +25,18 @@ export default function Home({ headerFooter, products }) {
 		},
 	}
 	return (
-		<Layout headerFooter={ headerFooter || {} } seo={ seo }>
-			<HomeButton />
-			<h1>Bestellen</h1>
-				<CallToActionButton
-					link="/bestellen/cart"
-				>
-					view cart
-				</CallToActionButton>
-			<Products products={products}/>
-		</Layout>
+		<div className='parent-184'>
+			<Layout headerFooter={ headerFooter || {} } seo={ seo }>
+				<HomeButton />
+				<h1>Bestellen</h1>
+					<CallToActionButton
+						link="/bestellen/cart"
+					>
+						view cart
+					</CallToActionButton>
+				<Products products={products}/>
+			</Layout>
+		</div>
 	)
 }
 
