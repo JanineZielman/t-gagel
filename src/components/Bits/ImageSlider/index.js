@@ -15,6 +15,8 @@ const ImageSlider = ({ images }) => {
     centerMode: true,
     variableWidth: true,
     centerPadding: '60px',
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
 
   console.log(images)
