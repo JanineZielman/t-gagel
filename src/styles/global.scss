@@ -270,14 +270,14 @@ img {
 }
 
 //leren
-.partent-1353,
+.parent-1353,
 .current-1353 {
   background-color: var(--green);
   color: var(--ontvangen-blue);
 }
 
 //huren
-.parent-0,
+.parent-1351,
 .current-1351 {
   background-color: var(--ontvangen-blue);
   color: var(--ontvangen-brown);
@@ -385,6 +385,7 @@ main {
 
 //slick slider
 .slick-slider {
+  max-height: 65vh;
   .slick-prev {
     z-index: 999;
     left: 14px;
@@ -421,7 +422,8 @@ main {
 @media (max-width: $breakpoint-small) {
   //slick slider
   .slick-slider {
-    height: 45vh;
+    max-height: 45vh;
+
     .slick-prev {
       z-index: 999;
       left: 14px;
@@ -431,6 +433,9 @@ main {
       z-index: 999;
       right: 30px;
     }
+  }
+  .post .slick-slider .slick-next{
+    right: 30px;
   }
 
   .home {

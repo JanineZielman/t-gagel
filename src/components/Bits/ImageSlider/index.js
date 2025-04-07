@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const ImageSlider = ({ images }) => {
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -18,8 +18,6 @@ const ImageSlider = ({ images }) => {
     autoplay: true,
     autoplaySpeed: 3000,
   };
-
-  console.log(images)
 
   return (
     <div className={styles.sliderContainer}>
@@ -32,7 +30,7 @@ const ImageSlider = ({ images }) => {
             >
               {image.image &&
                 <Image
-                  customImageId={image.image}
+                  sourceUrl={image.image.url}
                   altText={image.alt || ""}
                   layout="fill"
                   objectFit="cover"

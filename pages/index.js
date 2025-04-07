@@ -5,12 +5,11 @@ import axios from "axios"
 import Layout from "../src/components/layout"
 import Hero from "../src/components/Hero"
 import NewsGrid from "../src/components/NewsGrid"
-import PostGrid from "../src/components/PostGrid"
-import Image from "../src/components/image"
+
 import CustomLine from "../src/components/CustomLine/CustomLine"
 import CallToActionButton from "../src/components/Bits/CallToActionButton"
-import ContactForm from "../src/components/ContactForm"
 import ImageSlider from "../src/components/Bits/ImageSlider"
+import Sections from "../src/components/Sections"
 
 
 export default function Home({ headerFooter, page, posts }) {
@@ -58,61 +57,7 @@ export default function Home({ headerFooter, page, posts }) {
         <br></br>
         <br></br>
         <br></br>
-        <div className="sections">
-          {page.acf.sections.map((item, i) => {
-            return (
-              <div key={i} className={"textSection"}>
-                <div
-                  className="text-wrapper"
-                  dangerouslySetInnerHTML={{ __html: item.text_section }}
-                />
-                {item.card && (
-                  <div className="cards">
-                    {item.card.map((cardItem, j) => {
-                      return (
-                        <div key={j} className="card">
-                          <h3>
-                            {cardItem.firstname} {cardItem.lastname}
-                          </h3>
-                          <Image
-                            width={500}
-                            height={300}
-                            customImageId={cardItem.image}
-                          />
-                          <div className="text">{cardItem.text}</div>
-
-                          {/* <div className="functionAtFarm">{cardItem.title}</div> */}
-
-                          {/* {cardItem.email && (
-                            <div className="contactWithFarmer">
-                              contact met{" "}
-                              <a href={`mailto:${cardItem.email}`}>
-                                {cardItem.firstname}
-                              </a>
-                            </div>
-                          )} */}
-                        </div>
-                      )
-                    })}
-                  </div>
-                )}
-                {item.linkPage && (
-                  <div className="center">
-                    <CallToActionButton
-                      link={item.linkPage.url.replace(
-                        "https://gagel.janinezielman.com",
-                        ""
-                      )}
-                    >
-                      Lees meer ...
-                    </CallToActionButton>
-                  </div>
-                )}
-                <CustomLine height={37} strokeColor="#DCFF90" strokeWidth={3} />
-              </div>
-            )
-          })}
-        </div>
+        <Sections sections={page.acf.sections}/>
       </div>
     </Layout>
   )

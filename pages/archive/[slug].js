@@ -12,6 +12,7 @@ import ArchiveButton from "../../src/components/Bits/ArchiveButton"
 import HomeButton from "../../src/components/Bits/HomeButton"
 import ImageSlider from "../../src/components/Bits/ImageSlider"
 import PostPreview from "../../src/components/PostPreview"
+import Sections from "../../src/components/Sections"
 
 const Post = ({ headerFooter, postData, categories, relatedData }) => {
   const router = useRouter()
@@ -44,6 +45,9 @@ const Post = ({ headerFooter, postData, categories, relatedData }) => {
         <br />
         {postData.acf.image_slider?.length > 0 && (
           <ImageSlider images={postData.acf.image_slider} />
+        )}
+        {postData.acf.sections?.length > 0 && (
+          <Sections sections={postData.acf.sections}/>
         )}
 
         {/* Related Posts Section */}

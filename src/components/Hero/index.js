@@ -18,13 +18,15 @@ const Hero = ({ gallery = [] }) => {
       return
     }
 
+    console.log(gallery)
+
     // Fetch media details based on IDs
     const fetchMedia = async () => {
       try {
         const responses = await Promise.all(
           gallery.map(async (id) => {
             const res = await fetch(
-              `https://gagel.janinezielman.com/wp-json/wp/v2/media/${id}`
+              `https://gagel.janinezielman.com/wp-json/wp/v2/media/${id.ID}`
             ) // Adjust this API endpoint
             return res.ok ? await res.json() : null
           })
@@ -88,16 +90,6 @@ const Hero = ({ gallery = [] }) => {
         <div className={styles.gallery}>
           <div className={styles.loadingPlaceholder} />
         </div>
-        {/*
-          <div className={styles.logo}>
-            <div className={styles.maskImg}></div>
-          </div>
-        <div className={styles.homeCTA}>
-          <CallToActionButton link={"#"}>
-            Word mede-eigenaar!
-          </CallToActionButton>
-        </div>
-        <ArchiveButton /> */}
       </div>
     )
   }
