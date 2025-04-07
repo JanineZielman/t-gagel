@@ -4,6 +4,7 @@
   // background-color: var(--boeren-green);
   // color: var(--ontvangen-blue);
   padding: 40px 0;
+  // width: calc(100% - 300px);
 
   h2 {
     font-size: 50px;
@@ -31,6 +32,12 @@
     flex-direction: column;
     gap: 15px;
     // height: 100%;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--blue);
+
+    &:last-child {
+      border-bottom: none;
+    }
 
     .postHeader {
       display: flex;
