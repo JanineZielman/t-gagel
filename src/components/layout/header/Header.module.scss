@@ -12,6 +12,7 @@
   transition: all 0.4s ease;
   a {
     text-decoration: none;
+    text-transform: lowercase;
   }
   .menuItems {
     width: 90%;
@@ -40,6 +41,7 @@
     display: block;
     padding-bottom: 0;
     font-size: 2vh;
+    text-transform: lowercase;
   }
   .imgMask {
     background-color: var(--green);

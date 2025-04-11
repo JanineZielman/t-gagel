@@ -24,46 +24,48 @@ const Post = ({ headerFooter, postData, categories, relatedData }) => {
   console.log(relatedData)
 
   return (
-    <Layout
-      headerFooter={headerFooter || {}}
-      seo={postData?.yoast_head_json ?? {}}
-    >
-      <HomeButton />
-      <div className={`post ${categories[0].slug}`}>
-        <div className="post-wrapper">
-          <h1
-            dangerouslySetInnerHTML={{
-              __html: sanitize(postData?.title?.rendered ?? ""),
-            }}
-          />
-          <h2>{postData?._embedded?.author?.[0]?.name}</h2>
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{ __html: postData?.content?.rendered }}
-          ></div>
-        </div>
-        <br />
-        {postData.acf.image_slider?.length > 0 && (
-          <ImageSlider images={postData.acf.image_slider} />
-        )}
-        {postData.acf.sections?.length > 0 && (
-          <Sections sections={postData.acf.sections}/>
-        )}
+    <div className={`post ${categories[0].slug}`}>
+      <Layout
+        headerFooter={headerFooter || {}}
+        seo={postData?.yoast_head_json ?? {}}
+      >
+        <HomeButton />
 
-        {/* Related Posts Section */}
-        <div className={`${styles.relatedPosts} related`}>
-          <h2>Wil je meer horen of lezen?</h2>
-          <div className={styles.relatedPostsGrid}>
-            {relatedData.related_posts.map((item, i) => {
-              return(
-                <PostPreview post={item} current={categories[0].slug}/>
-              )
-            })} 
+          <div className="post-wrapper">
+            <h1
+              dangerouslySetInnerHTML={{
+                __html: sanitize(postData?.title?.rendered ?? ""),
+              }}
+            />
+            <h2>{postData?._embedded?.author?.[0]?.name}</h2>
+            <div
+              className="content"
+              dangerouslySetInnerHTML={{ __html: postData?.content?.rendered }}
+            ></div>
           </div>
-        </div>
-        <ArchiveButton />
-      </div>
-    </Layout>
+          <br />
+          {postData.acf.image_slider?.length > 0 && (
+            <ImageSlider images={postData.acf.image_slider} />
+          )}
+          {postData.acf.sections?.length > 0 && (
+            <Sections sections={postData.acf.sections}/>
+          )}
+
+          {/* Related Posts Section */}
+          <div className={`${styles.relatedPosts} related`}>
+            <h2>Wil je meer horen of lezen?</h2>
+            <div className={styles.relatedPostsGrid}>
+              {relatedData.related_posts.map((item, i) => {
+                return(
+                  <PostPreview post={item} current={categories[0].slug}/>
+                )
+              })} 
+            </div>
+          </div>
+          <ArchiveButton />
+      
+      </Layout>
+    </div>
   )
 }
 

@@ -269,10 +269,27 @@ img {
   z-index: 999;
 }
 
-//boeren boederij
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1, #button{
+    width: fit-content;
+    margin: 0 24px;
+  }
+}
+
+//bestellen
 .parent-184{
-  background-color: var(--boeren-green);
-  color: var(--light-green);
+  background-color: var(--ontvangen-blue);
+  color: var(--ontvangen-brown);
+  #button{
+    background-color: var(--ontvangen-brown);
+    color: var(--ontvangen-blue);
+  }
+  #bg{
+    background-color: var(--ontvangen-brown);
+  }
 }
 
 .home{
@@ -286,6 +303,9 @@ img {
 .current-1602 {
   background-color: var(--brown);
   color: var(--light-green);
+  #bg{
+    background-color: var(--light-green);
+  }
 }
 
 //leren
@@ -293,6 +313,9 @@ img {
 .current-1353 {
   background-color: var(--green);
   color: var(--ontvangen-blue);
+  #bg{
+    background-color: var(--ontvangen-blue);
+  }
 }
 
 //huren
@@ -300,6 +323,9 @@ img {
 .current-1351 {
   background-color: var(--ontvangen-blue);
   color: var(--ontvangen-brown);
+  #bg{
+    background-color: var(--ontvangen-brown);
+  }
 }
 
 //bomen
@@ -314,6 +340,9 @@ img {
 .current-1229 {
   background-color: var(--ontvangen-blue);
   color: var(--blue);
+  #bg{
+    background-color: var(--blue);
+  }
 }
 
 //contact
@@ -321,6 +350,9 @@ img {
 .current-1510 {
   background-color: var(--pink);
   color: var(--brown);
+  #bg{
+    background-color: var(--brown);
+  }
 }
 
 //overnachten
@@ -328,6 +360,14 @@ img {
 .current-1501 {
   background-color: var(--green);
   color: var(--light-green);
+}
+
+.artikelen #bg{
+  background-color: var(--ontvangen-blue);
+}
+
+.podcast #bg{
+  background-color: var(--pink);
 }
 
 .text h1 {
