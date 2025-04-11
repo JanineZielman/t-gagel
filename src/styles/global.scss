@@ -605,52 +605,11 @@ body {
   .tommy-zeb-result-details {
   }
 
-  // .tommy-zeb-wrapper {
-
-  //   .tommy-zeb-left {
-  //     background-color: var(--green);
-  //     color: var(--light-green);
-  //     border-radius: 0;
-  //     h1 {
-  //       color: var(--light-green);
-  //     }
-  //   }
-
-  //   .tommy-zeb-result.ng-scope {
-  //     background-color: var(--green);
-  //     border-radius: 0;
-  //     .tommy-zeb-result-label.ng-binding,
-  //     .tommy-zeb-result-description {
-  //       color: var(--light-green);
-  //     }
-  //     .tommy-zeb-result-details {
-  //       width: 100%;
-  //       padding: 0;
-  //     }
-  //     .tommy-zeb-result-image img {
-  //       border-radius: 0;
-  //     }
-  //   }
-
-  //   * h2 {
-  //     color: var(--light-green);
-  //   }
-  // }
-
-  // .tommy-zeb-wrapper-mini {
-  //   button.tommy-zeb-btn {
-  //     background-color: var(--light-green);
-  //     color: var(--green);
-  //   }
-  // }
-
-  // .ng-scope {
-  //   // color: var(--light-green);
-  // }
-
-  // .tbs-legenda {
-  //   background-color: transparent;
-  // }
+  .tbs-legenda {
+    background-color: var(--light-green);
+    color: var(--green);
+    border: none;
+  }
 
   .tbs-btn-success {
     color: var(--green);
