@@ -1,15 +1,25 @@
-import React from "react"
-import styles from "./CallToActionButton.module.scss"
-import Link from "next/link"
+import React from "react";
+import styles from "./CallToActionButton.module.scss";
+import Link from "next/link";
 
-const CallToActionButton = ({ children, link }) => {
+const CallToActionButton = ({ children, link, onClick, isActive = false }) => {
+  const buttonClass = `${styles.callToActionButton} ${isActive ? 'active' : ''}`;
+
+  if (link) {
+    return (
+      <div id="button" className={buttonClass} onClick={onClick}>
+        <Link prefetch={true} href={link} passHref>
+          <div className={styles.text}>{children}</div>
+        </Link>
+      </div>
+    );
+  }
+
   return (
-    <div id="button" className={styles.callToActionButton}>
-      <Link prefetch={true} href={link}>
-        <div className={styles.text}>{children}</div>
-      </Link>
-    </div>
-  )
-}
+    <button id="button" className={buttonClass} onClick={onClick}>
+      <div className={styles.text}>{children}</div>
+    </button>
+  );
+};
 
-export default CallToActionButton
+export default CallToActionButton;

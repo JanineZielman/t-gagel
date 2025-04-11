@@ -41,6 +41,7 @@
     display: block;
     padding-bottom: 0;
     font-size: 2vh;
+    font-size: clamp(10px, 2vh, 22px);
     text-transform: lowercase;
   }
   .imgMask {

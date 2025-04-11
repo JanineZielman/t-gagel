@@ -8,12 +8,12 @@ import { HEADER_FOOTER_ENDPOINT } from '../../src/utils/constants/endpoints';
  * External Dependencies.
  */
 import axios from 'axios';
-import { getProductsData } from '../../src/utils/products';
+import { getProductsData, getProductsCategories } from '../../src/utils/products';
 import Layout from '../../src/components/layout';
 import HomeButton from '../../src/components/Bits/HomeButton';
 import CallToActionButton from '../../src/components/Bits/CallToActionButton';
 
-export default function Home({ headerFooter, products }) {
+export default function Home({ headerFooter, products, categories }) {
 	const seo = {
 		title: 'Next JS WooCommerce REST API',
 		description: 'Next JS WooCommerce Theme',
@@ -24,8 +24,9 @@ export default function Home({ headerFooter, products }) {
 			follow: 'follow',
 		},
 	}
+	console.log(categories)
 	return (
-		<div className='parent-184'>
+		<div className='parent-184 bestellen'>
 			<Layout headerFooter={ headerFooter || {} } seo={ seo }>
 				<HomeButton />
 				<div className='flex'>
@@ -36,7 +37,7 @@ export default function Home({ headerFooter, products }) {
 						view cart
 					</CallToActionButton>
 				</div>
-				<Products products={products}/>
+				<Products products={products} categories={categories}/>
 			</Layout>
 		</div>
 	)
@@ -46,11 +47,13 @@ export async function getStaticProps() {
 	
 	const { data: headerFooterData } = await axios.get( HEADER_FOOTER_ENDPOINT );
 	const { data: products } = await getProductsData();
+	const { data: categories } = await getProductsCategories();
 	
 	return {
 		props: {
 			headerFooter: headerFooterData?.data ?? {},
-			products: products ?? {}
+			products: products ?? {},
+			categories: categories.filter(cat => cat.slug !== 'uncategorized') ?? {}
 		},
 		
 		/**

@@ -287,9 +287,25 @@ img {
   #button {
     background-color: var(--ontvangen-brown);
     color: var(--ontvangen-blue);
+    &.active{
+      opacity: 0.7;
+    }
   }
   #bg {
     background-color: var(--ontvangen-brown);
+  }
+}
+
+.bestellen{
+  .filter{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-right: 150px;
+    #button{
+      margin: 0 5px 24px 5px;
+      font-size: 18px;
+    }
   }
 }
 
