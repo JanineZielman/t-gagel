@@ -1,4 +1,5 @@
 .productPage{
+  width: 100%;
   max-width: 900px;
   margin-left: calc((100vw - 900px - 150px)/2);
   padding-top: 40px;
@@ -8,5 +9,14 @@
   }
   h2{
     margin-top: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .productPage{
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 100px;
   }
 }
