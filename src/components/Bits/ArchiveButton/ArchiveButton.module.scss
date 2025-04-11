@@ -17,6 +17,7 @@
   z-index: 100;
   text-transform: lowercase;
   line-height: 1;
+  animation: organic 5s ease-in-out infinite;
   &:hover {
     transform: scale(1.25);
   }
@@ -53,5 +54,27 @@
   .archiveText {
     display: inline-block;
     transform-origin: center;
+  }
+}
+
+// Aangepaste keyframes voor een meer random organisch rand-effect
+@keyframes organic {
+  0% {
+    border-radius: 50% 50% 50% 50%;
+  }
+  20% {
+    border-radius: 40% 60% 55% 45%;
+  }
+  40% {
+    border-radius: 60% 45% 40% 55%;
+  }
+  60% {
+    border-radius: 55% 40% 60% 45%;
+  }
+  80% {
+    border-radius: 45% 55% 60% 40%;
+  }
+  100% {
+    border-radius: 50% 50% 50% 50%;
   }
 }

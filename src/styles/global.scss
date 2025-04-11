@@ -561,8 +561,17 @@ body {
   }
 
   .tbs-btn-success {
-    color: var(--light-green);
-    background-color: var(--verbinden-red);
+    color: var(--green);
+    background-color: var(--light-green);
+    border-color: none;
   }
+
+  .tbs-calendar .tbs-day.tbs-beschikbaar{
+    background-color: var(--boeren-green);
+  }
+
+  // tbs-legenda .tbs-day.tbs-bezet{
+  //   background-color: var(--ontvangen-blue);
+  // }
 }
 // Styling tommy booking support

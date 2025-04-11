@@ -39,7 +39,7 @@ const Page = ( { headerFooter, pageData } ) => {
         document.body.removeChild(script)
       }
     }
-  }, [pageData])
+  }, [pageData.acf.tommy_booking])
 
 	console.log(pageData)
 
