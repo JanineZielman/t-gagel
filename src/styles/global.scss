@@ -141,7 +141,7 @@ figcaption {
   font-size: 75%;
 }
 
-strong{
+strong {
   font-weight: 400;
 }
 
@@ -269,31 +269,32 @@ img {
   z-index: 999;
 }
 
-.flex{
+.flex {
   display: flex;
   justify-content: center;
   align-items: center;
-  h1, #button{
+  h1,
+  #button {
     width: fit-content;
     margin: 0 24px;
   }
 }
 
 //bestellen
-.parent-184{
+.parent-184 {
   background-color: var(--ontvangen-blue);
   color: var(--ontvangen-brown);
-  #button{
+  #button {
     background-color: var(--ontvangen-brown);
     color: var(--ontvangen-blue);
   }
-  #bg{
+  #bg {
     background-color: var(--ontvangen-brown);
   }
 }
 
-.home{
-  .sections{
+.home {
+  .sections {
     color: var(--light-green);
   }
 }
@@ -303,7 +304,7 @@ img {
 .current-1602 {
   background-color: var(--brown);
   color: var(--light-green);
-  #bg{
+  #bg {
     background-color: var(--light-green);
   }
 }
@@ -313,7 +314,7 @@ img {
 .current-1353 {
   background-color: var(--green);
   color: var(--ontvangen-blue);
-  #bg{
+  #bg {
     background-color: var(--ontvangen-blue);
   }
 }
@@ -323,7 +324,7 @@ img {
 .current-1351 {
   background-color: var(--ontvangen-blue);
   color: var(--ontvangen-brown);
-  #bg{
+  #bg {
     background-color: var(--ontvangen-brown);
   }
 }
@@ -340,7 +341,7 @@ img {
 .current-1229 {
   background-color: var(--ontvangen-blue);
   color: var(--blue);
-  #bg{
+  #bg {
     background-color: var(--blue);
   }
 }
@@ -350,7 +351,7 @@ img {
 .current-1510 {
   background-color: var(--pink);
   color: var(--brown);
-  #bg{
+  #bg {
     background-color: var(--brown);
   }
 }
@@ -362,11 +363,11 @@ img {
   color: var(--light-green);
 }
 
-.artikelen #bg{
+.artikelen #bg {
   background-color: var(--ontvangen-blue);
 }
 
-.podcast #bg{
+.podcast #bg {
   background-color: var(--pink);
 }
 
@@ -445,8 +446,8 @@ main {
 //slick slider
 .slick-slider {
   max-height: 65vh;
-  .slick-slide{
-    height: 100% !important;  
+  .slick-slide {
+    height: 100% !important;
   }
   .slick-prev {
     z-index: 999;
@@ -494,7 +495,7 @@ main {
       right: 30px;
     }
   }
-  .post .slick-slider .slick-next{
+  .post .slick-slider .slick-next {
     right: 30px;
   }
 
@@ -554,64 +555,132 @@ main {
 // Styling tommy booking support
 
 body {
-  .tommy-zeb-wrapper {
-    .tommy-zeb-left {
+  .tommy-zeb-left.ng-scope {
+    background-color: var(--light-green);
+    color: var(--green);
+    font-family: "Archivo";
+    border-radius: 0;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: var(--green);
+    }
+
+    .tommy-zeb-update {
       background-color: var(--green);
       color: var(--light-green);
       border-radius: 0;
-      h1 {
-        color: var(--light-green);
-      }
-    }
-
-    .tommy-zeb-result.ng-scope {
-      background-color: var(--green);
-      border-radius: 0;
-      .tommy-zeb-result-label.ng-binding,
-      .tommy-zeb-result-description {
-        color: var(--light-green);
-      }
-      .tommy-zeb-result-details {
-        width: 100%;
-        padding: 0;
-      }
-      .tommy-zeb-result-image img {
-        border-radius: 0;
-      }
-    }
-
-    * h2 {
-      color: var(--light-green);
     }
   }
 
-  .tommy-zeb-wrapper-mini {
-    button.tommy-zeb-btn {
+  .tommy-zeb-wrapper {
+    .tommy-zeb-result.ng-scope {
       background-color: var(--light-green);
+      border-radius: 0;
+    }
+    .tommy-zeb-result-label.ng-binding {
+      color: var(--green);
+    }
+    .tommy-zeb-result-description {
+      color: var(--green);
+    }
+
+    .tommy-zeb-btn {
+      background-color: var(--green);
+      color: var(--light-green);
+    }
+    .tommy-zeb-btn:hover {
+      background-color: var(--boeren-green);
+    }
+
+    .tommy-zeb-result-price.ng-binding {
       color: var(--green);
     }
   }
 
-  .ng-scope {
-    // color: var(--light-green);
+  .tommy-zeb-result-details {
   }
 
-  .tbs-legenda {
-    background-color: transparent;
-  }
+  // .tommy-zeb-wrapper {
+
+  //   .tommy-zeb-left {
+  //     background-color: var(--green);
+  //     color: var(--light-green);
+  //     border-radius: 0;
+  //     h1 {
+  //       color: var(--light-green);
+  //     }
+  //   }
+
+  //   .tommy-zeb-result.ng-scope {
+  //     background-color: var(--green);
+  //     border-radius: 0;
+  //     .tommy-zeb-result-label.ng-binding,
+  //     .tommy-zeb-result-description {
+  //       color: var(--light-green);
+  //     }
+  //     .tommy-zeb-result-details {
+  //       width: 100%;
+  //       padding: 0;
+  //     }
+  //     .tommy-zeb-result-image img {
+  //       border-radius: 0;
+  //     }
+  //   }
+
+  //   * h2 {
+  //     color: var(--light-green);
+  //   }
+  // }
+
+  // .tommy-zeb-wrapper-mini {
+  //   button.tommy-zeb-btn {
+  //     background-color: var(--light-green);
+  //     color: var(--green);
+  //   }
+  // }
+
+  // .ng-scope {
+  //   // color: var(--light-green);
+  // }
+
+  // .tbs-legenda {
+  //   background-color: transparent;
+  // }
 
   .tbs-btn-success {
     color: var(--green);
     background-color: var(--light-green);
-    border-color: none;
+    border: none;
+    border-radius: 0;
   }
 
-  .tbs-calendar .tbs-day.tbs-beschikbaar{
+  .tbs-calendar .tbs-day.tbs-beschikbaar {
     background-color: var(--boeren-green);
+    border: 1px solid var(--grey);
+  }
+  .tbs-calendar .tbs-day.tbs-beschikbaar:hover {
+    background-color: var(--green);
   }
 
-  // tbs-legenda .tbs-day.tbs-bezet{
-  //   background-color: var(--ontvangen-blue);
-  // }
+  .tbs-day.tbs-bezet {
+    background-color: var(--verbinden-orange);
+  }
+
+  .tbs-btn-info {
+    color: #fff;
+
+    background-color: var(--light-green);
+    color: var(--green);
+  }
+
+  .tbs-btn-block {
+    border: none;
+    border-radius: 0;
+  }
 }
 // Styling tommy booking support
