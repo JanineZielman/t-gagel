@@ -302,8 +302,9 @@ img {
     justify-content: center;
     width: 100%;
     padding-right: 150px;
+    flex-wrap: wrap;
     #button{
-      margin: 0 5px 24px 5px;
+      margin: 0 5px 5px 5px;
       font-size: 18px;
     }
   }
@@ -513,6 +514,16 @@ main {
   }
   .post .slick-slider .slick-next {
     right: 30px;
+  }
+
+  .bestellen{
+    padding-top: 60px;
+    .filter{
+      padding-right: 0;
+      #button{
+        font-size: 14px;
+      }
+    }
   }
 
   .home {
