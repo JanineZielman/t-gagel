@@ -7,7 +7,7 @@ const HomeButton = ({ children }) => {
     <div className={styles.homeButton}>
       <Link prefetch={true} href="/">
         <div className={styles.logo}>
-          <div className={styles.maskImg}></div>
+          <div id="bg" className={styles.maskImg}></div>
         </div>
       </Link>
     </div>

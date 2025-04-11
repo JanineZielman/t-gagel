@@ -28,12 +28,14 @@ export default function Home({ headerFooter, products }) {
 		<div className='parent-184'>
 			<Layout headerFooter={ headerFooter || {} } seo={ seo }>
 				<HomeButton />
-				<h1>Bestellen</h1>
+				<div className='flex'>
+					<h1>Bestellen</h1>
 					<CallToActionButton
 						link="/bestellen/cart"
 					>
 						view cart
 					</CallToActionButton>
+				</div>
 				<Products products={products}/>
 			</Layout>
 		</div>

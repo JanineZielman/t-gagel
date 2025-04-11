@@ -8,6 +8,7 @@
   height: fit-content;
   padding: 10px 40px;
   background-color: var(--light-green);
+  color: var(--boeren-green); // Adjust the color as needed
   margin: auto;
   // margin-top: 48px;
   margin-bottom: 48px;
@@ -16,7 +17,6 @@
 
 
 .text {
-  color: var(--boeren-green); // Adjust the color as needed
   text-align: center;
   font-size: 1.7rem;
   text-transform: lowercase;

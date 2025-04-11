@@ -4,7 +4,7 @@ import Link from "next/link"
 
 const CallToActionButton = ({ children, link }) => {
   return (
-    <div className={styles.callToActionButton}>
+    <div id="button" className={styles.callToActionButton}>
       <Link prefetch={true} href={link}>
         <div className={styles.text}>{children}</div>
       </Link>
