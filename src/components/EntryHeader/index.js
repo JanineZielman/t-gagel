@@ -18,7 +18,7 @@ const EntryHeader = ({ title, image, date, author, className }) => {
 
       {hasText && (
         <div className={cx('text', { 'has-image': image })}>
-            {!!title && <h1>{title}</h1>}
+            {!!title && <h1 dangerouslySetInnerHTML={{ __html: title }}/>}
             
         </div>
       )}

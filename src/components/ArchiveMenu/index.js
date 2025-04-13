@@ -1,7 +1,6 @@
 import Link from "next/link"
 import styles from "./ArchiveMenu.module.scss"
 import Toggle from "../Bits/Toggle"
-import { HomeButton } from "../Bits/HomeButton"
 
 const ArchiveMenu = ({
   categories,
@@ -20,6 +19,7 @@ const ArchiveMenu = ({
           </div>
         </Link>
       </div>
+      <h2>Levend archief</h2>
       <div className={styles.toggleFlex}>
         <div className={styles.toggleWrapper}>
           <div className={styles.subMenuTitle}>categorien</div>

@@ -5,11 +5,16 @@
   height: 100vh;
   position: fixed;
   z-index: 0;
-  padding-left: 40px;
+  padding-left: 14px;
   /* width: 25vw; */
   width: 220px;
   background-color: var(--light-green);
   color: var(--green);
+  h2{
+    margin-top:0 ;
+    padding-right: 14px;
+    font-size: 24px;
+  }
 }
 
 .subMenuTitle {
@@ -30,14 +35,21 @@
   flex-direction: column;
   gap: 10px;
 }
+.toggleFlex{
+  padding-left: 20px;
+}
 
 
 .homeButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-left: -14px;
   .logo {
     width: 125px;
     height: 125px;
     margin-top: 24px;
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
     .maskImg {
       width: 100%;
       height: 100%;
@@ -59,8 +71,14 @@
     z-index: 0;
     padding-left: 14px;
     gap: 0px;
+    h2{
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
   }
   .homeButton{
+    justify-content: flex-start;
+    padding-left: 14px;
     .logo{
       width: 60px;
       height: 60px;

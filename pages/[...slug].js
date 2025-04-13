@@ -14,6 +14,7 @@ import ImageSlider from "../src/components/Bits/ImageSlider"
 import { useEffect } from 'react';
 import ContactForm from '../src/components/ContactForm';
 import Tommy from '../src/components/Tommy';
+import Sections from '../src/components/Sections';
 
 const Page = ( { headerFooter, pageData } ) => {
 	const router = useRouter();
@@ -60,6 +61,9 @@ const Page = ( { headerFooter, pageData } ) => {
 				{pageData.acf.tommy_booking &&
 					<Tommy/>
 				}
+				{pageData.acf.sections?.length > 0 && (
+					<Sections sections={pageData.acf.sections}/>
+				)}
 			</Layout>
 		</div>
 	);

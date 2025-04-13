@@ -13,7 +13,6 @@ import { getPosts } from '../../src/utils/blog';
 import ArchiveMenu from '../../src/components/ArchiveMenu';
 import { useRouter } from 'next/router';
 import PostGrid from '../../src/components/PostGrid';
-import HomeButton from '../../src/components/Bits/HomeButton';
 
 /**
  * Blog Component.
@@ -105,20 +104,21 @@ const Blog = ({ headerFooter, posts }) => {
   });
 
   return (
-    <Layout headerFooter={headerFooter || {}} seo={seo}>
-      {/* <HomeButton /> */}
-      <ArchiveMenu
-        categories={categories}
-        selectedCategories={selectedCategories}
-        handleCategoryChange={handleCategoryChange}
-        tags={tags}
-        selectedTags={selectedTags}
-        handleTagChange={handleTagChange}
-      />
-      <div className="content-wrapper">
-        <PostGrid posts={filteredPosts} selectedCategories={selectedCategories} selectedTags={selectedTags} />
-      </div>
-    </Layout>
+    <div className='archive-wrapper'>
+      <Layout headerFooter={headerFooter || {}} seo={seo}>
+        <ArchiveMenu
+          categories={categories}
+          selectedCategories={selectedCategories}
+          handleCategoryChange={handleCategoryChange}
+          tags={tags}
+          selectedTags={selectedTags}
+          handleTagChange={handleTagChange}
+        />
+        <div className="content-wrapper">
+          <PostGrid posts={filteredPosts} selectedCategories={selectedCategories} selectedTags={selectedTags} />
+        </div>
+      </Layout>
+    </div>
   );
 };
 

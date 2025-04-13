@@ -21,7 +21,7 @@ const LanguageToggle = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="lang">
       <button
         className={styles.toggleButton}
         onClick={() => setIsExpanded(!isExpanded)}
