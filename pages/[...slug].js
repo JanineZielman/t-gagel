@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import ContentWrapper from '../src/components/ContentWrapper/ContentWrapper';
 import EntryHeader from '../src/components/EntryHeader';
 import HomeButton from "../src/components/Bits/HomeButton"
+import CallToActionButton from '../src/components/Bits/CallToActionButton';
 
 import Layout from '../src/components/layout';
 import { FALLBACK, handleRedirectsAndReturnData, isCustomPageUri } from '../src/utils/slug';
@@ -49,7 +50,14 @@ const Page = ( { headerFooter, pageData } ) => {
 		<div className={`parent-${pageData.parent} current-${pageData.id}`}>
 			<Layout headerFooter={ headerFooter || {} } seo={ pageData?.yoast_head_json ?? {} }>
 				<HomeButton />
-				<EntryHeader title={pageData?.title?.rendered} />
+				<div className='flex'>
+					<EntryHeader title={pageData?.title?.rendered} />
+					{pageData.acf.label &&
+						<CallToActionButton link={pageData.acf.li}>
+							{pageData.acf.label}
+						</CallToActionButton>
+					}
+				</div>
 				<ContentWrapper content={pageData.content.rendered} />
 				{pageData.acf.image_slider?.length > 0 &&
 					<ImageSlider images={pageData.acf.image_slider}/>

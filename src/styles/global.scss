@@ -324,6 +324,9 @@ img {
   #bg {
     background-color: var(--light-green);
   }
+  #button {
+    color: var(--brown);
+  }
 }
 
 //leren
@@ -332,6 +335,10 @@ img {
   background-color: var(--green);
   color: var(--ontvangen-blue);
   #bg {
+    background-color: var(--ontvangen-blue);
+  }
+  #button {
+    color: var(--green);
     background-color: var(--ontvangen-blue);
   }
 }
@@ -344,6 +351,10 @@ img {
   #bg {
     background-color: var(--ontvangen-brown);
   }
+  #button {
+    color: var(--ontvangen-blue);
+    background-color: var(--ontvangen-brown);
+  }
 }
 
 //bomen
@@ -351,6 +362,9 @@ img {
 .current-1349 {
   background-color: var(--boeren-green);
   color: var(--light-green);
+  #button {
+    color: var(--boeren-green);
+  }
 }
 
 //investeren
@@ -361,6 +375,10 @@ img {
   #bg {
     background-color: var(--blue);
   }
+  #button {
+    color: var(--ontvangen-blue);
+    background-color: var(--blue);
+  }
 }
 
 //contact
@@ -369,6 +387,10 @@ img {
   background-color: var(--pink);
   color: var(--brown);
   #bg {
+    background-color: var(--brown);
+  }
+  #button {
+    color: var(--pink);
     background-color: var(--brown);
   }
 }
