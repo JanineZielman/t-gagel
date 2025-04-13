@@ -13,6 +13,9 @@
   a {
     text-decoration: none;
     text-transform: lowercase;
+    &:hover{
+      font-weight: 500;
+    }
   }
   .menuItems {
     width: 90%;
@@ -43,6 +46,9 @@
     font-size: 2vh;
     font-size: clamp(10px, 2vh, 22px);
     text-transform: lowercase;
+    &:hover{
+      font-weight: 500;
+    }
   }
   .imgMask {
     background-color: var(--green);
