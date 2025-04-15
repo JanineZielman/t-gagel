@@ -27,21 +27,30 @@ const Page = ( { headerFooter, pageData } ) => {
 	}
 
   useEffect(() => {
-    console.log("Loading Tommy widget script")
-    // Load Tommy widget script
-    const script = document.createElement("script")
-    script.src =
-      "https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js"
-    script.async = true
+    console.log("Loading Tommy widget and matrix scripts");
 
-    document.body.appendChild(script)
+    // Load Tommy widget script
+    const widgetScript = document.createElement("script");
+    widgetScript.src = "https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js";
+    widgetScript.async = true;
+
+    // Load Tommy matrix script
+    const matrixScript = document.createElement("script");
+    matrixScript.src = "https://www.tommybookingsupport.com/widget/js/tommy.matrix.js";
+    matrixScript.async = true;
+
+    document.body.appendChild(widgetScript);
+    document.body.appendChild(matrixScript);
 
     return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script)
+      if (document.body.contains(widgetScript)) {
+        document.body.removeChild(widgetScript);
       }
-    }
-  }, [pageData.acf.tommy_booking])
+      if (document.body.contains(matrixScript)) {
+        document.body.removeChild(matrixScript);
+      }
+    };
+  }, [pageData.acf.tommy_booking]);
 
 	
 	return (
