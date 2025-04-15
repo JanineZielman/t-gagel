@@ -51,7 +51,7 @@ const ContactForm = ({ backgroundColor, textColor }) => {
   }
 
   return (
-    <div className={styles.contactForm} style={customStyle}>
+    <div id="form" className={styles.contactForm} style={customStyle}>
       <h3 className={styles.title}>Neem contact met ons op</h3>
       <form onSubmit={handleSubmit} className={styles.form}>
         <input

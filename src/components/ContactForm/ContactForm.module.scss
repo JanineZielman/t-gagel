@@ -71,7 +71,8 @@
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: var(--text-color);
+    // background-color: var(--text-color);
+    opacity: 0.8;
   }
 }
 

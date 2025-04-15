@@ -281,7 +281,7 @@ img {
 }
 
 //bestellen
-.parent-184 {
+.parent-184, .parent-1217 {
   background-color: var(--ontvangen-blue);
   color: var(--ontvangen-brown);
   #button {
@@ -354,6 +354,11 @@ img {
   #button {
     color: var(--ontvangen-blue);
     background-color: var(--ontvangen-brown);
+  }
+  #form{
+    --primary-color: var(--ontvangen-brown);
+    --text-color: var(--ontvangen-blue);
+    --input-field-background-color: var(--ontvangen-brown);
   }
 }
 

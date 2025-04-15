@@ -15,7 +15,6 @@ import {
   replaceBackendWithFrontendUrl,
   sanitize,
 } from "../../utils/miscellaneous"
-import { useEffect } from "react"
 
 import LanguageToggle from "../LanguageToggle"
 
@@ -55,6 +54,7 @@ const Layout = ({ children, headerFooter, seo, uri }) => {
               {decodeHtmlEntities(header?.siteTitle ?? "Nexts WooCommerce")}
             </title>
           )}
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         </Head>
           
         <Header header={header} />
