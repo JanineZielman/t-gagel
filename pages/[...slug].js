@@ -43,8 +43,6 @@ const Page = ( { headerFooter, pageData } ) => {
     }
   }, [pageData.acf.tommy_booking])
 
-	console.log(pageData)
-
 	
 	return (
 		<div className={`parent-${pageData.parent} current-${pageData.id}`}>

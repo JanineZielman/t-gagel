@@ -3,7 +3,6 @@ import CallToActionButton from "../Bits/CallToActionButton"
 import CustomLine from "../CustomLine/CustomLine"
 
 const Sections = ( { sections } ) => {
-  console.log(sections)
   return(
     <div className="sections">
     {sections.map((item, i) => {

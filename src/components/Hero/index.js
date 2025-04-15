@@ -6,20 +6,15 @@ import CallToActionButton from "../Bits/CallToActionButton"
 import ArchiveButton from "../Bits/ArchiveButton"
 
 const Hero = ({ gallery = [], cta }) => {
-  console.log(gallery)
   const [mediaItems, setMediaItems] = useState([])
   const [currentMedia, setCurrentMedia] = useState(null)
   const videoRef = useRef(null)
-  const router = useRouter()
-  const [isAnimating, setIsAnimating] = useState(false)
 
   useEffect(() => {
     if (gallery.length === 0) {
       console.warn("Gallery is empty.")
       return
     }
-
-    console.log(cta)
 
     // Fetch media details based on IDs
     const fetchMedia = async () => {

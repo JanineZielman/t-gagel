@@ -4,12 +4,13 @@ import { useContext, useState } from 'react';
 import { AppContext } from '../context';
 import Link from 'next/link';
 import styles from './cart.module.scss'
+import { useRouter } from 'next/router'; 
 
 const AddToCart = ({ product, variation = null }) => {
+	const router = useRouter()
 	const [cart, setCart] = useContext(AppContext);
 	const [isAddedToCart, setIsAddedToCart] = useState(false);
 	const [loading, setLoading] = useState(false);
-
 
 	// If the product is empty, return null
 	if (isEmpty(product)) {
@@ -22,12 +23,16 @@ const AddToCart = ({ product, variation = null }) => {
 		addToCart(productId, 1, setCart, setIsAddedToCart, setLoading);
 	};
 
+	const handleVariable = () => {
+		router.push(`/product/${product.slug}`)
+	};
+
 	return (
 		<>
 			<button
 				className={styles.cartButton}
-				onClick={handleAddToCart}
-				disabled={loading || (product.type === 'variable' && !variation)}
+				onClick={product.type === 'variable' ? handleVariable : handleAddToCart}
+				disabled={loading}
 			>
 				{loading
 					? 'Adding...'

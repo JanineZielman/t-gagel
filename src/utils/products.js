@@ -44,3 +44,49 @@ export const getProductBySlug = async ( productSlug = '' ) => {
 		},
 	);
 };
+
+export const getProductWithVariations = async (productSlug = '') => {
+	try {
+		// Fetch the product by slug
+		const productResponse = await api.get('products', {
+			slug: productSlug,
+		});
+
+		if (!productResponse || productResponse.data.length === 0) {
+			throw new Error('Product not found');
+		}
+
+		// Assuming the response is an array of products
+		const product = productResponse.data[0];
+
+		// If no variations are associated, return the product as is
+		if (!product.variations || product.variations.length === 0) {
+			return product;
+		}
+
+		// Fetch details for each variation by ID
+		const variationDetails = await Promise.all(
+			product.variations.map(async (variationId) => {
+				const variationResponse = await api.get(
+					`products/${product.id}/variations/${variationId}`
+				);
+
+				// Check if the response contains data
+				if (!variationResponse || !variationResponse.data) {
+					throw new Error(`Variation not found: ${variationId}`);
+				}
+
+				return variationResponse.data; // Assuming the API returns the full details in `data`
+			})
+		);
+
+		// Attach the full variation details to the product object
+		const variations = variationDetails;
+
+
+		return variations;
+	} catch (error) {
+		console.error('Error fetching product with variations:', error);
+		throw error;
+	}
+};

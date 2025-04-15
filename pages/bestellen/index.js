@@ -24,7 +24,7 @@ export default function Home({ headerFooter, products, categories }) {
 			follow: 'follow',
 		},
 	}
-	console.log(categories)
+
 	return (
 		<div className='parent-184 bestellen'>
 			<Layout headerFooter={ headerFooter || {} } seo={ seo }>

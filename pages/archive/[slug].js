@@ -21,8 +21,6 @@ const Post = ({ headerFooter, postData, categories, relatedData }) => {
     return <div>Loading...</div>
   }
 
-  console.log(relatedData)
-
   return (
     <div className={`post ${categories[0].slug}`}>
       <Layout

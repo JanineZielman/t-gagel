@@ -2,7 +2,7 @@
  * Internal Dependencies.
  */
 import { HEADER_FOOTER_ENDPOINT } from '../../src/utils/constants/endpoints';
-import { getProductsData, getProductBySlug } from '../../src/utils/products';
+import { getProductsData, getProductBySlug, getProductWithVariations } from '../../src/utils/products';
 import Layout from '../../src/components/layout';
 import SingleProduct from '../../src/components/single-product';
 import HomeButton from '../../src/components/Bits/HomeButton';
@@ -13,7 +13,7 @@ import HomeButton from '../../src/components/Bits/HomeButton';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-export default function Product( { headerFooter, product } ) {
+export default function Product( { headerFooter, product, variations } ) {
 	
 	const router = useRouter();
 	
@@ -31,7 +31,7 @@ export default function Product( { headerFooter, product } ) {
 				uri={ `/product/${ product?.slug ?? '' }` }
 			>
 				<HomeButton />
-				<SingleProduct product={ product }/>
+				<SingleProduct product={ product } variations={variations}/>
 			</Layout>
 		</div>
 	);
@@ -42,11 +42,13 @@ export async function getStaticProps( { params } ) {
 	const { slug } = params || {};
 	const { data: headerFooterData } = await axios.get( HEADER_FOOTER_ENDPOINT );
 	const { data: product } = await getProductBySlug( slug );
+	const variations = await getProductWithVariations( slug );
 	
 	return {
 		props: {
 			headerFooter: headerFooterData?.data ?? {},
 			product: product.length ? product[ 0 ] : {},
+			variations: variations ? variations : {},
 		},
 		revalidate: 1,
 	};

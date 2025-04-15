@@ -34,6 +34,8 @@ const Product = ( { product, styles } ) => {
       </a>
 			
 			{ 'simple' === productType ? <AddToCart product={product}/> : null }
+			
+			{ 'variable' === productType ? <AddToCart product={product} /> : null }
 			{
 				'external' === productType ?
 					<ExternalLink
