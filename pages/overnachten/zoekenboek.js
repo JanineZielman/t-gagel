@@ -22,7 +22,7 @@ const ReserverenPage = ({ headerFooter }) => {
 
   useEffect(() => {
     const script = document.createElement("script")
-    script.src = "https://api.tommybookingsupport.com/widgets/js/widget.js"
+    script.src = "https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js"
     // script.async = true
     script.type = "text/javascript"
 
