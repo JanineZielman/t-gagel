@@ -26,6 +26,32 @@ const Page = ( { headerFooter, pageData } ) => {
 		return <div>Loading...</div>;
 	}
 
+	//   useEffect(() => {
+  //   console.log("Loading Tommy widget and matrix scripts");
+
+  //   // Load Tommy widget script
+  //   const widgetScript = document.createElement("script");
+  //   widgetScript.src = "https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js";
+  //   widgetScript.async = true;
+
+  //   // Load Tommy matrix script
+  //   // const matrixScript = document.createElement("script");
+  //   // matrixScript.src = "https://www.tommybookingsupport.com/widget/js/tommy.matrix.js";
+  //   // matrixScript.async = true;
+
+  //   document.body.appendChild(widgetScript);
+  //   // document.body.appendChild(matrixScript);
+
+  //   return () => {
+  //     if (document.body.contains(widgetScript)) {
+  //       document.body.removeChild(widgetScript);
+  //     }
+  //     if (document.body.contains(matrixScript)) {
+  //       document.body.removeChild(matrixScript);
+  //     }
+  //   };
+  // }, []);
+
 	 
 
 	
@@ -49,13 +75,13 @@ const Page = ( { headerFooter, pageData } ) => {
 					<ContactForm  backgroundColor="var(--brown)"
           textColor="var(--pink)"/>
 				}
-				
+				{pageData.acf.tommy_booking &&
+					<Tommy suppressHydrationWarning/>
+				}
 				{pageData.acf.sections?.length > 0 && (
 					<Sections sections={pageData.acf.sections}/>
 				)}
-				{pageData.acf.tommy_booking &&
-					<Tommy/>
-				}
+			
 			</Layout>
 		</div>
 	);
