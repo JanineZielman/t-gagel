@@ -67,7 +67,7 @@
   border-radius: 4px;
   color: var(--text-color);
   font-size: 1rem;
-  cursor: pointer;
+  cursor: url(/cursor2.cur), auto;
   transition: background-color 0.3s;
 
   &:hover {

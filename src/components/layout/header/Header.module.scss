@@ -73,7 +73,7 @@
     transition: opacity 0.4s ease;
     .child {
       width: 100%;
-      cursor: pointer;
+      cursor: url(/cursor2.cur), auto;
     }
     .label {
       border: none;
@@ -196,7 +196,7 @@
       display: none; // Initially hidden on mobile too
       padding: 10px;
       margin-bottom: 15px;
-      cursor: pointer;
+      cursor: url(/cursor2.cur), auto;
       position: absolute;
       top: 20px;
       left: 20px;

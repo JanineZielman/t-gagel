@@ -16,7 +16,7 @@
   border: none;
 
   padding: 4px 8px;
-  cursor: pointer;
+  cursor: url(/cursor2.cur), auto;
   font-size: 14px;
 
   &:hover {
@@ -53,14 +53,14 @@
 
   .closeButton {
     all: unset;
-    cursor: pointer;
+    cursor: url(/cursor2.cur), auto;
   }
 }
 
 .label {
   font-size: 14px;
   color: #666;
-  cursor: pointer;
+  cursor: url(/cursor2.cur), auto;
 
   &.active {
     color: #000;

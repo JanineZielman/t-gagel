@@ -55,7 +55,7 @@
   border: none;
   background: var(--light-green);
   color: var(--text-color);
-  cursor: pointer;
+  cursor: url(/cursor2.cur), auto;
   transition: opacity 0.2s ease;
   &:hover {
     opacity: 0.9;
