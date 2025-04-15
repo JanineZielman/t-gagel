@@ -27,7 +27,7 @@ export default function Home({ headerFooter, page, posts }) {
 
   return (
     <Layout headerFooter={headerFooter || {}} seo={seo}>
-      <Hero gallery={page.acf.gallery} />
+      <Hero gallery={page.acf.gallery} cta={page.acf} />
       <div className="home">
         <NewsGrid posts={posts.slice(0, 4)} />
         <div className="center">

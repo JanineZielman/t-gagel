@@ -5,7 +5,8 @@ import { useRouter } from "next/router"
 import CallToActionButton from "../Bits/CallToActionButton"
 import ArchiveButton from "../Bits/ArchiveButton"
 
-const Hero = ({ gallery = [] }) => {
+const Hero = ({ gallery = [], cta }) => {
+  console.log(gallery)
   const [mediaItems, setMediaItems] = useState([])
   const [currentMedia, setCurrentMedia] = useState(null)
   const videoRef = useRef(null)
@@ -18,7 +19,7 @@ const Hero = ({ gallery = [] }) => {
       return
     }
 
-    console.log(gallery)
+    console.log(cta)
 
     // Fetch media details based on IDs
     const fetchMedia = async () => {
@@ -77,13 +78,6 @@ const Hero = ({ gallery = [] }) => {
     }
   }, [currentMedia, mediaItems])
 
-  const handleArchiveClick = () => {
-    setIsAnimating(true)
-    setTimeout(() => {
-      router.push("/archive")
-    }, 200)
-  }
-
   if (!currentMedia) {
     return (
       <div className={`${styles.galleryWrapper} ${styles.loading}`}>
@@ -115,7 +109,7 @@ const Hero = ({ gallery = [] }) => {
         <div className={styles.maskImg}></div>
       </div>
       <div className={styles.homeCTA}>
-        <CallToActionButton link={"#"}>Word mede-eigenaar!</CallToActionButton>
+        <CallToActionButton link={cta.link}>{cta.label}</CallToActionButton>
       </div>
       <ArchiveButton />
     </div>

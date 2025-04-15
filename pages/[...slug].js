@@ -53,7 +53,7 @@ const Page = ( { headerFooter, pageData } ) => {
 				<div className='flex'>
 					<EntryHeader title={pageData?.title?.rendered} />
 					{pageData.acf.label &&
-						<CallToActionButton link={pageData.acf.li}>
+						<CallToActionButton link={pageData.acf.link}>
 							{pageData.acf.label}
 						</CallToActionButton>
 					}
