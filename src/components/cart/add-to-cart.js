@@ -31,7 +31,7 @@ const AddToCart = ({ product, variation = null }) => {
 		<>
 			<button
 				className={styles.cartButton}
-				onClick={product.type === 'variable' ? handleVariable : handleAddToCart}
+				onClick={(product.type === 'variable' && router.asPath.includes('bestellen'))  ? handleVariable : handleAddToCart}
 				disabled={loading}
 			>
 				{loading
