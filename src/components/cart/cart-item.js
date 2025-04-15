@@ -96,8 +96,6 @@ const CartItem = ( {
 			
 		}
 	};
-
-	console.log(item)
 	
 	return (
 		<>
