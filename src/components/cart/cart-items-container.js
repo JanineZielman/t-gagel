@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context';
 import CartItem from './cart-item';
-
-import Link from 'next/link';
 import { clearCart } from '../../utils/cart';
 import { useRouter } from 'next/router';
 import styles from './cart.module.scss'

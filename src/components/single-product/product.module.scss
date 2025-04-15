@@ -13,6 +13,27 @@
   }
 }
 
+.variable{
+  .option{
+    margin-bottom: 10px;
+  }
+  label{
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  select{
+    font-size: 16px;
+    background-color: transparent;
+    border-color: var(--ontvangen-brown);
+    color: var(--ontvangen-brown);
+  }
+}
+
+.price{
+  font-size: 20px;
+  margin-top: 14px;
+}
+
 @media (max-width: 768px) {
   .productPage{
     max-width: 95%;
