@@ -26,6 +26,8 @@ const Page = ( { headerFooter, pageData } ) => {
 		return <div>Loading...</div>;
 	}
 
+	 
+
 	
 	return (
 		<div className={`parent-${pageData.parent} current-${pageData.id}`}>
@@ -47,12 +49,13 @@ const Page = ( { headerFooter, pageData } ) => {
 					<ContactForm  backgroundColor="var(--brown)"
           textColor="var(--pink)"/>
 				}
-				{pageData.acf.tommy_booking &&
-					<Tommy/>
-				}
+				
 				{pageData.acf.sections?.length > 0 && (
 					<Sections sections={pageData.acf.sections}/>
 				)}
+				{pageData.acf.tommy_booking &&
+					<Tommy/>
+				}
 			</Layout>
 		</div>
 	);
