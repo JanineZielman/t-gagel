@@ -62,6 +62,7 @@ const Layout = ({ children, headerFooter, seo, uri }) => {
         <Footer footer={footer} />
       </div>
       <LanguageToggle/>
+      
     </AppProvider>
   )
 }
