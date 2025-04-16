@@ -35,9 +35,9 @@ const Page = ( { headerFooter, pageData } ) => {
   //   widgetScript.async = true;
 
   //   // Load Tommy matrix script
-  //   // const matrixScript = document.createElement("script");
-  //   // matrixScript.src = "https://www.tommybookingsupport.com/widget/js/tommy.matrix.js";
-  //   // matrixScript.async = true;
+  //   const matrixScript = document.createElement("script");
+  //   matrixScript.src = "https://www.tommybookingsupport.com/widget/js/tommy.matrix.js";
+  //   matrixScript.async = true;
 
   //   document.body.appendChild(widgetScript);
   //   // document.body.appendChild(matrixScript);
@@ -83,6 +83,8 @@ const Page = ( { headerFooter, pageData } ) => {
 				)}
 			
 			</Layout>
+			{/* <script src="https://www.tommybookingsupport.com/widget/js/tommy.matrix.js" type="application/javascript" language="javascript"></script> */}
+
 		</div>
 	);
 };

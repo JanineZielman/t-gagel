@@ -25,14 +25,14 @@ const Tommy = ({ product }) => {
       {/* <h2>Zoek en boek!</h2> */}
 
 
-<tommy-widget
-    data-widget="mini"
-    data-api-token="GagelLochem:6501dc199c514235a989b6e8c637137cc3a99211b139a3ce8c2d6229863507b7"
-    data-language='nl'
-    data-base-redirect-url='/overnachten/zoekenboek'>
-</tommy-widget>
+    <tommy-widget
+        data-widget="mini"
+        data-api-token="GagelLochem:6501dc199c514235a989b6e8c637137cc3a99211b139a3ce8c2d6229863507b7"
+        data-language='nl'
+        data-base-redirect-url='/overnachten/zoekenboek'>
+    </tommy-widget>
       
-{/* <script src="https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js" ></script> */}
+  {/* <script src="https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js" ></script> */}
       {/* <script src="https://www.tommybookingsupport.com/widget/js/tommy.matrix.js"
         type="application/javascript" language="javascript"></script> */}
 
