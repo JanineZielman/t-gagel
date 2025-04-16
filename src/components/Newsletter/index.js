@@ -7,19 +7,35 @@ const Newsletter = ({ title = "Schrijf je in voor onze nieuwsbrief" }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const formData = new FormData(event.target)
-    const queryString = new URLSearchParams(formData).toString()
-
-    const mailchimpURL = `${process.env.NEXT_PUBLIC_MAILCHIMP_URL}&${queryString}`
-
+    const email = formData.get("EmailAddress")
+  
     try {
-      await fetch(mailchimpURL, { method: "GET", mode: "no-cors" })
-      setStatus("success")
-      // Removed redirect to /bedankt
+      const response = await fetch("https://api.emailoctopus.com/lists/769e13c0-19fc-11f0-bc0a-d5788de4ad95/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          api_key: process.env.NEXT_PUBLIC_EMAILOCTOPUS_API_KEY,
+          EmailAddress: email,
+          tags: ["newsletter"],
+          status: "SUBSCRIBED", // optional, defaults to "SUBSCRIBED"
+        }),
+      })
+  
+      if (response.ok) {
+        setStatus("success")
+      } else {
+        const errorData = await response.json()
+        console.error("API Error:", errorData)
+        setStatus("error")
+      }
     } catch (error) {
-      console.error("Fout bij inschrijven:", error)
+      console.error("Network error:", error)
       setStatus("error")
     }
   }
+  
 
   return (
     <div className={styles.newsletter}>
@@ -27,28 +43,11 @@ const Newsletter = ({ title = "Schrijf je in voor onze nieuwsbrief" }) => {
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="email"
-          name="EMAIL"  xmlns
+          name="EmailAddress"
           className={`${styles.input} required email`}
           placeholder="Jouw emailadres"
           required
         />
-        <div hidden>
-          <input
-            type="hidden"
-            name="tags"
-            value={process.env.NEXT_PUBLIC_MAILCHIMP_TAGS}
-          />
-        </div>
-        <div
-          aria-hidden="true"
-          style={{ position: "absolute", left: "-5000px" }}
-        >
-          <input
-            type="text"
-            name="b_c8a4e653405eafb1be9b41933_29f8949238"
-            tabIndex="-1"
-          />
-        </div>
         <button type="submit" name="subscribe" className={styles.button}>
           Aanmelden
         </button>
