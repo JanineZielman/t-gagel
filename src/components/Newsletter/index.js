@@ -10,24 +10,19 @@ const Newsletter = ({ title = "Schrijf je in voor onze nieuwsbrief" }) => {
     const email = formData.get("EmailAddress")
   
     try {
-      const response = await fetch("https://api.emailoctopus.com/lists/769e13c0-19fc-11f0-bc0a-d5788de4ad95/contacts", {
+      const response = await fetch("/api/newsletter", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          api_key: process.env.NEXT_PUBLIC_EMAILOCTOPUS_API_KEY,
-          EmailAddress: email,
-          tags: ["newsletter"],
-          status: "SUBSCRIBED", // optional, defaults to "SUBSCRIBED"
-        }),
+        body: JSON.stringify({ email }),
       })
   
       if (response.ok) {
         setStatus("success")
       } else {
-        const errorData = await response.json()
-        console.error("API Error:", errorData)
+        const error = await response.json()
+        console.error("Error:", error)
         setStatus("error")
       }
     } catch (error) {
@@ -35,6 +30,7 @@ const Newsletter = ({ title = "Schrijf je in voor onze nieuwsbrief" }) => {
       setStatus("error")
     }
   }
+  
   
 
   return (
