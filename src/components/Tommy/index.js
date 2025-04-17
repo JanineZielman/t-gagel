@@ -29,7 +29,11 @@ const Tommy = ({ product }) => {
         data-widget="mini"
         data-api-token="GagelLochem:6501dc199c514235a989b6e8c637137cc3a99211b139a3ce8c2d6229863507b7"
         data-language='nl'
-        data-base-redirect-url='/overnachten/zoekenboek'>
+        data-base-redirect-url='/overnachten/zoekenboek'
+        data-groepen='true'
+
+        >
+          
     </tommy-widget>
       
   {/* <script src="https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js" ></script> */}
