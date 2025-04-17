@@ -35,14 +35,18 @@ const ReserverenPage = ({ headerFooter }) => {
       <div className={styles.container}>
         <h1>zoek en boek</h1>
 
+        <div className={styles.tommyContainer}>
+
         <tommy-widget
           data-widget="default"
           data-api-token="GagelLochem:6501dc199c514235a989b6e8c637137cc3a99211b139a3ce8c2d6229863507b7"
           data-language="nl"
           data-period="day"
           data-booking-url="/overnachten/reserveren"
-      ></tommy-widget>
+          ></tommy-widget>
+          </div>
       </div>
+      {/* <script src="https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js" ></script> */}
     </Layout>
   )
 }

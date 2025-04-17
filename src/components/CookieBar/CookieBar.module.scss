@@ -1,0 +1,41 @@
+.cookieBar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--grey);
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  p{
+  font-size: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    gap:40px;
+  }
+  }
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+    }
+    
+    button:first-of-type {
+      background-color: var(--boeren-green);
+      color: white;
+    }
+    
+    button:last-of-type {
+      background-color: var(--verbinden-red);
+      color: white;
+    }
+  }
+}
+
+
+

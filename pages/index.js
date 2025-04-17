@@ -10,6 +10,7 @@ import CustomLine from "../src/components/CustomLine/CustomLine"
 import CallToActionButton from "../src/components/Bits/CallToActionButton"
 import ImageSlider from "../src/components/Bits/ImageSlider"
 import Sections from "../src/components/Sections"
+import CookieBar from "../src/components/CookieBar"
 
 
 export default function Home({ headerFooter, page, posts }) {
@@ -27,6 +28,7 @@ export default function Home({ headerFooter, page, posts }) {
 
   return (
     <Layout headerFooter={headerFooter || {}} seo={seo}>
+      {/* <CookieBar /> */}
       <Hero gallery={page.acf.gallery} cta={page.acf} />
       <div className="home">
         <NewsGrid posts={posts.slice(0, 4)} />
