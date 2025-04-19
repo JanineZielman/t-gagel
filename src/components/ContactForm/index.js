@@ -3,22 +3,14 @@ import styles from "./ContactForm.module.scss"
 
 const ContactForm = ({ backgroundColor, textColor }) => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    contactPerson: "",
-    message: "",
+    Name: "",
+    EmailAddress: "",
+    PhoneNumber: "",
+    Topic: "",
+    Message: "",
   })
   const [status, setStatus] = useState("")
 
-  const contactPersons = [
-    { value: "", label: "Selecteer een persoon" },
-    { value: "daan", label: "Daan" },
-    { value: "anne", label: "Anne" },
-    { value: "ricardo", label: "Ricardo" },
-    { value: "algemeen", label: "Algemeen" },
-    { value: "roos", label: "Roos" },
-  ]
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -28,22 +20,39 @@ const ContactForm = ({ backgroundColor, textColor }) => {
     }))
   }
 
-  const mailChimp ="us4-c5688ad997-c79d500b22@inbound.mailchimpapp.net"
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData)
-    setStatus("success")
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      contactPerson: "",
-      message: "",
-    })
+  
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+  
+      if (response.ok) {
+        setStatus("success")
+        setFormData({
+          Name: "",
+          EmailAddress: "",
+          PhoneNumber: "",
+          Topic: "",
+          Message: "",
+        })
+      } else {
+        const error = await response.json()
+        console.error("Form error:", error)
+        setStatus("error")
+      }
+    } catch (error) {
+      console.error("Network error:", error)
+      setStatus("error")
+    }
   }
-
+  
   // Custom style with CSS variables
   const customStyle = {
     "--form-background-color": backgroundColor || "var(--grey)",
@@ -56,8 +65,8 @@ const ContactForm = ({ backgroundColor, textColor }) => {
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="text"
-          name="name"
-          value={formData.name}
+          name="Name"
+          value={formData.Name}
           onChange={handleChange}
           placeholder="Naam"
           className={styles.input}
@@ -65,8 +74,8 @@ const ContactForm = ({ backgroundColor, textColor }) => {
         />
         <input
           type="email"
-          name="email"
-          value={formData.email}
+          name="EmailAddress"
+          value={formData.EmailAddress}
           onChange={handleChange}
           placeholder="E-mailadres"
           className={styles.input}
@@ -74,29 +83,25 @@ const ContactForm = ({ backgroundColor, textColor }) => {
         />
         <input
           type="tel"
-          name="phone"
-          value={formData.phone}
+          name="PhoneNumber"
+          value={formData.PhoneNumber}
           onChange={handleChange}
           placeholder="Telefoonnummer"
           className={styles.input}
           required
         />
-        <select
-          name="contactPerson"
-          value={formData.contactPerson}
+       <input
+          type="text"
+          name="Topic"
+          value={formData.Topic}
           onChange={handleChange}
-          className={styles.select}
+          placeholder="Onderwerp"
+          className={styles.input}
           required
-        >
-          {contactPersons.map((person) => (
-            <option key={person.value} value={person.value}>
-              {person.label}
-            </option>
-          ))}
-        </select>
+        />
         <textarea
-          name="message"
-          value={formData.message}
+          name="Message"
+          value={formData.Message}
           onChange={handleChange}
           placeholder="Je bericht"
           className={styles.textarea}
