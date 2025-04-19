@@ -20,6 +20,10 @@ export default function Footer({ title, menuItems, primaryMenu, footer }) {
       <div className={styles.lenteland}>
         <div className={styles.maskImg}></div>
       </div>
+      <div
+          className={styles.footerText2}
+          dangerouslySetInnerHTML={{ __html: footer.sidebarTwo }}
+        />
     </footer>
   )
 }
