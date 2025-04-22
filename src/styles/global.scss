@@ -79,6 +79,7 @@ h3 {
 p {
   font-size: 24px;
   line-height: 1.3;
+  font-weight: 300;
 }
 
 a {
@@ -161,7 +162,7 @@ figcaption {
 }
 
 strong {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .content{
@@ -354,6 +355,10 @@ img {
 .home {
   .sections {
     color: var(--light-green);
+    max-width: 100%;
+  }
+  #slider{
+    max-width: 100%;
   }
 }
 
@@ -439,6 +444,34 @@ img {
     color: var(--pink);
     background-color: var(--brown);
   }
+  #line{
+    stroke: var(--brown);
+  }
+
+  .newsletter{
+    h3{
+       color: var(--brown);
+    }
+    input, input::placeholder, button{
+      background-color: var(--brown);
+      color: var(--pink);
+    }
+  }
+
+}
+
+.newsletter{
+  max-width: calc(100% - 150px);
+}
+
+.newsletter div{
+  max-width: 900px;
+  margin: auto;
+  padding: 24px 14px;
+}
+
+.form-wrapper{
+  max-width: calc(100% - 150px)
 }
 
 //overnachten
@@ -468,6 +501,7 @@ img {
 
 .sections {
   // background-color: var(--boeren-green);
+  max-width: calc(100% - 150px);
   .textSection {
     padding: 48px 0 0 0;
     font-size: 24px;
@@ -557,7 +591,7 @@ main {
 
   .slick-next {
     z-index: 999;
-    right: 180px;
+    right: 30px;
     &:before {
       content: ">";
       color: var(--boeren-green);
@@ -634,6 +668,9 @@ main {
   .introText {
     padding-left: 14px;
     padding-right: 14px;
+    max-width: 100%;
+  }
+  .sections, .form-wrapper, .newsletter{
     max-width: 100%;
   }
   .sections .textSection .cards {

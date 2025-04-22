@@ -1,12 +1,15 @@
 @import "../../styles/breakpoints";
 
 .component {
-  width: calc(100% - 300px);
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: calc(100% - 150px);
   line-height: 1.6875;
   padding: 0 14px;
   padding-bottom: 24px;
+  div{
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+  }
 
   @media screen and (max-width: $breakpoint-small) {
     width: 100%;
@@ -37,7 +40,7 @@
     }
 
     strong {
-      font-weight: 700;
+      font-weight: 500;
     }
 
     a {

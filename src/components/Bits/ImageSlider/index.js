@@ -29,7 +29,7 @@ const ImageSlider = ({ images }) => {
   };
 
   return (
-    <div className={styles.sliderContainer}>
+    <div id="slider" className={styles.sliderContainer}>
 
       <Slider {...settings}>
           {images.map((image, index) => (

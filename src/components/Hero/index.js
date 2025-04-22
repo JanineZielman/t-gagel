@@ -7,7 +7,8 @@ import ArchiveButton from "../Bits/ArchiveButton"
 
 const Hero = ({ gallery = [], cta }) => {
   const [mediaItems, setMediaItems] = useState([])
-  const [currentMedia, setCurrentMedia] = useState(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [fade, setFade] = useState(false)
   const videoRef = useRef(null)
 
   useEffect(() => {
@@ -16,14 +17,13 @@ const Hero = ({ gallery = [], cta }) => {
       return
     }
 
-    // Fetch media details based on IDs
     const fetchMedia = async () => {
       try {
         const responses = await Promise.all(
           gallery.map(async (id) => {
             const res = await fetch(
               `https://gagel.janinezielman.com/wp-json/wp/v2/media/${id.ID}`
-            ) // Adjust this API endpoint
+            )
             return res.ok ? await res.json() : null
           })
         )
@@ -32,12 +32,12 @@ const Hero = ({ gallery = [], cta }) => {
           .filter((item) => item !== null)
           .map((item) => ({
             id: item.id,
-            url: item.source_url, // Assuming the API returns this
+            url: item.source_url,
             type: item.source_url.endsWith(".mp4") ? "video" : "image",
           }))
 
         setMediaItems(filteredMedia)
-        setCurrentMedia(filteredMedia.length > 0 ? filteredMedia[0].url : null)
+        setCurrentIndex(0)
       } catch (error) {
         console.error("Error fetching media:", error)
       }
@@ -46,34 +46,34 @@ const Hero = ({ gallery = [], cta }) => {
     fetchMedia()
   }, [gallery])
 
+  const changeMedia = () => {
+    if (mediaItems.length < 2) return // nothing to change or only one
+
+    setFade(true)
+
+    setTimeout(() => {
+      let nextIndex
+      do {
+        nextIndex = Math.floor(Math.random() * mediaItems.length)
+      } while (nextIndex === currentIndex)
+
+      setCurrentIndex(nextIndex)
+      setFade(false)
+    }, 300) // match fade duration in CSS
+  }
+
   useEffect(() => {
-    if (mediaItems.length === 0) return
-
-    const getRandomMedia = () =>
-      mediaItems[Math.floor(Math.random() * mediaItems.length)]?.url || ""
-
-    const setNextMedia = () => {
-      setCurrentMedia(getRandomMedia())
-    }
-
-    const interval = setInterval(() => {
-      setNextMedia()
-    }, 5000) // Change every 5 seconds
-
+    const interval = setInterval(changeMedia, 5000)
     return () => clearInterval(interval)
-  }, [mediaItems])
+  }, [mediaItems, currentIndex])
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.onended = () => {
-        setCurrentMedia(
-          mediaItems[Math.floor(Math.random() * mediaItems.length)]?.url || ""
-        )
-      }
+      videoRef.current.onended = () => changeMedia()
     }
-  }, [currentMedia, mediaItems])
+  }, [currentIndex])
 
-  if (!currentMedia) {
+  if (!mediaItems.length) {
     return (
       <div className={`${styles.galleryWrapper} ${styles.loading}`}>
         <div className={styles.gallery}>
@@ -83,21 +83,27 @@ const Hero = ({ gallery = [], cta }) => {
     )
   }
 
+  const currentMedia = mediaItems[currentIndex]
+
   return (
     <div className={styles.galleryWrapper}>
       <div className={styles.gallery}>
-        {currentMedia.endsWith(".mp4") ? (
+        {currentMedia.type === "video" ? (
           <video
             ref={videoRef}
-            src={currentMedia}
+            src={currentMedia.url}
             autoPlay
             playsInline
             muted
             loop
-            className={styles.media}
+            className={`${styles.media} ${fade ? styles.fade : ""}`}
           />
         ) : (
-          <img src={currentMedia} alt="Gallery item" className={styles.media} />
+          <img
+            src={currentMedia.url}
+            alt="Gallery item"
+            className={`${styles.media} ${fade ? styles.fade : ""}`}
+          />
         )}
       </div>
       <div className={styles.logo}>

@@ -60,6 +60,7 @@ const CustomLine = ({
           strokeLinecap="round"
           strokeLinejoin="round"
           vectorEffect="non-scaling-stroke" // Ensures stroke width doesn't scale
+          id="line"
         />
       </svg>
     </div>

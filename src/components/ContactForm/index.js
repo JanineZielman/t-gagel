@@ -58,6 +58,7 @@ const ContactForm = ({ backgroundColor, textColor }) => {
   }
 
   return (
+    <div className="form-wrapper">
     <div id="form" className={styles.contactForm} style={customStyle}>
       <h3 className={styles.title}>Neem contact met ons op</h3>
       <form onSubmit={handleSubmit} className={styles.form}>
@@ -121,6 +122,7 @@ const ContactForm = ({ backgroundColor, textColor }) => {
           Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.
         </p>
       )}
+    </div>
     </div>
   )
 }

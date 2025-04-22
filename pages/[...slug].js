@@ -7,15 +7,15 @@ import CallToActionButton from '../src/components/Bits/CallToActionButton';
 
 import Layout from '../src/components/layout';
 import { FALLBACK, handleRedirectsAndReturnData, isCustomPageUri } from '../src/utils/slug';
-import { getFormattedDate, getPathNameFromUrl, sanitize } from '../src/utils/miscellaneous';
+import { getPathNameFromUrl } from '../src/utils/miscellaneous';
 import { getPage, getPages } from '../src/utils/blog';
 import axios from 'axios';
 import { HEADER_FOOTER_ENDPOINT } from '../src/utils/constants/endpoints';
 import ImageSlider from "../src/components/Bits/ImageSlider"
-import { useEffect } from 'react';
 import ContactForm from '../src/components/ContactForm';
 import Tommy from '../src/components/Tommy';
 import Sections from '../src/components/Sections';
+import Newsletter from '../src/components/Newsletter';
 
 const Page = ( { headerFooter, pageData } ) => {
 	const router = useRouter();
@@ -68,6 +68,17 @@ const Page = ( { headerFooter, pageData } ) => {
 					}
 				</div>
 				<ContentWrapper content={pageData.content.rendered} />
+				<div className='newsletter'>
+					{pageData.acf.newsletter &&
+						<Newsletter/>
+					}
+				</div>
+				{pageData.acf.tommy_booking &&
+					<Tommy suppressHydrationWarning/>
+				}
+				{pageData.acf.sections?.length > 0 && (
+					<Sections sections={pageData.acf.sections}/>
+				)}
 				{pageData.acf.image_slider?.length > 0 &&
 					<ImageSlider images={pageData.acf.image_slider}/>
 				}
@@ -75,12 +86,6 @@ const Page = ( { headerFooter, pageData } ) => {
 					<ContactForm  backgroundColor="var(--brown)"
           textColor="var(--pink)"/>
 				}
-				{pageData.acf.tommy_booking &&
-					<Tommy suppressHydrationWarning/>
-				}
-				{pageData.acf.sections?.length > 0 && (
-					<Sections sections={pageData.acf.sections}/>
-				)}
 			
 			</Layout>
 			{/* <script src="https://www.tommybookingsupport.com/widget/js/tommy.matrix.js" type="application/javascript" language="javascript"></script> */}
