@@ -11,7 +11,6 @@ const ContactForm = ({ backgroundColor, textColor }) => {
   })
   const [status, setStatus] = useState("")
 
-
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({
@@ -20,10 +19,9 @@ const ContactForm = ({ backgroundColor, textColor }) => {
     }))
   }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault()
-  
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -32,7 +30,7 @@ const ContactForm = ({ backgroundColor, textColor }) => {
         },
         body: JSON.stringify(formData),
       })
-  
+
       if (response.ok) {
         setStatus("success")
         setFormData({
@@ -52,7 +50,7 @@ const ContactForm = ({ backgroundColor, textColor }) => {
       setStatus("error")
     }
   }
-  
+
   // Custom style with CSS variables
   const customStyle = {
     "--form-background-color": backgroundColor || "var(--grey)",
@@ -90,15 +88,22 @@ const ContactForm = ({ backgroundColor, textColor }) => {
           className={styles.input}
           required
         />
-       <input
-          type="text"
+        <select
           name="Topic"
           value={formData.Topic}
           onChange={handleChange}
-          placeholder="Onderwerp"
-          className={styles.input}
+          className={styles.select}
           required
-        />
+        >
+          <option value="" disabled>
+            onderwerp
+          </option>
+          <option value="schuur">Schuur</option>
+          <option value="rondleiding">Rondleiding</option>
+          <option value="lunch">Lunch</option>
+          <option value="workshop">Workshop</option>
+          <option value="borrel">Borrel</option>
+        </select>
         <textarea
           name="Message"
           value={formData.Message}
