@@ -21,6 +21,7 @@
   padding-left: 20%;
   padding-right: 20%;
   color: var(--light-green);
+  min-height: 100vh;
 }
 
 @media (max-width: 768px) {
@@ -30,7 +31,6 @@
   }
 }
 
-
-.tommyContainer{
-  display:flex;
+.tommyContainer {
+  display: flex;
 }
