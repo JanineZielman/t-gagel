@@ -18,7 +18,7 @@ const Sections = ( { sections } ) => {
                 return (
                   <div key={j} className="card">
                     <h3>
-                      {cardItem.firstname} {cardItem.lastname}
+                      {cardItem.firstname} <br/>{cardItem.lastname}
                     </h3>
                     <Image
                       width={500}
