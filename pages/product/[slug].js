@@ -6,6 +6,7 @@ import { getProductsData, getProductBySlug, getProductWithVariations } from '../
 import Layout from '../../src/components/layout';
 import SingleProduct from '../../src/components/single-product';
 import HomeButton from '../../src/components/Bits/HomeButton';
+import CallToActionButton from '../../src/components/Bits/CallToActionButton';
 
 /**
  * External Dependencies.
@@ -31,6 +32,14 @@ export default function Product( { headerFooter, product, variations } ) {
 				uri={ `/product/${ product?.slug ?? '' }` }
 			>
 				<HomeButton />
+				<div className='flex'>
+					<CallToActionButton
+							link="/bestellen/cart"
+						>
+						bekijk winkelwagen
+					</CallToActionButton>
+				</div>
+
 				<SingleProduct product={ product } variations={variations}/>
 			</Layout>
 		</div>

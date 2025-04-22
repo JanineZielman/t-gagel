@@ -37,12 +37,12 @@ const AddToCart = ({ product, variation = null }) => {
 				{loading
 					? 'Adding...'
 					: product.type === 'variable' && !variation
-					? 'Select an option'
-					: 'Add to cart'}
+					? 'Selecteer een optie'
+					: 'Bestellen'}
 			</button>
 			{isAddedToCart && !loading ? (
 				<Link href="/bestellen/cart">
-						View cart
+						bekijk winkelwagen
 				</Link>
 			) : null}
 		</>

@@ -5,7 +5,7 @@ import styles from "./archive.module.scss"
 
 import Layout from "../../src/components/layout"
 import { FALLBACK, handleRedirectsAndReturnData } from "../../src/utils/slug"
-import { getFormattedDate, sanitize } from "../../src/utils/miscellaneous"
+import { sanitize } from "../../src/utils/miscellaneous"
 import { HEADER_FOOTER_ENDPOINT } from "../../src/utils/constants/endpoints"
 import { getPost, getPosts, getRelated } from "../../src/utils/blog"
 import ArchiveButton from "../../src/components/Bits/ArchiveButton"

@@ -4,7 +4,7 @@
   border: none;
   padding: 7px 20px;
   color: var(--ontvangen-blue);
-  font-size: 18px;
+  font-size: 24px;
   margin-right: 10px;
   mask-image: url('/button.png');
   mask-size: 100% 100%;
@@ -21,9 +21,14 @@
   font-size: 18px;
 }
 
+.leeg{
+  text-align: center;
+}
+
 .cartWrapper{
   max-width: calc(96vw - 150px);
   margin-left: 2vw;
+  margin-top: 48px;
   .cartContent{
     display: flex;
     justify-content: space-between;
@@ -85,6 +90,12 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
+      font-size: 24px;
+      .cartButton{
+        font-size: 18px;
+        mask-size: auto 100%;
+        mask-position: center;
+      }
     }
   }
 }

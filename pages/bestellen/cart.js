@@ -9,7 +9,9 @@ export default function Cart({ headerFooter }) {
 		<div className='parent-184'>
 			<Layout headerFooter={headerFooter || {}}>
 				<HomeButton />
-				<h1>Cart</h1>
+				<div className='flex'>
+					<h1>Winkelwagen</h1>
+				</div>
 				<CartItemsContainer/>
 			</Layout>
 		</div>

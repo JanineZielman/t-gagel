@@ -34,7 +34,7 @@ export default function Home({ headerFooter, products, categories }) {
 					<CallToActionButton
 						link="/bestellen/cart"
 					>
-						view cart
+						bekijk winkelwagen
 					</CallToActionButton>
 				</div>
 				<Products products={products} categories={categories}/>

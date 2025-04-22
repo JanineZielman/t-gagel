@@ -5,6 +5,7 @@ import { clearCart } from '../../utils/cart';
 import { useRouter } from 'next/router';
 import styles from './cart.module.scss'
 import CustomLine from "../CustomLine/CustomLine"
+import CallToActionButton from '../Bits/CallToActionButton';
 
 const CartItemsContainer = () => {
 	const [ cart, setCart ] = useContext( AppContext );
@@ -69,9 +70,9 @@ const CartItemsContainer = () => {
 					
 					{/* Cart Total */ }
 					<div className={styles.cartTotal}>
-						<h2>Cart Total</h2>
+						<h2>Overzicht</h2>
 						<div className={styles.cartPrice}>
-							<p>Total({totalQty})</p>
+							<p>Totaal({totalQty})</p>
 							<p>{cartItems?.[0]?.currency ?? ''}{ (totalPrice).toFixed()}</p>
 						</div>
 						<CustomLine height={37} strokeColor="#DCFF90" strokeWidth={3} />
@@ -83,12 +84,12 @@ const CartItemsContainer = () => {
 								onClick={(event) => handleClearCart(event)}
 								disabled={isClearCartProcessing}
 							>
-								<span>{!isClearCartProcessing ? "Clear Cart" : "Clearing..."}</span>
+								<span>{!isClearCartProcessing ? "Clear" : "Clearing..."}</span>
 							</button>
 							{/* Checkout */}
 							<button onClick={handleProceedToCart} className={styles.cartButton}>
 											<span>
-												Proceed to Checkout
+												Checkout
 											</span>
 								<i className="fas fa-long-arrow-alt-right"/>
 							</button>
@@ -96,16 +97,12 @@ const CartItemsContainer = () => {
 					</div>
 				</div>
 			) : (
-				<div className="mt-14">
-					<h2>No items in the cart</h2>
-					{/* <Link href="/">
-						<button className="text-white duration-500 bg-black hover:bg-brand-royal-blue font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900">
-			              <span className="woo-next-cart-checkout-txt">
-			                Add New Products
-			              </span>
-							<i className="fas fa-long-arrow-alt-right"/>
-						</button>
-					</Link> */}
+				<div className={styles.leeg}>
+					<h2>Uw winkelwagen is nog leeg</h2>
+					<br/>
+					<CallToActionButton link="/bestellen">
+						terug
+					</CallToActionButton>
 				</div>
 			) }
 		</div>
