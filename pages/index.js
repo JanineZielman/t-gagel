@@ -11,10 +11,9 @@ import CallToActionButton from "../src/components/Bits/CallToActionButton"
 import ImageSlider from "../src/components/Bits/ImageSlider"
 import Sections from "../src/components/Sections"
 import CookieBar from "../src/components/CookieBar"
-
+import ContactForm from "../src/components/ContactForm/"
 
 export default function Home({ headerFooter, page, posts }) {
- 
   const seo = {
     title: `'t Gagel`,
     description: "Next JS WooCommerce Theme",
@@ -33,13 +32,9 @@ export default function Home({ headerFooter, page, posts }) {
       <div className="home">
         <NewsGrid posts={posts.slice(0, 4)} />
         <div className="center">
-          <CallToActionButton
-            link="/nieuws"
-          >
-            Lees meer ...
-          </CallToActionButton>
+          <CallToActionButton link="/nieuws">Lees meer ...</CallToActionButton>
         </div>
-        {page.content.rendered.length > 0 &&
+        {page.content.rendered.length > 0 && (
           <>
             <div
               className={"introText"}
@@ -47,19 +42,20 @@ export default function Home({ headerFooter, page, posts }) {
             />
             <CustomLine height={37} strokeColor="#DCFF90" strokeWidth={3} />
           </>
-        }
-        {page.acf.image_slider?.length > 0 &&
+        )}
+        {page.acf.image_slider?.length > 0 && (
           <>
-            <ImageSlider images={page.acf.image_slider}/>
+            <ImageSlider images={page.acf.image_slider} />
             <CustomLine height={37} strokeColor="#DCFF90" strokeWidth={3} />
           </>
-				}
-         
+        )}
+
         {/* <PostGrid posts={posts.slice(4, 7)} selectedCategories={""} /> */}
         <br></br>
         <br></br>
         <br></br>
-        <Sections sections={page.acf.sections}/>
+        <Sections sections={page.acf.sections} />
+        <ContactForm backgroundColor="var(--light-green)"  textColor="var(--boeren-green)"/>
       </div>
     </Layout>
   )
@@ -74,7 +70,10 @@ export async function getStaticProps() {
     props: {
       headerFooter: headerFooterData?.data ?? {},
       page: pageData[0] ?? {},
-      posts: posts?.data.posts_data.filter(post => post.categories[0].slug == 'actueel') || {},
+      posts:
+        posts?.data.posts_data.filter(
+          (post) => post.categories[0].slug == "actueel"
+        ) || {},
     },
 
     /**

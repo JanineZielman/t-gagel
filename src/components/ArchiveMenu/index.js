@@ -19,10 +19,10 @@ const ArchiveMenu = ({
           </div>
         </Link>
       </div>
-      <h2>Levend archief</h2>
+      <h2>levend archief</h2>
       <div className={styles.toggleFlex}>
         <div className={styles.toggleWrapper}>
-          <div className={styles.subMenuTitle}>categorien</div>
+          <div className={styles.subMenuTitle}>categorieën</div>
           <div className={styles.toggles}>
             {categories.map((category, index) => (
               <Toggle
