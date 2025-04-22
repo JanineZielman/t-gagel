@@ -27,7 +27,7 @@ const ArchiveMenu = ({
             {categories.map((category, index) => (
               <Toggle
                 key={index}
-                label={category.charAt(0).toUpperCase() + category.slice(1)}
+                label={category.toLowerCase()}
                 checked={selectedCategories.includes(category)}
                 onChange={() => handleCategoryChange(category)}
               />
@@ -35,12 +35,12 @@ const ArchiveMenu = ({
           </div>
         </div>
         <div className={styles.toggleWrapper}>
-          <div className={styles.subMenuTitle}>themas</div>
+          <div className={styles.subMenuTitle}>thema's</div>
           <div className={styles.toggles}>
             {tags.map((tag, index) => (
               <Toggle
                 key={index}
-                label={tag.charAt(0).toUpperCase() + tag.slice(1)}
+                label={tag.toLowerCase()}
                 checked={selectedTags.includes(tag)}
                 onChange={() => handleTagChange(tag)}
               />
