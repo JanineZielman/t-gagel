@@ -32,13 +32,13 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  cursor: url(/cursor.cur), auto;
+  cursor: url(/cursor.png), auto;
 }
 
 a{
-  cursor: url(/cursor2.cur), auto;
+  cursor: url(/pointer.png), auto;
   &:hover{
-    cursor: url(/cursor2.cur), auto;
+    cursor: url(/pointer.png), auto;
   }
 }
 
