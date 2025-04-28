@@ -25,7 +25,7 @@ const Image = (props) => {
     const fetchMedia = async (id) => {
       try {
         const res = await fetch(
-          `https://gagel.janinezielman.com/wp-json/wp/v2/media/${id}`
+          `https://cms.gagel.nl/wp-json/wp/v2/media/${id}`
         )
         const data = res.ok ? await res.json() : null
         if (data && data.source_url) {

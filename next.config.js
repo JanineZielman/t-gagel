@@ -24,7 +24,7 @@ module.exports = {
   images: {
     domains: [
       allowedImageWordPressDomain,
-      "gagel.janinezielman.com",
+      "cms.gagel.nl",
       "http://localhost:3000",
       "picsum.photos", // Add this line
     ],

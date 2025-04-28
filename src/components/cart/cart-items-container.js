@@ -19,7 +19,7 @@ const CartItemsContainer = () => {
 			if (!cartItems || cartItems.length === 0) return;
 	
 			// Base URL for the WooCommerce cart page
-			let baseUrl = 'https://gagel.janinezielman.com/cart/?';
+			let baseUrl = 'https://cms.gagel.nl/cart/?';
 	
 			// Construct the query parameter with product_id, quantity, and variation_id
 			const queryParams = cartItems.map((item) => {

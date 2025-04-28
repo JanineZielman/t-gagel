@@ -22,7 +22,7 @@ const Hero = ({ gallery = [], cta }) => {
         const responses = await Promise.all(
           gallery.map(async (id) => {
             const res = await fetch(
-              `https://gagel.janinezielman.com/wp-json/wp/v2/media/${id.ID}`
+              `https://cms.gagel.nl/wp-json/wp/v2/media/${id.ID}`
             )
             return res.ok ? await res.json() : null
           })

@@ -35,7 +35,7 @@ const Sections = ( { sections } ) => {
             <div className="center">
               <CallToActionButton
                 link={item.linkPage.url.replace(
-                  "https://gagel.janinezielman.com",
+                  "https://cms.gagel.nl",
                   ""
                 )}
               >

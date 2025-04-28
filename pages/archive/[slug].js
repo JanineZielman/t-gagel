@@ -77,7 +77,7 @@ export async function getStaticProps({ params }) {
   // Fetch categories based on the category IDs in postData.categories
   const categoryIds = postData?.[0]?.categories ?? []
   const categoriesRes = await axios.get(
-    `https://gagel.janinezielman.com/wp-json/wp/v2/categories?include[]=${categoryIds.join(
+    `https://cms.gagel.nl/wp-json/wp/v2/categories?include[]=${categoryIds.join(
       ","
     )}`
   )
