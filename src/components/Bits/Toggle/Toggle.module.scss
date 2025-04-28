@@ -48,6 +48,10 @@
   transition: 0.4s;
 }
 
+.switch:hover{
+  cursor: url(/pointer.png), auto;
+}
+
 // Change slider background and move handle when checked
 input:checked + .slider {
   background-color: var(--dark-green);
