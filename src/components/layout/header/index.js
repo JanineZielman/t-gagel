@@ -84,7 +84,7 @@ const Header = ({ header }) => {
                       }}
                     ></div>
                     <div className={styles.label}>
-                      {item.title}  {cart?.totalQty && item.title == 'Bestellen' ? `(${cart?.totalQty})` : null}
+                      {item.title}  {cart?.totalQty && item.title == 'Shop' ? `(${cart?.totalQty})` : null}
                     </div>
                   </>
                 </a>
