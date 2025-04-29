@@ -12,14 +12,14 @@ const api = new WooCommerceRestApi( {
  *
  * @return {Promise<void>}
  */
-export const getProductsData = async ( perPage = 50 ) => {
-	return await api.get(
-		'products',
-		{
-			per_page: perPage || 50,
-		},
-	);
+export const getProductsData = async (perPage = 50) => {
+	return await api.get('products', {
+		per_page: perPage || 50,
+		orderby: 'date',     // Sort by date
+		order: 'asc',       // Oldest first
+	});
 };
+
 
 
 export const getProductsCategories = async ( perPage = 50 ) => {
