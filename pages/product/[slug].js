@@ -34,7 +34,7 @@ export default function Product( { headerFooter, product, variations } ) {
 				<HomeButton />
 				<div className='flex'>
 					<CallToActionButton
-							link="/bestellen/cart"
+							link="/shop/cart"
 						>
 						bekijk winkelwagen
 					</CallToActionButton>

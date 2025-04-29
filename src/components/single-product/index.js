@@ -81,7 +81,7 @@ const SingleProduct = ({ product, variations }) => {
             <div className={styles.price}>{`€${selectedVariation.price}`}</div>
           ) : (
             <div className="text-sm text-gray-500 mb-4">
-              Select all options to see the price.
+              Selecteer een optie
             </div>
           )}
         </div>

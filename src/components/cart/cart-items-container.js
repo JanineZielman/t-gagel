@@ -84,12 +84,12 @@ const CartItemsContainer = () => {
 								onClick={(event) => handleClearCart(event)}
 								disabled={isClearCartProcessing}
 							>
-								<span>{!isClearCartProcessing ? "Clear" : "Clearing..."}</span>
+								<span>{!isClearCartProcessing ? "wissen" : "wissen..."}</span>
 							</button>
 							{/* Checkout */}
 							<button onClick={handleProceedToCart} className={styles.cartButton}>
 											<span>
-												Checkout
+												betalen
 											</span>
 								<i className="fas fa-long-arrow-alt-right"/>
 							</button>

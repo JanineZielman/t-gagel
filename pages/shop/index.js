@@ -30,9 +30,9 @@ export default function Home({ headerFooter, products, categories }) {
 			<Layout headerFooter={ headerFooter || {} } seo={ seo }>
 				<HomeButton />
 				<div className='flex'>
-					<h1>Bestellen</h1>
+					<h1>Shop</h1>
 					<CallToActionButton
-						link="/bestellen/cart"
+						link="/shop/cart"
 					>
 						bekijk winkelwagen
 					</CallToActionButton>
