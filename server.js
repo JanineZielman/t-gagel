@@ -35,7 +35,6 @@ app.prepare()
         console.error('Error starting server:', err);
         return;
       }
-      console.log(`> Ready on https://localhost:${port}`);
     });
   })
   .catch((err) => {
