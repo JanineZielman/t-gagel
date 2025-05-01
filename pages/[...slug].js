@@ -56,8 +56,6 @@ const Page = ({ headerFooter, pageData }) => {
   //   };
   // }, []);
 
-  console.log(pageData.parent)
-
   return (
     <div className={`parent-${pageData.parent} current-${pageData.id}`}>
       <Layout

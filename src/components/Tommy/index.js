@@ -3,6 +3,7 @@ import { useEffect } from "react"
 
 const Tommy = ({ product }) => {
   useEffect(() => {
+    console.log("Loading Tommy widget script")
     // Load Tommy widget script before the component renders
     const widgetScript = document.createElement("script")
     widgetScript.src =
@@ -28,7 +29,7 @@ const Tommy = ({ product }) => {
         data-groepen="true"
       ></tommy-widget>
 
-      {/* <script src="https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js"></script> */}
+      <script src="https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js"></script>
       {/* <script src="https://www.tommybookingsupport.com/widget/js/tommy.matrix.js"
         type="application/javascript" language="javascript"></script> */}
     </div>
