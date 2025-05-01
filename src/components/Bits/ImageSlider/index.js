@@ -17,7 +17,7 @@ const ImageSlider = ({ images }) => {
     centerPadding: '60px',
     autoplay: true,
     autoplaySpeed: 3000,
-    adaptiveHeight: false,
+    adaptiveHeight: true,
     responsive: [
       {
         breakpoint: 768,
