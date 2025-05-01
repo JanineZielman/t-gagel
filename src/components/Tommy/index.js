@@ -30,8 +30,6 @@ const Tommy = ({ product }) => {
       ></tommy-widget>
 
       {/* <script src="https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js"></script> */}
-      {/* <script src="https://www.tommybookingsupport.com/widget/js/tommy.matrix.js"
-        type="application/javascript" language="javascript"></script> */}
     </div>
   )
 }

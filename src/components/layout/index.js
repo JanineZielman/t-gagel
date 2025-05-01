@@ -61,7 +61,6 @@ const Layout = ({ children, headerFooter, seo, uri }) => {
         <main className="container mx-auto py-4 min-h-50vh">{children}</main>
         <Footer footer={footer} />
       </div>
-      <LanguageToggle/>
       
     </AppProvider>
   )
