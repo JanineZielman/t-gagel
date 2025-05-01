@@ -716,11 +716,18 @@ main {
 // Styling tommy booking support
 
 body {
+  .tommy-zeb-wrapper-mini .tommy-zeb-left.ng-scope{
+
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+  }
   .tommy-zeb-left.ng-scope {
     background-color: var(--light-green);
     color: var(--green);
     font-family: "Archivo";
     border-radius: 0;
+    
 
     h1,
     h2,
@@ -741,6 +748,7 @@ body {
   .tommy-zeb-wrapper-mini {
     padding-left: 50px;
     padding-right: 50px;
+    
   }
 
   @media (max-width: 768px) {
