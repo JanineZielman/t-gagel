@@ -8,7 +8,7 @@ const Tommy = ({ product }) => {
     const widgetScript = document.createElement("script")
     widgetScript.src =
       "https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js"
-    widgetScript.async = true
+    // widgetScript.async = true
 
     document.body.appendChild(widgetScript)
 

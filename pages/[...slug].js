@@ -71,7 +71,9 @@ const Page = ({ headerFooter, pageData }) => {
             </CallToActionButton>
           )}
         </div>
-        {pageData.parent === 1501 && <Tommy suppressHydrationWarning />}
+        {(pageData.parent === 1501 || pageData.id === 1501) && (
+          <Tommy suppressHydrationWarning />
+        )}
         <ContentWrapper content={pageData.content.rendered} />
         <div className="newsletter">
           {pageData.acf.newsletter && <Newsletter />}
