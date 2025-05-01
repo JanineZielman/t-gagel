@@ -38,6 +38,8 @@ const Header = ({ header }) => {
 
   console.log(router.asPath.includes("archive"))
 
+  console.log(headerMenuItems)
+
   return (
     <>
       <header
@@ -84,21 +86,32 @@ const Header = ({ header }) => {
                       }}
                     ></div>
                     <div className={styles.label}>
-                      {item.title}  {cart?.totalQty && item.title == 'Shop' ? `(${cart?.totalQty})` : null}
+                      {item.title}{" "}
+                      {cart?.totalQty && item.title == "Shop"
+                        ? `(${cart?.totalQty})`
+                        : null}
                     </div>
                   </>
                 </a>
                 <div className={styles.children}>
                   {item.children.map((child, j) => (
                     <div className={styles.child} key={j}>
-                      <Link href={`/${child.pageSlug}`}>
-                        <div
+                      {item.pageID === 1501 ? (
+                        <a
+                          href={`/${child.pageSlug}`}
                           className={styles.label}
                           onClick={handleSubmenuItemClick}
                           dangerouslySetInnerHTML={{ __html: child.title }}
-                        >
-                        </div>
-                      </Link>
+                        ></a>
+                      ) : (
+                        <Link href={`/${child.pageSlug}`}>
+                          <div
+                            className={styles.label}
+                            onClick={handleSubmenuItemClick}
+                            dangerouslySetInnerHTML={{ __html: child.title }}
+                          ></div>
+                        </Link>
+                      )}
                     </div>
                   ))}
                 </div>
