@@ -35,9 +35,9 @@ body {
   cursor: url(/cursor.png), auto;
 }
 
-a{
+a {
   cursor: url(/pointer.png), auto;
-  &:hover{
+  &:hover {
     cursor: url(/pointer.png), auto;
   }
 }
@@ -75,7 +75,6 @@ h3 {
   margin: 0;
 }
 
-
 p {
   font-size: 24px;
   line-height: 1.3;
@@ -87,7 +86,8 @@ a {
   text-decoration: none;
 }
 
-p a, li a{
+p a,
+li a {
   text-decoration: underline;
 }
 
@@ -165,20 +165,25 @@ strong {
   font-weight: 500;
 }
 
-.content{
-  h1, h2, h3, h4, h5, h6 {
+.content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-top: 60px;
     font-size: 34px;
     font-weight: 300;
   }
 }
 
-blockquote{
+blockquote {
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
   padding: 4rem 1rem 4rem;
-  p{
+  p {
     font-size: 50px;
   }
 }
@@ -199,7 +204,6 @@ blockquote{
     p:last-of-type {
       margin-bottom: 0;
     }
-    
   }
   figure {
     width: 100% !important;
@@ -323,13 +327,14 @@ img {
 }
 
 //bestellen
-.parent-184, .parent-1217 {
+.parent-184,
+.parent-1217 {
   background-color: var(--ontvangen-blue);
   color: var(--ontvangen-brown);
   #button {
     background-color: var(--ontvangen-brown);
     color: var(--ontvangen-blue);
-    &.active{
+    &.active {
       opacity: 0.7;
     }
   }
@@ -338,14 +343,14 @@ img {
   }
 }
 
-.bestellen{
-  .filter{
+.bestellen {
+  .filter {
     display: flex;
     justify-content: center;
     width: 100%;
     padding-right: 150px;
     flex-wrap: wrap;
-    #button{
+    #button {
       margin: 0 5px 5px 5px;
       font-size: 18px;
     }
@@ -357,7 +362,7 @@ img {
     color: var(--light-green);
     max-width: 100%;
   }
-  #slider{
+  #slider {
     max-width: 100%;
   }
 }
@@ -401,7 +406,7 @@ img {
     color: var(--ontvangen-blue);
     background-color: var(--ontvangen-brown);
   }
-  #form{
+  #form {
     --primary-color: var(--ontvangen-brown);
     --text-color: var(--ontvangen-blue);
     --input-field-background-color: var(--ontvangen-brown);
@@ -444,34 +449,35 @@ img {
     color: var(--pink);
     background-color: var(--brown);
   }
-  #line{
+  #line {
     stroke: var(--brown);
   }
 
-  .newsletter{
-    h3{
-       color: var(--brown);
+  .newsletter {
+    h3 {
+      color: var(--brown);
     }
-    input, input::placeholder, button{
+    input,
+    input::placeholder,
+    button {
       background-color: var(--brown);
       color: var(--pink);
     }
   }
-
 }
 
-.newsletter{
+.newsletter {
   max-width: calc(100% - 150px);
 }
 
-.newsletter div{
+.newsletter div {
   max-width: 900px;
   margin: auto;
   padding: 24px 14px;
 }
 
-.form-wrapper{
-  max-width: calc(100% - 150px)
+.form-wrapper {
+  max-width: calc(100% - 150px);
 }
 
 //overnachten
@@ -481,8 +487,9 @@ img {
   color: var(--light-green);
 }
 
-.archive-wrapper, .post{
-  #lang{
+.archive-wrapper,
+.post {
+  #lang {
     right: 40px;
   }
 }
@@ -624,26 +631,26 @@ main {
   .post .slick-slider .slick-next {
     right: 30px;
   }
-  .flex{
+  .flex {
     max-width: 100%;
-    #button{
+    #button {
       right: 20px;
       transform: translateX(-50%);
       position: absolute;
     }
   }
-  .bestellen{
+  .bestellen {
     padding-top: 60px;
-    .filter{
+    .filter {
       padding-right: 0;
-      #button{
+      #button {
         font-size: 14px;
       }
     }
   }
 
-  blockquote{
-    p{
+  blockquote {
+    p {
       font-size: 34px;
     }
   }
@@ -671,7 +678,9 @@ main {
     padding-right: 14px;
     max-width: 100%;
   }
-  .sections, .form-wrapper, .newsletter{
+  .sections,
+  .form-wrapper,
+  .newsletter {
     max-width: 100%;
   }
   .sections .textSection .cards {
@@ -729,6 +738,17 @@ body {
     }
   }
 
+  .tommy-zeb-wrapper-mini {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  @media (max-width: 768px) {
+    .tommy-zeb-wrapper-mini {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
   .tommy-zeb-wrapper {
     .tommy-zeb-result.ng-scope {
       background-color: var(--light-green);
@@ -751,6 +771,22 @@ body {
 
     .tommy-zeb-result-price.ng-binding {
       color: var(--green);
+    }
+
+    .tommy-zeb-period {
+      display: flex;
+      flex-direction: column;
+    }
+    .tommy-zeb-date-begin {
+      display: flex;
+      flex-direction: column;
+    }
+    .tommy-zeb-date-end {
+      display: flex;
+      flex-direction: column;
+    }
+    .tommy-zeb-date {
+      margin-right: 20px;
     }
   }
 
@@ -794,7 +830,7 @@ body {
     border-radius: 0;
   }
 
-  .tbs-text-muted{
+  .tbs-text-muted {
     color: var(--grey);
   }
 }
