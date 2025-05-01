@@ -8,7 +8,7 @@ const CallToActionButton = ({ children, link, onClick, isActive = false }) => {
   if (link) {
     return (
       <div id="button" className={buttonClass} onClick={onClick}>
-        <Link prefetch={true} href={link.replace('https://cms.gagel.nl/', '')} passHref>
+        <Link prefetch={true} href={link.url ? link.url.replace('https://cms.gagel.nl/', '') : link} passHref>
           <div className={styles.text}>{children}</div>
         </Link>
       </div>

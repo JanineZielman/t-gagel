@@ -100,7 +100,7 @@ const CartItemsContainer = () => {
 				<div className={styles.leeg}>
 					<h2>Uw winkelwagen is nog leeg</h2>
 					<br/>
-					<CallToActionButton link="/bestellen">
+					<CallToActionButton link="/shop">
 						terug
 					</CallToActionButton>
 				</div>
