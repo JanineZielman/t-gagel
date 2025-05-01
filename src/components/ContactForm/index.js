@@ -99,11 +99,18 @@ const ContactForm = ({ backgroundColor, textColor }) => {
           <option value="" disabled>
             onderwerp
           </option>
-          <option value="schuur">Schuur</option>
-          <option value="rondleiding">Rondleiding</option>
-          <option value="lunch">Lunch</option>
-          <option value="workshop">Workshop</option>
-          <option value="borrel">Borrel</option>
+          <option value="groenteabonnement">groenteabonnement</option>
+          <option value="rondleiding">rondleiding</option>
+          <option value="huren">huren</option>
+          <option value="programma-op-maat">programma op maat</option>
+          <option value="cursus">cursus</option>
+          <option value="investeren">investeren</option>
+          <option value="samenwerken">samenwerken</option>
+          <option value="vrijwilligerswerk-stage">vrijwilligerswerk of stage</option>
+          <option value="overig">overige vraag</option>
+          <option value="boomkwekerij">boomkwekerij</option>
+          <option value="overnachten">overnachten</option>
+          <option value="residenties">residenties</option>
         </select>
         <textarea
           name="Message"
