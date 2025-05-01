@@ -36,10 +36,6 @@ const Header = ({ header }) => {
     setActiveItem(null)
   }
 
-  console.log(router.asPath.includes("archive"))
-
-  console.log(headerMenuItems)
-
   return (
     <>
       <header
