@@ -843,6 +843,7 @@ body {
 //styling inputfield
 
 .sib-form {
+  padding: 0;
   .input,
   .select,
   .textarea {
@@ -895,12 +896,20 @@ body {
   .entry__field {
     -webkit-align-items: center;
     align-items: center;
-    background: #fff;
-    border: 1px solid #c0ccda;
+    background: none;
+    border: 0;
     border-radius: 3px;
     display: -webkit-inline-flex;
     display: inline-flex;
     margin: 0.25rem 0;
     max-width: 100%;
+  }
+  #sib-container {
+    background: none;
+  }
+
+  #success-message {
+    font-size: 16px;
+    color: var(--light-green)
   }
 }
