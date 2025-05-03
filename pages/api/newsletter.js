@@ -1,30 +1,31 @@
 export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).end("Method not allowed")
+  if (req.method !== "POST") return res.status(405).end("Method not allowed");
 
-  const { email } = req.body
+  const { email } = req.body;
 
   try {
-    const response = await fetch("https://api.emailoctopus.com/lists/769e13c0-19fc-11f0-bc0a-d5788de4ad95/contacts", {
+    const response = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.EMAILOCTOPUS_API_KEY}`,
+        "api-key": process.env.BREVO_API_KEY, // Use your Brevo API key here
       },
       body: JSON.stringify({
-        EmailAddress: email,
-        tags: ["newsletter"],
+        email: email,
+        listIds: [8],
+        updateEnabled: true, // Updates contact if they already exist
       }),
-    })
+    });
 
-    const data = await response.json()
+    const data = await response.json();
 
     if (!response.ok) {
-      return res.status(response.status).json({ error: data })
+      return res.status(response.status).json({ error: data });
     }
 
-    return res.status(200).json({ success: true })
+    return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("API error:", error)
-    return res.status(500).json({ error: "Internal server error" })
+    console.error("API error:", error);
+    return res.status(500).json({ error: "Internal server error" });
   }
 }

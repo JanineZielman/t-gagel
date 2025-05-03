@@ -121,109 +121,19 @@ const ContactForm = ({ backgroundColor, textColor }) => {
       </Head>
       <div id="form" className={styles.contactForm} style={customStyle}>
         <h3 className={styles.title}>Neem contact met ons op</h3>
-        {/* <form onSubmit={handleSubmit} className={styles.form}> */}
-        {/* <form
-         className={styles.form}
-          method="POST"
-          data-type="subscription"
-          action="https://sibforms.com/serve/MUIFALw6WliQsF6Rc-z38xxMZjG9lRJ3KL52MGlla18m_91FjJPJu_zGHTzhrUylFbkAyw-ndWc9CWhnSPViM3t4LwAMut6SYdmd8r2i9ZiGqIrSmfyBve6W0wGMDPJO6zqzSuHkldGmS98mQK6FMfG21NVPnjHN42-LGhdhexnEiNZZTpKhG9ujJFPvL7QUlO4SWdPjnbH2kw6F"
-        >
-          <input
-            type="text"
-            name="Name"
-            value={formData.Name}
-            onChange={handleChange}
-            placeholder="Naam"
-            className={styles.input}
-            required
-          />
-          <input
-            type="email"
-            name="EmailAddress"
-            value={formData.EmailAddress}
-            onChange={handleChange}
-            placeholder="E-mailadres"
-            className={styles.input}
-            required
-          />
-          <input
-            type="tel"
-            name="PhoneNumber"
-            value={formData.PhoneNumber}
-            onChange={handleChange}
-            placeholder="Telefoonnummer"
-            className={styles.input}
-            required
-          />
-          <select
-            name="Topic"
-            value={formData.Topic}
-            onChange={handleChange}
-            className={styles.select}
-            required
-          >
-            <option value="" disabled>
-              onderwerp
-            </option>
-            <option value="groenteabonnement">groenteabonnement</option>
-            <option value="rondleiding">rondleiding</option>
-            <option value="huren">huren</option>
-            <option value="programma-op-maat">programma op maat</option>
-            <option value="cursus">cursus</option>
-            <option value="investeren">investeren</option>
-            <option value="samenwerken">samenwerken</option>
-            <option value="vrijwilligerswerk-stage">
-              vrijwilligerswerk of stage
-            </option>
-            <option value="overig">overige vraag</option>
-            <option value="boomkwekerij">boomkwekerij</option>
-            <option value="overnachten">overnachten</option>
-            <option value="residenties">residenties</option>
-          </select>
-          <textarea
-            name="Message"
-            value={formData.Message}
-            onChange={handleChange}
-            placeholder="Je bericht"
-            className={styles.textarea}
-            required
-          />
-          <button type="submit" className={styles.button}>
-            Versturen
-          </button>
-        </form>
-        {status === "success" && (
-          <p className={styles.success}>
-            Bedankt voor je bericht! We nemen zo snel mogelijk contact met je
-            op.
-          </p>
-        )} */}
 
         <div className="sib-form">
-          {/* <div className={`sib-form ${styles.formContainer}`}> */}
           <div id="sib-form-container" className="sib-form-container">
             <div id="error-message" className="sib-form-message-panel">
               <div className="sib-form-message-panel__text sib-form-message-panel__text--center">
-                {/* <svg
-                  viewBox="0 0 512 512"
-                  className="sib-icon sib-notification__icon"
-                >
-                  <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
-                </svg> */}
                 <span className="sib-form-message-panel__inner-text">
-                  Your subscription could not be saved. Please try again.
+                  Je bericht kon niet verzonden worden, probeer het later opnieuw!
                 </span>
               </div>
             </div>
             <div></div>
             <div id="success-message" className="sib-form-message-panel">
               <div className="sib-form-message-panel__text sib-form-message-panel__text--center">
-                {/* <svg
-                  viewBox="0 0 512 512"
-                  className="sib-icon sib-notification__icon"
-                >
-                  <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
-                </svg> */}
                 <span className="sib-form-message-panel__inner-text">
                   Je bericht is verzonden!
                 </span>
@@ -232,7 +142,6 @@ const ContactForm = ({ backgroundColor, textColor }) => {
             <div></div>
             <div
               id="sib-container"
-              // className={`sib-container--large sib-container--vertical ${styles.formContainer}`}
               className="sib-container--large sib-container--vertical"
             >
               <form
@@ -254,7 +163,7 @@ const ContactForm = ({ backgroundColor, textColor }) => {
                             id="NAME"
                             name="NAME"
                             autocomplete="off"
-                            placeholder="NAME"
+                            placeholder="Naam"
                             data-required="true"
                             required
                           />
@@ -299,7 +208,7 @@ const ContactForm = ({ backgroundColor, textColor }) => {
                             id="PHONENUMBER"
                             name="PHONENUMBER"
                             autocomplete="off"
-                            placeholder="PHONENUMBER"
+                            placeholder="Telefoonnummer"
                             data-required="true"
                             required
                           />
@@ -362,7 +271,7 @@ const ContactForm = ({ backgroundColor, textColor }) => {
                             id="MESSAGE"
                             name="MESSAGE"
                             autocomplete="off"
-                            placeholder="MESSAGE"
+                            placeholder="bericht"
                             data-required="true"
                             required
                           />
