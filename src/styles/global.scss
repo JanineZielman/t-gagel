@@ -716,18 +716,15 @@ main {
 // Styling tommy booking support
 
 body {
-  .tommy-zeb-wrapper-mini .tommy-zeb-left.ng-scope{
-
+  .tommy-zeb-wrapper-mini .tommy-zeb-left.ng-scope {
     padding-top: 25px;
     padding-bottom: 25px;
-
   }
   .tommy-zeb-left.ng-scope {
     background-color: var(--light-green);
     color: var(--green);
     font-family: "Archivo";
     border-radius: 0;
-    
 
     h1,
     h2,
@@ -748,7 +745,6 @@ body {
   .tommy-zeb-wrapper-mini {
     padding-left: 50px;
     padding-right: 50px;
-    
   }
 
   @media (max-width: 768px) {
@@ -843,3 +839,77 @@ body {
   }
 }
 // Styling tommy booking support
+
+//styling inputfield
+
+.sib-form {
+  padding: 0;
+  .input,
+  .select,
+  .textarea {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    font-size: 1rem;
+    font-family: "Archivo";
+    background-color: var(--input-field-background-color);
+    color: var(--text-color);
+
+    &:focus {
+      outline: none;
+      border-color: var(--text-color);
+    }
+    &::placeholder {
+      color: var(--text-color);
+      text-transform: lowercase;
+    }
+  }
+
+  .input,
+  .select {
+    height: var(--input-height);
+  }
+
+  .textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .button {
+    height: var(--input-height);
+    padding: 0 2rem;
+    background-color: var(--input-field-background-color);
+    border: none;
+    border-radius: 4px;
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: url(/pointer.png), auto;
+    transition: background-color 0.3s;
+    // border
+
+    &:hover {
+      // background-color: var(--text-color);
+      opacity: 0.8;
+    }
+  }
+
+  .entry__field {
+    -webkit-align-items: center;
+    align-items: center;
+    background: none;
+    border: 0;
+    border-radius: 3px;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    margin: 0.25rem 0;
+    max-width: 100%;
+  }
+  #sib-container {
+    background: none;
+  }
+
+  #success-message {
+    font-size: 16px;
+    color: var(--light-green)
+  }
+}
