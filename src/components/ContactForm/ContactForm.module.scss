@@ -22,10 +22,27 @@
   font-size: 24px;
 }
 
-.form {
-  display: flex;
+// .container{
+//   background: none  !important;
+// }
+
+.formContainer {
+  display: flex !important;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1rem !important;
+  background: none !important;
+
+  // background: #fff;
+  //   margin: 0 auto;
+  //   padding: 17px;
+  //   display: inline-block;
+  //   width: 100%;
+}
+
+.form{
+  display: flex !important;
+  flex-direction: column;
+  gap: 1rem !important;
 }
 
 .input,
@@ -69,6 +86,7 @@
   font-size: 1rem;
   cursor: url(/pointer.png), auto;
   transition: background-color 0.3s;
+  // border
 
   &:hover {
     // background-color: var(--text-color);
