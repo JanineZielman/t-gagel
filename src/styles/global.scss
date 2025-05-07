@@ -585,6 +585,7 @@ main {
   .slick-prev {
     z-index: 999;
     left: 14px;
+    cursor: url(/pointer.png), auto;
     &:before {
       content: "<";
       color: var(--light-green);
@@ -600,6 +601,7 @@ main {
   .slick-next {
     z-index: 999;
     right: 30px;
+    cursor: url(/pointer.png), auto;
     &:before {
       content: ">";
       color: var(--boeren-green);
