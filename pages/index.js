@@ -14,19 +14,9 @@ import CookieBar from "../src/components/CookieBar"
 import ContactForm from "../src/components/ContactForm/"
 
 export default function Home({ headerFooter, page, posts }) {
-  const seo = {
-    title: `'t Gagel`,
-    description: "Next JS WooCommerce Theme",
-    og_image: [],
-    og_site_name: `'t Gagel`,
-    robots: {
-      index: "index",
-      follow: "follow",
-    },
-  }
 
   return (
-    <Layout headerFooter={headerFooter || {}} seo={seo}>
+    <Layout headerFooter={headerFooter || {}} seo={page?.yoast_head_json ?? {}}>
       {/* <CookieBar /> */}
       <Hero gallery={page.acf.gallery} cta={page.acf} />
       <div className="home">

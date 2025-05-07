@@ -116,7 +116,7 @@ const CartItem = ( {
 					<div className={styles.productTitleWrapper}>
 						<div className={styles.productTitle}>
 							<h3>{ item?.data?.name }</h3>
-							{item?.data?.description ? <p>{item?.data?.description}</p> : ''}
+							{item?.data?.description ? <p dangerouslySetInnerHTML={{ __html: item.data.description }}/> : ''}
 						</div>
 						<button className={styles.clearButton} onClick={ ( event ) => handleRemoveProductClick( event, item?.key ) }>&times;</button>
 					</div>
