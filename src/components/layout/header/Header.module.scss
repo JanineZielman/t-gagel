@@ -92,6 +92,7 @@
     background-color: var(--light-green);
     &:after {
       content: "☰";
+      align-self: center;
     }
   }
   &.show .arrow {
