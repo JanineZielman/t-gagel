@@ -15,10 +15,9 @@ import CallToActionButton from '../../src/components/Bits/CallToActionButton';
 
 export default function Home({ headerFooter, products, categories }) {
 	const seo = {
-		title: 'Next JS WooCommerce REST API',
-		description: 'Next JS WooCommerce Theme',
+		title: `'t Gagel - Shop`,
 		og_image: [],
-		og_site_name: 'React WooCommerce Theme',
+		og_site_name: `'t Gagel`,
 		robots: {
 			index: 'index',
 			follow: 'follow',
