@@ -37,7 +37,8 @@ const Hero = ({ gallery = [], cta }) => {
           }))
 
         setMediaItems(filteredMedia)
-        setCurrentIndex(0)
+        const randomIndex = Math.floor(Math.random() * filteredMedia.length)
+        setCurrentIndex(randomIndex)
       } catch (error) {
         console.error("Error fetching media:", error)
       }
@@ -46,30 +47,30 @@ const Hero = ({ gallery = [], cta }) => {
     fetchMedia()
   }, [gallery])
 
-  const changeMedia = () => {
-    if (mediaItems.length < 2) return // nothing to change or only one
+  // const changeMedia = () => {
+  //   if (mediaItems.length < 2) return // nothing to change or only one
 
-    setFade(true)
+  //   setFade(true)
 
-    setTimeout(() => {
-      let nextIndex
-      do {
-        nextIndex = Math.floor(Math.random() * mediaItems.length)
-      } while (nextIndex === currentIndex)
+  //   setTimeout(() => {
+  //     let nextIndex
+  //     do {
+  //       nextIndex = Math.floor(Math.random() * mediaItems.length)
+  //     } while (nextIndex === currentIndex)
 
-      setCurrentIndex(nextIndex)
-      setFade(false)
-    }, 300) // match fade duration in CSS
-  }
+  //     setCurrentIndex(nextIndex)
+  //     setFade(false)
+  //   }, 300) // match fade duration in CSS
+  // }
 
-  useEffect(() => {
-    const interval = setInterval(changeMedia, 5000)
-    return () => clearInterval(interval)
-  }, [mediaItems, currentIndex])
+  // useEffect(() => {
+  //   const interval = setInterval(changeMedia, 5000)
+  //   return () => clearInterval(interval)
+  // }, [mediaItems, currentIndex])
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.onended = () => changeMedia()
+      // videoRef.current.onended = () => changeMedia()
     }
   }, [currentIndex])
 
