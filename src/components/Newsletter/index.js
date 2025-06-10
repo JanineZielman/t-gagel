@@ -23,18 +23,11 @@ const Newsletter = ({ title = "Schrijf je in voor onze nieuwsbrief" }) => {
       } else {
         const error = await response.json()
         console.error("Error:", error)
-        if (error.error.detail == "List contact already exists.") {
-          setStatus("success")
-        } else {
-          setStatus("error")
-        }
-      }
-    } catch (error) {
-      if (error.error.detail == "List contact already exists.") {
-        setStatus("success")
-      } else {
         setStatus("error")
       }
+    } catch (error) {
+      console.error("Network error:", error)
+      setStatus("error")
     }
   }
   

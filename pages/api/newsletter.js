@@ -8,24 +8,33 @@ export default async function handler(req, res) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "api-key": process.env.BREVO_API_KEY, // Use your Brevo API key here
+        "api-key": process.env.BREVO_API_KEY,
       },
       body: JSON.stringify({
-        email: email,
+        email,
         listIds: [8],
-        updateEnabled: true, // Updates contact if they already exist
+        updateEnabled: true,
       }),
     });
 
-    const data = await response.json();
+    const text = await response.text(); // Get raw response body (can be JSON or not)
+
+    let data;
+    try {
+      data = text ? JSON.parse(text) : {}; // Try to parse if there's content
+    } catch (parseError) {
+      console.error("Failed to parse response as JSON:", parseError, "Raw text:", text);
+      data = { raw: text };
+    }
 
     if (!response.ok) {
+      console.error("Brevo API error:", data);
       return res.status(response.status).json({ error: data });
     }
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("API error:", error);
+    console.error("Fetch failed:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 }
