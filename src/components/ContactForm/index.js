@@ -4,54 +4,6 @@ import { useEffect } from "react"
 import Head from "next/head"
 
 const ContactForm = ({ backgroundColor, textColor }) => {
-  const [formData, setFormData] = useState({
-    Name: "",
-    EmailAddress: "",
-    PhoneNumber: "",
-    Topic: "",
-    Message: "",
-  })
-  const [status, setStatus] = useState("")
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (response.ok) {
-        setStatus("success")
-        setFormData({
-          Name: "",
-          EmailAddress: "",
-          PhoneNumber: "",
-          Topic: "",
-          Message: "",
-        })
-      } else {
-        const error = await response.json()
-        console.error("Form error:", error)
-        setStatus("error")
-      }
-    } catch (error) {
-      console.error("Network error:", error)
-      setStatus("error")
-    }
-  }
 
   // Custom style with CSS variables
   const customStyle = {
