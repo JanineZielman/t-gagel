@@ -18,6 +18,7 @@ import { HEADER_FOOTER_ENDPOINT } from "../src/utils/constants/endpoints"
 import ImageSlider from "../src/components/Bits/ImageSlider"
 import ContactForm from "../src/components/ContactForm"
 import Tommy from "../src/components/Tommy"
+import TommyBooking from "../src/components/TommyBooking"
 import Sections from "../src/components/Sections"
 import Newsletter from "../src/components/Newsletter"
 
@@ -63,6 +64,8 @@ const Page = ({ headerFooter, pageData }) => {
         {pageData.acf.contact_form && (
           <ContactForm backgroundColor="var(--brown)" textColor="var(--pink)" />
         )}
+
+        {pageData.acf.new_booking && <TommyBooking />}
       </Layout>
     </div>
   )
