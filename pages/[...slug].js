@@ -65,7 +65,7 @@ const Page = ({ headerFooter, pageData }) => {
           <ContactForm backgroundColor="var(--brown)" textColor="var(--pink)" />
         )}
 
-        {pageData.acf.new_booking && <TommyBooking />}
+        {pageData.acf.new_booking && <TommyBooking product={pageData.acf.data_accommodatie} />}
       </Layout>
     </div>
   )

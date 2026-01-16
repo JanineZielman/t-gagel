@@ -12,6 +12,8 @@ const Tommy = ({ product }) => {
     document.body.appendChild(script)
   }, [])
 
+  console.log("Tommy Booking Product:", product)
+
   return (
     <div>
       <HomeButton />
@@ -23,6 +25,7 @@ const Tommy = ({ product }) => {
           data-account="GagelLochem"
           data-language="nl"
           data-country="nl"
+          data-accommodatie={product ? product : ""}
         ></div>
       </div>
     </div>
