@@ -12,7 +12,7 @@ import {
   isCustomPageUri,
 } from "../src/utils/slug"
 import { getPathNameFromUrl } from "../src/utils/miscellaneous"
-import { getPage, getPages } from "../src/utils/blog"
+import { getPage, getPages, getChildPages } from "../src/utils/blog"
 import axios from "axios"
 import { HEADER_FOOTER_ENDPOINT } from "../src/utils/constants/endpoints"
 import ImageSlider from "../src/components/Bits/ImageSlider"
@@ -21,8 +21,9 @@ import Tommy from "../src/components/Tommy"
 import TommyBooking from "../src/components/TommyBooking"
 import Sections from "../src/components/Sections"
 import Newsletter from "../src/components/Newsletter"
+import PageGrid from "../src/components/PageGrid"
 
-const Page = ({ headerFooter, pageData }) => {
+const Page = ({ headerFooter, pageData, childPages }) => {
   const router = useRouter()
 
   // If the page is not yet generated, this will be displayed
@@ -30,7 +31,6 @@ const Page = ({ headerFooter, pageData }) => {
   if (router.isFallback) {
     return <div>Loading...</div>
   }
-
 
   return (
     <div className={`parent-${pageData.parent} current-${pageData.id}`}>
@@ -51,6 +51,13 @@ const Page = ({ headerFooter, pageData }) => {
           <Tommy suppressHydrationWarning />
         )}
         <ContentWrapper content={pageData.content.rendered} />
+        {(pageData.parent === 1501 || pageData.id === 1501) &&
+          childPages?.length > 0 && (
+            <div className="child-pages-section">
+
+              <PageGrid pages={childPages} />
+            </div>
+          )}
         <div className="newsletter">
           {pageData.acf.newsletter && <Newsletter />}
         </div>
@@ -65,7 +72,9 @@ const Page = ({ headerFooter, pageData }) => {
           <ContactForm backgroundColor="var(--brown)" textColor="var(--pink)" />
         )}
 
-        {pageData.acf.new_booking && <TommyBooking product={pageData.acf.data_accommodatie} />}
+        {pageData.acf.new_booking && (
+          <TommyBooking product={pageData.acf.data_accommodatie} />
+        )}
       </Layout>
     </div>
   )
@@ -77,10 +86,21 @@ export async function getStaticProps({ params }) {
   const { data: headerFooterData } = await axios.get(HEADER_FOOTER_ENDPOINT)
   const pageData = await getPage(params?.slug.pop() ?? "")
 
+  // Check if this is the overnachten page (ID 1501) or a child of it
+  const isOvernachtenPage =
+    pageData?.[0]?.parent === 1501 || pageData?.[0]?.id === 1501
+  let childPages = []
+
+  if (isOvernachtenPage && pageData?.[0]?.id === 1501) {
+    // Only fetch child pages if we're on the main overnachten page
+    childPages = await getChildPages(1501)
+  }
+
   const defaultProps = {
     props: {
       headerFooter: headerFooterData?.data ?? {},
       pageData: pageData?.[0] ?? {},
+      childPages: childPages ?? [],
     },
     /**
      * Revalidate means that if a new request comes to server, then every 1 sec it will check

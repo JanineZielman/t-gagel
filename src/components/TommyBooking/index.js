@@ -16,7 +16,6 @@ const Tommy = ({ product }) => {
 
   return (
     <div>
-      <HomeButton />
       <div className={styles.container} suppressHydrationWarning>
         <div
           id="TommyBookingSupport"

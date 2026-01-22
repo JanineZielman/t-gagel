@@ -1,0 +1,65 @@
+.pagePreview {
+  width: 31%;
+  margin: 1%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--brown);
+  color: var(--pink);
+
+  .imgWrapper {
+    position: relative;
+    margin-top: 24px;
+
+    img {
+      filter: grayscale(100%) contrast(1);
+      height: 100%;
+      max-width: 100%;
+      mix-blend-mode: lighten;
+      object-fit: cover;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3;
+    }
+
+    &:before {
+      bottom: 0;
+      content: "";
+      height: 100%;
+      left: 0;
+      mix-blend-mode: multiply;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+      opacity: 0.75;
+      background-color: var(--brown);
+    }
+  }
+
+  h2 {
+    text-align: left;
+    margin-bottom: 24px;
+    line-height: 1;
+    margin-top: 14px;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 1.8vw;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 10px auto;
+
+    h2 {
+      font-size: 28px;
+    }
+  }
+}
