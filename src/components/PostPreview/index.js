@@ -1,7 +1,10 @@
 import styles from "./PostPreview.module.scss"
 
 const PostPreview = ({ post, selectedCategories, current }) => {
-  const category = post.categories[0].name;
+  let category = post.categories && post.categories.length > 0 ? post.categories[0].name : "uncategorized";
+  if (category.toLowerCase() === "overige") {
+    category = "uncategorized";
+  }
   const queryParams =
     selectedCategories?.length > 0
       ? { categories: selectedCategories.join(",") }
@@ -13,8 +16,8 @@ const PostPreview = ({ post, selectedCategories, current }) => {
       href={`/archive/${post.slug}?categories=${queryParams}`}
     >
       <div>
-        <span className={styles.category}>{category}</span>
-        <h2  dangerouslySetInnerHTML={{ __html: post.title }}/>
+        <span className={styles.category}>{category === "uncategorized" ? "" : category}</span>
+        <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
       </div>
       <div>
         <p>{post.meta ? post.meta.author_name : post.author}</p>

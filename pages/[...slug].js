@@ -47,20 +47,23 @@ const Page = ({ headerFooter, pageData, childPages }) => {
             </CallToActionButton>
           )}
         </div>
-        {(pageData.parent === 1501 || pageData.id === 1501) && (
+        {/* {(pageData.parent === 1501 || pageData.id === 1501) && (
           <Tommy suppressHydrationWarning />
-        )}
+        )} */}
         <ContentWrapper content={pageData.content.rendered} />
         {(pageData.parent === 1501 || pageData.id === 1501) &&
           childPages?.length > 0 && (
             <div className="child-pages-section">
-
               <PageGrid pages={childPages} />
             </div>
           )}
         <div className="newsletter">
           {pageData.acf.newsletter && <Newsletter />}
         </div>
+
+        {pageData.acf.new_booking && (
+          <TommyBooking product={pageData.acf.data_accommodatie} />
+        )}
 
         {pageData.acf.sections?.length > 0 && (
           <Sections sections={pageData.acf.sections} />
@@ -70,10 +73,6 @@ const Page = ({ headerFooter, pageData, childPages }) => {
         )}
         {pageData.acf.contact_form && (
           <ContactForm backgroundColor="var(--brown)" textColor="var(--pink)" />
-        )}
-
-        {pageData.acf.new_booking && (
-          <TommyBooking product={pageData.acf.data_accommodatie} />
         )}
       </Layout>
     </div>
