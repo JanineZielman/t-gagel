@@ -62,15 +62,14 @@ const Page = ({ headerFooter, pageData, childPages }) => {
           {pageData.acf.newsletter && <Newsletter />}
         </div>
 
-        {pageData.acf.new_booking && (
-          <TommyBooking product={pageData.acf.data_accommodatie} />
-        )}
-
         {pageData.acf.sections?.length > 0 && (
           <Sections sections={pageData.acf.sections} />
         )}
         {pageData.acf.image_slider?.length > 0 && (
           <ImageSlider images={pageData.acf.image_slider} />
+        )}
+        {pageData.acf.new_booking && (
+          <TommyBooking product={pageData.acf.data_accommodatie} />
         )}
         {pageData.acf.contact_form && (
           <ContactForm backgroundColor="var(--brown)" textColor="var(--pink)" />
