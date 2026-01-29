@@ -93,38 +93,6 @@ li a {
 
 .post {
   min-height: 100vh;
-  &.interview {
-    background-color: var(--green);
-    color: var(--light-green);
-    .related {
-      background-color: var(--light-green);
-      color: var(--green);
-    }
-  }
-  &.artikelen {
-    background-color: var(--ontvangen-brown);
-    color: var(--ontvangen-blue);
-    .related {
-      background-color: var(--ontvangen-blue);
-      color: var(--ontvangen-brown);
-    }
-  }
-  &.podcast {
-    background-color: var(--brown);
-    color: var(--pink);
-    .related {
-      background-color: var(--pink);
-      color: var(--brown);
-    }
-  }
-  &.actueel {
-    background-color: var(--ontvangen-blue);
-    color: var(--blue);
-    .related {
-      background-color: var(--blue);
-      color: var(--ontvangen-blue);
-    }
-  }
   padding-top: 24px;
   // padding-bottom: 100px;
 }
@@ -238,46 +206,7 @@ img {
 }
 
 .post-item {
-  &.interview {
-    background-color: var(--green);
-    color: var(--light-green);
-    & .img-wrapper {
-      background-color: var(--green);
-      &:before {
-        background-color: var(--light-green);
-      }
-    }
-  }
-  &.artikelen {
-    background-color: var(--ontvangen-brown);
-    color: var(--ontvangen-blue);
-    & .img-wrapper {
-      background-color: var(--ontvangen-brown);
-      &:before {
-        background-color: var(--ontvangen-blue);
-      }
-    }
-  }
-  &.podcast {
-    background-color: var(--brown);
-    color: var(--pink);
-    & .img-wrapper {
-      background-color: var(--brown);
-      &:before {
-        background-color: var(--pink);
-      }
-    }
-  }
-  &.uncategorized {
-    background-color: var(--blue);
-    color: var(--ontvangen-blue);
-    & .img-wrapper {
-      background-color: var(--blue);
-      &:before {
-        background-color: var(--ontvangen-blue);
-      }
-    }
-  }
+  // Category-specific styling removed - now using dynamic theme colors via inline styles
 }
 
 .home {

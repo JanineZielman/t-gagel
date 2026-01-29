@@ -12,6 +12,7 @@ import {
   GET_POST_ENDPOINT,
   GET_POSTS_ENDPOINT,
   GET_RELATED_ENDPOINT,
+  GET_CATEGORIES_ENDPOINT,
 } from "./constants/endpoints"
 
 /**
@@ -158,6 +159,27 @@ export const getChildPages = async (parentID = "") => {
     })
     .catch((err) => {
       console.log(err.response.data.message)
+      return []
+    })
+}
+
+/**
+ * Get Categories with ACF data.
+ *
+ * @return {Promise<Array>}
+ */
+export const getCategories = async () => {
+  return await axios
+    .get(`${GET_CATEGORIES_ENDPOINT}`)
+    .then((res) => {
+      if (200 === res.status) {
+        return res.data
+      } else {
+        return []
+      }
+    })
+    .catch((err) => {
+      console.log(err?.response?.data?.message || err.message)
       return []
     })
 }

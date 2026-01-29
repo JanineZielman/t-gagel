@@ -1,8 +1,7 @@
 import styles from "./PostGrid.module.scss"
 import PostPreview from "../PostPreview"
 
-const PostGrid = ({ posts, selectedCategories }) => {
-
+const PostGrid = ({ posts, selectedCategories, categoryThemeMap }) => {
   return (
     <div className={styles.postGrid}>
       {posts.length > 0 ? (
@@ -11,6 +10,7 @@ const PostGrid = ({ posts, selectedCategories }) => {
             key={i}
             post={item}
             selectedCategories={selectedCategories}
+            categoryThemeMap={categoryThemeMap}
           />
         ))
       ) : (
