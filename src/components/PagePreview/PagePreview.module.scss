@@ -46,12 +46,7 @@
     margin-top: 14px;
     text-transform: uppercase;
     font-weight: 300;
-    font-size: 1.8vw;
-  }
-
-  &:hover {
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
+    font-size: clamp(20px, 1.8vw, 32px);
   }
 
   @media (max-width: 768px) {

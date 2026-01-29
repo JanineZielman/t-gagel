@@ -424,8 +424,21 @@ img {
 .current-1501 {
   background-color: var(--green);
   color: var(--light-green);
+
+  .child-pages-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 14px;
+
+    @media (min-width: 769px) {
+      padding-right: 220px;
+    }
+  }
 }
 
+.child-pages-section {
+  width: 100%;
+}
 .archive-wrapper,
 .post {
   #lang {
