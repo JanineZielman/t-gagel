@@ -50,6 +50,7 @@ const Page = ({ headerFooter, pageData, childPages }) => {
         {/* {(pageData.parent === 1501 || pageData.id === 1501) && (
           <Tommy suppressHydrationWarning />
         )} */}
+
         <ContentWrapper content={pageData.content.rendered} />
         {(pageData.parent === 1501 || pageData.id === 1501) &&
           childPages?.length > 0 && (
