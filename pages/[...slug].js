@@ -22,6 +22,7 @@ import TommyBooking from "../src/components/TommyBooking"
 import Sections from "../src/components/Sections"
 import Newsletter from "../src/components/Newsletter"
 import PageGrid from "../src/components/PageGrid"
+import AccommodationGrid from "../src/components/AccommodationGrid"
 
 const Page = ({ headerFooter, pageData, childPages }) => {
   const router = useRouter()
@@ -55,7 +56,7 @@ const Page = ({ headerFooter, pageData, childPages }) => {
         {(pageData.parent === 1501 || pageData.id === 1501) &&
           childPages?.length > 0 && (
             <div className="child-pages-section">
-              <PageGrid pages={childPages} />
+              <AccommodationGrid pages={childPages} />
             </div>
           )}
         <div className="newsletter">
