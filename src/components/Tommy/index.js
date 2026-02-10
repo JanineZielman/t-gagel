@@ -27,6 +27,7 @@ const Tommy = ({ product }) => {
         data-language="nl"
         data-base-redirect-url="/overnachten/zoekenboek"
         data-groepen="true"
+        data-scroll="false"
       ></tommy-widget>
 
       {/* <script src="https://api.tommybookingsupport.com/widgets/zoekenboek/js/init.js"></script> */}
