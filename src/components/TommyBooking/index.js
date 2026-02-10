@@ -5,11 +5,27 @@ import HomeButton from "../Bits/HomeButton"
 
 const Tommy = ({ product }) => {
   useEffect(() => {
+    // Remove hash from URL to prevent auto-scroll to Tommy widget
+    if (window.location.hash) {
+      window.history.replaceState(
+        null,
+        "",
+        window.location.pathname + window.location.search,
+      )
+    }
+
+    // Load Tommy widget script immediately
     const script = document.createElement("script")
     script.src = "https://api.tommybookingsupport.com/widgets/js/widget.js"
     script.type = "text/javascript"
 
     document.body.appendChild(script)
+
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script)
+      }
+    }
   }, [])
 
   console.log("Tommy Booking Product:", product)
