@@ -23,6 +23,7 @@ import Sections from "../src/components/Sections"
 import Newsletter from "../src/components/Newsletter"
 import PageGrid from "../src/components/PageGrid"
 import AccommodationGrid from "../src/components/AccommodationGrid"
+import Facilities from "../src/components/Facilities"
 
 const Page = ({ headerFooter, pageData, childPages }) => {
   const router = useRouter()
@@ -51,6 +52,8 @@ const Page = ({ headerFooter, pageData, childPages }) => {
         {/* {(pageData.parent === 1501 || pageData.id === 1501) && (
           <Tommy suppressHydrationWarning />
         )} */}
+
+        {pageData.parent === 1501 && <Facilities facilities={pageData.acf} />}
 
         <ContentWrapper content={pageData.content.rendered} />
         {(pageData.parent === 1501 || pageData.id === 1501) &&
