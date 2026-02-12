@@ -1,10 +1,12 @@
 import Image from "../image"
 import CallToActionButton from "../Bits/CallToActionButton"
 import CustomLine from "../CustomLine/CustomLine"
+import Facilities from "../Facilities"
 
-const Sections = ({ sections }) => {
+const Sections = ({ sections, facilities }) => {
   return (
     <div className="sections">
+      {facilities && <Facilities facilities={facilities} />}
       {sections.map((item, i) => {
         return (
           <div key={i} className={"textSection"}>

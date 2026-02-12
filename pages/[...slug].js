@@ -53,8 +53,6 @@ const Page = ({ headerFooter, pageData, childPages }) => {
           <Tommy suppressHydrationWarning />
         )} */}
 
-        {pageData.parent === 1501 && <Facilities facilities={pageData.acf} />}
-
         <ContentWrapper content={pageData.content.rendered} />
         {(pageData.parent === 1501 || pageData.id === 1501) &&
           childPages?.length > 0 && (
@@ -67,7 +65,10 @@ const Page = ({ headerFooter, pageData, childPages }) => {
         </div>
 
         {pageData.acf.sections?.length > 0 && (
-          <Sections sections={pageData.acf.sections} />
+          <Sections
+            sections={pageData.acf.sections}
+            facilities={pageData.parent === 1501 ? pageData.acf : undefined}
+          />
         )}
         {pageData.acf.image_slider?.length > 0 && (
           <ImageSlider images={pageData.acf.image_slider} />
