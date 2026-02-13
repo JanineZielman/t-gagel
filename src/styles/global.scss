@@ -783,6 +783,11 @@ body {
 
     background-color: var(--light-green);
     color: var(--green);
+
+    &:hover {
+      background-color: var(--green);
+      color: #fff;
+    }
   }
 
   .tbs-btn-block {
