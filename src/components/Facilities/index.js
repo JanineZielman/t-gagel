@@ -23,6 +23,11 @@ const Facilities = ({ facilities }) => {
       label: "sanitaire voorziening",
       description: facilities.beschrijving_sanitaire_voorziening,
     },
+    restaurant: {
+      icon: "restaurant",
+      label: "mee eten",
+      description: facilities.beschrijving_restaurant,
+    },
   }
 
   // Filter alleen de faciliteiten die true zijn
@@ -41,7 +46,7 @@ const Facilities = ({ facilities }) => {
           <div className={styles.iconWrapper}>
             <span className="material-symbols-outlined">{config.icon}</span>
           </div>
-          <div className={styles.label}>{config.label}</div>
+          {/* <div className={styles.label}>{config.label}</div> */}
           {config.description && (
             <div className={styles.description}>{config.description}</div>
           )}
