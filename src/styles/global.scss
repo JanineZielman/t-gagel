@@ -786,13 +786,14 @@ body {
   }
 
   .tbs-btn-info {
-    color: #fff;
-
     background-color: var(--light-green);
-    color: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 0;
 
-    &:hover {
-      background-color: var(--green);
+    &:hover,
+    &:active {
+      background-color: var(--light-green);
       color: #fff;
     }
   }
