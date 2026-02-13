@@ -766,6 +766,13 @@ body {
     border-radius: 0;
   }
 
+  .tbs-btn-default {
+    color: var(--green);
+    background-color: var(--light-green);
+    border: none;
+    border-radius: 0;
+  }
+
   .tbs-calendar .tbs-day.tbs-beschikbaar {
     // background-color: var(--boeren-green);
     // border: 1px solid var(--grey);
