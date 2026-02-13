@@ -14,6 +14,18 @@ export const CATEGORY_THEMES = {
     fg: "#FFE2DB",
     accent: "#FFE2DB",
   },
+
+  oranjelichtgroen:{
+  bg: "#85412B",
+  fg: "#dcff90",
+    accent: "#dcff90",
+  },
+
+  donkerblauwlichtblauw:{
+    bg:"#1C6679",
+    fg: "#B7DFFF",
+    accent: "#B7DFFF",
+  },
   // Default fallback
   default: {
     bg: "#5f6a33",
