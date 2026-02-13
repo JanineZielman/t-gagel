@@ -72,12 +72,21 @@ const AccommodationPreview = ({ page }) => {
       </div>
       <div className={styles.content}>
         <div className={styles.iconWrapper}>
-          <div
-            className={styles.icon}
-            style={{
-              maskImage: "url(/overnachten.svg)",
-            }}
-          ></div>
+          {page.acf?.accommodation_icon?.url ? (
+            <img
+              src={page.acf.accommodation_icon.url}
+              alt=""
+              className={styles.iconImg}
+            />
+          ) : (
+            <div
+              className={styles.iconMask}
+              style={{
+                WebkitMaskImage: `url(/overnachten.svg)`,
+                maskImage: `url(/overnachten.svg)`,
+              }}
+            ></div>
+          )}
         </div>
         <h2 dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
       </div>

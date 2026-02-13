@@ -79,8 +79,6 @@ const Page = ({ headerFooter, pageData, childPages }) => {
         {pageData.acf.contact_form && (
           <ContactForm backgroundColor="var(--brown)" textColor="var(--pink)" />
         )}
-
-        {/* {pageData.acf.new_booking && <TommyBooking product={pageData.acf.data_accommodatie} />} */}
       </Layout>
     </div>
   )

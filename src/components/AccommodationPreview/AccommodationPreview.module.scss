@@ -24,10 +24,19 @@
     margin-bottom: 24px;
   }
 
-  .icon {
+  .iconImg {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  .iconMask {
     width: 80px;
     height: 80px;
     background-color: currentColor;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;
