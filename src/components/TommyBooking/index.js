@@ -31,7 +31,7 @@ const Tommy = ({ product }) => {
           data-account="GagelLochem"
           data-language="nl"
           data-country="nl"
-          data-accommodatie={product ? product : ""}
+          data-accommodatiegroep={product ? product : ""}
           data-scroll="false"
         ></div>
       </div>
