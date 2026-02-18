@@ -1,13 +1,21 @@
-import className from 'classnames/bind';
-import styles from './EntryHeader.module.scss';
+import className from "classnames/bind"
+import styles from "./EntryHeader.module.scss"
 
-let cx = className.bind(styles);
+let cx = className.bind(styles)
 
-const EntryHeader = ({ title, image, date, author, className }) => {
-  const hasText = title || date || author;
+const EntryHeader = ({
+  title,
+  image,
+  date,
+  author,
+  className,
+  accommodationIconUrl,
+  showAccommodationIcon,
+}) => {
+  const hasText = title || date || author
 
   return (
-    <div className={cx(['component', className])}>
+    <div className={cx(["component", className])}>
       {/* {image && (
         <FeaturedImage
           image={image}
@@ -17,13 +25,21 @@ const EntryHeader = ({ title, image, date, author, className }) => {
       )} */}
 
       {hasText && (
-        <div className={cx('text', { 'has-image': image })}>
-            {!!title && <h1 dangerouslySetInnerHTML={{ __html: title }}/>}
-            
+        <div className={cx("text", { "has-image": image })}>
+          {!!title && <h1 dangerouslySetInnerHTML={{ __html: title }} />}
+          {showAccommodationIcon && accommodationIconUrl && (
+            <div className={cx("accommodationIconWrapper")}>
+              <img
+                src={accommodationIconUrl}
+                alt=""
+                className={cx("accommodationIconImg")}
+              />
+            </div>
+          )}
         </div>
       )}
     </div>
-  );
+  )
 }
 
 export default EntryHeader

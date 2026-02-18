@@ -42,16 +42,17 @@ const Page = ({ headerFooter, pageData, childPages }) => {
       >
         <HomeButton />
         <div className="flex">
-          <EntryHeader title={pageData?.title?.rendered} />
+          <EntryHeader
+            title={pageData?.title?.rendered}
+            showAccommodationIcon={pageData?.parent === 1501}
+            accommodationIconUrl={pageData?.acf?.accommodation_icon?.url}
+          />
           {pageData.acf.label && (
             <CallToActionButton link={pageData.acf.link}>
               {pageData.acf.label}
             </CallToActionButton>
           )}
         </div>
-        {/* {(pageData.parent === 1501 || pageData.id === 1501) && (
-          <Tommy suppressHydrationWarning />
-        )} */}
 
         <ContentWrapper content={pageData.content.rendered} />
         {(pageData.parent === 1501 || pageData.id === 1501) &&

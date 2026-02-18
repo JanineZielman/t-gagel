@@ -33,6 +33,7 @@ const Tommy = ({ product }) => {
           data-country="nl"
           data-accommodatiegroep={product ? product : ""}
           data-scroll="false"
+          data-actiecode='true'
         ></div>
       </div>
     </div>
