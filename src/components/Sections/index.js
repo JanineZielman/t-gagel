@@ -6,7 +6,7 @@ import Facilities from "../Facilities"
 const Sections = ({ sections, facilities }) => {
   return (
     <div className="sections">
-      {facilities && <Facilities facilities={facilities} />}
+      
       {sections.map((item, i) => {
         return (
           <div key={i} className={"textSection"}>
@@ -47,6 +47,7 @@ const Sections = ({ sections, facilities }) => {
           </div>
         )
       })}
+      {facilities && <Facilities facilities={facilities} />}
     </div>
   )
 }

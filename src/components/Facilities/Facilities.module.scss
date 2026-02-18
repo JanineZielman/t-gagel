@@ -23,6 +23,9 @@
   align-items: center;
   text-align: center;
   gap: 12px;
+  /* Fix width so rows center perfectly (max 4 per row) */
+  flex: 0 0 80px;
+  width: 80px;
 
   .iconWrapper {
     background-color: var(--green);
@@ -56,11 +59,14 @@
 
 @media (max-width: $breakpoint-small) {
   .facilities {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
     padding: 20px 30px;
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .facility {
