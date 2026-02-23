@@ -7,13 +7,14 @@ import { fixImageSizes } from "../../utils/fixImageSizes"
 const Sections = ({ sections, facilities }) => {
   return (
     <div className="sections">
-      
       {sections.map((item, i) => {
         return (
           <div key={i} className={"textSection"}>
             <div
               className="text-wrapper"
-              dangerouslySetInnerHTML={{ __html: fixImageSizes(item.text_section) }}
+              dangerouslySetInnerHTML={{
+                __html: fixImageSizes(item.text_section),
+              }}
             />
             {item.card && (
               <div className="cards">

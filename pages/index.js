@@ -15,7 +15,6 @@ import CookieBar from "../src/components/CookieBar"
 import ContactForm from "../src/components/ContactForm/"
 
 export default function Home({ headerFooter, page, posts }) {
-
   return (
     <Layout headerFooter={headerFooter || {}} seo={page?.yoast_head_json ?? {}}>
       {/* <CookieBar /> */}
@@ -29,7 +28,9 @@ export default function Home({ headerFooter, page, posts }) {
           <>
             <div
               className={"introText"}
-              dangerouslySetInnerHTML={{ __html: fixImageSizes(page.content.rendered) }}
+              dangerouslySetInnerHTML={{
+                __html: fixImageSizes(page.content.rendered),
+              }}
             />
             <CustomLine height={37} strokeColor="#DCFF90" strokeWidth={3} />
           </>
@@ -46,7 +47,10 @@ export default function Home({ headerFooter, page, posts }) {
         <br></br>
         <br></br>
         <Sections sections={page.acf.sections} />
-        <ContactForm backgroundColor="var(--light-green)"  textColor="var(--boeren-green)"/>
+        <ContactForm
+          backgroundColor="var(--light-green)"
+          textColor="var(--boeren-green)"
+        />
       </div>
     </Layout>
   )
@@ -63,7 +67,7 @@ export async function getStaticProps() {
       page: pageData[0] ?? {},
       posts:
         posts?.data.posts_data.filter(
-          (post) => post.categories[0].slug == "actueel"
+          (post) => post.categories[0].slug == "actueel",
         ) || {},
     },
 

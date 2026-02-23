@@ -4,5 +4,5 @@
  * causing Safari to pick the smallest srcset image. This ensures the correct image is chosen.
  */
 export function fixImageSizes(str) {
-  return str.replace(/\bsizes="[^"]*"/g, 'sizes="100vw"');
+  return str.replace(/\bsizes="[^"]*"/g, 'sizes="100vw"')
 }
