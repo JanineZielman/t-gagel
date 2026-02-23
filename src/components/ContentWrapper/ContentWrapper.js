@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './ContentWrapper.module.scss';
 import {OrderButton} from '../Bits/OrderButton'; // Import the OrderButton component
+import { fixImageSizes } from '../../utils/fixImageSizes';
 
 let cx = classNames.bind(styles);
 
@@ -16,12 +17,12 @@ function decodeHtmlEntities(str) {
 function replaceCurlyQuotes(str) {
   return str.replace(/[“”]/g, '"');
 }
-
 // Function to parse and convert shortcodes to React components
 function parseShortcodes(content) {
   // Decode and replace curly quotes
   let decodedContent = decodeHtmlEntities(content);
   decodedContent = replaceCurlyQuotes(decodedContent);
+  decodedContent = fixImageSizes(decodedContent);
 
   // Updated regex to account for possible surrounding HTML tags and correctly matched shortcodes
   const orderButtonRegex = /\[order_button link="(.+?)" text="(.+?)"\]/g;

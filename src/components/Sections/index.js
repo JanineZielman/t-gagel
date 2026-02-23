@@ -2,6 +2,7 @@ import Image from "../image"
 import CallToActionButton from "../Bits/CallToActionButton"
 import CustomLine from "../CustomLine/CustomLine"
 import Facilities from "../Facilities"
+import { fixImageSizes } from "../../utils/fixImageSizes"
 
 const Sections = ({ sections, facilities }) => {
   return (
@@ -12,7 +13,7 @@ const Sections = ({ sections, facilities }) => {
           <div key={i} className={"textSection"}>
             <div
               className="text-wrapper"
-              dangerouslySetInnerHTML={{ __html: item.text_section }}
+              dangerouslySetInnerHTML={{ __html: fixImageSizes(item.text_section) }}
             />
             {item.card && (
               <div className="cards">

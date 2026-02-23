@@ -1,5 +1,6 @@
 import { HEADER_FOOTER_ENDPOINT } from "../src/utils/constants/endpoints"
 import { getPage, getPosts } from "../src/utils/blog"
+import { fixImageSizes } from "../src/utils/fixImageSizes"
 
 import axios from "axios"
 import Layout from "../src/components/layout"
@@ -28,7 +29,7 @@ export default function Home({ headerFooter, page, posts }) {
           <>
             <div
               className={"introText"}
-              dangerouslySetInnerHTML={{ __html: page.content.rendered }}
+              dangerouslySetInnerHTML={{ __html: fixImageSizes(page.content.rendered) }}
             />
             <CustomLine height={37} strokeColor="#DCFF90" strokeWidth={3} />
           </>
