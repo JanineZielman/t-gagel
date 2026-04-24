@@ -13,10 +13,12 @@ import {
 } from "../src/utils/slug"
 import { getPathNameFromUrl } from "../src/utils/miscellaneous"
 import { getPage, getPages, getChildPages } from "../src/utils/blog"
+import ensureBrevoList from "../src/utils/ensureBrevoList"
 import axios from "axios"
 import { HEADER_FOOTER_ENDPOINT } from "../src/utils/constants/endpoints"
 import ImageSlider from "../src/components/Bits/ImageSlider"
 import ContactForm from "../src/components/ContactForm"
+import InschrijfFormulier from "../src/components/InschrijfFormulier"
 import Tommy from "../src/components/Tommy"
 import TommyBooking from "../src/components/TommyBooking"
 import Sections from "../src/components/Sections"
@@ -25,7 +27,7 @@ import PageGrid from "../src/components/PageGrid"
 import AccommodationGrid from "../src/components/AccommodationGrid"
 import Facilities from "../src/components/Facilities"
 
-const Page = ({ headerFooter, pageData, childPages }) => {
+const Page = ({ headerFooter, pageData, childPages, form }) => {
   const router = useRouter()
 
   // If the page is not yet generated, this will be displayed
@@ -80,6 +82,7 @@ const Page = ({ headerFooter, pageData, childPages }) => {
         {pageData.acf.contact_form && (
           <ContactForm backgroundColor="var(--brown)" textColor="var(--pink)" />
         )}
+        {form && <InschrijfFormulier form={form} />}
       </Layout>
     </div>
   )
@@ -101,11 +104,31 @@ export async function getStaticProps({ params }) {
     childPages = await getChildPages(1501)
   }
 
+  const page = pageData?.[0] ?? {}
+  const formId = page.acf?.inschrijfformulier
+  let form = null
+
+  if (formId) {
+    try {
+      const formRes = await fetch(
+        `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/wp-json/wp/v2/inschrijfformulier/${formId}`
+      )
+      if (formRes.ok) {
+        form = await formRes.json()
+        await ensureBrevoList(form)
+      }
+    } catch (e) {
+      console.error("Failed to fetch/ensure form:", e)
+      form = null
+    }
+  }
+
   const defaultProps = {
     props: {
       headerFooter: headerFooterData?.data ?? {},
-      pageData: pageData?.[0] ?? {},
+      pageData: page,
       childPages: childPages ?? [],
+      form,
     },
     /**
      * Revalidate means that if a new request comes to server, then every 1 sec it will check
