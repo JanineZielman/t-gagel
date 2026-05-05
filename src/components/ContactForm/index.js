@@ -1,14 +1,21 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import styles from "./ContactForm.module.scss"
 import { useEffect } from "react"
 import Head from "next/head"
 
 const ContactForm = ({ backgroundColor, textColor }) => {
+  const loadTime = useRef(Date.now())
+  const [honeypot, setHoneypot] = useState("")
 
-  // Custom style with CSS variables
   const customStyle = {
     "--form-background-color": backgroundColor || "var(--grey)",
     "--form-text-color": textColor || "var(--text-color)",
+  }
+
+  const handleSubmit = (e) => {
+    if (honeypot || Date.now() - loadTime.current < 3000) {
+      e.preventDefault()
+    }
   }
 
   useEffect(() => {
@@ -102,6 +109,7 @@ const ContactForm = ({ backgroundColor, textColor }) => {
                 action="https://sibforms.com/serve/MUIFAO7V3mVBD4JnEZnlsuQ62KDpZXz3epB1W6auzsUj2OToD4Bl7S7pDYz_hQGf_UWVPJQtqbcTFUAx-5CDrENn-C9JIGp3GBkpUsrazzlSxYdt-ZiL8ENKxVMcpl6DdiGysfsEiweCh7Tc9ky-Vg2qQhQcehR-mY9CyTdMd4Uwnlk3Vs7iS-nqVZEWR8wKZTD4GeNIzgKOv4-6"
                 data-type="subscription"
                 className={styles.form}
+                onSubmit={handleSubmit}
               >
                 <div>
                   <div className="sib-input sib-form-block">
@@ -252,6 +260,16 @@ const ContactForm = ({ backgroundColor, textColor }) => {
                   </div>
                 </div>
 
+                <input
+                  type="text"
+                  name="website_url"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex="-1"
+                  autoComplete="off"
+                  aria-hidden="true"
+                  style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }}
+                />
                 <input
                   type="text"
                   name="email_address_check"
