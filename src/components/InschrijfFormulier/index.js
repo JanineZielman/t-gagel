@@ -11,7 +11,7 @@ const InschrijfFormulier = ({ form }) => {
   const [email, setEmail] = useState("")
   const [nieuwsbrief, setNieuwsbrief] = useState(false)
   const [customValues, setCustomValues] = useState(() =>
-    (form?.acf?.form_velden || []).map(() => "")
+    (form?.acf?.form_velden || []).map(() => ""),
   )
 
   useEffect(() => {
@@ -46,7 +46,10 @@ const InschrijfFormulier = ({ form }) => {
     const customFields = velden.map((field, i) => ({
       label: field.label,
       type: field.type,
-      value: field.type === "checkbox" ? customValues[i] === true || customValues[i] === "true" : customValues[i],
+      value:
+        field.type === "checkbox"
+          ? customValues[i] === true || customValues[i] === "true"
+          : customValues[i],
     }))
 
     try {
@@ -93,7 +96,10 @@ const InschrijfFormulier = ({ form }) => {
     return (
       <div className={styles.inschrijfFormulier}>
         <div className={styles.success}>
-          <p>Bedankt voor je inschrijving! Je ontvangt een bevestiging per e-mail.</p>
+          <p>
+            Bedankt voor je inschrijving! Je ontvangt een bevestiging per
+            e-mail.
+          </p>
         </div>
       </div>
     )
@@ -276,7 +282,7 @@ const InschrijfFormulier = ({ form }) => {
             type="submit"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "versturen…" : "inschrijven"}
+            {isSubmitting ? "versturen…" : "aanmelden"}
           </button>
         </form>
       )}
