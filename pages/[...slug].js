@@ -29,6 +29,7 @@ import Facilities from "../src/components/Facilities"
 
 const Page = ({ headerFooter, pageData, childPages, form }) => {
   const router = useRouter()
+  const isMainOvernachtenPage = pageData?.id === 1501
 
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running
@@ -56,25 +57,50 @@ const Page = ({ headerFooter, pageData, childPages, form }) => {
           )}
         </div>
 
-        <ContentWrapper content={pageData.content.rendered} />
-        {(pageData.parent === 1501 || pageData.id === 1501) &&
-          childPages?.length > 0 && (
-            <div className="child-pages-section">
-              <AccommodationGrid pages={childPages} />
+        {isMainOvernachtenPage ? (
+          <>
+            {pageData.acf.image_slider?.length > 0 && (
+              <ImageSlider images={pageData.acf.image_slider} />
+            )}
+            <ContentWrapper content={pageData.content.rendered} />
+            {pageData.acf.sections?.length > 0 && (
+              <Sections
+                sections={pageData.acf.sections}
+                facilities={pageData.parent === 1501 ? pageData.acf : undefined}
+              />
+            )}
+            {childPages?.length > 0 && (
+              <div className="child-pages-section">
+                <AccommodationGrid pages={childPages} />
+              </div>
+            )}
+            <div className="newsletter">
+              {pageData.acf.newsletter && <Newsletter />}
             </div>
-          )}
-        <div className="newsletter">
-          {pageData.acf.newsletter && <Newsletter />}
-        </div>
+          </>
+        ) : (
+          <>
+            <ContentWrapper content={pageData.content.rendered} />
+            {(pageData.parent === 1501 || pageData.id === 1501) &&
+              childPages?.length > 0 && (
+                <div className="child-pages-section">
+                  <AccommodationGrid pages={childPages} />
+                </div>
+              )}
+            <div className="newsletter">
+              {pageData.acf.newsletter && <Newsletter />}
+            </div>
 
-        {pageData.acf.sections?.length > 0 && (
-          <Sections
-            sections={pageData.acf.sections}
-            facilities={pageData.parent === 1501 ? pageData.acf : undefined}
-          />
-        )}
-        {pageData.acf.image_slider?.length > 0 && (
-          <ImageSlider images={pageData.acf.image_slider} />
+            {pageData.acf.sections?.length > 0 && (
+              <Sections
+                sections={pageData.acf.sections}
+                facilities={pageData.parent === 1501 ? pageData.acf : undefined}
+              />
+            )}
+            {pageData.acf.image_slider?.length > 0 && (
+              <ImageSlider images={pageData.acf.image_slider} />
+            )}
+          </>
         )}
         {pageData.acf.new_booking && (
           <TommyBooking product={pageData.acf.data_accommodatie} />
@@ -111,7 +137,7 @@ export async function getStaticProps({ params }) {
   if (formId) {
     try {
       const formRes = await fetch(
-        `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/wp-json/wp/v2/inschrijfformulier/${formId}`
+        `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/wp-json/wp/v2/inschrijfformulier/${formId}`,
       )
       if (formRes.ok) {
         form = await formRes.json()
